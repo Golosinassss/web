@@ -81,36 +81,23 @@
     <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;</div></div>
 
     <div id="video-hero">
-        <iframe id="main-player" src="https://www.youtube.com/embed/videoseries?list=PL_TU9r3uY79hJdFz45uD_N5O2X6-s-5h9&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <h2 class="section-title">Catálogo de Sonido Infinito</h2>
     <div id="grid-catalogo"></div>
 
     <h2 class="section-title">Portafolio Audiovisual</h2>
-    <div id="grid-portafolio">
-        <div class="card">
-            <h3>DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA</h3>
-            <p>Netflix / Dynamo (2022). Editor Senior del documental.</p>
-            <button onclick="playVideo('81215451')">Reproducir</button>
-        </div>
-        <div class="card">
-            <h3>ASÍ PARTICIPAN LAS VÍCTIMAS</h3>
-            <p>JEP / Comisión de la Verdad (2020). Dirección y Montaje.</p>
-            <button onclick="playVideo('p6pY39fC294')">Reproducir</button>
-        </div>
-    </div>
+    <div id="grid-portafolio"></div>
 
     <script>
-        function playVideo(id) {
+        function playVideo(url, tipo) {
             const player = document.getElementById('main-player');
-            // Si es un ID de video
-            if(id.length === 11) {
-                player.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            if(tipo === 'netflix') {
+                window.open(url, "_blank");
             } else {
-                // Si es un ID de Netflix (como el ejemplo dado, aunque YouTube no embebe Netflix)
-                alert("Redirigiendo a Netflix...");
-                window.open("https://www.netflix.com/title/" + id, "_blank");
+                const videoId = extractVideoID(url);
+                player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             }
         }
 
@@ -120,17 +107,33 @@
             return (match && match[2].length === 11) ? match[2] : null;
         }
 
+        // Cargar Catálogo
         fetch('catalogo.json')
             .then(response => response.json())
             .then(data => {
                 const grid = document.getElementById('grid-catalogo');
-                data.filter(item => item.estado === 'Visible').forEach(item => {
-                    const videoId = extractVideoID(item.url_video);
+                data.forEach(item => {
                     grid.innerHTML += `
                         <div class="card">
                             <h3>${item.titulo}</h3>
                             <p>${item.categoria} | ${item.descripcion}</p>
-                            <button onclick="playVideo('${videoId}')">Reproducir</button>
+                            <button onclick="playVideo('${item.url_video}', 'youtube')">Reproducir</button>
+                        </div>
+                    `;
+                });
+            });
+
+        // Cargar Portafolio
+        fetch('portafolio.json')
+            .then(response => response.json())
+            .then(data => {
+                const grid = document.getElementById('grid-portafolio');
+                data.forEach(item => {
+                    grid.innerHTML += `
+                        <div class="card">
+                            <h3>${item.titulo}</h3>
+                            <p>${item.descripcion}</p>
+                            <button onclick="playVideo('${item.url_video}', '${item.tipo}')">${item.tipo === 'netflix' ? 'Ver en Netflix' : 'Reproducir'}</button>
                         </div>
                     `;
                 });
