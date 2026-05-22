@@ -1,18 +1,28 @@
 [
   {
     "id": "1",
-    "titulo": "Velandia y La Tigra . Venganza",
+    "titulo": "Velandia y La Tigra - Venganza (En Vivo)",
     "categoria": "Rasqa",
-    "url_video": "https://youtu.be/1C9wjSrnShY?si=VRxc9U_0IS415FTk",
-    "descripcion": "SONIDO INFINITO - Teatro Colón",
+    "url_video": "https://youtu.be/1C9wjSrnShY",
+    "descripcion": "SONIDO INFINITO - Teatro Colón - Bogotá, Colombia",
+    "date": "15-SEPT-2023",
     "estado": "Visible"
   },
   {
     "id": "2",
-    "titulo": "Conjunto Media Luna - Kumbia Medallo",
+    "titulo": "Conjunto Media Luna - Kumbia Medallo (En Vivo)",
     "categoria": "Cumbia",
-    "url_video": "https://youtu.be/AxLDXmOTtRQ?si=DyIfLohMZMei_Yf2",
-    "descripcion": "SONIDO INFINITO - Bollo Room #8",
+    "url_video": "https://youtu.be/AxLDXmOTtRQ",
+    "descripcion": "SONIDO INFINITO - Bollo Room #8 - Bogotá, Colombia",
+    "date": "02-MAYO-2025",
+    "estado": "Visible"
+  },
+  {
+    "id": "3",
+    "titulo": "Así Participan las Víctimas",
+    "categoria": "Documental / JEP",
+    "url_video": "https://youtu.be/R7hORlDFjos?si=1Kx8jBAEjpsr9kxB",
+    "descripcion": "Animación documental sobre el acuerdo de paz y la memoria histórica.",
     "estado": "Visible"
   }
 ]
