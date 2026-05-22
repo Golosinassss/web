@@ -15,7 +15,7 @@
             aspect-ratio: 16 / 9;
             margin: 0 auto 30px auto;
             background: #000; 
-            border: 1px solid #222;
+            border: 1px solid #333;
         }
         
         iframe { width: 100%; height: 100%; }
@@ -23,25 +23,23 @@
         /* Estilos de bordes multicolores */
         .border-container {
             position: fixed; background: #0f0f0f;
-            font-family: 'Courier New', monospace; font-size: 0.9rem;
+            font-family: 'Courier New', monospace; font-size: 0.8rem;
             z-index: 100; overflow: hidden; white-space: nowrap; display: flex;
             align-items: center; justify-content: center;
         }
 
-        .top { top: 0; left: 0; width: 100%; height: 35px; border-bottom: 2px solid #333; }
-        .bottom { bottom: 0; left: 0; width: 100%; height: 35px; border-top: 2px solid #333; }
-        .left { top: 35px; left: 0; width: 35px; height: calc(100% - 70px); writing-mode: vertical-rl; border-right: 2px solid #333; }
-        .right { top: 35px; right: 0; width: 35px; height: calc(100% - 70px); writing-mode: vertical-rl; border-left: 2px solid #333; }
+        .top { top: 0; left: 0; width: 100%; height: 30px; border-bottom: 1px solid #333; }
+        .bottom { bottom: 0; left: 0; width: 100%; height: 30px; border-top: 1px solid #333; }
+        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-right: 1px solid #333; }
+        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-left: 1px solid #333; }
 
         .ticker { 
-            display: flex; animation: ticker-h 100s linear infinite;
+            display: flex; animation: ticker-h 80s linear infinite;
             background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: bold;
         }
         
-        /* Direcciones de animación */
         .top .ticker { animation: ticker-h 80s linear infinite; }
         .bottom .ticker { animation: ticker-h 80s linear infinite reverse; }
         .left .ticker { animation: ticker-v 80s linear infinite reverse; }
@@ -50,44 +48,44 @@
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
-        /* Títulos */
         .section-title {
             padding: 20px 0 10px;
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
-            border-bottom: 2px solid #444;
-            margin: 40px 0 20px;
+            border-bottom: 1px solid #444;
+            margin: 30px 0 20px;
             color: #fff;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         #grid-catalogo, #grid-portafolio {
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-            gap: 25px; 
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 15px; 
+            margin-bottom: 40px;
         }
 
-        .card { border: 2px solid #333; padding: 20px; background: #151515; }
-        .card h3 { font-size: 1rem; margin: 0 0 10px; color: #fff; }
-        .card p { font-size: 0.85rem; color: #ccc; margin-bottom: 20px; }
+        .card { 
+            border: 1px solid #333; padding: 15px; background: #121212; 
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .card h3 { font-size: 0.85rem; margin: 0 0 8px; color: #fff; }
+        .card p { font-size: 0.75rem; color: #bbb; margin-bottom: 15px; flex-grow: 1; }
         
         .card button { 
-            background: #ff007f; /* Saturado */
-            color: #fff; border: none; padding: 10px 20px; 
-            cursor: pointer; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; width: 100%; transition: 0.3s;
+            background: transparent; color: #00e5ff; border: 1px solid #00e5ff; padding: 5px 10px; 
+            cursor: pointer; font-size: 0.7rem; text-transform: uppercase; width: 100%; transition: 0.3s;
         }
-        .card button:hover { background: #00ffcc; color: #000; }
+        .card button:hover { background: #00e5ff; color: #000; }
 
         footer {
-            text-align: center; font-size: 0.9rem; color: #aaa; padding-bottom: 50px;
-            font-weight: bold;
+            text-align: center; font-size: 0.8rem; color: #777; padding-bottom: 30px;
         }
     </style>
 </head>
 <body>
-    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
     <div class="border-container left"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
     <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA | PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
 
