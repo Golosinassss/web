@@ -5,67 +5,46 @@
         body, html { margin: 0; padding: 0; height: 100%; overflow-y: auto; background: black; }
         
         #video-container {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1;
+            position: relative; width: 80%; margin: 50px auto; aspect-ratio: 16 / 9;
+            background: #222; display: flex; align-items: center; justify-content: center;
         }
         
-        iframe {
-            width: 100%; height: 100%; pointer-events: none;
-        }
+        iframe { width: 100%; height: 100%; pointer-events: none; }
+        #placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
         .border-container {
-            position: absolute;
-            background: black;
-            color: white;
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
-            padding: 2px 5px;
-            z-index: 10;
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
+            position: absolute; background: black; color: white;
+            font-family: 'Courier New', monospace; font-size: 1rem;
+            padding: 2px 5px; z-index: 10; overflow: hidden; white-space: nowrap; display: flex;
         }
 
-        .ticker {
-            display: flex;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-
-        /* Animación sin espacios iniciales */
+        .ticker { display: flex; animation-timing-function: linear; animation-iteration-count: infinite; }
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
-        .top { top: 0; left: 0; width: 100%; height: 25px; }
-        .bottom { bottom: 0; left: 0; width: 100%; height: 25px; }
-        .left { top: 25px; left: 0; width: 30px; height: calc(100% - 50px); writing-mode: vertical-rl; }
-        .right { top: 25px; right: 0; width: 30px; height: calc(100% - 50px); writing-mode: vertical-rl; }
+        /* Ajustados al contenedor de video */
+        .top { top: 50px; left: 10%; width: 80%; height: 25px; }
+        .bottom { bottom: auto; top: calc(50px + 100% * 9/16 - 25px); left: 10%; width: 80%; height: 25px; }
+        .left { top: 75px; left: 10%; width: 30px; height: calc(100% * 9/16 - 50px); writing-mode: vertical-rl; }
+        .right { top: 75px; right: 10%; width: 30px; height: calc(100% * 9/16 - 50px); writing-mode: vertical-rl; }
 
         .top .ticker, .bottom .ticker { animation: ticker-h 60s linear infinite; }
         .left .ticker, .right .ticker { animation: ticker-v 45s linear infinite; }
-        .bottom .ticker { animation-direction: reverse; }
-        .right .ticker { animation-direction: reverse; }
     </style>
 </head>
 <body>
     <div id="video-container">
-        <iframe id="video-frame" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1&loop=1&controls=0&playlist=WpIvp6I7obE" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+        <div id="placeholder" onclick="loadVideo()">
+            <h2 style="color: white; border: 1px solid white; padding: 20px;">CLICK PARA REPRODUCIR SONIDO</h2>
+        </div>
     </div>
 
-    <div id="grid-catalogo" style="position: relative; z-index: 5; margin-top: 100vh; padding: 50px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; background: black;"></div>
-
-    <!-- Botón para activar audio -->
-    <div id="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="activarAudio()">
-        <h1 style="color: white; font-family: monospace; border: 1px solid white; padding: 20px;">ENTRAR / ACTIVAR SONIDO</h1>
-    </div>
+    <div id="grid-catalogo" style="position: relative; z-index: 5; margin-top: 50px; padding: 50px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; background: black;"></div>
 
     <script>
-        function activarAudio() {
-            const frame = document.getElementById('video-frame');
-            // Cambiamos el src para quitar el mute y reiniciar
-            frame.src = "https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=0&loop=1&controls=0&playlist=WpIvp6I7obE";
-            document.getElementById('overlay').style.display = 'none';
+        function loadVideo() {
+            const container = document.getElementById('video-container');
+            container.innerHTML = '<iframe id="video-frame" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=0&loop=1&controls=1&playlist=WpIvp6I7obE" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
         }
 
         fetch('catalogo.json')
