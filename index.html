@@ -4,92 +4,12 @@
     <style>
         body, html { margin: 0; padding: 0; height: 100%; overflow-y: auto; background: black; }
         
-        #wrapper { position: relative; width: 80%; margin: 100px auto 50px auto; }
         #video-container {
-            width: 100%; aspect-ratio: 16 / 9; background: #222; 
-            display: flex; align-items: center; justify-content: center; position: relative;
-        }
-        
-        iframe { width: 100%; height: 100%; }
-        #placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-
-        .border-container {
-            position: absolute; background: black; color: white;
-            font-family: 'Courier New', monospace; font-size: 1rem;
-            padding: 2px 5px; z-index: 10; overflow: hidden; white-space: nowrap; display: flex;
-        }
-
-        .ticker { display: flex; animation-timing-function: linear; animation-iteration-count: infinite; }
-        @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-
-        /* Bordes ceñidos al wrapper */
-        .top { top: -25px; left: 0; width: 100%; height: 25px; }
-        .bottom { bottom: -25px; left: 0; width: 100%; height: 25px; }
-        .left { top: 0; left: -30px; width: 30px; height: 100%; writing-mode: vertical-rl; }
-        .right { top: 0; right: -30px; width: 30px; height: 100%; writing-mode: vertical-rl; }
-
-        .top .ticker, .bottom .ticker { animation: ticker-h 60s linear infinite; }
-        .left .ticker, .right .ticker { animation: ticker-v 45s linear infinite; }
-    </style>
-</head>
-<body>
-    <div id="wrapper">
-        <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | REGISTRO: CONJUNTO MEDIA LUNA | 2026 | CANASTO DE JOYAS CULTURALES | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;</div></div>
-        <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | ARCHIVO TÉCNICO: 4K/60FPS | RITUAL MUSICAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;</div></div>
-        <div class="border-container left"><div class="ticker">ARTISTA: CONJUNTO MEDIA LUNA | SESIÓN: MEDALLO | VANGUARDIA TROPICAL |&nbsp;</div></div>
-        <div class="border-container right"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | PROYECTO MAESTRO |&nbsp;</div></div>
-        
-        <div id="video-container">
-            <div id="placeholder" onclick="loadVideo()">
-                <h2 style="color: white; border: 1px solid white; padding: 20px;">CLICK PARA REPRODUCIR: KUMBIA MEDALLO</h2>
-            </div>
-        </div>
-    </div>
-
-    <div id="grid-catalogo" style="position: relative; z-index: 5; margin-top: 50px; padding: 50px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; background: black;"></div>
-
-    <script>
-        function loadVideo() {
-            const container = document.getElementById('video-container');
-            container.innerHTML = '<iframe id="video-frame" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=0&loop=1&controls=1&playlist=WpIvp6I7obE" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
-        }
-
-        fetch('catalogo.json')
-            .then(response => response.json())
-            .then(data => {
-                const grid = document.getElementById('grid-catalogo');
-                data.filter(item => item.estado === 'Visible').forEach(item => {
-                    grid.innerHTML += `
-                        <div style="border: 1px solid white; padding: 20px; color: white; font-family: monospace;">
-                            <h3>${item.titulo}</h3>
-                            <p>${item.categoria}</p>
-                            <p>${item.descripcion}</p>
-                            <a href="https://youtu.be/${item.url_video}" target="_blank" style="color: cyan;">Ver video</a>
-                        </div>
-                    `;
-                });
-            });
-    </script>
-
-    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | REGISTRO: LOS PIRAÑAS EN VIVO | 2026 | CANASTO DE JOYAS CULTURALES | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;GOLOSINASSSS | SONIDO INFINITO | REGISTRO: LOS PIRAÑAS EN VIVO | 2026 | CANASTO DE JOYAS CULTURALES | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;</div></div>
-    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | ARCHIVO TÉCNICO: 4K/60FPS | RITUAL MUSICAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | ARCHIVO TÉCNICO: 4K/60FPS | RITUAL MUSICAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;</div></div>
-    <div class="border-container left"><div class="ticker">ARTISTA: LOS PIRAÑAS | SESIÓN: BOGOTÁ | VANGUARDIA TROPICAL |&nbsp;ARTISTA: LOS PIRAÑAS | SESIÓN: BOGOTÁ | VANGUARDIA TROPICAL |&nbsp;</div></div>
-    <div class="border-container right"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | PROYECTO MAESTRO |&nbsp;ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | PROYECTO MAESTRO |&nbsp;</div></div>
-</body>
-</html><!DOCTYPE html>
-<html lang="es">
-<head>
-    <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow-y: auto; background: black; }
-        
-        #video-container {
-            position: relative; width: 80%; margin: 50px auto; aspect-ratio: 16 / 9;
-            background: #222; display: flex; align-items: center; justify-content: center;
+            position: relative; width: 100%; height: 100vh;
+            background: black; display: flex; align-items: center; justify-content: center;
         }
         
         iframe { width: 100%; height: 100%; pointer-events: none; }
-        #placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
         .border-container {
             position: absolute; background: black; color: white;
@@ -101,11 +21,10 @@
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
-        /* Ajustados al contenedor de video */
-        .top { top: 50px; left: 10%; width: 80%; height: 25px; }
-        .bottom { bottom: auto; top: calc(50px + 100% * 9/16 - 25px); left: 10%; width: 80%; height: 25px; }
-        .left { top: 75px; left: 10%; width: 30px; height: calc(100% * 9/16 - 50px); writing-mode: vertical-rl; }
-        .right { top: 75px; right: 10%; width: 30px; height: calc(100% * 9/16 - 50px); writing-mode: vertical-rl; }
+        .top { top: 0; left: 0; width: 100%; height: 25px; }
+        .bottom { bottom: 0; left: 0; width: 100%; height: 25px; }
+        .left { top: 25px; left: 0; width: 30px; height: calc(100% - 50px); writing-mode: vertical-rl; }
+        .right { top: 25px; right: 0; width: 30px; height: calc(100% - 50px); writing-mode: vertical-rl; }
 
         .top .ticker, .bottom .ticker { animation: ticker-h 60s linear infinite; }
         .left .ticker, .right .ticker { animation: ticker-v 45s linear infinite; }
@@ -113,19 +32,17 @@
 </head>
 <body>
     <div id="video-container">
-        <div id="placeholder" onclick="loadVideo()">
-            <h2 style="color: white; border: 1px solid white; padding: 20px;">CLICK PARA REPRODUCIR SONIDO</h2>
-        </div>
+        <iframe src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1&loop=1&controls=0&playlist=WpIvp6I7obE" frameborder="0" allow="autoplay; encrypted-media"></iframe>
     </div>
 
-    <div id="grid-catalogo" style="position: relative; z-index: 5; margin-top: 50px; padding: 50px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; background: black;"></div>
+    <div id="grid-catalogo" style="padding: 50px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; background: black;"></div>
+
+    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | REGISTRO: CONJUNTO MEDIA LUNA - KUMBIA MEDALLO | 2026 | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;</div></div>
+    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | ARCHIVO TÉCNICO: 4K/60FPS | RITUAL MUSICAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;</div></div>
+    <div class="border-container left"><div class="ticker">ARTISTA: CONJUNTO MEDIA LUNA | SESIÓN: MEDALLO | VANGUARDIA TROPICAL |&nbsp;</div></div>
+    <div class="border-container right"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | PROYECTO MAESTRO |&nbsp;</div></div>
 
     <script>
-        function loadVideo() {
-            const container = document.getElementById('video-container');
-            container.innerHTML = '<iframe id="video-frame" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=0&loop=1&controls=1&playlist=WpIvp6I7obE" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
-        }
-
         fetch('catalogo.json')
             .then(response => response.json())
             .then(data => {
@@ -142,10 +59,5 @@
                 });
             });
     </script>
-
-    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | REGISTRO: LOS PIRAÑAS EN VIVO | 2026 | CANASTO DE JOYAS CULTURALES | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;GOLOSINASSSS | SONIDO INFINITO | REGISTRO: LOS PIRAÑAS EN VIVO | 2026 | CANASTO DE JOYAS CULTURALES | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;</div></div>
-    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | ARCHIVO TÉCNICO: 4K/60FPS | RITUAL MUSICAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | ARCHIVO TÉCNICO: 4K/60FPS | RITUAL MUSICAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;</div></div>
-    <div class="border-container left"><div class="ticker">ARTISTA: LOS PIRAÑAS | SESIÓN: BOGOTÁ | VANGUARDIA TROPICAL |&nbsp;ARTISTA: LOS PIRAÑAS | SESIÓN: BOGOTÁ | VANGUARDIA TROPICAL |&nbsp;</div></div>
-    <div class="border-container right"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | PROYECTO MAESTRO |&nbsp;ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | PROYECTO MAESTRO |&nbsp;</div></div>
 </body>
 </html>
