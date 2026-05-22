@@ -7,17 +7,13 @@
     <style>
         body, html { margin: 0; padding: 0; height: 100%; background: black; color: white; font-family: 'Courier New', monospace; }
         
-        /* Contenedor principal con margen interno para el marco */
-        #main-content {
-            padding: 35px 45px; 
-            min-height: 100vh;
-        }
+        #main-content { padding: 40px 50px; min-height: 100vh; }
 
         #video-hero {
             position: relative; 
-            width: 100%;
+            width: 70%; /* Reducido para asegurar que quepa sin scroll */
             aspect-ratio: 16 / 9;
-            margin-bottom: 30px;
+            margin: 0 auto 30px auto;
             background: black; 
             border: 1px solid #333;
         }
@@ -36,30 +32,28 @@
         .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-right: 1px solid #222; }
         .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-left: 1px solid #222; }
 
-        /* Loop continuo */
-        .ticker { display: flex; animation: ticker-h 60s linear infinite; }
+        .ticker { display: flex; animation: ticker-h 80s linear infinite; }
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-        .left .ticker, .right .ticker { animation: ticker-v 60s linear infinite; }
+        .left .ticker, .right .ticker { animation: ticker-v 80s linear infinite; }
 
         .section-title {
             padding: 20px 0 10px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             border-bottom: 1px solid #333;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         #grid-catalogo, #grid-portafolio {
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 20px; 
-            margin-bottom: 40px;
+            gap: 15px; 
+            margin-bottom: 30px;
         }
 
-        .card { border: 1px solid #222; padding: 10px; background: #0a0a0a; }
-        .card img { width: 100%; height: auto; border: 1px solid #333; display: block; }
-        .card h3 { font-size: 0.85rem; margin: 10px 0 5px; }
+        .card { border: 1px solid #222; padding: 15px; background: #0a0a0a; }
+        .card h3 { font-size: 0.85rem; margin: 0 0 5px; }
         .card p { font-size: 0.7rem; color: #888; margin-bottom: 10px; }
         .card button { 
             background: transparent; color: cyan; border: 1px solid cyan; padding: 4px 8px; 
@@ -67,15 +61,15 @@
         }
 
         footer {
-            text-align: center; font-size: 0.65rem; color: #555; padding-bottom: 40px;
+            text-align: center; font-size: 0.65rem; color: #555; padding-bottom: 30px;
         }
     </style>
 </head>
 <body>
-    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-    <div class="border-container left"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-    <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <div class="border-container left"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA | PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
 
     <div id="main-content">
         <div id="video-hero">
@@ -92,7 +86,6 @@
             GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia | contacto@golosinassss.com | Memoria Histórica | Cine Documental | Transmedia | Vanguardia
         </footer>
     </div>
-
 
     <script>
         function playVideo(url) {
@@ -113,12 +106,12 @@
                 .then(data => {
                     const grid = document.getElementById(containerId);
                     data.forEach(item => {
+                        const hasLink = item.url_video && item.url_video.includes("youtu");
                         grid.innerHTML += `
                             <div class="card">
-                                <img src="${item.thumbnail}" alt="thumb">
                                 <h3>${item.titulo}</h3>
                                 <p>${item.descripcion}</p>
-                                <button onclick="playVideo('${item.url_video}')">Reproducir</button>
+                                ${hasLink ? `<button onclick="playVideo('${item.url_video}')">Reproducir</button>` : '<p style="font-size:0.6rem; color:#444;">Sin registro audiovisual público</p>'}
                             </div>
                         `;
                     });
