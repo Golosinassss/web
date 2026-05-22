@@ -9,8 +9,8 @@
         
         #video-hero {
             position: relative; 
-            width: calc(100% - 60px); /* Espacio para los tickers laterales */
-            height: calc(100vh - 50px); /* Espacio para los tickers superior/inferior */
+            width: calc(100% - 60px);
+            height: calc(100vh - 50px);
             margin: 25px auto;
             background: black; 
             display: flex; 
@@ -26,6 +26,7 @@
             position: fixed; background: black; color: white;
             font-family: 'Courier New', monospace; font-size: 0.8rem;
             padding: 2px 5px; z-index: 100; overflow: hidden; white-space: nowrap; display: flex;
+            align-items: center; justify-content: center;
         }
 
         .top { top: 0; left: 0; width: 100%; height: 25px; border-bottom: 1px solid #222; }
@@ -37,8 +38,8 @@
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
-        .top .ticker, .bottom .ticker { animation: ticker-h 60s linear infinite; }
-        .left .ticker, .right .ticker { animation: ticker-v 45s linear infinite; }
+        .top .ticker, .bottom .ticker { animation: ticker-h 120s linear infinite; }
+        .left .ticker, .right .ticker { animation: ticker-v 90s linear infinite; }
 
         .section-title {
             padding: 60px 50px 10px;
@@ -66,47 +67,57 @@
         .card:hover { border-color: white; }
         .card h3 { margin-top: 0; font-size: 1.1rem; letter-spacing: 1px; }
         .card p { font-size: 0.9rem; color: #ccc; line-height: 1.4; }
-        .card a { color: cyan; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; border: 1px solid cyan; padding: 5px 10px; display: inline-block; margin-top: 10px; }
-        .card a:hover { background: cyan; color: black; }
+        .card button { 
+            background: transparent; color: cyan; border: 1px solid cyan; padding: 5px 10px; 
+            cursor: pointer; text-transform: uppercase; font-family: monospace; margin-top: 10px;
+        }
+        .card button:hover { background: cyan; color: black; }
     </style>
 </head>
 <body>
-    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;GOLOSINASSSS | SONIDO INFINITO | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;</div></div>
-    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;</div></div>
-    <div class="border-container left"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL |&nbsp;ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL |&nbsp;</div></div>
-    <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 |&nbsp;PROYECTO MAESTRO | GOLOSINASSSS 2026 |&nbsp;</div></div>
+    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | REGISTROS DE CAMPO |&nbsp;GOLOSINASSSS | SONIDO INFINITO | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | REGISTROS DE CAMPO |&nbsp;</div></div>
+    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | TRANSMEDIA | ECOSISTEMA NARRATIVO | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL |&nbsp;SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | TRANSMEDIA | ECOSISTEMA NARRATIVO | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL |&nbsp;</div></div>
+    <div class="border-container left"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;</div></div>
+    <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;</div></div>
 
     <div id="video-hero">
-        <iframe src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=0&mute=0&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="main-player" src="https://www.youtube.com/embed/videoseries?list=PL_TU9r3uY79hJdFz45uD_N5O2X6-s-5h9&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <h2 class="section-title">Catálogo de Sonido Infinito</h2>
     <div id="grid-catalogo"></div>
 
-    <h2 class="section-title">Portafolio Audiovisual Jaime Barbosa Gomes</h2>
+    <h2 class="section-title">Portafolio Audiovisual</h2>
     <div id="grid-portafolio">
         <div class="card">
             <h3>DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA</h3>
-            <p>Netflix / Dynamo (2022). Editor Senior del documental sobre el 'Cacique de la Junta'.</p>
-            <a href="https://www.netflix.com/title/81215451" target="_blank">Ver en Netflix</a>
-        </div>
-        <div class="card">
-            <h3>LA PULLA (Teatro)</h3>
-            <p>El Espectador (2019). Dirección de Contenido Visual y Diseño de Montaje para la obra de teatro.</p>
-            <a href="https://youtu.be/m6j1pGZ_mS0" target="_blank">Ver registro</a>
+            <p>Netflix / Dynamo (2022). Editor Senior del documental.</p>
+            <button onclick="playVideo('81215451')">Reproducir</button>
         </div>
         <div class="card">
             <h3>ASÍ PARTICIPAN LAS VÍCTIMAS</h3>
-            <p>JEP / Comisión de la Verdad (2020). Serie Documental sobre la participación de las víctimas en el proceso de paz.</p>
-            <a href="https://youtu.be/p6pY39fC294" target="_blank">Ver video</a>
+            <p>JEP / Comisión de la Verdad (2020). Dirección y Montaje.</p>
+            <button onclick="playVideo('p6pY39fC294')">Reproducir</button>
         </div>
     </div>
 
     <script>
+        function playVideo(id) {
+            const player = document.getElementById('main-player');
+            // Si es un ID de video
+            if(id.length === 11) {
+                player.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            } else {
+                // Si es un ID de Netflix (como el ejemplo dado, aunque YouTube no embebe Netflix)
+                alert("Redirigiendo a Netflix...");
+                window.open("https://www.netflix.com/title/" + id, "_blank");
+            }
+        }
+
         function extractVideoID(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : url;
+            return (match && match[2].length === 11) ? match[2] : null;
         }
 
         fetch('catalogo.json')
@@ -119,7 +130,7 @@
                         <div class="card">
                             <h3>${item.titulo}</h3>
                             <p>${item.categoria} | ${item.descripcion}</p>
-                            <a href="https://youtu.be/${videoId}" target="_blank">Ver registro</a>
+                            <button onclick="playVideo('${videoId}')">Reproducir</button>
                         </div>
                     `;
                 });
