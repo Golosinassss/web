@@ -1,18 +1,37 @@
 [
-  {
+   {
     "id": "1",
     "titulo": "DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA",
-    "descripcion": "Netflix / Dynamo (2022). Co-Director largometraje documental.",
+    "descripcion": "Netflix Original (2022). Co-Dirección Largometraje Documental.",
     "url_video": "https://youtu.be/hXp7e1Hn46k",
-    "thumbnail": "https://img.youtube.com/vi/hXp7e1Hn46k/0.jpg",
     "tipo": "youtube"
   },
   {
     "id": "2",
-    "titulo": "ASÍ PARTICIPAN LAS VÍCTIMAS",
-    "descripcion": "JEP / Comisión de la Verdad (2020). Dirección, Animación y Montaje.",
-    "url_video": "https://youtu.be/R7hORlDFjos?si=3ZnYVyculKgoEN3b",
-    "thumbnail": "https://img.youtube.com/vi/p6pY39fC294/0.jpg",
+    "titulo": "HACER VISIBLE LO INVISIBLE",
+    "descripcion": "Serie Web para la Comisión de la Verdad (2022). Dirección, Producción y Montaje.",
+    "url_video": "https://www.youtube.com/watch?v=RWM_b5XudM0",
+    "tipo": "youtube"
+  },
+  {
+    "id": "5",
+    "titulo": "EL ESTALLIDO",
+    "descripcion": "Cortometraje Independiente (2021-2022). Dirección, Producción y Montaje.",
+    "url_video": "https://youtu.be/25wiPu9_V3o?si=B0QNjI8Zhmo1bq5a",
+    "tipo": "youtube"
+  },
+  {
+    "id": "6",
+    "titulo": "ASÍ PARTICIPAN LAS VÍCTIMAS EN LA JEP",
+    "descripcion": "Jurisdicción Especial para la Paz (2020). Dirección y Montaje.",
+    "url_video": "https://youtu.be/R7hORlDFjos?si=2IV7_ToKjKfvZLJN",
+    "tipo": "youtube"
+  },
+  {
+    "id": "7",
+    "titulo": "SEÑAL AMPLIFICADO",
+    "descripcion": "RTVC (2015).",
+    "url_video": "",
     "tipo": "youtube"
   }
 ]
