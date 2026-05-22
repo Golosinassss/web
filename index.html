@@ -22,7 +22,7 @@
 
         /* Estilos de bordes multicolores */
         .border-container {
-            position: fixed; background: #0f0f0f;
+            position: absolute; background: #0f0f0f;
             font-family: 'Courier New', monospace; font-size: 0.8rem;
             z-index: 100; overflow: hidden; white-space: nowrap; display: flex;
             align-items: center; justify-content: center;
@@ -110,6 +110,7 @@
             const player = document.getElementById('main-player');
             const videoId = extractVideoID(url);
             player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function extractVideoID(url) {
