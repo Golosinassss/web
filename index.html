@@ -9,7 +9,7 @@
             background: black; display: flex; align-items: center; justify-content: center;
         }
         
-        iframe { width: 100%; height: 100%; pointer-events: none; }
+        iframe { width: 100%; height: 100%; }
 
         .border-container {
             position: absolute; background: black; color: white;
@@ -43,17 +43,24 @@
     <div class="border-container right"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | PROYECTO MAESTRO |&nbsp;ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | PROYECTO MAESTRO |&nbsp;</div></div>
 
     <script>
+        function extractVideoID(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : url;
+        }
+
         fetch('catalogo.json')
             .then(response => response.json())
             .then(data => {
                 const grid = document.getElementById('grid-catalogo');
                 data.filter(item => item.estado === 'Visible').forEach(item => {
+                    const videoId = extractVideoID(item.url_video);
                     grid.innerHTML += `
                         <div style="border: 1px solid white; padding: 20px; color: white; font-family: monospace;">
                             <h3>${item.titulo}</h3>
                             <p>${item.categoria}</p>
                             <p>${item.descripcion}</p>
-                            <a href="https://youtu.be/${item.url_video}" target="_blank" style="color: cyan;">Ver video</a>
+                            <a href="https://youtu.be/${videoId}" target="_blank" style="color: cyan;">Ver video</a>
                         </div>
                     `;
                 });
