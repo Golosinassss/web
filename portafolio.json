@@ -2,16 +2,16 @@
   {
     "id": "1",
     "titulo": "DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA",
-    "descripcion": "Netflix / Dynamo (2022). Co-Director Largometraje Documental.",
-    "url_video": "https://youtu.be/75RJRpmXLUE?si=3o1GVIuAhK8lcJ_I",
+    "descripcion": "Netflix / Dynamo (2022). Co-Director largometraje documental.",
+    "url_video": "https://youtu.be/hXp7e1Hn46k",
     "thumbnail": "https://img.youtube.com/vi/hXp7e1Hn46k/0.jpg",
-    "tipo": "netflix"
+    "tipo": "youtube"
   },
   {
     "id": "2",
     "titulo": "ASÍ PARTICIPAN LAS VÍCTIMAS",
-    "descripcion": "JEP / Comisión de la Verdad (2020). Dirección, animación y montaje.",
-    "url_video": "https://youtu.be/p6pY39fC294",
+    "descripcion": "JEP / Comisión de la Verdad (2020). Dirección, Animación y Montaje.",
+    "url_video": "https://youtu.be/R7hORlDFjos?si=3ZnYVyculKgoEN3b",
     "thumbnail": "https://img.youtube.com/vi/p6pY39fC294/0.jpg",
     "tipo": "youtube"
   }
