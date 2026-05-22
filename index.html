@@ -11,7 +11,7 @@
 
         #video-hero {
             position: relative; 
-            width: 90%; /* Reducido para asegurar que quepa sin scroll */
+            width: 90%; 
             aspect-ratio: 16 / 9;
             margin: 0 auto 30px auto;
             background: black; 
@@ -32,10 +32,14 @@
         .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-right: 1px solid #222; }
         .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-left: 1px solid #222; }
 
-        .ticker { display: flex; animation: ticker-h 80s linear infinite; }
+        /* Direcciones de animación */
+        .top .ticker { animation: ticker-h 80s linear infinite; }
+        .bottom .ticker { animation: ticker-h 80s linear infinite reverse; }
+        .left .ticker { animation: ticker-v 80s linear infinite reverse; }
+        .right .ticker { animation: ticker-v 80s linear infinite; }
+
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-        .left .ticker, .right .ticker { animation: ticker-v 80s linear infinite; }
 
         .section-title {
             padding: 20px 0 10px;
@@ -68,22 +72,22 @@
 <body>
     <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
     <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-    <div class="border-container left"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-    <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA | PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <div class="border-container left"><div class="ticker">GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA | PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
 
     <div id="main-content">
         <div id="video-hero">
             <iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <h2 class="section-title">Catálogo de Sonido Infinito</h2>
+        <h2 class="section-title">Catálogo - SONIDO INFINITO</h2>
         <div id="grid-catalogo"></div>
 
-        <h2 class="section-title">Portafolio Audiovisual</h2>
+        <h2 class="section-title">Portafolio Audiovisual - Jaime Barbosa Gomes da Silva</h2>
         <div id="grid-portafolio"></div>
 
         <footer>
-            GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia | contacto@golosinassss.com | Memoria Histórica | Cine Documental | Transmedia | Vanguardia
+            GOLOSINASSSS SAS | Leticia - Amazonas / Bogotá D.C - Colombia | contacto@golosinassss.com | Memoria Histórica | Cine Documental | Transmedia | Vanguardia Audiovisual
         </footer>
     </div>
 
