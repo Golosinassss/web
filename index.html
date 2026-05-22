@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOLOSINASSSS | Archivo Vivo</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow-y: auto; background: black; color: white; font-family: 'Courier New', monospace; }
+        body, html { margin: 0; padding: 0; height: 100%; background: black; color: white; font-family: 'Courier New', monospace; }
         
         #video-hero {
             position: relative; 
             width: calc(100% - 60px);
-            height: calc(100vh - 50px);
-            margin: 25px auto;
+            height: calc(60vh);
+            margin: 30px auto;
             background: black; 
             display: flex; 
             align-items: center; 
             justify-content: center;
-            overflow: hidden;
             border: 1px solid #333;
         }
         
@@ -25,7 +24,7 @@
         .border-container {
             position: fixed; background: black; color: white;
             font-family: 'Courier New', monospace; font-size: 0.8rem;
-            padding: 2px 5px; z-index: 100; overflow: hidden; white-space: nowrap; display: flex;
+            z-index: 100; overflow: hidden; white-space: nowrap; display: flex;
             align-items: center; justify-content: center;
         }
 
@@ -34,49 +33,44 @@
         .left { top: 0; left: 0; width: 30px; height: 100%; writing-mode: vertical-rl; border-right: 1px solid #222; }
         .right { top: 0; right: 0; width: 30px; height: 100%; writing-mode: vertical-rl; border-left: 1px solid #222; }
 
-        .ticker { display: flex; animation-timing-function: linear; animation-iteration-count: infinite; }
+        .ticker { display: flex; animation: ticker-h 60s linear infinite; }
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-
-        .top .ticker, .bottom .ticker { animation: ticker-h 120s linear infinite; }
-        .left .ticker, .right .ticker { animation: ticker-v 90s linear infinite; }
+        .left .ticker, .right .ticker { animation: ticker-v 60s linear infinite; }
 
         .section-title {
-            padding: 60px 50px 10px;
-            font-size: 1.5rem;
+            padding: 30px 30px 10px;
+            font-size: 1.2rem;
             text-transform: uppercase;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid #333;
             margin: 0 30px;
         }
 
         #grid-catalogo, #grid-portafolio {
-            padding: 30px 60px; 
+            padding: 20px 30px; 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
             gap: 20px; 
-            background: black;
-            margin-bottom: 50px;
         }
 
-        .card {
-            border: 1px solid #444; 
-            padding: 20px; 
-            transition: border 0.3s;
-            background: #050505;
-        }
-        .card:hover { border-color: white; }
-        .card h3 { margin-top: 0; font-size: 1.1rem; letter-spacing: 1px; }
-        .card p { font-size: 0.9rem; color: #ccc; line-height: 1.4; }
+        .card { border: 1px solid #222; padding: 10px; background: #0a0a0a; }
+        .card img { width: 100%; height: auto; border: 1px solid #333; }
+        .card h3 { font-size: 0.9rem; margin: 10px 0 5px; }
+        .card p { font-size: 0.75rem; color: #888; margin-bottom: 10px; }
         .card button { 
-            background: transparent; color: cyan; border: 1px solid cyan; padding: 5px 10px; 
-            cursor: pointer; text-transform: uppercase; font-family: monospace; margin-top: 10px;
+            background: transparent; color: cyan; border: 1px solid cyan; padding: 4px 8px; 
+            cursor: pointer; font-size: 0.7rem; text-transform: uppercase; width: 100%;
         }
-        .card button:hover { background: cyan; color: black; }
+
+        footer {
+            text-align: center; font-size: 0.65rem; color: #555; padding: 20px;
+            border-top: 1px solid #222; margin-top: 30px;
+        }
     </style>
 </head>
 <body>
-    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | REGISTROS DE CAMPO |&nbsp;GOLOSINASSSS | SONIDO INFINITO | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | REGISTROS DE CAMPO |&nbsp;</div></div>
-    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | TRANSMEDIA | ECOSISTEMA NARRATIVO | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL |&nbsp;SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | TRANSMEDIA | ECOSISTEMA NARRATIVO | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL |&nbsp;</div></div>
+    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;</div></div>
+    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;</div></div>
     <div class="border-container left"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;</div></div>
     <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;PROYECTO MAESTRO | GOLOSINASSSS 2026 | SOBERANÍA CREATIVA |&nbsp;</div></div>
 
@@ -90,15 +84,15 @@
     <h2 class="section-title">Portafolio Audiovisual</h2>
     <div id="grid-portafolio"></div>
 
+    <footer>
+        GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia | contacto@golosinassss.com | Memoria Histórica | Cine Documental | Transmedia | Vanguardia
+    </footer>
+
     <script>
-        function playVideo(url, tipo) {
+        function playVideo(url) {
             const player = document.getElementById('main-player');
-            if(tipo === 'netflix') {
-                window.open(url, "_blank");
-            } else {
-                const videoId = extractVideoID(url);
-                player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            }
+            const videoId = extractVideoID(url);
+            player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
         }
 
         function extractVideoID(url) {
@@ -107,37 +101,26 @@
             return (match && match[2].length === 11) ? match[2] : null;
         }
 
-        // Cargar Catálogo
-        fetch('catalogo.json')
-            .then(response => response.json())
-            .then(data => {
-                const grid = document.getElementById('grid-catalogo');
-                data.forEach(item => {
-                    grid.innerHTML += `
-                        <div class="card">
-                            <h3>${item.titulo}</h3>
-                            <p>${item.categoria} | ${item.descripcion}</p>
-                            <button onclick="playVideo('${item.url_video}', 'youtube')">Reproducir</button>
-                        </div>
-                    `;
+        function loadSection(file, containerId) {
+            fetch(file)
+                .then(response => response.json())
+                .then(data => {
+                    const grid = document.getElementById(containerId);
+                    data.forEach(item => {
+                        grid.innerHTML += `
+                            <div class="card">
+                                <img src="${item.thumbnail}" alt="thumb">
+                                <h3>${item.titulo}</h3>
+                                <p>${item.descripcion}</p>
+                                <button onclick="playVideo('${item.url_video}')">Reproducir</button>
+                            </div>
+                        `;
+                    });
                 });
-            });
+        }
 
-        // Cargar Portafolio
-        fetch('portafolio.json')
-            .then(response => response.json())
-            .then(data => {
-                const grid = document.getElementById('grid-portafolio');
-                data.forEach(item => {
-                    grid.innerHTML += `
-                        <div class="card">
-                            <h3>${item.titulo}</h3>
-                            <p>${item.descripcion}</p>
-                            <button onclick="playVideo('${item.url_video}', '${item.tipo}')">${item.tipo === 'netflix' ? 'Ver en Netflix' : 'Reproducir'}</button>
-                        </div>
-                    `;
-                });
-            });
+        loadSection('catalogo.json', 'grid-catalogo');
+        loadSection('portafolio.json', 'grid-portafolio');
     </script>
 </body>
 </html>
