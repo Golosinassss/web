@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: black; }
+        body, html { margin: 0; padding: 0; height: 100%; overflow-y: auto; background: black; }
         
         #video-container {
             position: absolute;
@@ -50,8 +50,40 @@
 </head>
 <body>
     <div id="video-container">
-        <iframe src="https://www.youtube.com/embed/AxLDXmOTtRQ?autoplay=1&mute=1&loop=1&controls=0&playlist=AxLDXmOTtRQ" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+        <iframe id="video-frame" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1&loop=1&controls=0&playlist=WpIvp6I7obE" frameborder="0" allow="autoplay; encrypted-media"></iframe>
     </div>
+
+    <div id="grid-catalogo" style="position: relative; z-index: 5; margin-top: 100vh; padding: 50px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; background: black;"></div>
+
+    <!-- Botón para activar audio -->
+    <div id="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="activarAudio()">
+        <h1 style="color: white; font-family: monospace; border: 1px solid white; padding: 20px;">ENTRAR / ACTIVAR SONIDO</h1>
+    </div>
+
+    <script>
+        function activarAudio() {
+            const frame = document.getElementById('video-frame');
+            // Cambiamos el src para quitar el mute y reiniciar
+            frame.src = "https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=0&loop=1&controls=0&playlist=WpIvp6I7obE";
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        fetch('catalogo.json')
+            .then(response => response.json())
+            .then(data => {
+                const grid = document.getElementById('grid-catalogo');
+                data.filter(item => item.estado === 'Visible').forEach(item => {
+                    grid.innerHTML += `
+                        <div style="border: 1px solid white; padding: 20px; color: white; font-family: monospace;">
+                            <h3>${item.titulo}</h3>
+                            <p>${item.categoria}</p>
+                            <p>${item.descripcion}</p>
+                            <a href="https://youtu.be/${item.url_video}" target="_blank" style="color: cyan;">Ver video</a>
+                        </div>
+                    `;
+                });
+            });
+    </script>
 
     <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | REGISTRO: LOS PIRAÑAS EN VIVO | 2026 | CANASTO DE JOYAS CULTURALES | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;GOLOSINASSSS | SONIDO INFINITO | REGISTRO: LOS PIRAÑAS EN VIVO | 2026 | CANASTO DE JOYAS CULTURALES | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;</div></div>
     <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | ARCHIVO TÉCNICO: 4K/60FPS | RITUAL MUSICAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | ARCHIVO TÉCNICO: 4K/60FPS | RITUAL MUSICAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;</div></div>
