@@ -10,20 +10,20 @@
         #video-hero { position: relative; width: 100%; margin: 0; background: #000; height: 0; padding-bottom: 48%; }
         #video-hero iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .border-container { position: fixed; background: #0f0f0f; z-index: 100; overflow: hidden; display: flex; align-items: center; }
+        .border-container { position: fixed; background: #0f0f0f; z-index: 100; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .top { top: 0; left: 0; width: 100%; height: 30px; border-bottom: 1px solid #333; }
         .bottom { bottom: 0; left: 0; width: 100%; height: 30px; border-top: 1px solid #333; }
-        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); border-right: 1px solid #333; flex-direction: column; }
-        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); border-left: 1px solid #333; flex-direction: column; }
+        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); border-right: 1px solid #333; }
+        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); border-left: 1px solid #333; }
 
         .ticker { white-space: nowrap; font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .ticker-v { writing-mode: vertical-rl; }
-
-        /* Contenedores de animación: el contenido dentro debe estar duplicado */
+        
         .anim-h { display: flex; animation: scrollH 40s linear infinite; }
         .anim-h-rev { display: flex; animation: scrollH-rev 40s linear infinite; }
-        .anim-v { display: flex; flex-direction: column; animation: scrollV 40s linear infinite; }
-        .anim-v-rev { display: flex; flex-direction: column; animation: scrollV-rev 40s linear infinite; }
+        
+        /* Tickers Laterales Verticales */
+        .anim-v { display: flex; flex-direction: column; animation: scrollV 40s linear infinite; writing-mode: vertical-rl; }
+        .anim-v-rev { display: flex; flex-direction: column; animation: scrollV-rev 40s linear infinite; writing-mode: vertical-rl; }
 
         @keyframes scrollH { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scrollH-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
@@ -43,10 +43,10 @@
     </style>
 </head>
 <body>
-    <div class="border-container top"><div class="anim-h"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;</div><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;</div></div></div>
-    <div class="border-container bottom"><div class="anim-h-rev"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;</div><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;</div></div></div>
-    <div class="border-container left"><div class="anim-v"><div class="ticker ticker-vertical ticker-v">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |<br>GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |</div></div></div>
-    <div class="border-container right"><div class="anim-v-rev"><div class="ticker ticker-vertical ticker-v">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |<br>ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |</div></div></div>
+    <div class="border-container top"><div class="anim-h"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;</div><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;</div></div></div>
+    <div class="border-container bottom"><div class="anim-h-rev"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;</div><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;</div></div></div>
+    <div class="border-container left"><div class="anim-v"><div class="ticker">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |</div><div class="ticker">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |</div></div></div>
+    <div class="border-container right"><div class="anim-v-rev"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |</div><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |</div></div></div>
 
     <div id="main-content">
         <div id="video-hero"><iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1" frameborder="0" allow="autoplay" allowfullscreen></iframe></div>
@@ -57,6 +57,7 @@
         <footer>
             <p>Desarrollo de Formatos • Narrativas Documentales • Dirección de Fotografía • Postproducción • Montaje • Animación • Streaming</p>
             <p><a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="tel:+573218914002">+57 321 891-4002</a></p>
+            <p>&copy; 2026 GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/golosinassss/" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
                 <a href="https://www.youtube.com/@golosinassss" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
@@ -74,6 +75,7 @@
             fetch(file).then(r=>r.json()).then(data => {
                 const grid = document.getElementById(containerId);
                 data.forEach(item => {
+                    const videoId = item.url_video.split('/').pop().split('?')[0];
                     grid.innerHTML += `<div class="card"><h3>${item.titulo}</h3><p>${item.descripcion}</p><button onclick="playVideo('${item.url_video}')">Reproducir</button></div>`;
                 });
             });
