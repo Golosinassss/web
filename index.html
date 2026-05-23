@@ -11,14 +11,21 @@
 
         #video-hero {
             position: relative; 
-            width: 90%; 
-            height: 75vh; /* Altura mayor para que el reproductor destaque */
-            margin: 0 auto 30px auto;
+            width: 100%; 
+            margin: 0 0 30px 0;
             background: #000; 
             border: 1px solid #333;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
         }
         
-        iframe { width: 100%; height: 100%; }
+        #video-hero iframe { 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+        }
 
         .border-container {
             position: fixed; background: #0f0f0f;
@@ -67,9 +74,7 @@
         .card { 
             border: 1px solid #333; padding: 15px; background: #121212; 
             display: flex; flex-direction: column; justify-content: space-between;
-            transition: transform 0.3s, border-color 0.3s;
         }
-        .card:hover { transform: translateY(-5px); border-color: #00e5ff; }
         .card h3 { font-size: 0.85rem; margin: 0 0 8px; color: #fff; }
         .card p { font-size: 0.75rem; color: #bbb; margin-bottom: 15px; flex-grow: 1; }
         
@@ -120,19 +125,6 @@
             return (match && match[2].length === 11) ? match[2] : null;
         }
 
-        function getTag(item, section) {
-            if (section === 'grid-catalogo') return '<span class="tag tag-sonido">Sonido Infinito</span>';
-            
-            const desc = item.descripcion.toUpperCase();
-            if (desc.includes('ORIGINAL') || desc.includes('DIRECCIÓN') || desc.includes('PRODUCCIÓN')) {
-                if (desc.includes('NETFLIX') || desc.includes('HBO') || desc.includes('SPOTIFY')) {
-                    return '<span class="tag tag-servicio">Servicio Premium</span>';
-                }
-                return '<span class="tag tag-ip">Golosinassss IP</span>';
-            }
-            return '<span class="tag tag-default">Archivo</span>';
-        }
-
         function loadSection(file, containerId) {
             fetch(file)
                 .then(response => response.json())
@@ -140,32 +132,11 @@
                     const grid = document.getElementById(containerId);
                     data.forEach(item => {
                         const hasLink = item.url_video && item.url_video.includes("youtu");
-                        const tagHtml = getTag(item, containerId);
-                        const dateHtml = item.date ? `<span style="font-size:0.6rem; color:#666; display:block; margin-bottom:5px;">${item.date}</span>` : '';
-                        
                         grid.innerHTML += `
                             <div class="card">
-                                <div>
-                                    ${tagHtml}
-                                    <h3>${item.titulo}</h3>
-                                    ${dateHtml}
-                                    <p>${item.descripcion}</p>
-                                </div>
-                                ${hasLink ? `<button onclick="playVideo('${item.url_video}')">Reproducir</button>` : '<p style="font-size:0.6rem; color:#444; margin-top:10px;">Sin registro audiovisual público</p>'}
-                            </div>
-                        `;
-                    });
-                });
-        }
-
-        loadSection('portafolio.json', 'grid-portafolio');
-        loadSection('catalogo.json', 'grid-catalogo');
-    </script>
-</body>
-</html>
-          <p>${item.descripcion}</p>
-                                </div>
-                                ${hasLink ? `<button onclick="playVideo('${item.url_video}')">Reproducir</button>` : '<p style="font-size:0.6rem; color:#444; margin-top:10px;">Sin registro audiovisual público</p>'}
+                                <h3>${item.titulo}</h3>
+                                <p>${item.descripcion}</p>
+                                ${hasLink ? `<button onclick="playVideo('${item.url_video}')">Reproducir</button>` : '<p style="font-size:0.6rem; color:#444;">Sin registro audiovisual público</p>'}
                             </div>
                         `;
                     });
