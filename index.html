@@ -19,8 +19,8 @@
 
         .top { top: 0; left: 0; width: 100%; height: 30px; border-bottom: 1px solid #333; }
         .bottom { bottom: 0; left: 0; width: 100%; height: 30px; border-top: 1px solid #333; }
-        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); border-right: 1px solid #333; }
-        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); border-left: 1px solid #333; }
+        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); border-right: 1px solid #333; overflow: hidden; }
+        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); border-left: 1px solid #333; overflow: hidden; }
 
         .ticker-wrapper { display: flex; animation: ticker-h 80s linear infinite; }
         .ticker-wrapper-v { display: flex; flex-direction: column; animation: ticker-v 80s linear infinite; }
@@ -29,6 +29,7 @@
             white-space: nowrap; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .ticker-v { writing-mode: vertical-rl; text-orientation: mixed; }
 
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
@@ -62,8 +63,8 @@
 <body>
     <div class="border-container top"><div class="ticker-wrapper"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;</div><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;</div></div></div>
     <div class="border-container bottom"><div class="ticker-wrapper"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;</div><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;</div></div></div>
-    <div class="border-container left"><div class="ticker-wrapper-v"><div class="ticker">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;</div><div class="ticker">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;</div></div></div>
-    <div class="border-container right"><div class="ticker-wrapper-v"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;</div><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;</div></div></div>
+    <div class="border-container left"><div class="ticker-wrapper-v"><div class="ticker ticker-v">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;</div><div class="ticker ticker-v">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;</div></div></div>
+    <div class="border-container right"><div class="ticker-wrapper-v"><div class="ticker ticker-v">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;</div><div class="ticker ticker-v">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN |&nbsp;</div></div></div>
 
     <div id="main-content">
         <div id="video-hero"><iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1" frameborder="0" allow="autoplay" allowfullscreen></iframe></div>
@@ -86,6 +87,7 @@
             const player = document.getElementById('main-player');
             const videoId = extractVideoID(url);
             player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            // Scroll to the top hero section
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         function extractVideoID(url) {
