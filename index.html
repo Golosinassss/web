@@ -18,8 +18,9 @@
 
         /* Estilos de Texto Ticker */
         .txt { white-space: nowrap; font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .txt-v { writing-mode: vertical-rl; text-orientation: mixed; }
         
-        /* Animaciones Estandarizadas (40s fijo) */
+        /* Animaciones */
         .anim-h { display: flex; animation: scrollH 40s linear infinite; }
         .anim-h-rev { display: flex; animation: scrollH-rev 40s linear infinite; }
         .anim-v { display: flex; flex-direction: column; animation: scrollV 40s linear infinite; }
@@ -45,8 +46,8 @@
 <body>
     <div class="border-container top"><div class="anim-h"><div class="txt">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="txt">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div></div>
     <div class="border-container bottom"><div class="anim-h-rev"><div class="txt">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="txt">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div></div>
-    <div class="border-container left"><div class="anim-v"><div class="txt" style="writing-mode: vertical-rl;">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="txt" style="writing-mode: vertical-rl;">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div></div>
-    <div class="border-container right"><div class="anim-v-rev"><div class="txt" style="writing-mode: vertical-rl;">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="txt" style="writing-mode: vertical-rl;">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div></div>
+    <div class="border-container left" style="transform: rotate(180deg);"><div class="anim-v"><div class="txt txt-v" style="writing-mode: vertical-lr;">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="txt txt-v" style="writing-mode: vertical-lr;">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div></div>
+    <div class="border-container right"><div class="anim-v-rev"><div class="txt txt-v">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="txt txt-v">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div></div>
 
     <div id="main-content">
         <div id="video-hero"><iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1" frameborder="0" allow="autoplay" allowfullscreen></iframe></div>
