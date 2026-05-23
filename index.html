@@ -16,20 +16,20 @@
         .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); border-right: 1px solid #333; }
         .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); border-left: 1px solid #333; }
 
-        /* Tickers Horizontales */
-        .ticker-h { display: flex; animation: scrollH 80s linear infinite; white-space: nowrap; }
-        .ticker-h-rev { display: flex; animation: scrollH-rev 80s linear infinite; white-space: nowrap; }
-        .ticker-h-item { font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Tickers Verticales */
-        .ticker-v-container { display: flex; flex-direction: column; animation: scrollV 80s linear infinite; height: 100%; }
-        .ticker-v-rev-container { display: flex; flex-direction: column; animation: scrollV-rev 80s linear infinite; height: 100%; }
-        .ticker-v-item { writing-mode: vertical-rl; font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Estilos de Texto Ticker */
+        .txt { white-space: nowrap; font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .txt-v { writing-mode: vertical-rl; text-orientation: mixed; }
 
-        @keyframes scrollH { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes scrollH-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-        @keyframes scrollV { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-        @keyframes scrollV-rev { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+        /* Animaciones Simplificadas */
+        .marquee-h { display: flex; animation: marqueeH 40s linear infinite; }
+        .marquee-h-rev { display: flex; animation: marqueeH-rev 40s linear infinite; }
+        .marquee-v { animation: marqueeV 40s linear infinite; }
+        .marquee-v-rev { animation: marqueeV-rev 40s linear infinite; }
+
+        @keyframes marqueeH { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes marqueeH-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        @keyframes marqueeV { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+        @keyframes marqueeV-rev { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
 
         .section-title { padding: 20px 0 10px; font-size: 1rem; text-transform: uppercase; border-bottom: 1px solid #444; margin: 30px 0 20px; color: #fff; letter-spacing: 2px; }
         #grid-catalogo, #grid-portafolio { display: flex; overflow-x: auto; gap: 12px; margin-bottom: 40px; scroll-snap-type: x mandatory; scrollbar-width: none; }
@@ -44,10 +44,10 @@
     </style>
 </head>
 <body>
-    <div class="border-container top"><div class="ticker-h"><div class="ticker-h-item">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;</div><div class="ticker-h-item">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;</div></div></div>
-    <div class="border-container bottom"><div class="ticker-h-rev"><div class="ticker-h-item">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;</div><div class="ticker-h-item">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;</div></div></div>
-    <div class="border-container left"><div class="ticker-v-rev"><div class="ticker-v-item">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |</div><div class="ticker-v-item">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |</div></div></div>
-    <div class="border-container right"><div class="ticker-v-container"><div class="ticker-v-item">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |</div><div class="ticker-v-item">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |</div></div></div>
+    <div class="border-container top"><div class="marquee-h"><div class="txt">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;</div></div></div>
+    <div class="border-container bottom"><div class="marquee-h-rev"><div class="txt">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;</div></div></div>
+    <div class="border-container left"><div class="marquee-v"><div class="txt txt-v">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |</div></div></div>
+    <div class="border-container right"><div class="marquee-v-rev"><div class="txt txt-v">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO | ESTADO: ARCHIVO TÉCNICO |</div></div></div>
 
     <div id="main-content">
         <div id="video-hero"><iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1" frameborder="0" allow="autoplay" allowfullscreen></iframe></div>
@@ -76,7 +76,6 @@
             fetch(file).then(r=>r.json()).then(data => {
                 const grid = document.getElementById(containerId);
                 data.forEach(item => {
-                    const videoId = item.url_video.split('/').pop().split('?')[0];
                     grid.innerHTML += `<div class="card"><h3>${item.titulo}</h3><p>${item.descripcion}</p><button onclick="playVideo('${item.url_video}')">Reproducir</button></div>`;
                 });
             });
