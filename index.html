@@ -9,47 +9,32 @@
         
         #main-content { padding: 40px 50px; min-height: 100vh; box-sizing: border-box; }
 
-        #video-hero {
-            position: relative; 
-            width: 100%; 
-            margin: 0 0 0px 0;
-            background: #000; 
-            border: 0px solid #333;
-            height: 0;
-            padding-bottom: 48%;
-        }
-        
+        #video-hero { position: relative; width: 100%; margin: 0; background: #000; height: 0; padding-bottom: 48%; }
         #video-hero iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         .border-container {
-            position: fixed; background: #0f0f0f;
-            font-family: 'Courier New', monospace; font-size: 0.8rem;
-            z-index: 100; overflow: hidden; white-space: nowrap; display: flex;
-            align-items: center;
+            position: fixed; background: #0f0f0f; font-family: 'Courier New', monospace; font-size: 0.8rem;
+            z-index: 100; overflow: hidden; display: flex; align-items: center; justify-content: center;
         }
 
         .top { top: 0; left: 0; width: 100%; height: 30px; border-bottom: 1px solid #333; }
         .bottom { bottom: 0; left: 0; width: 100%; height: 30px; border-top: 1px solid #333; }
-        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-right: 1px solid #333; transform: rotate(180deg); }
-        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-left: 1px solid #333; }
+        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); border-right: 1px solid #333; flex-direction: column; }
+        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); border-left: 1px solid #333; flex-direction: column; }
 
         .ticker-wrapper { display: flex; animation: ticker-h 80s linear infinite; }
         .ticker-wrapper-v { display: flex; flex-direction: column; animation: ticker-v 80s linear infinite; }
         
         .ticker { 
-            white-space: nowrap;
-            background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            white-space: nowrap; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .ticker-v { writing-mode: vertical-rl; }
 
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
-        .section-title {
-            padding: 20px 0 10px; font-size: 1rem; text-transform: uppercase; border-bottom: 1px solid #444;
-            margin: 30px 0 20px; color: #fff; letter-spacing: 2px;
-        }
+        .section-title { padding: 20px 0 10px; font-size: 1rem; text-transform: uppercase; border-bottom: 1px solid #444; margin: 30px 0 20px; color: #fff; letter-spacing: 2px; }
 
         #grid-catalogo, #grid-portafolio {
             display: flex; overflow-x: auto; gap: 12px; margin-bottom: 40px; padding-bottom: 10px;
@@ -66,34 +51,40 @@
         .card h3 { font-size: 0.8rem; margin: 0 0 8px; color: #fff; font-weight: normal; }
         .card p { font-size: 0.7rem; color: #999; margin-bottom: 12px; flex-grow: 1; min-height: 40px; }
         .card button { background: transparent; color: #00e5ff; border: 1px solid #00e5ff; padding: 4px 8px; cursor: pointer; font-size: 0.65rem; text-transform: uppercase; width: 100%; transition: 0.3s; }
-        .card button:hover { background: #00e5ff; color: #000; }
 
         footer { text-align: center; font-size: 0.75rem; color: #666; padding: 40px 0 80px; border-top: 1px solid #222; margin-top: 50px; }
         footer a { color: #00e5ff; text-decoration: none; }
+        .services-line { margin: 15px 0; color: #888; letter-spacing: 1px; }
         .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 30px; }
-        .social-links a { color: #aaa; text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: 0.7rem; }
+        .social-links a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { color: #00e5ff; }
     </style>
 </head>
 <body>
     <div class="border-container top"><div class="ticker-wrapper"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;</div><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;</div></div></div>
     <div class="border-container bottom"><div class="ticker-wrapper"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;</div><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;</div></div></div>
-    <div class="border-container left"><div class="ticker-wrapper-v"><div class="ticker">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;</div><div class="ticker">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;</div></div></div>
-    <div class="border-container right"><div class="ticker-wrapper-v"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |&nbsp;</div><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |&nbsp;</div></div></div>
+    <div class="border-container left"><div class="ticker-wrapper-v"><div class="ticker ticker-v">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;</div><div class="ticker ticker-v">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;</div></div></div>
+    <div class="border-container right"><div class="ticker-wrapper-v"><div class="ticker ticker-v">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |&nbsp;</div><div class="ticker ticker-v">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO |&nbsp;</div></div></div>
 
     <div id="main-content">
-        <div id="video-hero">
-            <iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <div id="video-hero"><iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe></div>
         <h2 class="section-title">ARCHIVO AUDIOVISUAL</h2>
         <div id="grid-portafolio"></div>
         <h2 class="section-title">SONIDO INFINITO</h2>
         <div id="grid-catalogo"></div>
         <footer>
-            <p>&copy; 2026 GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia</p>
-            <p><a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="tel:+573218914002">CEL: +57 321 891-4002</a></p>
+            <div class="contact-info">
+                <p>&copy; 2026 GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia</p>
+                <p><a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="tel:+573218914002">CEL: +57 321 891-4002</a></p>
+            </div>
+            <p class="services-line">Desarrollo de Formatos • Narrativas Documentales • Dirección de Fotografía • Postproducción • Montaje • Animación • Streaming</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/golosinassss/" target="_blank">INSTAGRAM</a>
-                <a href="https://www.youtube.com/@golosinassss" target="_blank">YOUTUBE</a>
+                <a href="https://www.instagram.com/golosinassss/" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://www.youtube.com/@golosinassss" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                </a>
             </div>
         </footer>
     </div>
