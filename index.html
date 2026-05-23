@@ -7,7 +7,7 @@
     <style>
         body, html { margin: 0; padding: 0; height: 100%; background: #080808; color: #e0e0e0; font-family: 'Courier New', monospace; }
         
-        #main-content { padding: 40px 50px; min-height: 100vh; }
+        #main-content { padding: 40px 50px; min-height: 100vh; box-sizing: border-box; }
 
         #video-hero {
             position: relative; 
@@ -48,7 +48,8 @@
         
         .top .ticker { animation: ticker-h 80s linear infinite; }
         .bottom .ticker { animation: ticker-h 80s linear infinite reverse; }
-        .left .ticker { animation: ticker-v 80s linear infinite reverse; }
+        /* Left ticker set to read bottom-to-top by using reverse in vertical mode, starting full */
+        .left .ticker { animation: ticker-v 80s linear infinite; }
         .right .ticker { animation: ticker-v 80s linear infinite; }
 
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -64,19 +65,38 @@
             letter-spacing: 2px;
         }
 
+        /* Netflix style horizontal scroll */
         #grid-catalogo, #grid-portafolio {
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 15px; 
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
             margin-bottom: 40px;
+            padding-bottom: 15px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: #333 transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #grid-catalogo::-webkit-scrollbar, #grid-portafolio::-webkit-scrollbar {
+            height: 6px;
+        }
+        #grid-catalogo::-webkit-scrollbar-thumb, #grid-portafolio::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
         }
 
         .card { 
+            flex: 0 0 280px;
             border: 1px solid #333; padding: 15px; background: #121212; 
             display: flex; flex-direction: column; justify-content: space-between;
+            scroll-snap-align: start;
+            transition: transform 0.3s, border-color 0.3s;
         }
-        .card h3 { font-size: 0.85rem; margin: 0 0 8px; color: #fff; }
-        .card p { font-size: 0.75rem; color: #bbb; margin-bottom: 15px; flex-grow: 1; }
+        .card:hover { transform: scale(1.02); border-color: #00e5ff; }
+        
+        .card h3 { font-size: 0.85rem; margin: 0 0 8px; color: #fff; line-height: 1.2; }
+        .card p { font-size: 0.75rem; color: #bbb; margin-bottom: 15px; flex-grow: 1; min-height: 45px; }
         
         .card button { 
             background: transparent; color: #00e5ff; border: 1px solid #00e5ff; padding: 5px 10px; 
@@ -85,14 +105,24 @@
         .card button:hover { background: #00e5ff; color: #000; }
 
         footer {
-            text-align: center; font-size: 0.8rem; color: #777; padding-bottom: 30px;
+            text-align: center; font-size: 0.8rem; color: #777; padding: 40px 0 80px;
         }
+        footer a { color: #00e5ff; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        
+        .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-links a { 
+            font-size: 0.9rem; transition: 0.3s; color: #e0e0e0; border: 1px solid #333; padding: 5px 10px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .social-links a:hover { color: #00e5ff; border-color: #00e5ff; transform: translateY(-3px); }
     </style>
 </head>
 <body>
     <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
     <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-    <div class="border-container left"><div class="ticker">GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |GOLOSINASSSS |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <!-- Left ticker with reversed text "SSSSSANISOLOG" for "GOLOSINASSSS" -->
+    <div class="border-container left"><div class="ticker">SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
     <div class="border-container right"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
 
     <div id="main-content">
@@ -100,14 +130,20 @@
             <iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <h2 class="section-title">Portafolio Audiovisual</h2>
+        <h2 class="section-title">ARCHIVO AUDIOVISUAL</h2>
         <div id="grid-portafolio"></div>
 
-        <h2 class="section-title">Catálogo de Sonido Infinito</h2>
+        <h2 class="section-title">SONIDO INFINITO</h2>
         <div id="grid-catalogo"></div>
 
         <footer>
-            GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia | contacto@golosinassss.com | Memoria Histórica | Cine Documental | Transmedia | Vanguardia
+            <p>&copy; 2026 GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia</p>
+            <p><a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a></p>
+            <p>Memoria Histórica | Cine Documental | Transmedia | Vanguardia</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/golosinassss/" target="_blank">IG / INSTAGRAM</a>
+                <a href="https://www.youtube.com/@GOLOSINASSSS_MASTER" target="_blank">YT / YOUTUBE</a>
+            </div>
         </footer>
     </div>
 
