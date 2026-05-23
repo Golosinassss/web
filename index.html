@@ -36,28 +36,29 @@
 
         .top { top: 0; left: 0; width: 100%; height: 30px; border-bottom: 1px solid #333; }
         .bottom { bottom: 0; left: 0; width: 100%; height: 30px; border-top: 1px solid #333; }
-        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-right: 1px solid #333; }
+        .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-right: 1px solid #333; transform: rotate(180deg); }
         .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); writing-mode: vertical-rl; border-left: 1px solid #333; }
 
         .ticker { 
-            display: flex; animation: ticker-h 80s linear infinite;
+            display: flex; 
             background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         .top .ticker { animation: ticker-h 80s linear infinite; }
-        .bottom .ticker { animation: ticker-h 80s linear infinite reverse; }
-        /* Left ticker set to read bottom-to-top by using reverse in vertical mode, starting full */
+        /* Adjusted bottom ticker to start full and move consistently */
+        .bottom .ticker { animation: ticker-h-rev 80s linear infinite; }
         .left .ticker { animation: ticker-v 80s linear infinite; }
         .right .ticker { animation: ticker-v 80s linear infinite; }
 
         @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes ticker-h-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
         .section-title {
             padding: 20px 0 10px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
             border-bottom: 1px solid #444;
             margin: 30px 0 20px;
@@ -65,64 +66,69 @@
             letter-spacing: 2px;
         }
 
-        /* Netflix style horizontal scroll */
+        /* Netflix style horizontal scroll - Hidden scrollbars */
         #grid-catalogo, #grid-portafolio {
             display: flex;
             overflow-x: auto;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 40px;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
             scroll-snap-type: x mandatory;
-            scrollbar-width: thin;
-            scrollbar-color: #333 transparent;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
             -webkit-overflow-scrolling: touch;
         }
 
         #grid-catalogo::-webkit-scrollbar, #grid-portafolio::-webkit-scrollbar {
-            height: 6px;
-        }
-        #grid-catalogo::-webkit-scrollbar-thumb, #grid-portafolio::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 10px;
+            display: none; /* Chrome/Safari */
         }
 
         .card { 
-            flex: 0 0 280px;
-            border: 1px solid #333; padding: 15px; background: #121212; 
+            flex: 0 0 220px; /* Reduced size for better mobile fit */
+            border: 1px solid #222; padding: 12px; background: #101010; 
             display: flex; flex-direction: column; justify-content: space-between;
             scroll-snap-align: start;
             transition: transform 0.3s, border-color 0.3s;
         }
-        .card:hover { transform: scale(1.02); border-color: #00e5ff; }
+        .card:hover { transform: translateY(-5px); border-color: #00e5ff; }
         
-        .card h3 { font-size: 0.85rem; margin: 0 0 8px; color: #fff; line-height: 1.2; }
-        .card p { font-size: 0.75rem; color: #bbb; margin-bottom: 15px; flex-grow: 1; min-height: 45px; }
+        .card h3 { font-size: 0.8rem; margin: 0 0 8px; color: #fff; line-height: 1.2; font-weight: normal; }
+        .card p { font-size: 0.7rem; color: #999; margin-bottom: 12px; flex-grow: 1; min-height: 40px; line-height: 1.4; }
         
         .card button { 
-            background: transparent; color: #00e5ff; border: 1px solid #00e5ff; padding: 5px 10px; 
-            cursor: pointer; font-size: 0.7rem; text-transform: uppercase; width: 100%; transition: 0.3s;
+            background: transparent; color: #00e5ff; border: 1px solid #00e5ff; padding: 4px 8px; 
+            cursor: pointer; font-size: 0.65rem; text-transform: uppercase; width: 100%; transition: 0.3s;
         }
         .card button:hover { background: #00e5ff; color: #000; }
 
         footer {
-            text-align: center; font-size: 0.8rem; color: #777; padding: 40px 0 80px;
+            text-align: center; font-size: 0.75rem; color: #666; padding: 40px 0 80px;
+            border-top: 1px solid #222; margin-top: 50px;
         }
         footer a { color: #00e5ff; text-decoration: none; }
         footer a:hover { text-decoration: underline; }
         
-        .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .contact-info { margin-bottom: 15px; }
+        
+        .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 30px; }
         .social-links a { 
-            font-size: 0.9rem; transition: 0.3s; color: #e0e0e0; border: 1px solid #333; padding: 5px 10px;
-            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s; color: #aaa; text-decoration: none; display: flex; align-items: center; gap: 8px;
+            font-size: 0.7rem; letter-spacing: 1px;
         }
-        .social-links a:hover { color: #00e5ff; border-color: #00e5ff; transform: translateY(-3px); }
+        .social-links a:hover { color: #00e5ff; transform: scale(1.1); }
+        
+        /* Small adjustments for mobile */
+        @media (max-width: 600px) {
+            #main-content { padding: 30px 40px; }
+            .card { flex: 0 0 180px; }
+        }
     </style>
 </head>
 <body>
     <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
     <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-    <!-- Left ticker with reversed text "SSSSSANISOLOG" for "GOLOSINASSSS" -->
-    <div class="border-container left"><div class="ticker">SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG | SSSSSANISOLOG |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+    <!-- Left ticker: Restored orientation but rotated 180deg to read properly towards the right/bottom -->
+    <div class="border-container left"><div class="ticker">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
     <div class="border-container right"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL | MÉTODO: OBSERVACIÓN | PROYECTO MAESTRO | SOBERANÍA CREATIVA |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
 
     <div id="main-content">
@@ -137,12 +143,23 @@
         <div id="grid-catalogo"></div>
 
         <footer>
-            <p>&copy; 2026 GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia</p>
-            <p><a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a></p>
-            <p>Memoria Histórica | Cine Documental | Transmedia | Vanguardia</p>
+            <div class="contact-info">
+                <p>&copy; 2026 GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia</p>
+                <p>
+                    <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | 
+                    <a href="tel:+573218914002">CEL: +57 321 891-4002</a>
+                </p>
+                <p>Memoria Histórica | Cine Documental | Transmedia | Vanguardia</p>
+            </div>
             <div class="social-links">
-                <a href="https://www.instagram.com/golosinassss/" target="_blank">IG / INSTAGRAM</a>
-                <a href="https://www.youtube.com/@GOLOSINASSSS_MASTER" target="_blank">YT / YOUTUBE</a>
+                <a href="https://www.instagram.com/golosinassss/" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    INSTAGRAM
+                </a>
+                <a href="https://www.youtube.com/@GOLOSINASSSS_MASTER" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    YOUTUBE
+                </a>
             </div>
         </footer>
     </div>
