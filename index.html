@@ -36,18 +36,22 @@
         #grid-catalogo, #grid-portafolio { display: flex; overflow-x: auto; gap: 12px; margin-bottom: 40px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .card { flex: 0 0 220px; border: 1px solid #222; padding: 12px; background: #101010; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
         .card:hover { border-color: #00e5ff; }
-        .card h3 { font-size: 0.8rem; color: #fff; margin: 0 0 8px; }
-        .card p { font-size: 0.7rem; color: #999; margin-bottom: 12px; line-height: 1.3; }
+        .card h3 { font-size: 0.75rem; color: #fff; margin: 0 0 6px; line-height: 1.2; }
+        .card p { font-size: 0.65rem; color: #999; margin-bottom: 8px; line-height: 1.3; }
+        
+        .card-body { display: flex; gap: 10px; align-items: flex-start; flex-grow: 1; }
         .card-content { flex-grow: 1; }
         
-        /* Contenedor e imagen de vista previa */
-        .card-preview { width: 100%; height: 110px; background: #1a1a1a; margin-bottom: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid #222; }
+        /* Contenedor e imagen de vista previa (Cuadrado y pequeño en el lado izquierdo) */
+        .card-preview { width: 60px; height: 60px; flex-shrink: 0; background: #1a1a1a; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid #222; }
         .card-preview img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .card:hover .card-preview img { transform: scale(1.05); }
 
-        /* Botón de Play */
-        .play-btn { background: transparent; color: #00e5ff; border: 1px solid #00e5ff; padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 100%; transition: all 0.2s ease; border-radius: 4px; }
-        .play-btn svg { width: 18px; height: 18px; }
+        .card-footer { display: flex; justify-content: flex-end; margin-top: 8px; }
+
+        /* Botón de Play Reducido y Circular */
+        .play-btn { background: transparent; color: #00e5ff; border: 1px solid #00e5ff; width: 32px; height: 32px; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; border-radius: 50%; }
+        .play-btn svg { width: 14px; height: 14px; margin-left: 2px; }
         .play-btn:hover { background: #00e5ff; color: #000; }
 
         /* Resaltado Tarjeta Activa */
@@ -117,16 +121,20 @@
                         : '';
                     grid.innerHTML += `
                         <div class="card">
-                            ${previewHtml}
-                            <div class="card-content">
-                                <h3>${item.titulo}</h3>
-                                <p>${item.descripcion}</p>
+                            <div class="card-body">
+                                ${previewHtml}
+                                <div class="card-content">
+                                    <h3>${item.titulo}</h3>
+                                    <p>${item.descripcion}</p>
+                                </div>
                             </div>
-                            <button class="play-btn" onclick="playVideo('${item.url_video}', this)">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
-                            </button>
+                            <div class="card-footer">
+                                <button class="play-btn" onclick="playVideo('${item.url_video}', this)">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     `;
                 });
