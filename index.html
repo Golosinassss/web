@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOLOSINASSSS | Archivo Vivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; background: #080808; color: #e0e0e0; font-family: 'Courier New', monospace; overflow: hidden; }
+        body, html { margin: 0; padding: 0; height: 100%; background: #080808; color: #e0e0e0; font-family: 'JetBrains Mono', monospace; overflow: hidden; }
         #main-content { padding: 40px 50px; min-height: 100vh; overflow-y: auto; height: 100vh; box-sizing: border-box; }
-        #video-hero { position: relative; width: 100%; margin: 0; background: #000; height: 0; padding-bottom: 48%; }
+        #video-hero { position: relative; width: 100%; margin: 0; background: #000; height: 0; padding-bottom: 48%; border-radius: 12px; overflow: hidden; border: 1px solid #222; }
         #video-hero iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         .border-container { position: fixed; background: #0f0f0f; z-index: 100; overflow: hidden; display: flex; }
@@ -16,7 +17,7 @@
         .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); border-right: 1px solid #333; justify-content: center; align-items: flex-start; }
         .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); border-left: 1px solid #333; justify-content: center; align-items: flex-start; }
 
-        .ticker { font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap; flex-shrink: 0; padding-right: 30px; }
+        .ticker { font-size: 0.75rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap; flex-shrink: 0; padding-right: 30px; font-weight: 700; }
         .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
         
@@ -32,56 +33,49 @@
         @keyframes marquee-v { from { transform: translateY(0); } to { transform: translateY(-50%); } }
         @keyframes marquee-v-rev { from { transform: translateY(-50%); } to { transform: translateY(0); } }
 
-        .section-title { padding: 20px 0 10px; font-size: 1rem; text-transform: uppercase; border-bottom: 1px solid #444; margin: 30px 0 20px; color: #fff; letter-spacing: 2px; }
-        #grid-catalogo, #grid-portafolio { display: flex; overflow-x: auto; overflow-y: hidden; gap: 25px; margin-bottom: 40px; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 10px 15px 30px 0px; -webkit-overflow-scrolling: touch; }
+        .section-title { padding: 20px 0 10px; font-size: 0.85rem; text-transform: uppercase; border-bottom: 1px solid #222; margin: 30px 0 20px; color: #666; letter-spacing: 3px; display: flex; align-items: center; gap: 10px; }
+        .section-title::before { content: "/*"; color: #444; }
+        .section-title::after { content: "*/"; color: #444; }
+
+        #grid-catalogo, #grid-portafolio { display: flex; overflow-x: auto; overflow-y: hidden; gap: 20px; margin-bottom: 40px; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 10px 0 20px; }
         #grid-catalogo::-webkit-scrollbar, #grid-portafolio::-webkit-scrollbar { display: none; }
         
-        /* Cajas con Perspectiva de Cubo Lineal a la Izquierda */
-        .card { flex: 0 0 280px; border: 1px solid #444; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: all 0.2s ease; z-index: 10; cursor: pointer; text-align: left; }
+        /* Cajas Simplificadas con Bordes Redondeados y Estilo Terminal */
+        .card { flex: 0 0 280px; border: 1px solid #222; padding: 20px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 12px; position: relative; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .card:hover { border-color: #00e5ff; background: #121212; transform: translateY(-4px); }
         
-        /* Líneas de perspectiva (Cubo) */
-        .card::before { content: ""; position: absolute; top: 5px; left: -5px; width: 100%; height: 100%; border: 1px solid #333; background: transparent; z-index: -1; transition: all 0.2s ease; }
-        .card::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
-            background-image: 
-                linear-gradient(135deg, transparent 3px, #333 3px, #333 4px, transparent 4px);
-            background-size: 6px 6px; background-position: -6px 0; background-repeat: no-repeat;
-        }
-
-        .card:hover { transform: translate(2px, -2px); border-color: #00e5ff; }
-        .card:hover::before { border-color: #00e5ff; top: 7px; left: -7px; }
+        .card h3 { font-size: 0.8rem; color: #fff; margin: 0 0 10px; line-height: 1.4; font-weight: 700; }
+        .card p { font-size: 0.68rem; color: #888; margin-top: 15px; line-height: 1.6; font-weight: 400; }
+        .card:hover p { color: #ccc; }
         
-        .card h3 { font-size: 0.85rem; color: #fff; margin: 0 0 8px; line-height: 1.2; font-weight: bold; pointer-events: none; }
-        .card p { font-size: 0.72rem; color: #aaa; background: transparent; padding: 0; margin-top: 10px; margin-bottom: 0; line-height: 1.5; font-weight: 400; pointer-events: none; }
-        .card:hover p { color: #fff; }
-        
-        .card-body { display: flex; gap: 15px; align-items: flex-start; flex-grow: 1; pointer-events: none; }
-        .card-left { display: flex; flex-direction: column; gap: 10px; width: 70px; flex-shrink: 0; }
+        .card-body { display: flex; gap: 18px; align-items: flex-start; }
+        .card-left { display: flex; flex-direction: column; gap: 12px; width: 64px; flex-shrink: 0; }
         .card-content { flex-grow: 1; }
         
-        .card-meta { font-size: 0.55rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 600; }
-        .card-preview { width: 70px; height: 70px; flex-shrink: 0; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid #222; }
-        .card-preview img { width: 100%; height: 100%; object-fit: cover; }
+        /* Diagramación Técnica */
+        .card-meta { font-size: 0.55rem; color: #444; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .card-meta::before { content: ">"; color: #00e5ff; }
+        
+        .card-preview { width: 64px; height: 64px; background: #000; overflow: hidden; border: 1px solid #222; border-radius: 8px; }
+        .card-preview img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s ease; }
+        .card:hover .card-preview img { opacity: 1; }
 
-        /* Botón de Play Lineal y Dinámico */
-        .play-btn { background: transparent; color: #00e5ff; border: 1px solid #00e5ff; width: 70px; height: 30px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; pointer-events: auto; }
-        .play-btn svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform 0.2s ease; }
-        .card:hover .play-btn { color: #fff; border-color: #fff; }
-        .card:hover .play-btn svg { transform: scale(1.2); }
+        .play-btn { background: #151515; color: #00e5ff; border: 1px solid #222; width: 64px; height: 28px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; border-radius: 6px; }
+        .play-btn svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2.5; }
+        .card:hover .play-btn { border-color: #00e5ff; background: rgba(0, 229, 255, 0.05); }
 
-        /* Resaltado Tarjeta Activa (Gradiente Ticker) */
-        .card.active-card { border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1; }
-        .card.active-card::before { border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1; opacity: 0.5; }
-        .card.active-card .play-btn { color: #baffc9; border-color: #baffc9; }
-        .card.active-card .play-btn svg { stroke: #baffc9; }
+        /* Estado Activo con Gradiente Ticker */
+        .card.active-card { border: 1px solid transparent; background-image: linear-gradient(#0d0d0d, #0d0d0d), linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); background-origin: border-box; background-clip: content-box, border-box; }
+        .card.active-card h3 { color: #fff; }
 
         @media (max-width: 600px) {
             #main-content { padding: 40px 40px; }
-            .card { flex: 0 0 240px; }
-            .section-title { font-size: 0.9rem; margin-left: 0; }
+            .card { flex: 0 0 260px; }
         }
 
-        footer { text-align: center; font-size: 0.75rem; color: #666; padding: 20px 15px 40px; }
-        .social-links { display: flex; justify-content: center; gap: 30px; margin-top: 10px; }
+        footer { text-align: left; font-size: 0.65rem; color: #444; padding: 40px 0; border-top: 1px solid #1a1a1a; margin-top: 40px; line-height: 1.8; }
+        footer a { color: #666; text-decoration: none; border-bottom: 1px solid #222; }
+        footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     </style>
 </head>
 <body>
@@ -97,13 +91,10 @@
         <h2 class="section-title">SONIDO INFINITO</h2>
         <div id="grid-catalogo"></div>
         <footer>
-            <p>Desarrollo de Formatos • Narrativas Documentales • Dirección de Fotografía • Postproducción • Montaje • Animación • Streaming</p>
-            <p><a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="tel:+573218914002">+57 321 891-4002</a></p>
-            <p>&copy; 2026 GOLOSINASSSS SAS | Leticia - Amazonas - Bogotá D.C - Colombia</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/golosinassss/" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                <a href="https://www.youtube.com/@golosinassss" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-            </div>
+            <p>// DESARROLLO DE FORMATOS • NARRATIVAS DOCUMENTALES • DIRECCIÓN DE FOTOGRAFÍA</p>
+            <p>// POSTPRODUCCIÓN • MONTAJE • ANIMACIÓN • STREAMING</p>
+            <p>// <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="tel:+573218914002">+57 321 891-4002</a></p>
+            <p>// &copy; 2026 GOLOSINASSSS SAS | LETICIA - AMAZONAS - BOGOTÁ D.C - COLOMBIA</p>
         </footer>
     </div>
     <script>
@@ -121,15 +112,10 @@
             player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
 
-            // Remover clase activa de todas las tarjetas
             document.querySelectorAll('.card').forEach(card => card.classList.remove('active-card'));
-
-            // Añadir clase activa a la tarjeta correspondiente
             if (element) {
                 const card = element.closest('.card');
-                if (card) {
-                    card.classList.add('active-card');
-                }
+                if (card) card.classList.add('active-card');
             }
         }
 
