@@ -16,7 +16,7 @@
         .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); border-right: 1px solid #333; }
         .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); border-left: 1px solid #333; }
 
-        .ticker { font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
         
         .marquee { animation: marquee 40s linear infinite; }
         .marquee-rev { animation: marquee-rev 40s linear infinite; }
@@ -70,13 +70,23 @@
             document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
         }
         function loadSection(file, containerId) {
-            fetch(file).then(r=>r.json()).then(data => {
-                const grid = document.getElementById(containerId);
-                data.forEach(item => {
-                    const videoId = item.url_video.split('/').pop().split('?')[0];
-                    grid.innerHTML += `<div class="card"><h3>${item.titulo}</h3><p>${item.descripcion}</p><button onclick="playVideo('${item.url_video}')">Reproducir</button></div>`;
+            fetch(file)
+                .then(r => r.json())
+                .then(data => {
+                    const grid = document.getElementById(containerId);
+                    data.forEach(item => {
+                        const videoId = item.url_video.split('/').pop().split('?')[0];
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.innerHTML = `
+                            <h3>${item.titulo}</h3>
+                            <p>${item.descripcion}</p>
+                            <button onclick="playVideo('${item.url_video}')">Reproducir</button>
+                            <a href="${item.url_video}" target="_blank" style="display:block;margin-top:4px;color:#00e5ff;font-size:0.6rem;">Abrir enlace</a>
+                        `;
+                        grid.appendChild(card);
+                    });
                 });
-            });
         }
         loadSection('portafolio.json', 'grid-portafolio');
         loadSection('catalogo.json', 'grid-catalogo');
