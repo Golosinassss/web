@@ -6,7 +6,8 @@
     "url_video": "https://youtu.be/1C9wjSrnShY",
     "descripcion": "SONIDO INFINITO - Teatro Colón - Bogotá, Colombia",
     "date": "15-SEPT-2023",
-    "estado": "Visible"
+    "estado": "Visible",
+    "preview_url": ""
   },
   {
     "id": "2",
@@ -15,6 +16,7 @@
     "url_video": "https://youtu.be/AxLDXmOTtRQ",
     "descripcion": "SONIDO INFINITO - Bollo Room #8 - Bogotá, Colombia",
     "date": "02-MAYO-2025",
-    "estado": "Visible"
+    "estado": "Visible",
+    "preview_url": ""
   }
 ]
