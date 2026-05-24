@@ -36,34 +36,34 @@
         #grid-catalogo::-webkit-scrollbar, #grid-portafolio::-webkit-scrollbar { display: none; }
         
         /* Cajas Rectas (sin redondeo) Estilo Terminal */
-        .card { flex: 0 0 280px; border: 1px solid #222; padding: 20px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; position: relative; transition: all 0.3s ease; cursor: pointer; }
+        .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; position: relative; transition: all 0.3s ease; cursor: pointer; }
         .card:hover { border-color: #00e5ff; background: #121212; }
         
-        .card h3 { font-size: 0.8rem; color: #fff; margin: 0 0 10px; line-height: 1.4; font-weight: 700; }
-        .card p { font-size: 0.68rem; color: #888; margin-top: 15px; line-height: 1.6; font-weight: 400; }
+        .card h3 { font-size: 0.8rem; color: #fff; margin: 0 0 5px; line-height: 1.2; font-weight: 700; }
+        .card p { font-size: 0.65rem; color: #888; margin-top: 8px; line-height: 1.4; font-weight: 400; }
         .card:hover p { color: #ccc; }
         
-        .card-body { display: flex; gap: 18px; align-items: flex-start; }
-        .card-left { display: flex; flex-direction: column; gap: 12px; width: 64px; flex-shrink: 0; }
+        .card-body { display: flex; gap: 12px; align-items: flex-start; }
+        .card-left { display: flex; flex-direction: column; gap: 8px; width: 56px; flex-shrink: 0; }
         .card-content { flex-grow: 1; }
         
         .card-meta { font-size: 0.55rem; color: #444; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
         .card-meta::before { content: ">"; color: #00e5ff; }
         
-        .card-preview { width: 64px; height: 64px; background: #000; overflow: hidden; border: 1px solid #222; border-radius: 0; }
+        .card-preview { width: 56px; height: 56px; background: #000; overflow: hidden; border: 1px solid #222; border-radius: 0; }
         .card-preview img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
 
-        .play-btn { background: #151515; color: #00e5ff; border: 1px solid #222; width: 64px; height: 28px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; border-radius: 0; }
+        .play-btn { background: #151515; color: #00e5ff; border: 1px solid #222; width: 56px; height: 24px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; border-radius: 0; }
         .play-btn svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2.5; }
 
-        /* Estado Activo: Inversión de color + Gradiente */
-        .card.active-card { background-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); border: 1px solid #fff; }
+        /* Estado Activo: Inversión de color + Gradiente + Bordes negros */
+        .card.active-card { background-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); border: 1px solid #000; }
         .card.active-card h3, .card.active-card p, .card.active-card .card-meta { color: #000 !important; }
-        .card.active-card .play-btn { background: #000; color: #fff; border-color: #000; }
+        .card.active-card .play-btn { background: transparent; color: #000; border-color: #000; }
 
         @media (max-width: 600px) {
             #main-content { padding: 40px 40px; }
-            .card { flex: 0 0 260px; }
+            .card { flex: 0 0 240px; }
         }
 
         footer { text-align: left; font-size: 0.65rem; color: #666; padding: 40px 0; border-top: 1px solid #1a1a1a; margin-top: 40px; line-height: 1.8; }
@@ -89,7 +89,7 @@
         <footer>
             <p class="footer-line">// SERVICIOS: DESARROLLO DE FORMATOS • NARRATIVAS DOCUMENTALES • FOTOGRAFÍA • POSTPRODUCCIÓN • ANIMACIÓN</p>
             <p class="footer-line">// CONTACTO: <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="tel:+573218914002">+57 321 891-4002</a></p>
-            <p class="footer-line">// LUGAR: GOLOSINASSSS SAS | LETICIA - AMAZONAS - BOGOTÁ D.C - COLOMBIA</p>
+            <p class="footer-line">// GOLOSINASSSS SAS | LETICIA - AMAZONAS - BOGOTÁ D.C - COLOMBIA</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/golosinassss/" target="_blank">IG</a>
                 <a href="https://www.youtube.com/@golosinassss" target="_blank">YT</a>
