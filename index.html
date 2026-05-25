@@ -23,15 +23,15 @@
         
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
-        .marquee { animation: marquee 60s linear infinite; }
-        .marquee-rev { animation: marquee-rev 60s linear infinite; }
-        .marquee-v { animation: marquee-v 60s linear infinite; }
-        .marquee-v-rev { animation: marquee-v-rev 60s linear infinite; }
+        .marquee { animation: marquee 120s linear infinite; }
+        .marquee-rev { animation: marquee-rev 120s linear infinite; }
+        .marquee-v { animation: marquee-v 120s linear infinite; }
+        .marquee-v-rev { animation: marquee-v-rev 120s linear infinite; }
 
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
         @keyframes marquee-v { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-        @keyframes marquee-v-rev { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+        @keyframes marquee-v { from { transform: translateY(-50%); } to { transform: translateY(0); } }
 
         .section-title { padding: 10px 0 5px; font-size: 0.8rem; text-transform: uppercase; border-bottom: 1px solid #222; margin: 15px 0; color: #666; letter-spacing: 2px; }
         #grid-catalogo, #grid-portafolio { display: flex; overflow-x: auto; overflow-y: hidden; gap: 15px; margin-bottom: 20px; scrollbar-width: none; padding: 10px 0; }
