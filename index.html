@@ -23,40 +23,45 @@
         
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
-        .marquee { animation: marquee 60s linear infinite; }
-        .marquee-rev { animation: marquee-rev 60s linear infinite; }
-        .marquee-v { animation: marquee-v 60s linear infinite; }
-        .marquee-v-rev { animation: marquee-v-rev 60s linear infinite; }
+        .marquee { animation: marquee 120s linear infinite; }
+        .marquee-rev { animation: marquee-rev 120s linear infinite; }
+        .marquee-v { animation: marquee-v 120s linear infinite; }
+        .marquee-v-rev { animation: marquee-v 120s linear infinite; }
 
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
         @keyframes marquee-v { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-        @keyframes marquee-v-rev { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+        @keyframes marquee-v { from { transform: translateY(-50%); } to { transform: translateY(0); } }
 
         .section-title { padding: 10px 0 5px; font-size: 0.8rem; text-transform: uppercase; border-bottom: 1px solid #222; margin: 15px 0; color: #666; letter-spacing: 2px; }
         #grid-catalogo, #grid-portafolio { display: flex; overflow-x: auto; overflow-y: hidden; gap: 15px; margin-bottom: 20px; scrollbar-width: none; padding: 10px 0; }
         
         .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; transition: all 0.3s ease; cursor: pointer; }
-        /* Hover de Tarjeta: Gradiente, letras oscuras */
-        .card:hover { border-color: #000; background-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); }
-        .card:hover h3, .card:hover p, .card:hover .card-meta { color: #000 !important; }
-        .card:hover .play-btn { border-color: #000; }
-        .card:hover .play-btn svg { stroke: #000; }
+        .card:hover { border-color: #00e5ff; background: #121212; }
+        
+        .card h3 { font-size: 0.75rem; color: #fff; margin: 0 0 5px; line-height: 1.2; font-weight: 700; }
+        .card p { font-size: 0.65rem; color: #888; margin-top: 8px; line-height: 1.4; font-weight: 400; }
+        
+        .card-body { display: flex; gap: 12px; align-items: flex-start; }
+        .card-left { display: flex; flex-direction: column; gap: 8px; width: 56px; flex-shrink: 0; }
+        
+        .card-meta { font-size: 0.5rem; color: #444; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+        .card-preview { width: 56px; height: 56px; background: #000; border: 1px solid #222; }
+        .card-preview img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
 
-        /* Footer Hover */
-        footer a:hover { color: #000; background: #fff; padding: 0 4px; }
-        .social-links a:hover { color: #00e5ff; }
+        .play-btn { background: #151515; color: #00e5ff; border: 1px solid #222; width: 56px; height: 24px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; border-radius: 0; }
+        .play-btn svg { width: 10px; height: 10px; }
 
-        @media (max-width: 600px) {
-            #main-content { padding: 40px 40px; }
-            .card { flex: 0 0 260px; }
-        }
+        /* Activo: Gradiente fondo + letras oscuras */
+        .card.active-card { background-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); border: 1px solid #000; }
+        .card.active-card h3, .card.active-card p, .card.active-card .card-meta { color: #000 !important; }
+        .card.active-card .play-btn { background: transparent; color: #000; border-color: #000; }
 
-        footer { text-align: left; font-size: 0.65rem; color: #666; padding: 20px 0; border-top: 1px solid #1a1a1a; margin-top: 20px; line-height: 1.8; }
+        footer { text-align: left; font-size: 0.65rem; color: #666; padding: 20px 0; border-top: 1px solid #1a1a1a; margin-top: 20px; line-height: 1.6; }
         .footer-line { margin: 2px 0; }
         footer a { color: #888; text-decoration: none; border-bottom: 1px solid #333; }
         .social-links { display: flex; gap: 10px; margin-top: 10px; }
-        .social-links a { color: #fff; text-decoration: none; font-size: 0.6rem; transition: 0.2s; }
+        .social-links a { color: #fff; text-decoration: none; font-size: 0.6rem; }
     </style>
 </head>
 <body>
@@ -73,13 +78,13 @@
         <div id="grid-catalogo"></div>
         <footer>
             <p class="footer-line">// SERVICIOS: DESARROLLO DE FORMATOS • NARRATIVAS DOCUMENTALES • FOTOGRAFÍA • POSTPRODUCCIÓN • ANIMACIÓN</p>
-            <p class="footer-line">// CONTACTO: <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="https://wa.me/573218914002" target="_blank">+57 321 891-4002</a></p>
+            <p class="footer-line">// CONTACTO: <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="tel:+573218914002">+57 321 891-4002</a></p>
             <p class="footer-line">// GOLOSINASSSS SAS | LETICIA - AMAZONAS - BOGOTÁ D.C - COLOMBIA</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/golosinassss/" target="_blank">IG</a>
                 <a href="https://www.youtube.com/@golosinassss" target="_blank">YT</a>
-                <a href="https://linkedin.com" target="_blank">LI</a>
-                <a href="https://reddit.com" target="_blank">RD</a>
+                <a href="#" target="_blank">LI</a>
+                <a href="#" target="_blank">RD</a>
             </div>
         </footer>
     </div>
