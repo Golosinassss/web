@@ -120,12 +120,14 @@
                     const metaHtml = (item.categoria || item.date)
                         ? `<div class="card-meta">${item.categoria ? item.categoria.toUpperCase() : ''}${item.categoria && item.date ? ' | ' : ''}${item.date || ''}</div>`
                         : '';
+                    const colors = ['#ffb3ba', '#bae1ff', '#baffc9', '#ffffba', '#ffdfba'];
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
                     grid.innerHTML += `
                         <div class="card" onclick="playVideo('${item.url_video}', this)">
                             <div class="card-body">
                                 <div class="card-left">
                                     ${previewHtml}
-                                    <div class="play-btn">
+                                    <div class="play-btn" style="color: ${randomColor}; border-color: ${randomColor}">
                                         <svg viewBox="0 0 24 24">
                                             <polygon points="5 3 19 12 5 21 5 3"></polygon>
                                         </svg>
