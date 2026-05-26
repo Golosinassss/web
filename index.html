@@ -6,26 +6,26 @@
     <title>GOLOSINASSSS | Archivo Vivo</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; background: #080808; color: #e0e0e0; font-family: 'JetBrains Mono', monospace; overflow: hidden; }
-        #main-content { padding: 40px 50px; min-height: 100vh; overflow-y: auto; height: 100vh; box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; max-width: 100vw; background: #080808; color: #e0e0e0; font-family: 'JetBrains Mono', monospace; overflow: hidden; }
+        #main-content { padding: 40px 50px; min-height: 100vh; overflow-y: auto; overflow-x: hidden; height: 100vh; box-sizing: border-box; width: 100%; max-width: 100%; }
         #video-hero { position: relative; width: 100%; margin: 0; background: #000; height: 0; padding-bottom: 48%; border-radius: 0; overflow: hidden; border: 1px solid #222; }
         #video-hero iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         .border-container { position: fixed; background: #080808; z-index: 100; overflow: hidden; display: flex; }
         .top { top: 0; left: 0; width: 100%; height: 30px; align-items: center; justify-content: flex-start;
-            border-bottom: 1px solid transparent;
+            border-top: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(90deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box; }
         .bottom { bottom: 0; left: 0; width: 100%; height: 30px; align-items: center; justify-content: flex-start;
-            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(90deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box; }
         .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); justify-content: center; align-items: flex-start;
-            border-right: 1px solid transparent;
+            border-left: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(180deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box; }
         .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); justify-content: center; align-items: flex-start;
-            border-left: 1px solid transparent;
+            border-right: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(180deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box; }
 
@@ -58,6 +58,8 @@
         
         .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; transition: all 0.3s ease; cursor: pointer; }
         .card:hover { border-color: #00e5ff; } /* Solo el borde de la tarjeta cambia a azul-cian en hover */
+        .card:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
+        .card:hover .play-btn svg { stroke: #000 !important; }
         
         .card h3 { font-size: 0.75rem; color: #fff; margin: 0 0 5px; line-height: 1.2; font-weight: 700; }
         .card p { font-size: 0.65rem; color: #888; margin-top: 8px; line-height: 1.4; font-weight: 400; }
@@ -469,138 +471,6 @@
             renderCatalogo();
             currentVideoIndex = -1;
         });
-    </script>
-</body>
-</html>
-        let ytPlayer = null;
-        let allCards = [];
-        let currentVideoIndex = -1;
-        let ytApiReady = false;
-        let pendingVideoId = null;
-
-        function getYouTubeId(url) {
-            if (!url) return null;
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
-
-        function setActiveCard(index) {
-            allCards.forEach((card, i) => card.classList.toggle('active-card', i === index));
-            // Hacer scroll a la tarjeta activa si está fuera de vista
-            if (allCards[index]) {
-                allCards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-        }
-
-        function loadVideoInPlayer(videoId, autoplay) {
-            if (!ytPlayer || typeof ytPlayer.loadVideoById !== 'function') {
-                pendingVideoId = videoId;
-                return;
-            }
-            if (autoplay) {
-                ytPlayer.loadVideoById(videoId);
-            } else {
-                ytPlayer.cueVideoById(videoId);
-            }
-        }
-
-        function playVideo(url, element) {
-            const videoId = getYouTubeId(url);
-            if (!videoId) return;
-
-            if (element) {
-                const card = element.closest('.card');
-                const idx = allCards.indexOf(card);
-                if (idx !== -1) currentVideoIndex = idx;
-                setActiveCard(currentVideoIndex);
-            } else {
-                setActiveCard(currentVideoIndex);
-            }
-
-            loadVideoInPlayer(videoId, true);
-            document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function playNext() {
-            if (allCards.length === 0) return;
-            currentVideoIndex = (currentVideoIndex + 1) % allCards.length;
-            allCards[currentVideoIndex].click();
-        }
-
-        // Callback global requerido por la YouTube IFrame API
-        function onYouTubeIframeAPIReady() {
-            const firstId = getYouTubeId('https://www.youtube.com/watch?v=WpIvp6I7obE');
-            ytPlayer = new YT.Player('yt-player-container', {
-                videoId: firstId,
-                playerVars: { autoplay: 1, mute: 1, rel: 0, modestbranding: 1 },
-                events: {
-                    onReady: function(e) {
-                        ytApiReady = true;
-                        if (pendingVideoId) {
-                            ytPlayer.loadVideoById(pendingVideoId);
-                            pendingVideoId = null;
-                        }
-                    },
-                    onStateChange: function(e) {
-                        // YT.PlayerState.ENDED === 0
-                        if (e.data === 0) {
-                            playNext();
-                        }
-                    }
-                }
-            });
-        }
-
-        const colors = ['#ffb3ba', '#bae1ff', '#baffc9', '#ffffba', '#ffdfba'];
-
-        function loadSection(file, containerId) {
-            return fetch(file).then(r => r.json()).then(data => {
-                const grid = document.getElementById(containerId);
-                data.forEach(item => {
-                    const previewHtml = item.preview_url
-                        ? `<div class="card-preview"><img src="${item.preview_url}" alt="${item.titulo}" class="preview-img"></div>`
-                        : '';
-                    const metaHtml = (item.categoria || item.date)
-                        ? `<div class="card-meta">${item.categoria ? item.categoria.toUpperCase() : ''}${item.categoria && item.date ? ' | ' : ''}${item.date || ''}</div>`
-                        : '';
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    const cardEl = document.createElement('div');
-                    cardEl.className = 'card';
-                    cardEl.innerHTML = `
-                        <div class="card-body">
-                            <div class="card-left">
-                                ${previewHtml}
-                                <div class="play-btn">
-                                    <svg viewBox="0 0 24 24" style="stroke: ${randomColor}">
-                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                ${metaHtml}
-                                <h3>${item.titulo}</h3>
-                                <p>${item.descripcion}</p>
-                            </div>
-                        </div>
-                    `;
-                    cardEl.addEventListener('click', () => playVideo(item.url_video, cardEl));
-                    grid.appendChild(cardEl);
-                    allCards.push(cardEl);
-                });
-            });
-        }
-
-        // Cargar portafolio primero, luego catálogo
-        loadSection('portafolio.json', 'grid-portafolio')
-            .then(() => loadSection('catalogo.json', 'grid-catalogo'))
-            .then(() => {
-                // Marcar la primera tarjeta como activa al inicio
-                if (allCards.length > 0) {
-                    currentVideoIndex = -1;
-                    // Sin selección inicial — el usuario elige
-                }
-            });
     </script>
 </body>
 </html>
