@@ -13,11 +13,11 @@
 
         .border-container { position: fixed; background: #080808; z-index: 100; overflow: hidden; display: flex; }
         .top { top: 0; left: 0; width: 100%; height: 30px; align-items: center; justify-content: flex-start;
-            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(90deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box; }
         .bottom { bottom: 0; left: 0; width: 100%; height: 30px; align-items: center; justify-content: flex-start;
-            border-bottom: 1px solid transparent;
+            border-top: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(90deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box; }
         .left { top: 30px; left: 0; width: 30px; height: calc(100% - 60px); justify-content: center; align-items: flex-start;
@@ -25,7 +25,7 @@
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(180deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box; }
         .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); justify-content: center; align-items: flex-start;
-            border-right: 1px solid transparent;
+            border-left: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(180deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box; }
 
@@ -48,6 +48,10 @@
 
         .section-header { display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid #222; margin: 10px 0 0; padding-bottom: 4px; }
         .section-label { font-size: 0.8rem; text-transform: uppercase; color: #666; letter-spacing: 2px; padding: 8px 0 4px; white-space: nowrap; }
+        @media (max-width: 600px) {
+            .section-header { flex-wrap: wrap; gap: 8px; }
+            .section-label { width: 100%; display: block; padding-bottom: 2px; }
+        }
         .filter-btn, .tab-btn { background: none; border: none; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; cursor: pointer; padding: 2px 6px; color: #444; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
         .filter-btn:hover, .tab-btn:hover { color: #999; }
         .filter-btn.active { color: #ffb3ba; }
@@ -438,10 +442,29 @@
             allCards = portCards;
             grid.innerHTML = '';
 
-            const allowed = tabMap[currentCatalogoTab] || [];
-            // Si no hay items de esa categoría mostramos todos
-            let items = catalogoData.filter(i => allowed.includes(i.categoria));
-            if (items.length === 0) items = catalogoData;
+            const allData = [...portafolioData, ...catalogoData];
+            let items = [];
+
+            if (currentCatalogoTab === 'Documental') {
+                items = allData.filter(i => {
+                    const t = i.titulo.toLowerCase();
+                    return t.includes('diomedes') || t.includes('hacer visible') || t.includes('estallido');
+                });
+            } else if (currentCatalogoTab === 'Música') {
+                items = allData.filter(i => {
+                    const t = i.titulo.toLowerCase();
+                    const d = (i.descripcion || '').toLowerCase();
+                    return d.includes('sonido infinito') || t.includes('amplificado') || t.includes('diomedes');
+                });
+            } else if (currentCatalogoTab === 'Animación') {
+                items = allData.filter(i => {
+                    const t = i.titulo.toLowerCase();
+                    return t.includes('víctimas') || t.includes('victimas');
+                });
+            }
+
+            if (items.length === 0) items = catalogoData; // Fallback
+
 
             const catCards = [];
             items.forEach(item => {
