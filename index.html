@@ -20,7 +20,7 @@
         .ticker { font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap; flex-shrink: 0; padding-right: 30px; }
         .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
-        .ticker-logo-v { font-size: 0.55rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.1; background: linear-gradient(180deg, #2d0057, #6b21a8, #4a0080, #3b0764, #6b21a8, #2d0057); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; padding-bottom: 0px; text-align: left; }
+        .ticker-logo-v { font-size: 0.55rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.1; background: linear-gradient(180deg, #c0392b, #8e44ad, #6c3483, #d35400, #9b59b6, #c0392b, #e74c3c, #7d3c98, #b03a2e, #d2b4de, #6c3483, #c0392b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; padding-bottom: 0px; text-align: left; }
         
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
@@ -36,6 +36,8 @@
 
         .section-title { padding: 8px 0 4px; font-size: 0.8rem; text-transform: uppercase; border-bottom: 1px solid #222; margin: 10px 0; color: #666; letter-spacing: 2px; }
         #grid-catalogo, #grid-portafolio { display: flex; overflow-x: auto; overflow-y: hidden; gap: 15px; margin-bottom: 15px; scrollbar-width: none; padding: 10px 0; }
+        .grid-wrap { position: relative; }
+        .grid-wrap::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 100%; background: linear-gradient(to left, #080808 0%, transparent 100%); pointer-events: none; z-index: 10; }
         
         .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; transition: all 0.3s ease; cursor: pointer; }
         .card:hover { border-color: #00e5ff; } /* Solo el borde de la tarjeta cambia a azul-cian en hover */
@@ -60,8 +62,9 @@
         .footer-line { margin: 2px 0; }
         footer a { color: #888; text-decoration: none; border-bottom: 1px solid #333; }
         footer a:hover { color: #00e5ff; border-color: #00e5ff; }
-        .social-links { display: flex; gap: 10px; margin-top: 10px; }
-        .social-links a { color: #fff; text-decoration: none; font-size: 0.6rem; }
+        .social-links { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+        .social-links a { text-decoration: none; font-size: 0.6rem; font-weight: 700; letter-spacing: 1px; border-bottom: 1px solid transparent; transition: opacity 0.2s; }
+        .social-links a:hover { opacity: 0.7; }
     </style>
 </head>
 <body>
@@ -78,8 +81,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -89,8 +90,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -100,8 +99,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -111,8 +108,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -122,8 +117,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -133,7 +126,21 @@
 |_
 |_|
  _|
-●
+|_
+|_|
+ _|
+|_
+|_|
+ _|
+|_
+|_|
+ _|
+|_
+|_|
+ _|
+|_
+|_|
+ _|
 </div><div class="ticker-logo-v"> _
 |_
 |_|
@@ -144,8 +151,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -155,8 +160,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -166,8 +169,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -177,8 +178,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -188,8 +187,6 @@
 |_
 |_|
  _|
-●
- _
 |_
 |_|
  _|
@@ -199,28 +196,46 @@
 |_
 |_|
  _|
-●
+|_
+|_|
+ _|
+|_
+|_|
+ _|
+|_
+|_|
+ _|
+|_
+|_|
+ _|
+|_
+|_|
+ _|
 </div></div></div>
 
     <div id="main-content">
         <div id="video-hero"><iframe id="main-player" src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=1&mute=1" frameborder="0" allow="autoplay" allowfullscreen></iframe></div>
         <h2 class="section-title">ARCHIVO AUDIOVISUAL</h2>
-        <div id="grid-portafolio"></div>
+        <div class="grid-wrap"><div id="grid-portafolio"></div></div>
         <h2 class="section-title">SONIDO INFINITO</h2>
-        <div id="grid-catalogo"></div>
+        <div class="grid-wrap"><div id="grid-catalogo"></div></div>
         <footer>
             <p class="footer-line">// SERVICIOS: DESARROLLO DE FORMATOS • NARRATIVAS DOCUMENTALES • FOTOGRAFÍA • POSTPRODUCCIÓN • ANIMACIÓN</p>
             <p class="footer-line">// CONTACTO: <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="https://wa.me/573218914002" target="_blank">+57 321 891-4002</a></p>
             <p class="footer-line">// GOLOSINASSSS SAS | LETICIA - AMAZONAS - BOGOTÁ D.C - COLOMBIA</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/golosinassss/" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                <a href="https://www.youtube.com/@golosinassss" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-                <a href="https://linkedin.com" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-                <a href="https://reddit.com" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5 14H7V8h10zM12 18h-1a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v2a1 0 0 1 1 1zm4-7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1zm-8 0a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1z"></path></svg></a>
+                <a href="https://www.instagram.com/golosinassss/" target="_blank" style="color:#e1306c;">INSTAGRAM</a>
+                <a href="https://www.youtube.com/@golosinassss" target="_blank" style="color:#ff4444;">YOUTUBE</a>
+                <a href="https://linkedin.com" target="_blank" style="color:#0a84ff;">LINKEDIN</a>
+                <a href="https://reddit.com" target="_blank" style="color:#ff6314;">REDDIT</a>
             </div>
         </footer>
     </div>
     <script>
+        // Lista global de todos los videos en orden
+        let allVideos = [];
+        let currentVideoIndex = -1;
+
         function getYouTubeId(url) {
             if (!url) return null;
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -228,24 +243,62 @@
             return (match && match[2].length === 11) ? match[2] : null;
         }
 
+        function setActiveCard(index) {
+            document.querySelectorAll('.card').forEach((card, i) => {
+                card.classList.toggle('active-card', i === index);
+            });
+        }
+
         function playVideo(url, element) {
             const player = document.getElementById('main-player');
             const videoId = getYouTubeId(url);
             if (!videoId) return;
-            player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+
+            // Encontrar índice en allVideos
+            const idx = allVideos.findIndex(v => v.url === url);
+            if (idx !== -1) currentVideoIndex = idx;
+
+            // enablejsapi=1 para recibir eventos del iframe
+            player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
             document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
 
-            document.querySelectorAll('.card').forEach(card => card.classList.remove('active-card'));
             if (element) {
                 const card = element.closest('.card');
-                if (card) card.classList.add('active-card');
+                const cards = Array.from(document.querySelectorAll('.card'));
+                const cardIdx = cards.indexOf(card);
+                currentVideoIndex = cardIdx !== -1 ? cardIdx : currentVideoIndex;
+                setActiveCard(cardIdx);
+            } else {
+                setActiveCard(currentVideoIndex);
             }
         }
+
+        function playNext() {
+            const cards = Array.from(document.querySelectorAll('.card'));
+            const next = (currentVideoIndex + 1) % cards.length;
+            if (cards[next]) {
+                cards[next].click();
+            }
+        }
+
+        // Escuchar mensajes de la YouTube IFrame API
+        window.addEventListener('message', function(e) {
+            try {
+                const data = JSON.parse(e.data);
+                // playerState 0 = ended
+                if (data.event === 'onStateChange' && data.info === 0) {
+                    playNext();
+                }
+            } catch(err) {}
+        });
 
         function loadSection(file, containerId) {
             fetch(file).then(r=>r.json()).then(data => {
                 const grid = document.getElementById(containerId);
                 data.forEach(item => {
+                    // Registrar video en lista global
+                    allVideos.push({ url: item.url_video, title: item.titulo });
+
                     const previewHtml = item.preview_url 
                         ? `<div class="card-preview"><img src="${item.preview_url}" alt="${item.titulo}" class="preview-img"></div>` 
                         : '';
