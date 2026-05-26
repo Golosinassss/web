@@ -20,7 +20,7 @@
         .ticker { font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap; flex-shrink: 0; padding-right: 30px; }
         .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
-        .ticker-logo-v { font-size: 0.55rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.1; background: linear-gradient(180deg, #ffb3ba, #e1306c, #bae1ff, #0a84ff, #baffc9, #ffffba, #ffdfba, #ff6314, #ffb3ba, #bae1ff, #e1306c, #baffc9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; padding-bottom: 0px; text-align: left; }
+        .ticker-logo-v { font-size: 0.55rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.1; background: linear-gradient(180deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba, #bae1ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; padding-bottom: 0px; text-align: left; }
         
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
@@ -224,10 +224,10 @@
             <p class="footer-line">// CONTACTO: <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="https://wa.me/573218914002" target="_blank">+57 321 891-4002</a></p>
             <p class="footer-line">// GOLOSINASSSS SAS | LETICIA - AMAZONAS - BOGOTÁ D.C - COLOMBIA</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/golosinassss/" target="_blank" style="color:#e1306c;">INSTAGRAM</a>
-                <a href="https://www.youtube.com/@golosinassss" target="_blank" style="color:#ff4444;">YOUTUBE</a>
-                <a href="https://linkedin.com" target="_blank" style="color:#0a84ff;">LINKEDIN</a>
-                <a href="https://reddit.com" target="_blank" style="color:#ff6314;">REDDIT</a>
+                <a href="https://www.instagram.com/golosinassss/" target="_blank" style="color:#ffb3ba;">INSTAGRAM</a>
+                <a href="https://www.youtube.com/@golosinassss" target="_blank" style="color:#bae1ff;">YOUTUBE</a>
+                <a href="https://linkedin.com" target="_blank" style="color:#baffc9;">LINKEDIN</a>
+                <a href="https://reddit.com" target="_blank" style="color:#ffdfba;">REDDIT</a>
             </div>
         </footer>
     </div>
@@ -359,8 +359,8 @@
             .then(() => {
                 // Marcar la primera tarjeta como activa al inicio
                 if (allCards.length > 0) {
-                    currentVideoIndex = 0;
-                    setActiveCard(0);
+                    currentVideoIndex = -1;
+                    // Sin selección inicial — el usuario elige
                 }
             });
     </script>
