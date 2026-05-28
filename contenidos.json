@@ -9,7 +9,7 @@
     "preview_url": "",
     "date": "2025",
     "destacado": false,
-    "tags": ["concierto"]
+    "tags": ["conciertos"]
   },
   {
     "id": "8",
@@ -21,7 +21,7 @@
     "preview_url": "",
     "date": "2023",
     "destacado": false,
-    "tags": ["concierto"]
+    "tags": ["conciertos"]
   },
   {
     "id": "1",
@@ -33,7 +33,7 @@
     "preview_url": "Portada_Diomedes_Golosinassss.gif",
     "date": "2022",
     "destacado": true,
-    "tags": ["documental", "periodismo"]
+    "tags": ["cine", "documental", "periodismo"]
   },
   {
     "id": "2",
@@ -44,7 +44,7 @@
     "tipo": "youtube",
     "preview_url": "Portada_HVLI.gif",
     "date": "2022",
-    "destacado": true,
+    "destacado": false,
     "tags": ["social", "documental"]
   },
   {
@@ -56,8 +56,8 @@
     "tipo": "youtube",
     "preview_url": "",
     "date": "2022",
-    "destacado": false,
-    "tags": ["cine", "social"]
+    "destacado": true,
+    "tags": ["cine", "periodismo"]
   },
   {
     "id": "6",
@@ -69,7 +69,7 @@
     "preview_url": "",
     "date": "2020",
     "destacado": false,
-    "tags": ["animación 2d a mano", "social"]
+    "tags": ["animación 2d", "a mano", "social"]
   },
   {
     "id": "7",
@@ -81,6 +81,6 @@
     "preview_url": "",
     "date": "2014",
     "destacado": false,
-    "tags": ["sesión"]
+    "tags": ["sesiones", "conciertos"]
   }
 ]
