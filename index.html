@@ -24,7 +24,7 @@
             border-left: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(180deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box; }
-        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); justify-content: flex-start; align-items: flex-start;
+        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); justify-content: center; align-items: flex-start;
             border-left: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(180deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box; }
@@ -32,10 +32,8 @@
         .ticker { font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap; flex-shrink: 0; padding-right: 30px; }
         .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
+        .ticker-logo-v { font-size: 0.55rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.1; background: linear-gradient(180deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba, #bae1ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; padding-bottom: 0px; text-align: left; }
         
-        .ticker-logo-v { font-size: 0.5rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1; flex-shrink: 0; padding-top: 5px; text-align: center; color: #bae1ff; }
-        .logo-shadow { color: #ffb3ba; }
-
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
         .marquee { animation: marquee 120s linear infinite; }
@@ -63,7 +61,7 @@
         .grid-wrap::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 100%; background: linear-gradient(to left, #080808 0%, transparent 100%); pointer-events: none; z-index: 10; }
         
         .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; transition: all 0.3s ease; cursor: pointer; }
-        .card:hover { border-color: #00e5ff; }
+        .card:hover { border-color: #00e5ff; } /* Solo el borde de la tarjeta cambia a azul-cian en hover */
         .card:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
         .card:hover .play-btn svg { stroke: #000 !important; }
         
@@ -80,6 +78,7 @@
         .play-btn { background: #151515; color: #00e5ff; border: 1px solid #222; width: 56px; height: 24px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; border-radius: 0; }
         .play-btn svg { width: 10px; height: 10px; }
 
+        /* Activo: Borde gradiente solo */
         .card.active-card { border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1; border-image-slice: 1; }
 
         footer { text-align: left; font-size: 0.65rem; color: #666; padding: 15px 0; border-top: 1px solid #1a1a1a; margin-top: 15px; line-height: 1.6; }
@@ -95,37 +94,193 @@
     <div class="border-container top"><div class="marquee"><span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | </span><span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | </span></div></div>
     <div class="border-container bottom"><div class="marquee-rev"><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span></div></div>
     <div class="border-container left" style="transform: rotate(180deg);"><div class="marquee-v"><span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span><span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span></div></div>
-    <div class="border-container right"><div class="marquee-v-rev"><div class="ticker-logo-v">
-<span class="logo-main">........</span>
-<span class="logo-main">........</span>
-<span class="logo-main">..</span><span class="logo-shadow">..</span>
-<span class="logo-main">..</span><span class="logo-shadow">..</span>
-<span class="logo-main">........</span>
-<span class="logo-main">........</span>
-<span class="logo-main">..</span>  <span class="logo-shadow">..</span>
-<span class="logo-main">..</span>  <span class="logo-shadow">..</span>
-<span class="logo-main">........</span>
-<span class="logo-main">........</span>
-  <span class="logo-main">..</span>  <span class="logo-shadow">..</span>
-  <span class="logo-main">..</span>  <span class="logo-shadow">..</span>
-<span class="logo-main">........</span>
-<span class="logo-main">........</span>
-</div><div class="ticker-logo-v">
-<span class="logo-main">........</span>
-<span class="logo-main">........</span>
-<span class="logo-main">..</span><span class="logo-shadow">..</span>
-<span class="logo-main">..</span><span class="logo-shadow">..</span>
-<span class="logo-main">........</span>
-<span class="logo-main">........</span>
-<span class="logo-main">..</span>  <span class="logo-shadow">..</span>
-<span class="logo-main">..</span>  <span class="logo-shadow">..</span>
-<span class="logo-main">........</span>
-<span class="logo-main">........</span>
-  <span class="logo-main">..</span>  <span class="logo-shadow">..</span>
-  <span class="logo-main">..</span>  <span class="logo-shadow">..</span>
-<span class="logo-main">........</span>
-<span class="logo-main">........</span>
-</div></div></div>
+    <div class="border-container right"><div class="marquee-v-rev"><div class="ticker-logo-v">......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......</div><div class="ticker-logo-v">......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......
+
+
+......
+......
+..
+..
+......
+......
+..  ..
+..  ..
+......
+......
+    ..
+    ..
+......
+......</div></div></div>
 
     <div id="main-content">
         <div id="video-hero"><div id="yt-player-container"></div></div>
@@ -268,9 +423,9 @@
             renderPortafolio();
         }
 
+        // --- PORTAFOLIO RENDER ---
         function renderPortafolio() {
             const grid = document.getElementById('grid-portafolio');
-            // Quitar del allCards las tarjetas de portafolio
             const catCards = allCards.filter(c => document.getElementById('grid-catalogo').contains(c));
             allCards = catCards;
             grid.innerHTML = '';
@@ -283,7 +438,6 @@
                     ? items.filter(i => i.destacado)
                     : items;
             }
-            // recientes: orden original (ya viene del JSON)
             const portCards = [];
             items.forEach(item => {
                 const previewHtml = item.preview_url
@@ -298,12 +452,10 @@
                 grid.appendChild(cardEl);
                 portCards.push(cardEl);
             });
-            // Insertar al inicio de allCards (portafolio va primero)
             allCards = [...portCards, ...allCards];
         }
 
         // --- CATÁLOGO: pestañas Documental / Música / Animación ---
-        // Mapeo de pestaña → categorías del JSON
         const tabMap = {
             'Documental': ['Documental JEP', 'Cortometraje', 'Serie Web', 'Netflix Original'],
             'Música':     ['Cumbia', 'Rasqa', 'Sesiones en Vivo', 'Música'],
@@ -319,7 +471,6 @@
                     (tab === 'Música' && tabName === 'Música') ||
                     (tab === 'Animación' && tabName === 'Animación'));
             });
-            // Comparar sin tildes para robustez
             document.getElementById('t-documental').classList.toggle('active', tab === 'Documental');
             document.getElementById('t-musica').classList.toggle('active', tab === 'Música');
             document.getElementById('t-animacion').classList.toggle('active', tab === 'Animación');
@@ -328,7 +479,6 @@
 
         function renderCatalogo() {
             const grid = document.getElementById('grid-catalogo');
-            // Quitar del allCards las tarjetas de catálogo
             const portCards = allCards.filter(c => document.getElementById('grid-portafolio').contains(c));
             allCards = portCards;
             grid.innerHTML = '';
@@ -355,7 +505,6 @@
             }
 
             if (items.length === 0) items = catalogoData; // Fallback
-
 
             const catCards = [];
             items.forEach(item => {
