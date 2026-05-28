@@ -24,7 +24,7 @@
             border-left: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(180deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box; }
-        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); justify-content: center; align-items: flex-start;
+        .right { top: 30px; right: 0; width: 30px; height: calc(100% - 60px); justify-content: flex-start; align-items: flex-start;
             border-left: 1px solid transparent;
             background: linear-gradient(#080808,#080808) padding-box,
                         linear-gradient(180deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box; }
@@ -32,8 +32,9 @@
         .ticker { font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap; flex-shrink: 0; padding-right: 30px; }
         .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
-        .ticker-logo-v { font-size: 0.15rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.1; background: linear-gradient(180deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba, #bae1ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; padding-bottom: 0px; text-align: left; }
-        
+        .ticker-logo-v { font-size: 0.35rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.1; flex-shrink: 0; padding-bottom: 0px; text-align: left; }
+        .logo-main { color: #bae1ff; }
+        .logo-shadow { color: #ffb3ba; }
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
         .marquee { animation: marquee 120s linear infinite; }
@@ -94,7 +95,37 @@
     <div class="border-container top"><div class="marquee"><span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | </span><span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | </span></div></div>
     <div class="border-container bottom"><div class="marquee-rev"><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span></div></div>
     <div class="border-container left" style="transform: rotate(180deg);"><div class="marquee-v"><span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span><span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span></div></div>
-    <div class="border-container right"><div class="marquee-v-rev"><div class="ticker-logo-v" id="ticker-logo-1"></div><div class="ticker-logo-v" id="ticker-logo-2"></div></div></div>
+    <div class="border-container right"><div class="marquee-v-rev"><div class="ticker-logo-v">
+<span class="logo-main">........</span>
+<span class="logo-main">........</span>
+<span class="logo-main">..</span><span class="logo-shadow">..</span>
+<span class="logo-main">..</span><span class="logo-shadow">..</span>
+<span class="logo-main">........</span>
+<span class="logo-main">........</span>
+<span class="logo-main">..</span>  <span class="logo-shadow">..</span>
+<span class="logo-main">..</span>  <span class="logo-shadow">..</span>
+<span class="logo-main">........</span>
+<span class="logo-main">........</span>
+  <span class="logo-main">..</span>  <span class="logo-shadow">..</span>
+  <span class="logo-main">..</span>  <span class="logo-shadow">..</span>
+<span class="logo-main">........</span>
+<span class="logo-main">........</span>
+</div><div class="ticker-logo-v">
+<span class="logo-main">........</span>
+<span class="logo-main">........</span>
+<span class="logo-main">..</span><span class="logo-shadow">..</span>
+<span class="logo-main">..</span><span class="logo-shadow">..</span>
+<span class="logo-main">........</span>
+<span class="logo-main">........</span>
+<span class="logo-main">..</span>  <span class="logo-shadow">..</span>
+<span class="logo-main">..</span>  <span class="logo-shadow">..</span>
+<span class="logo-main">........</span>
+<span class="logo-main">........</span>
+  <span class="logo-main">..</span>  <span class="logo-shadow">..</span>
+  <span class="logo-main">..</span>  <span class="logo-shadow">..</span>
+<span class="logo-main">........</span>
+<span class="logo-main">........</span>
+</div></div></div>
 
     <div id="main-content">
         <div id="video-hero"><div id="yt-player-container"></div></div>
