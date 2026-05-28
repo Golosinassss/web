@@ -5,7 +5,11 @@
     "descripcion": "Netflix Original Largometraje Documental (2022). Co-Dirección y Montaje.",
     "url_video": "https://youtu.be/75RJRpmXLUE?si=qo78BzYH7qMz0VmW",
     "tipo": "youtube",
-    "preview_url": "Portada_Diomedes_Golosinassss.gif"
+    "preview_url": "Portada_Diomedes_Golosinassss.gif",
+    "categoria": "Netflix Original",
+    "date": "2022",
+    "destacado": true,
+    "tags": ["documental", "cine"]
   },
   {
     "id": "2",
@@ -13,7 +17,11 @@
     "descripcion": "Serie Web para la Comisión de la Verdad (2022). Dirección, Producción y Postproducción.",
     "url_video": "https://www.youtube.com/watch?v=RWM_b5XudM0",
     "tipo": "youtube",
-    "preview_url": "Portada_HVLI.gif"
+    "preview_url": "Portada_HVLI.gif",
+    "categoria": "Serie Web",
+    "date": "2022",
+    "destacado": false,
+    "tags": ["social", "institucional"]
   },
   {
     "id": "5",
@@ -21,7 +29,11 @@
     "descripcion": "Cortometraje Independiente (2021-2022). Dirección, Co-Producción y Postproducción.",
     "url_video": "https://youtu.be/25wiPu9_V3o?si=B0QNjI8Zhmo1bq5a",
     "tipo": "youtube",
-    "preview_url": ""
+    "preview_url": "",
+    "categoria": "Cortometraje",
+    "date": "2022",
+    "destacado": true,
+    "tags": ["cine", "social"]
   },
   {
     "id": "6",
@@ -29,7 +41,11 @@
     "descripcion": "Jurisdicción Especial para la Paz (2020). Dirección y Postproducción.",
     "url_video": "https://youtu.be/R7hORlDFjos?si=2IV7_ToKjKfvZLJN",
     "tipo": "youtube",
-    "preview_url": ""
+    "preview_url": "",
+    "categoria": "Documental JEP",
+    "date": "2020",
+    "destacado": false,
+    "tags": ["institucional", "social"]
   },
   {
     "id": "7",
@@ -37,6 +53,10 @@
     "descripcion": "Formato de sesiones de música en vivo (2010-2014). Co-Dirección y Postproducción",
     "url_video": "https://www.youtube.com/watch?v=w3lFVNMkTQQ",
     "tipo": "youtube",
-    "preview_url": ""
+    "preview_url": "",
+    "categoria": "Sesiones en Vivo",
+    "date": "2014",
+    "destacado": true,
+    "tags": ["sesión", "concierto"]
   }
 ]
