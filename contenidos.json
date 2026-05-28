@@ -1,62 +1,86 @@
 [
   {
+    "id": "9",
+    "titulo": "Conjunto Media Luna - Kumbia Medallo (En Vivo)",
+    "categoria": "Cumbia",
+    "descripcion": "SONIDO INFINITO - Bollo Room #8 - Bogotá, Colombia",
+    "url_video": "https://youtu.be/AxLDXmOTtRQ",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2025",
+    "destacado": false,
+    "tags": ["concierto"]
+  },
+  {
+    "id": "8",
+    "titulo": "Velandia y La Tigra - Venganza (En Vivo)",
+    "categoria": "Rasqa",
+    "descripcion": "SONIDO INFINITO - Teatro Colón - Bogotá, Colombia",
+    "url_video": "https://youtu.be/1C9wjSrnShY",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2023",
+    "destacado": false,
+    "tags": ["concierto"]
+  },
+  {
     "id": "1",
     "titulo": "DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA",
+    "categoria": "Netflix Original",
     "descripcion": "Netflix Original Largometraje Documental (2022). Co-Dirección y Montaje.",
     "url_video": "https://youtu.be/75RJRpmXLUE?si=qo78BzYH7qMz0VmW",
     "tipo": "youtube",
     "preview_url": "Portada_Diomedes_Golosinassss.gif",
-    "categoria": "Netflix Original",
     "date": "2022",
     "destacado": true,
-    "tags": ["documental", "cine"]
+    "tags": ["documental", "periodismo"]
   },
   {
     "id": "2",
     "titulo": "HACER VISIBLE LO INVISIBLE",
+    "categoria": "Serie Web",
     "descripcion": "Serie Web para la Comisión de la Verdad (2022). Dirección, Producción y Postproducción.",
     "url_video": "https://www.youtube.com/watch?v=RWM_b5XudM0",
     "tipo": "youtube",
     "preview_url": "Portada_HVLI.gif",
-    "categoria": "Serie Web",
     "date": "2022",
-    "destacado": false,
-    "tags": ["social", "institucional"]
+    "destacado": true,
+    "tags": ["social", "documental"]
   },
   {
     "id": "5",
     "titulo": "EL ESTALLIDO",
+    "categoria": "Cortometraje",
     "descripcion": "Cortometraje Independiente (2021-2022). Dirección, Co-Producción y Postproducción.",
     "url_video": "https://youtu.be/25wiPu9_V3o?si=B0QNjI8Zhmo1bq5a",
     "tipo": "youtube",
     "preview_url": "",
-    "categoria": "Cortometraje",
     "date": "2022",
-    "destacado": true,
+    "destacado": false,
     "tags": ["cine", "social"]
   },
   {
     "id": "6",
     "titulo": "ASÍ PARTICIPAN LAS VÍCTIMAS EN LA JEP",
+    "categoria": "Animación",
     "descripcion": "Jurisdicción Especial para la Paz (2020). Dirección y Postproducción.",
     "url_video": "https://youtu.be/R7hORlDFjos?si=2IV7_ToKjKfvZLJN",
     "tipo": "youtube",
     "preview_url": "",
-    "categoria": "Documental JEP",
     "date": "2020",
     "destacado": false,
-    "tags": ["institucional", "social"]
+    "tags": ["animación 2d a mano", "social"]
   },
   {
     "id": "7",
     "titulo": "AMPLIFICADO.TV",
+    "categoria": "Sesiones en Vivo",
     "descripcion": "Formato de sesiones de música en vivo (2010-2014). Co-Dirección y Postproducción",
     "url_video": "https://www.youtube.com/watch?v=w3lFVNMkTQQ",
     "tipo": "youtube",
     "preview_url": "",
-    "categoria": "Sesiones en Vivo",
     "date": "2014",
-    "destacado": true,
-    "tags": ["sesión", "concierto"]
+    "destacado": false,
+    "tags": ["sesión"]
   }
 ]
