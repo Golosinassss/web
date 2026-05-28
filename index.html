@@ -38,9 +38,10 @@
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
         .ticker-logo-v { font-size: 0.19rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.25; flex-shrink: 0; padding: 0 3px 0 2px; text-align: left; color: #ffffff; }
 
-        /* Etiquetas de formato en las cards */
-        .card-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 6px; }
-        .card-tag { font-size: 0.42rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 1px 4px; border: 1px solid; line-height: 1.4; }
+        /* Contenedor de etiquetas: abajo, separado visualmente */
+        .card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed #222; }
+        /* Características tipográficas de las etiquetas para mejor legibilidad */
+        .card-tag { font-size: 0.55rem; font-family: 'JetBrains Mono', monospace; font-weight: 500; font-style: italic; letter-spacing: 0.3px; text-transform: lowercase; padding: 2px 6px; border: 1px solid; line-height: 1.2; }
         
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
@@ -68,7 +69,7 @@
         .grid-wrap { position: relative; }
         .grid-wrap::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 100%; background: linear-gradient(to left, #080808 0%, transparent 100%); pointer-events: none; z-index: 10; }
         
-        .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; transition: all 0.3s ease; cursor: pointer; }
+        .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; justify-content: space-between; border-radius: 0; transition: all 0.3s ease; cursor: pointer; }
         .card:hover { border-color: #00e5ff; } /* Solo el borde de la tarjeta cambia a azul-cian en hover */
         .card:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
         .card:hover .play-btn svg { stroke: #000 !important; }
@@ -164,7 +165,6 @@
                 "********"
             ].join('\n');
 
-            // Se genera un bloque largo repitiendo el patrón 40 veces para cubrir cualquier alto de pantalla
             const fullBlockText = Array(40).fill(patternUnit).join('\n') + '\n' + tailUnit;
 
             const marqueeContainer = document.getElementById('right-marquee');
@@ -200,6 +200,22 @@
         let currentCatalogoTab = 'Documental';
 
         const palette = ['#ffb3ba', '#bae1ff', '#baffc9', '#ffffba', '#ffdfba'];
+
+        // Mapa global de colores de etiquetas para ambas secciones
+        const tagColors = {
+            'social': '#ffb3ba',
+            'institucional': '#bae1ff',
+            'comercial': '#baffc9',
+            'cine': '#ffdfba',
+            'videoclip': '#ffb3ba',
+            'sesión': '#ffffba',
+            'concierto': '#baffc9',
+            'documental': '#bae1ff',
+            '2d a mano': '#ffb3ba',
+            'motion graphics': '#bae1ff',
+            '3d': '#baffc9',
+            'coding animation': '#ffffba'
+        };
 
         // ── Helpers YouTube ──────────────────────────────────────────────
         function getYouTubeId(url) {
@@ -272,23 +288,6 @@
             });
         }
 
-        // Etiquetas de formato por sección
-        const formatTags = {
-            'portafolio': [],  // sin etiquetas fijas en portafolio (usa formato del item si existe)
-            'Documental': {
-                tags: ['social','institucional','comercial','cine'],
-                colors: { 'social':'#ffb3ba', 'institucional':'#bae1ff', 'comercial':'#baffc9', 'cine':'#ffdfba' }
-            },
-            'Música': {
-                tags: ['videoclip','sesión','concierto','documental'],
-                colors: { 'videoclip':'#ffb3ba', 'sesión':'#ffffba', 'concierto':'#baffc9', 'documental':'#bae1ff' }
-            },
-            'Animación': {
-                tags: ['2d a mano','motion graphics','3d','coding animation'],
-                colors: { '2d a mano':'#ffb3ba', 'motion graphics':'#bae1ff', '3d':'#baffc9', 'coding animation':'#ffffba' }
-            }
-        };
-
         // ── buildCard (única implementación reutilizada) ─────────────────
         function buildCard(item, seccion) {
             const previewHtml = item.preview_url
@@ -299,30 +298,29 @@
                 : '';
             const color = palette[Math.floor(Math.random() * palette.length)];
 
-            // Etiquetas de formato
+            // Procesar etiquetas dinámicas asignadas en JSON (o fallback a campo 'formato')
+            let itemTags = [];
+            if (Array.isArray(item.tags)) {
+                itemTags = item.tags;
+            } else if (item.formato) {
+                itemTags = [item.formato];
+            }
+
             let tagsHtml = '';
-            const fmtGroup = formatTags[seccion];
-            if (fmtGroup && fmtGroup.tags) {
-                // Seleccionar la etiqueta del item si existe, si no la primera del grupo
-                const itemTag = item.formato ? item.formato.toLowerCase() : null;
-                const matchedTag = fmtGroup.tags.find(t => t === itemTag) || null;
-                const displayTag = matchedTag || (item.formato ? item.formato.toLowerCase() : null);
-                if (displayTag && fmtGroup.colors[displayTag]) {
-                    const c = fmtGroup.colors[displayTag];
-                    tagsHtml = `<div class="card-tags"><span class="card-tag" style="color:${c};border-color:${c}22;background:${c}11">${displayTag}</span></div>`;
-                } else if (fmtGroup.tags.length > 0) {
-                    // Mostrar todas las etiquetas disponibles del grupo como referencia visual
-                    const tagSpans = fmtGroup.tags.map(t => {
-                        const c = fmtGroup.colors[t];
-                        return `<span class="card-tag" style="color:${c};border-color:${c}33;background:${c}11">${t}</span>`;
-                    }).join('');
-                    tagsHtml = `<div class="card-tags">${tagSpans}</div>`;
-                }
+            if (itemTags.length > 0) {
+                const tagSpans = itemTags.map(tag => {
+                    const normTag = tag.trim().toLowerCase();
+                    // Busca color específico en el mapa; si no existe, usa un gris neutro elegante
+                    const c = tagColors[normTag] || '#777777';
+                    return `<span class="card-tag" style="color:${c}; border-color:${c}33; background:${c}09">${normTag}</span>`;
+                }).join('');
+                tagsHtml = `<div class="card-tags">${tagSpans}</div>`;
             }
 
             const cardEl = document.createElement('div');
             cardEl.className = 'card';
             cardEl.setAttribute('aria-label', `Reproducir: ${item.titulo}`);
+            // Se organiza el marcado para dejar las etiquetas abajo, por fuera del bloque del cuerpo
             cardEl.innerHTML = `
                 <div class="card-body">
                     <div class="card-left">
@@ -333,8 +331,13 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="card-content">${metaHtml}<h3>${item.titulo}</h3><p>${item.descripcion}</p>${tagsHtml}</div>
-                </div>`;
+                    <div class="card-content">
+                        ${metaHtml}
+                        <h3>${item.titulo}</h3>
+                        <p>${item.descripcion}</p>
+                    </div>
+                </div>
+                ${tagsHtml}`;
             cardEl.addEventListener('click', () => playVideo(item.url_video, cardEl));
             return cardEl;
         }
@@ -360,7 +363,6 @@
                 const dest = items.filter(i => i.destacado);
                 if (dest.length > 0) items = dest;
             }
-            // 'recientes' → orden original del JSON
 
             items.forEach(item => {
                 const cardEl = buildCard(item, 'portafolio');
@@ -370,7 +372,6 @@
         }
 
         // ── CATÁLOGO: pestañas ───────────────────────────────────────────
-        // Filtra por campo `categoria` directamente; fallback a todos si vacío
         const tabCategories = {
             'Documental': ['Documental JEP', 'Cortometraje', 'Serie Web', 'Netflix Original', 'Documental'],
             'Música':     ['Cumbia', 'Rasqa', 'Sesiones en Vivo', 'Música'],
@@ -393,7 +394,6 @@
             const allowedCats = tabCategories[currentCatalogoTab] || [];
             let items = catalogoData.filter(i => allowedCats.includes(i.categoria));
 
-            // Fallback: si no hay categorías coincidentes, mostramos todo el catálogo
             if (items.length === 0) items = catalogoData;
 
             items.forEach(item => {
@@ -415,20 +415,20 @@
             currentVideoIndex = -1;
         }).catch(err => {
             console.warn('No se pudo cargar datos:', err.message, '— usando datos de ejemplo.');
-            // Datos de ejemplo para cuando los JSON no están disponibles
+            // Datos de ejemplo alternativos compatibles con la estructura dinámica
             portafolioData = [
-                { titulo: 'Ejemplo Portafolio 1', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Documental', date: '2024', destacado: true },
-                { titulo: 'Ejemplo Portafolio 2', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Música', date: '2024' }
+                { titulo: 'Ejemplo Portafolio 1', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Documental', date: '2024', destacado: true, tags: ["social", "cine"] },
+                { titulo: 'Ejemplo Portafolio 2', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Música', date: '2024', tags: ["sesión"] }
             ];
             catalogoData = [
-                { titulo: 'Ejemplo Catálogo 1', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Documental', date: '2023' }
+                { titulo: 'Ejemplo Catálogo 1', descripcion: 'Descripción del catálogo.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Documental', date: '2023', tags: ["institucional", "comercial"] }
             ];
             renderPortafolio();
             renderCatalogo();
             currentVideoIndex = -1;
         });
     </script>
-    <!-- YouTube IFrame API (Cargada al final para garantizar el registro del API ready event) -->
+    <!-- YouTube IFrame API -->
     <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
