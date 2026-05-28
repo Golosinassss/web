@@ -38,11 +38,22 @@
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
         .ticker-logo-v { font-size: 0.19rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.25; flex-shrink: 0; padding: 0 3px 0 2px; text-align: left; color: #ffffff; }
 
-        /* Contenedor de etiquetas: abajo, separado visualmente */
-        .card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed #222; }
-        /* Características tipográficas de las etiquetas para mejor legibilidad */
-        .card-tag { font-size: 0.55rem; font-family: 'JetBrains Mono', monospace; font-weight: 500; font-style: italic; letter-spacing: 0.3px; text-transform: lowercase; padding: 2px 6px; border: 1px solid; line-height: 1.2; }
+        /* Estructura del envoltorio para separar etiquetas de la caja */
+        .card-wrapper { flex: 0 0 240px; display: flex; flex-direction: column; justify-content: flex-start; border-radius: 0; cursor: pointer; }
         
+        /* Caja del proyecto */
+        .card { width: 100%; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; transition: all 0.3s ease; box-sizing: border-box; }
+        
+        /* Contenedor de etiquetas: Ubicado abajo y afuera de la caja */
+        .card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+        /* Características tipográficas: Mayúsculas y peso Light (300) sin cursiva */
+        .card-tag { font-size: 0.55rem; font-family: 'JetBrains Mono', monospace; font-weight: 300; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 6px; border: 1px solid; line-height: 1.2; }
+        
+        /* Efectos Hover vinculados al envoltorio */
+        .card-wrapper:hover .card { border-color: #00e5ff; }
+        .card-wrapper:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
+        .card-wrapper:hover .play-btn svg { stroke: #000 !important; }
+
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
         .marquee { animation: marquee 120s linear infinite; }
@@ -69,11 +80,6 @@
         .grid-wrap { position: relative; }
         .grid-wrap::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 100%; background: linear-gradient(to left, #080808 0%, transparent 100%); pointer-events: none; z-index: 10; }
         
-        .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; justify-content: space-between; border-radius: 0; transition: all 0.3s ease; cursor: pointer; }
-        .card:hover { border-color: #00e5ff; } /* Solo el borde de la tarjeta cambia a azul-cian en hover */
-        .card:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
-        .card:hover .play-btn svg { stroke: #000 !important; }
-        
         .card h3 { font-size: 0.75rem; color: #fff; margin: 0 0 5px; line-height: 1.2; font-weight: 700; }
         .card p { font-size: 0.65rem; color: #888; margin-top: 8px; line-height: 1.4; font-weight: 400; }
         
@@ -87,7 +93,7 @@
         .play-btn { background: #151515; color: #00e5ff; border: 1px solid #222; width: 56px; height: 24px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; border-radius: 0; }
         .play-btn svg { width: 10px; height: 10px; }
 
-        /* Activo: Borde gradiente solo */
+        /* Activo: El borde gradiente se aplica sobre la .card interna */
         .card.active-card { border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1; border-image-slice: 1; }
 
         footer { text-align: left; font-size: 0.65rem; color: #666; padding: 15px 0; border-top: 1px solid #1a1a1a; margin-top: 15px; line-height: 1.6; }
@@ -193,7 +199,7 @@
         let ytApiReady = false;
         let pendingVideoId = null;
 
-        // Datos crudos guardados para filtrado
+        // Datos unificados
         let portafolioData = [];
         let catalogoData = [];
         let currentPortafolioFilter = 'recientes';
@@ -212,9 +218,11 @@
             'concierto': '#baffc9',
             'documental': '#bae1ff',
             '2d a mano': '#ffb3ba',
+            'animación 2d a mano': '#ffb3ba',
             'motion graphics': '#bae1ff',
             '3d': '#baffc9',
-            'coding animation': '#ffffba'
+            'coding animation': '#ffffba',
+            'periodismo': '#ffdfba'
         };
 
         // ── Helpers YouTube ──────────────────────────────────────────────
@@ -241,7 +249,13 @@
 
         function setActiveCard(index) {
             const all = getAllCards();
-            all.forEach((card, i) => card.classList.toggle('active-card', i === index));
+            all.forEach((wrapper, i) => {
+                // El borde gradiente se activa en la .card interna del wrapper seleccionado
+                const innerCard = wrapper.querySelector('.card');
+                if (innerCard) {
+                    innerCard.classList.toggle('active-card', i === index);
+                }
+            });
             if (all[index]) {
                 all[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }
@@ -259,7 +273,7 @@
             }
             setActiveCard(currentVideoIndex);
             loadVideoInPlayer(videoId, true);
-            // ← Scroll al tope para ver el video siempre
+            // Scroll suave hacia el reproductor al reproducir
             document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -288,7 +302,7 @@
             });
         }
 
-        // ── buildCard (única implementación reutilizada) ─────────────────
+        // ── buildCard (Construcción con etiquetas externas) ──────────────
         function buildCard(item, seccion) {
             const previewHtml = item.preview_url
                 ? `<div class="card-preview"><img src="${item.preview_url}" alt="${item.titulo}" class="preview-img"></div>`
@@ -298,7 +312,7 @@
                 : '';
             const color = palette[Math.floor(Math.random() * palette.length)];
 
-            // Procesar etiquetas dinámicas asignadas en JSON (o fallback a campo 'formato')
+            // Procesamiento dinámico de tags asignados
             let itemTags = [];
             if (Array.isArray(item.tags)) {
                 itemTags = item.tags;
@@ -310,36 +324,37 @@
             if (itemTags.length > 0) {
                 const tagSpans = itemTags.map(tag => {
                     const normTag = tag.trim().toLowerCase();
-                    // Busca color específico en el mapa; si no existe, usa un gris neutro elegante
                     const c = tagColors[normTag] || '#777777';
                     return `<span class="card-tag" style="color:${c}; border-color:${c}33; background:${c}09">${normTag}</span>`;
                 }).join('');
                 tagsHtml = `<div class="card-tags">${tagSpans}</div>`;
             }
 
-            const cardEl = document.createElement('div');
-            cardEl.className = 'card';
-            cardEl.setAttribute('aria-label', `Reproducir: ${item.titulo}`);
-            // Se organiza el marcado para dejar las etiquetas abajo, por fuera del bloque del cuerpo
-            cardEl.innerHTML = `
-                <div class="card-body">
-                    <div class="card-left">
-                        ${previewHtml}
-                        <div class="play-btn" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" style="stroke:${color}; fill:none; stroke-width:2;">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                            </svg>
+            // El envoltorio card-wrapper permite que las etiquetas existan formalmente por fuera de la .card
+            const wrapperEl = document.createElement('div');
+            wrapperEl.className = 'card-wrapper';
+            wrapperEl.setAttribute('aria-label', `Reproducir: ${item.titulo}`);
+            wrapperEl.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-left">
+                            ${previewHtml}
+                            <div class="play-btn" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" style="stroke:${color}; fill:none; stroke-width:2;">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-content">
-                        ${metaHtml}
-                        <h3>${item.titulo}</h3>
-                        <p>${item.descripcion}</p>
+                        <div class="card-content">
+                            ${metaHtml}
+                            <h3>${item.titulo}</h3>
+                            <p>${item.descripcion}</p>
+                        </div>
                     </div>
                 </div>
                 ${tagsHtml}`;
-            cardEl.addEventListener('click', () => playVideo(item.url_video, cardEl));
-            return cardEl;
+            wrapperEl.addEventListener('click', () => playVideo(item.url_video, wrapperEl));
+            return wrapperEl;
         }
 
         // ── PORTAFOLIO: filtros ──────────────────────────────────────────
@@ -365,9 +380,9 @@
             }
 
             items.forEach(item => {
-                const cardEl = buildCard(item, 'portafolio');
-                grid.appendChild(cardEl);
-                portafolioCards.push(cardEl);
+                const wrapperEl = buildCard(item, 'portafolio');
+                grid.appendChild(wrapperEl);
+                portafolioCards.push(wrapperEl);
             });
         }
 
@@ -397,36 +412,40 @@
             if (items.length === 0) items = catalogoData;
 
             items.forEach(item => {
-                const cardEl = buildCard(item, currentCatalogoTab);
-                grid.appendChild(cardEl);
-                catalogoCards.push(cardEl);
+                const wrapperEl = buildCard(item, currentCatalogoTab);
+                grid.appendChild(wrapperEl);
+                catalogoCards.push(wrapperEl);
             });
         }
 
-        // ── Carga inicial con manejo de errores ──────────────────────────
-        Promise.all([
-            fetch('portafolio.json').then(r => { if (!r.ok) throw new Error('portafolio.json'); return r.json(); }),
-            fetch('catalogo.json').then(r => { if (!r.ok) throw new Error('catalogo.json'); return r.json(); })
-        ]).then(([pData, cData]) => {
-            portafolioData = pData;
-            catalogoData   = cData;
-            renderPortafolio();
-            renderCatalogo();
-            currentVideoIndex = -1;
-        }).catch(err => {
-            console.warn('No se pudo cargar datos:', err.message, '— usando datos de ejemplo.');
-            // Datos de ejemplo alternativos compatibles con la estructura dinámica
-            portafolioData = [
-                { titulo: 'Ejemplo Portafolio 1', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Documental', date: '2024', destacado: true, tags: ["social", "cine"] },
-                { titulo: 'Ejemplo Portafolio 2', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Música', date: '2024', tags: ["sesión"] }
-            ];
-            catalogoData = [
-                { titulo: 'Ejemplo Catálogo 1', descripcion: 'Descripción del catálogo.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Documental', date: '2023', tags: ["institucional", "comercial"] }
-            ];
-            renderPortafolio();
-            renderCatalogo();
-            currentVideoIndex = -1;
-        });
+        // ── Carga inicial unificada de contenidos.json ────────────────────
+        fetch('contenidos.json')
+            .then(r => { if (!r.ok) throw new Error('contenidos.json'); return r.json(); })
+            .then(data => {
+                portafolioData = data;
+                catalogoData   = data;
+                renderPortafolio();
+                renderCatalogo();
+                currentVideoIndex = -1;
+            })
+            .catch(err => {
+                console.warn('No se pudo cargar contenidos.json:', err.message, '— usando datos de ejemplo en orden cronológico.');
+                // Fallback de ejemplo en el orden solicitado
+                const demoData = [
+                    { id: "9", titulo: "Conjunto Media Luna - Kumbia Medallo (En Vivo)", descripcion: "SONIDO INFINITO - Bollo Room #8 - Bogotá, Colombia", url_video: "https://youtu.be/AxLDXmOTtRQ", categoria: "Cumbia", date: "2025", destacado: false, tipo: "youtube", preview_url: "", tags: ["concierto"] },
+                    { id: "8", titulo: "Velandia y La Tigra - Venganza (En Vivo)", descripcion: "SONIDO INFINITO - Teatro Colón - Bogotá, Colombia", url_video: "https://youtu.be/1C9wjSrnShY", categoria: "Rasqa", date: "2023", destacado: false, tipo: "youtube", preview_url: "", tags: ["concierto"] },
+                    { id: "1", titulo: "DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA", descripcion: "Netflix Original Largometraje Documental (2022). Co-Dirección y Montaje.", url_video: "https://youtu.be/75RJRpmXLUE", categoria: "Netflix Original", date: "2022", destacado: true, tipo: "youtube", preview_url: "Portada_Diomedes_Golosinassss.gif", tags: ["documental", "periodismo"] },
+                    { id: "2", titulo: "HACER VISIBLE LO INVISIBLE", descripcion: "Serie Web para la Comisión de la Verdad (2022). Dirección, Producción y Postproducción.", url_video: "https://www.youtube.com/watch?v=RWM_b5XudM0", categoria: "Serie Web", date: "2022", destacado: true, tipo: "youtube", preview_url: "Portada_HVLI.gif", tags: ["social", "documental"] },
+                    { id: "5", titulo: "EL ESTALLIDO", descripcion: "Cortometraje Independiente (2021-2022). Dirección, Co-Producción y Postproducción.", url_video: "https://youtu.be/25wiPu9_V3o", categoria: "Cortometraje", date: "2022", destacado: false, tipo: "youtube", preview_url: "", tags: ["cine", "social"] },
+                    { id: "6", titulo: "ASÍ PARTICIPAN LAS VÍCTIMAS EN LA JEP", descripcion: "Jurisdicción Especial para la Paz (2020). Dirección y Postproducción.", url_video: "https://youtu.be/R7hORlDFjos", categoria: "Animación", date: "2020", destacado: false, tipo: "youtube", preview_url: "", tags: ["animación 2d a mano", "social"] },
+                    { id: "7", titulo: "AMPLIFICADO.TV", descripcion: "Formato de sesiones de música en vivo (2010-2014). Co-Dirección y Postproducción", url_video: "https://www.youtube.com/watch?v=w3lFVNMkTQQ", categoria: "Sesiones en Vivo", date: "2014", destacado: false, tipo: "youtube", preview_url: "", tags: ["sesión"] }
+                ];
+                portafolioData = demoData;
+                catalogoData   = demoData;
+                renderPortafolio();
+                renderCatalogo();
+                currentVideoIndex = -1;
+            });
     </script>
     <!-- YouTube IFrame API -->
     <script src="https://www.youtube.com/iframe_api"></script>
