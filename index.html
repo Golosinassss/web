@@ -37,7 +37,9 @@
         .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
         .ticker-logo-v { font-size: 0.19rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.25; flex-shrink: 0; padding: 0 3px 0 2px; text-align: left; }
-        .ticker-logo-v span { display: block; }
+        
+        /* Modificado aquí para aplicar block únicamente a los spans contenedores de fila */
+        .ticker-logo-v > span { display: block; }
 
         /* Etiquetas de formato en las cards */
         .card-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 6px; }
@@ -279,14 +281,7 @@
             document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function playNext() {
-            const all = getAllCards();
-            if (all.length === 0) return;
-            currentVideoIndex = (currentVideoIndex + 1) % all.length;
-            all[currentVideoIndex].click();
-        }
-
-        // ── YouTube IFrame API ───────────────────────────────────────────
+        // YouTube Callback
         function onYouTubeIframeAPIReady() {
             const firstId = getYouTubeId('https://www.youtube.com/watch?v=WpIvp6I7obE');
             ytPlayer = new YT.Player('yt-player-container', {
@@ -335,7 +330,6 @@
             let tagsHtml = '';
             const fmtGroup = formatTags[seccion];
             if (fmtGroup && fmtGroup.tags) {
-                // Seleccionar la etiqueta del item si existe, si no la primera del grupo
                 const itemTag = item.formato ? item.formato.toLowerCase() : null;
                 const matchedTag = fmtGroup.tags.find(t => t === itemTag) || null;
                 const displayTag = matchedTag || (item.formato ? item.formato.toLowerCase() : null);
@@ -343,7 +337,6 @@
                     const c = fmtGroup.colors[displayTag];
                     tagsHtml = `<div class="card-tags"><span class="card-tag" style="color:${c};border-color:${c}22;background:${c}11">${displayTag}</span></div>`;
                 } else if (fmtGroup.tags.length > 0) {
-                    // Mostrar todas las etiquetas disponibles del grupo como referencia visual
                     const tagSpans = fmtGroup.tags.map(t => {
                         const c = fmtGroup.colors[t];
                         return `<span class="card-tag" style="color:${c};border-color:${c}33;background:${c}11">${t}</span>`;
@@ -392,7 +385,6 @@
                 const dest = items.filter(i => i.destacado);
                 if (dest.length > 0) items = dest;
             }
-            // 'recientes' → orden original del JSON
 
             items.forEach(item => {
                 const cardEl = buildCard(item, 'portafolio');
@@ -402,7 +394,6 @@
         }
 
         // ── CATÁLOGO: pestañas ───────────────────────────────────────────
-        // Filtra por campo `categoria` directamente; fallback a todos si vacío
         const tabCategories = {
             'Documental': ['Documental JEP', 'Cortometraje', 'Serie Web', 'Netflix Original', 'Documental'],
             'Música':     ['Cumbia', 'Rasqa', 'Sesiones en Vivo', 'Música'],
@@ -425,7 +416,6 @@
             const allowedCats = tabCategories[currentCatalogoTab] || [];
             let items = catalogoData.filter(i => allowedCats.includes(i.categoria));
 
-            // Fallback: si no hay categorías coincidentes, mostramos todo el catálogo
             if (items.length === 0) items = catalogoData;
 
             items.forEach(item => {
@@ -435,7 +425,7 @@
             });
         }
 
-        // ── Carga inicial con manejo de errores ──────────────────────────
+        // ── Carga inicial ──────────────────────────
         Promise.all([
             fetch('portafolio.json').then(r => { if (!r.ok) throw new Error('portafolio.json'); return r.json(); }),
             fetch('catalogo.json').then(r => { if (!r.ok) throw new Error('catalogo.json'); return r.json(); })
@@ -447,7 +437,6 @@
             currentVideoIndex = -1;
         }).catch(err => {
             console.warn('No se pudo cargar datos:', err.message, '— usando datos de ejemplo.');
-            // Datos de ejemplo para cuando los JSON no están disponibles
             portafolioData = [
                 { titulo: 'Ejemplo Portafolio 1', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Documental', date: '2024', destacado: true },
                 { titulo: 'Ejemplo Portafolio 2', descripcion: 'Descripción del proyecto.', url_video: 'https://www.youtube.com/watch?v=WpIvp6I7obE', categoria: 'Música', date: '2024' }
