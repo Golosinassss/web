@@ -46,8 +46,8 @@
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
         .marquee { animation: marquee 120s linear infinite; }
         .marquee-rev { animation: marquee-rev 120s linear infinite; }
-        .marquee-v { animation: marquee-v 120s linear infinite; animation-direction: reverse; }
-        .marquee-v-rev { animation: marquee-v-rev 120s linear infinite; }
+        .marquee-v { animation: marquee-v 20s linear infinite; animation-direction: reverse; }
+        .marquee-v-rev { animation: marquee-v-rev 20s linear infinite; }
 
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
@@ -103,85 +103,8 @@
     <div class="border-container bottom"><div class="marquee-rev"><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span></div></div>
     <div class="border-container left" style="transform: rotate(180deg);"><div class="marquee-v"><span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span><span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span></div></div>
     <div class="border-container right">
-        <div class="marquee-v">
-            <div class="ticker-logo-v"> ........
-*........
-*..*****
-*..
-*........
-*........
-*..****..
-*..   *..
-*........
-*........
-*******..
-      *..
- ........
-*........
-*..*****
-*..
-*........
-*........
-*..****..
-*..   *..
-*........
-*........
-*******..
-      *..
- ........
-*........
-*..*****
-*..
-*........
-*........
-*..****..
-*..   *..
-*........
-*........
-*******..
-      *..
- ........
-*........
-********</div>
-            <div class="ticker-logo-v"> ........
-*........
-*..*****
-*..
-*........
-*........
-*..****..
-*..   *..
-*........
-*........
-*******..
-      *..
- ........
-*........
-*..*****
-*..
-*........
-*........
-*..****..
-*..   *..
-*........
-*........
-*******..
-      *..
- ........
-*........
-*..*****
-*..
-*........
-*........
-*..****..
-*..   *..
-*........
-*........
-*******..
-      *..
- ........
-*........
-********</div>
+        <div class="marquee-v" id="right-marquee">
+            <!-- Los bloques del patrón vertical se inyectan dinámicamente aquí -->
         </div>
     </div>
 
@@ -218,6 +141,50 @@
     </div>
 
     <script>
+        // ── Inyección del patrón del borde derecho ───────────────────
+        (function setupRightBorderPattern() {
+            const patternUnit = [
+                " ........",
+                "*........",
+                "*..*****",
+                "*..",
+                "*........",
+                "*........",
+                "*..****..",
+                "*..   *..",
+                "*........",
+                "*........",
+                "*******..",
+                "      *.."
+            ].join('\n');
+
+            const tailUnit = [
+                " ........",
+                "*........",
+                "********"
+            ].join('\n');
+
+            // Se genera un bloque largo repitiendo el patrón 40 veces para cubrir cualquier alto de pantalla
+            const fullBlockText = Array(40).fill(patternUnit).join('\n') + '\n' + tailUnit;
+
+            const marqueeContainer = document.getElementById('right-marquee');
+            if (marqueeContainer) {
+                marqueeContainer.innerHTML = '';
+                
+                const block1 = document.createElement('div');
+                block1.className = 'ticker-logo-v';
+                block1.textContent = fullBlockText;
+
+                const block2 = document.createElement('div');
+                block2.className = 'ticker-logo-v';
+                block2.textContent = fullBlockText;
+
+                marqueeContainer.appendChild(block1);
+                marqueeContainer.appendChild(block2);
+            }
+        })();
+
+        // ── Lógica Principal ─────────────────────────────────────────────
         let ytPlayer = null;
         let portafolioCards = [];
         let catalogoCards  = [];
@@ -461,7 +428,7 @@
             currentVideoIndex = -1;
         });
     </script>
-    <!-- YouTube IFrame API (Cargada después para asegurar que onYouTubeIframeAPIReady esté definida) -->
+    <!-- YouTube IFrame API (Cargada al final para garantizar el registro del API ready event) -->
     <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
