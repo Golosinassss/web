@@ -32,9 +32,10 @@
         .ticker { font-size: 0.8rem; background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap; flex-shrink: 0; padding-right: 30px; }
         .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
         .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
-        .ticker-logo-v { font-size: 0.35rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1.1; flex-shrink: 0; padding-bottom: 0px; text-align: left; }
-        .logo-main { color: #bae1ff; }
+        
+        .ticker-logo-v { font-size: 0.5rem; font-family: 'JetBrains Mono', monospace; white-space: pre; line-height: 1; flex-shrink: 0; padding-top: 5px; text-align: center; color: #bae1ff; }
         .logo-shadow { color: #ffb3ba; }
+
         .marquee, .marquee-rev { display: flex; width: max-content; }
         .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
         .marquee { animation: marquee 120s linear infinite; }
@@ -62,7 +63,7 @@
         .grid-wrap::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 100%; background: linear-gradient(to left, #080808 0%, transparent 100%); pointer-events: none; z-index: 10; }
         
         .card { flex: 0 0 240px; border: 1px solid #222; padding: 15px; background: #0d0d0d; display: flex; flex-direction: column; border-radius: 0; transition: all 0.3s ease; cursor: pointer; }
-        .card:hover { border-color: #00e5ff; } /* Solo el borde de la tarjeta cambia a azul-cian en hover */
+        .card:hover { border-color: #00e5ff; }
         .card:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
         .card:hover .play-btn svg { stroke: #000 !important; }
         
@@ -79,7 +80,6 @@
         .play-btn { background: #151515; color: #00e5ff; border: 1px solid #222; width: 56px; height: 24px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; border-radius: 0; }
         .play-btn svg { width: 10px; height: 10px; }
 
-        /* Activo: Borde gradiente solo */
         .card.active-card { border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1; border-image-slice: 1; }
 
         footer { text-align: left; font-size: 0.65rem; color: #666; padding: 15px 0; border-top: 1px solid #1a1a1a; margin-top: 15px; line-height: 1.6; }
@@ -92,8 +92,8 @@
     </style>
 </head>
 <body>
-    <div class="border-container top"><div class="marquee"><span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | </span><span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA NARRATIVO | TRANSMEDIA | </span></div></div>
-    <div class="border-container bottom"><div class="marquee-rev"><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE DATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span></div></div>
+    <div class="border-container top"><div class="marquee"><span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | </span><span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | </span></div></div>
+    <div class="border-container bottom"><div class="marquee-rev"><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span><span class="txt ticker">SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | SONIDO INFINITO | CÓDIGO DECOLONIAL | ARQUITECTURA DE METADATOS | REGISTRO DOCUMENTAL | SOBERANÍA CREATIVA | </span></div></div>
     <div class="border-container left" style="transform: rotate(180deg);"><div class="marquee-v"><span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span><span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span></div></div>
     <div class="border-container right"><div class="marquee-v-rev"><div class="ticker-logo-v">
 <span class="logo-main">........</span>
@@ -377,18 +377,10 @@
         // Carga inicial
         Promise.all([
             fetch('portafolio.json').then(r => r.json()),
-            fetch('catalogo.json').then(r => r.json()),
-            fetch('ticker_logo.txt').then(r => r.text())
-        ]).then(([pData, cData, logoText]) => {
+            fetch('catalogo.json').then(r => r.json())
+        ]).then(([pData, cData]) => {
             portafolioData = pData;
             catalogoData = cData;
-            
-            // Poblar tickers derechos
-            const logo1 = document.getElementById('ticker-logo-1');
-            const logo2 = document.getElementById('ticker-logo-2');
-            if (logo1) logo1.textContent = logoText.repeat(5);
-            if (logo2) logo2.textContent = logoText.repeat(5);
-
             renderPortafolio();
             renderCatalogo();
             currentVideoIndex = -1;
