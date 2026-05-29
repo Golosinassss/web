@@ -54,7 +54,7 @@
     "descripcion": "Cortometraje Independiente (2021-2022). Dirección, Co-Producción y Postproducción.",
     "url_video": "https://youtu.be/25wiPu9_V3o?si=B0QNjI8Zhmo1bq5a",
     "tipo": "youtube",
-    "preview_url": "",
+    "preview_url": "Portada_ESTALLIDO.gif",
     "date": "2022",
     "destacado": true,
     "tags": ["cine", "periodismo"]
@@ -66,7 +66,7 @@
     "descripcion": "Jurisdicción Especial para la Paz (2020). Dirección y Postproducción.",
     "url_video": "https://youtu.be/R7hORlDFjos?si=2IV7_ToKjKfvZLJN",
     "tipo": "youtube",
-    "preview_url": "",
+    "preview_url": "Portada_JEP.gif",
     "date": "2020",
     "destacado": false,
     "tags": ["animación 2d", "a mano", "social"]
@@ -78,7 +78,7 @@
     "descripcion": "Formato de sesiones de música en vivo (2010-2014). Co-Dirección y Postproducción",
     "url_video": "https://www.youtube.com/watch?v=w3lFVNMkTQQ",
     "tipo": "youtube",
-    "preview_url": "",
+    "preview_url": "portada_AMPLIFICADO.gif",
     "date": "2014",
     "destacado": false,
     "tags": ["sesiones", "conciertos"]
