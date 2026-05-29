@@ -1,7 +1,7 @@
 [
   {
     "id": "9",
-    "titulo": "Conjunto Media Luna - Kumbia Medallo (En Vivo)",
+    "titulo": "SONIDO INFINITO: Conjunto Media Luna - Kumbia Medallo (En Vivo)",
     "categoria": "Cumbia",
     "descripcion": "SONIDO INFINITO - Bollo Room #8 - Bogotá, Colombia",
     "url_video": "https://youtu.be/AxLDXmOTtRQ",
@@ -9,11 +9,11 @@
     "preview_url": "",
     "date": "2025",
     "destacado": false,
-    "tags": ["conciertos"]
+    "tags": ["SONIDO INFINITO", "conciertos"]
   },
   {
     "id": "8",
-    "titulo": "Velandia y La Tigra - Venganza (En Vivo)",
+    "titulo": "SONIDO INFINITO: Velandia y La Tigra - Venganza (En Vivo)",
     "categoria": "Rasqa",
     "descripcion": "SONIDO INFINITO - Teatro Colón - Bogotá, Colombia",
     "url_video": "https://youtu.be/1C9wjSrnShY",
@@ -21,7 +21,7 @@
     "preview_url": "",
     "date": "2023",
     "destacado": false,
-    "tags": ["conciertos"]
+    "tags": ["SONIDO INFINITO", "conciertos"]
   },
   {
     "id": "1",
@@ -33,7 +33,7 @@
     "preview_url": "Portada_Diomedes_Golosinassss.gif",
     "date": "2022",
     "destacado": true,
-    "tags": ["cine", "documental", "periodismo"]
+    "tags": ["cine", "periodismo", "música"]
   },
   {
     "id": "2",
@@ -45,7 +45,7 @@
     "preview_url": "Portada_HVLI.gif",
     "date": "2022",
     "destacado": false,
-    "tags": ["social", "documental"]
+    "tags": ["social", "institucional"]
   },
   {
     "id": "5",
@@ -57,7 +57,7 @@
     "preview_url": "Portada_ESTALLIDO.gif",
     "date": "2022",
     "destacado": true,
-    "tags": ["cine", "periodismo"]
+    "tags": ["cine", "periodismo", "social"]
   },
   {
     "id": "6",
