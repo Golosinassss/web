@@ -9,7 +9,7 @@
     "preview_url": "",
     "date": "2025",
     "destacado": false,
-    "tags": ["SONIDO INFINITO", "conciertos"]
+    "tags": ["SONIDO INFINITO", "conciertos en vivo"]
   },
   {
     "id": "8",
@@ -21,7 +21,7 @@
     "preview_url": "",
     "date": "2023",
     "destacado": false,
-    "tags": ["SONIDO INFINITO", "conciertos"]
+    "tags": ["SONIDO INFINITO", "conciertos en vivo"]
   },
    {
     "id": "11",
@@ -93,7 +93,7 @@
     "preview_url": "Portada_JEP.gif",
     "date": "2020",
     "destacado": false,
-    "tags": ["animación 2d", "a mano", "social"]
+    "tags": ["animación", "institucional", "social"]
   },
    {
     "id": "13",
@@ -122,13 +122,13 @@
   {
     "id": "7",
     "titulo": "AMPLIFICADO.TV",
-    "categoria": "SESIONES EN VIVO",
+    "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Formato de sesiones de música en vivo - Co-Dirección y Postproducción",
     "url_video": "https://www.youtube.com/watch?v=w3lFVNMkTQQ",
     "tipo": "youtube",
     "preview_url": "portada_AMPLIFICADO.gif",
     "date": "2014",
     "destacado": false,
-    "tags": ["sesiones", "conciertos"]
+    "tags": ["sesiones musicales", "conciertos en vivo"]
   }
 ]
