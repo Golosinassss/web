@@ -95,6 +95,30 @@
     "destacado": false,
     "tags": ["animación 2d", "a mano", "social"]
   },
+   {
+    "id": "13",
+    "titulo": "Líderes Sociales Asesinados: ¿Qué hace la UNP?",
+    "categoria": "Periodísmo Documental",
+    "descripcion": "NATGEO Latinoamerica #ExplorerInvestigation",
+    "url_video": "https://www.youtube.com/watch?v=ocMdH0aFkuA",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2019",
+    "destacado": false,
+    "tags": ["periodismo", "social"]
+  },
+    {
+    "id": "12",
+    "titulo": "Líderes Sociales Asesinados: Operativo Tumaco",
+    "categoria": "Periodísmo Documental",
+    "descripcion": "NATGEO Latinoamerica #ExplorerInvestigation",
+    "url_video": "https://youtu.be/R7hORlDFjos?si=2IV7_ToKjKfvZLJN",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2019",
+    "destacado": false,
+    "tags": ["periodismo", "social"]
+  },
   {
     "id": "7",
     "titulo": "AMPLIFICADO.TV",
