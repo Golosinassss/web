@@ -2,7 +2,7 @@
   {
     "id": "9",
     "titulo": "SONIDO INFINITO: Conjunto Media Luna - Kumbia Medallo",
-    "categoria": "Cumbia",
+    "categoria": "CONCIERTOS EN VIVO",
     "descripcion": "Aniversario Ritmo Moderno - Bollo Room #8 - Bogotá, Colombia",
     "url_video": "https://youtu.be/AxLDXmOTtRQ",
     "tipo": "youtube",
@@ -14,7 +14,7 @@
   {
     "id": "8",
     "titulo": "SONIDO INFINITO: Velandia y La Tigra - Venganza",
-    "categoria": "Rasqa",
+    "categoria": "CONCIERTOS EN VIVO",
     "descripcion": "Teatro Colón - Bogotá, Colombia",
     "url_video": "https://youtu.be/1C9wjSrnShY",
     "tipo": "youtube",
@@ -25,8 +25,8 @@
   },
    {
     "id": "11",
-    "titulo": "CIM/OEA Candidatas Electorales Indígenas",
-    "categoria": "Contenido Web - POPAYÁN, CAUCA",
+    "titulo": "CIM/OEA - Candidatas Electorales Indígenas",
+    "categoria": "WEB - POPAYÁN, CAUCA",
     "descripcion": "Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
     "url_video": "https://youtu.be/dS2pXXdhr_Y?si=S79CFOqlc0F3g2nX",
     "tipo": "youtube",
@@ -38,7 +38,7 @@
   {
     "id": "10",
     "titulo": "MAPP/OEA - Mínimos Humanitarios",
-    "categoria": "Contenido Web - ARAUCA",
+    "categoria": "WEB - ARAUCA",
     "descripcion": "Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
     "url_video": "https://youtu.be/jnzH0OW_tVw?si=SXQYAinurMvu5J2i",
     "tipo": "youtube",
@@ -49,8 +49,8 @@
   },
   {
     "id": "1",
-    "titulo": "NETFLIX - DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA",
-    "categoria": "Netflix Original",
+    "titulo": "NETFLIX - DIOMEDES: El ídolo, el misterio y la tragedia",
+    "categoria": "PERIODISMO DOCUMENTAL",
     "descripcion": "Largometraje Documental - Co-Dirección y Montaje.",
     "url_video": "https://youtu.be/75RJRpmXLUE?si=qo78BzYH7qMz0VmW",
     "tipo": "youtube",
@@ -62,7 +62,7 @@
   {
     "id": "2",
     "titulo": "HACER VISIBLE LO INVISIBLE",
-    "categoria": "Serie Web",
+    "categoria": "SERIE WEB DOCUMENTAL",
     "descripcion": "COMISIÓN DE LA VERDAD - Dirección, Producción y Postproducción.",
     "url_video": "https://www.youtube.com/watch?v=RWM_b5XudM0",
     "tipo": "youtube",
@@ -74,12 +74,12 @@
   {
     "id": "5",
     "titulo": "EL ESTALLIDO",
-    "categoria": "Cortometraje",
-    "descripcion": "Cortometraje Independiente (2021-2022). Dirección, Co-Producción y Postproducción.",
+    "categoria": "PERIODISMO DOCUMENTAL",
+    "descripcion": "Cortometraje Independiente - Dirección, Co-Producción y Postproducción.",
     "url_video": "https://youtu.be/25wiPu9_V3o?si=B0QNjI8Zhmo1bq5a",
     "tipo": "youtube",
     "preview_url": "Portada_ESTALLIDO.gif",
-    "date": "2022",
+    "date": "2021 - 2022",
     "destacado": true,
     "tags": ["cine", "periodismo", "social"]
   },
@@ -97,8 +97,8 @@
   },
    {
     "id": "13",
-    "titulo": "NATGEO LÍDERES SOCIALES ASESINADOS: ¿Qué hace la UNP?",
-    "categoria": "NATGEO - Periodísmo Documental",
+    "titulo": "NATGEO - LÍDERES SOCIALES ASESINADOS: ¿Qué hace la UNP?",
+    "categoria": "SERIE PERIODISMO DOCUMENTAL",
     "descripcion": "National Geographic Latinoamerica #ExplorerInvestigation",
     "url_video": "https://www.youtube.com/watch?v=ocMdH0aFkuA",
     "tipo": "youtube",
@@ -109,8 +109,8 @@
   },
     {
     "id": "12",
-    "titulo": "NATGEO LÍDERES SOCIALES ASESINADOS: Operativo Tumaco",
-    "categoria": "NATGEO - Periodísmo Documental",
+    "titulo": "NATGEO - LÍDERES SOCIALES ASESINADOS: Operativo Tumaco",
+    "categoria": "SERIE PERIODISMO DOCUMENTAL",
     "descripcion": "National Geographic Latinoamerica #ExplorerInvestigation",
     "url_video": "https://youtu.be/R7hORlDFjos?si=2IV7_ToKjKfvZLJN",
     "tipo": "youtube",
@@ -122,7 +122,7 @@
   {
     "id": "7",
     "titulo": "AMPLIFICADO.TV",
-    "categoria": "Sesiones en Vivo",
+    "categoria": "SESIONES EN VIVO",
     "descripcion": "Formato de sesiones de música en vivo - Co-Dirección y Postproducción",
     "url_video": "https://www.youtube.com/watch?v=w3lFVNMkTQQ",
     "tipo": "youtube",
