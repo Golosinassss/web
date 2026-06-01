@@ -24,6 +24,18 @@
     "tags": ["SONIDO INFINITO", "conciertos"]
   },
   {
+    "id": "10",
+    "titulo": "MAPP/OEA - Mínimos Humanitarios / Arauca",
+    "categoria": "Contenido Web",
+    "descripcion": "Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
+    "url_video": "https://youtu.be/jnzH0OW_tVw?si=SXQYAinurMvu5J2i",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2025",
+    "destacado": true,
+    "tags": ["cine", "periodismo", "música"]
+  },
+  {
     "id": "1",
     "titulo": "DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA",
     "categoria": "Netflix Original",
