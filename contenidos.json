@@ -9,7 +9,7 @@
     "preview_url": "",
     "date": "2025",
     "destacado": false,
-    "tags": ["SONIDO INFINITO", "conciertos en vivo"]
+    "tags": ["SONIDO INFINITO", "conciertos"]
   },
   {
     "id": "8",
@@ -21,7 +21,7 @@
     "preview_url": "",
     "date": "2023",
     "destacado": false,
-    "tags": ["SONIDO INFINITO", "conciertos en vivo"]
+    "tags": ["SONIDO INFINITO", "conciertos"]
   },
    {
     "id": "11",
@@ -129,6 +129,6 @@
     "preview_url": "portada_AMPLIFICADO.gif",
     "date": "2014",
     "destacado": false,
-    "tags": ["sesiones musicales", "conciertos en vivo"]
+    "tags": ["sesiones musicales", "conciertos", "videoclips"]
   }
 ]
