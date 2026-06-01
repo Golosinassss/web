@@ -1,0 +1,266 @@
+/* ══════════════════════════════════════════════════════════════
+   GOLOSINASSSS — Archivo Vivo
+   Estilo principal del portal web
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+body, html {
+    margin: 0; padding: 0;
+    height: 100%; width: 100%; max-width: 100vw;
+    background: #080808; color: #e0e0e0;
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+}
+
+#main-content {
+    padding: 40px 50px;
+    min-height: 100vh;
+    overflow-y: auto; overflow-x: hidden;
+    height: 100vh;
+    box-sizing: border-box;
+    width: 100%; max-width: 100%;
+}
+
+/* ── Video Hero ───────────────────────────────────────────── */
+#video-hero {
+    position: relative; width: 100%; margin: 0;
+    background: #000; height: 0; padding-bottom: 48%;
+    border-radius: 0; overflow: hidden; border: 1px solid #222;
+}
+#video-hero iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+/* ── Bordes con Marquesina ────────────────────────────────── */
+.border-container {
+    position: fixed; background: #080808;
+    z-index: 100; overflow: hidden; display: flex;
+}
+.top {
+    top: 0; left: 0; width: 100%; height: 30px;
+    align-items: center; justify-content: flex-start;
+    border-bottom: 1px solid transparent;
+    background: linear-gradient(#080808,#080808) padding-box,
+                linear-gradient(90deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
+}
+.bottom {
+    bottom: 0; left: 0; width: 100%; height: 30px;
+    align-items: center; justify-content: flex-start;
+    border-top: 1px solid transparent;
+    background: linear-gradient(#080808,#080808) padding-box,
+                linear-gradient(90deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box;
+}
+.left {
+    top: 30px; left: 0; width: 30px; height: calc(100% - 60px);
+    justify-content: center; align-items: flex-start;
+    border-left: 1px solid transparent;
+    background: linear-gradient(#080808,#080808) padding-box,
+                linear-gradient(180deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
+}
+.right {
+    top: 30px; right: 0; width: 30px; height: calc(100% - 60px);
+    justify-content: center; align-items: flex-start;
+    border-left: 1px solid transparent;
+    background: linear-gradient(#080808,#080808) padding-box,
+                linear-gradient(180deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box;
+}
+
+/* ── Tickers ──────────────────────────────────────────────── */
+.ticker {
+    font-size: 0.8rem;
+    background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap; flex-shrink: 0; padding-right: 30px;
+}
+.ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
+.ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
+.ticker-logo-v {
+    font-size: 0.19rem; font-family: 'JetBrains Mono', monospace;
+    white-space: pre; line-height: 1.25; flex-shrink: 0;
+    padding: 0 3px 0 2px; text-align: left; color: #ffffff;
+}
+
+/* ── Marquesina Animations ────────────────────────────────── */
+.marquee, .marquee-rev { display: flex; width: max-content; }
+.marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
+.marquee     { animation: marquee 120s linear infinite; }
+.marquee-rev { animation: marquee-rev 120s linear infinite; }
+.marquee-v   { animation: marquee-v 120s linear infinite; animation-direction: reverse; }
+.marquee-v-rev { animation: marquee-v-rev 120s linear infinite; }
+
+@keyframes marquee     { from { transform: translateX(0); }   to { transform: translateX(-50%); } }
+@keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes marquee-v   { from { transform: translateY(0); }   to { transform: translateY(-50%); } }
+@keyframes marquee-v-rev { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+
+/* ── Section Headers ──────────────────────────────────────── */
+.section-header {
+    display: flex; align-items: baseline; gap: 12px;
+    border-bottom: 1px solid #222;
+    margin: 10px 0 0; padding-bottom: 4px;
+}
+.section-label {
+    font-size: 0.8rem; text-transform: uppercase;
+    color: #666; letter-spacing: 2px;
+    padding: 8px 0 4px; white-space: nowrap;
+}
+
+/* ── Botones de Filtro y Tab ──────────────────────────────── */
+.filter-btn, .tab-btn {
+    background: none; border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; cursor: pointer;
+    padding: 2px 6px; color: #444;
+    letter-spacing: 1px; text-transform: uppercase;
+    transition: color 0.2s;
+}
+.filter-btn:hover, .tab-btn:hover { color: #999; }
+.filter-btn.active { color: #ffb3ba; }
+.tab-btn.active { color: #bae1ff; }
+
+/* ── Contenedor de tags-tabs (catálogo dinámico) ──────────── */
+.tags-tabs-container {
+    display: flex; flex-wrap: wrap;
+    gap: 4px; align-items: baseline;
+}
+.tags-tabs-container .tab-btn {
+    font-size: 0.6rem;
+    padding: 3px 8px;
+    border: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+.tags-tabs-container .tab-btn.active {
+    border-color: #bae1ff33;
+}
+
+/* ── Grids ─────────────────────────────────────────────────── */
+#grid-catalogo, #grid-portafolio {
+    display: flex; overflow-x: auto; overflow-y: hidden;
+    gap: 15px; margin-bottom: 15px;
+    scrollbar-width: none; padding: 10px 0;
+}
+#grid-catalogo::-webkit-scrollbar,
+#grid-portafolio::-webkit-scrollbar { display: none; }
+
+.grid-wrap { position: relative; }
+.grid-wrap::after {
+    content: ''; position: absolute;
+    top: 0; right: 0; width: 80px; height: 100%;
+    background: linear-gradient(to left, #080808 0%, transparent 100%);
+    pointer-events: none; z-index: 10;
+}
+
+/* ── Cards ─────────────────────────────────────────────────── */
+.card-wrapper {
+    flex: 0 0 240px; display: flex; flex-direction: column;
+    justify-content: flex-start; border-radius: 0; cursor: pointer;
+    opacity: 0;
+    animation: cardFadeIn 0.4s ease forwards;
+}
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    width: 100%; border: 1px solid #222; padding: 15px;
+    background: #0d0d0d; display: flex; flex-direction: column;
+    border-radius: 0; transition: all 0.3s ease; box-sizing: border-box;
+}
+.card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.card-tag {
+    font-size: 0.55rem; font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 2px 6px; border: 1px solid; line-height: 1.2;
+}
+
+/* Card hover */
+.card-wrapper:hover .card { border-color: #00e5ff; }
+.card-wrapper:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
+.card-wrapper:hover .play-btn svg { stroke: #000 !important; }
+
+.card h3 { font-size: 0.75rem; color: #fff; margin: 0 0 5px; line-height: 1.2; font-weight: 700; }
+.card p { font-size: 0.65rem; color: #888; margin-top: 8px; line-height: 1.4; font-weight: 400; }
+
+.card-body { display: flex; gap: 12px; align-items: flex-start; }
+.card-left { display: flex; flex-direction: column; gap: 8px; width: 56px; flex-shrink: 0; }
+
+.card-meta { font-size: 0.5rem; color: #444; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+.card-preview { width: 56px; height: 56px; background: #000; border: 1px solid #222; overflow: hidden; }
+.card-preview img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s; }
+.card-wrapper:hover .card-preview img { opacity: 1; }
+
+.play-btn {
+    background: #151515; color: #00e5ff; border: 1px solid #222;
+    width: 56px; height: 24px; display: flex;
+    align-items: center; justify-content: center;
+    transition: all 0.2s ease; border-radius: 0;
+}
+.play-btn svg { width: 10px; height: 10px; }
+
+/* Card activa */
+.card.active-card {
+    border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1;
+    border-image-slice: 1;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+    text-align: left; font-size: 0.65rem; color: #666;
+    padding: 15px 0; border-top: 1px solid #1a1a1a;
+    margin-top: 15px; line-height: 1.6;
+}
+.footer-line { margin: 2px 0; }
+footer a { color: #888; text-decoration: none; border-bottom: 1px solid #333; }
+footer a:hover { color: #00e5ff; border-color: #00e5ff; }
+.social-links { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.social-links a {
+    text-decoration: none; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 1px; border-bottom: 1px solid transparent; transition: opacity 0.2s;
+}
+.social-links a:hover { opacity: 0.7; }
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+    #main-content { padding: 30px 35px; }
+    .top, .bottom { height: 24px; }
+    .left, .right { width: 24px; }
+    .left { top: 24px; height: calc(100% - 48px); }
+    .right { top: 24px; height: calc(100% - 48px); }
+}
+
+@media (max-width: 768px) {
+    #main-content { padding: 25px 25px; }
+    .top, .bottom { height: 18px; }
+    .left, .right { width: 18px; }
+    .left { top: 18px; height: calc(100% - 36px); }
+    .right { top: 18px; height: calc(100% - 36px); }
+    .ticker { font-size: 0.65rem; }
+    #video-hero { padding-bottom: 56.25%; }
+    .card-wrapper { flex: 0 0 210px; }
+    .section-header { flex-wrap: wrap; gap: 8px; }
+    .section-label { width: 100%; display: block; padding-bottom: 2px; }
+    .tags-tabs-container { gap: 3px; }
+}
+
+@media (max-width: 480px) {
+    #main-content { padding: 15px 18px; }
+    .top, .bottom { height: 12px; }
+    .left, .right { width: 12px; }
+    .left { top: 12px; height: calc(100% - 24px); }
+    .right { top: 12px; height: calc(100% - 24px); }
+    .ticker { font-size: 0.5rem; }
+    #video-hero { padding-bottom: 56.25%; }
+    .card-wrapper { flex: 0 0 85vw; }
+    .card h3 { font-size: 0.7rem; }
+    .card p { font-size: 0.6rem; }
+    footer { font-size: 0.55rem; }
+    .social-links { gap: 8px; }
+    .grid-wrap::after { width: 40px; }
+    .tags-tabs-container .tab-btn { font-size: 0.5rem; padding: 2px 5px; }
+}

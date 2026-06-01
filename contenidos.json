@@ -9,7 +9,7 @@
     "preview_url": "",
     "date": "2025",
     "destacado": false,
-    "tags": ["SONIDO INFINITO", "conciertos"]
+    "tags": ["sonido infinito", "conciertos"]
   },
   {
     "id": "8",
@@ -21,9 +21,9 @@
     "preview_url": "",
     "date": "2023",
     "destacado": false,
-    "tags": ["SONIDO INFINITO", "conciertos"]
+    "tags": ["sonido infinito", "conciertos"]
   },
-   {
+  {
     "id": "11",
     "titulo": "CIM/OEA - Candidatas Electorales Indígenas",
     "categoria": "WEB - POPAYÁN, CAUCA",
@@ -86,7 +86,7 @@
   {
     "id": "6",
     "titulo": "ASÍ PARTICIPAN LAS VÍCTIMAS EN LA JEP",
-    "categoria": "Animación",
+    "categoria": "ANIMACIÓN",
     "descripcion": "JEP - Jurisdicción Especial para la Paz - Dirección y Postproducción.",
     "url_video": "https://youtu.be/R7hORlDFjos?si=2IV7_ToKjKfvZLJN",
     "tipo": "youtube",
@@ -95,7 +95,7 @@
     "destacado": false,
     "tags": ["animación", "institucional", "social"]
   },
-   {
+  {
     "id": "13",
     "titulo": "NATGEO - LÍDERES SOCIALES ASESINADOS: ¿Qué hace la UNP?",
     "categoria": "SERIE PERIODISMO DOCUMENTAL",
@@ -107,7 +107,7 @@
     "destacado": false,
     "tags": ["periodismo", "social"]
   },
-    {
+  {
     "id": "12",
     "titulo": "NATGEO - LÍDERES SOCIALES ASESINADOS: Operativo Tumaco",
     "categoria": "SERIE PERIODISMO DOCUMENTAL",
