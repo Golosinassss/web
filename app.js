@@ -4,46 +4,44 @@
 
 // ── Inyección del patrón del borde derecho ───────────────────
 (function setupRightBorderPattern() {
-    const starPalette = ['#ffffff'];
-    let paletteIdx = 0;
+    const patternUnit = [
+        " ........",
+        "*........",
+        "*..*****",
+        "*..",
+        "*........",
+        "*........",
+        "*..****..",
+        "*..   *..",
+        "*........",
+        "*........",
+        "*******..",
+        "      *.."
+    ].join('\n');
 
-    function renderLine(line) {
-        return line.split('').map(ch => {
-            if (ch === '*') {
-                return `<span style="color:#ffffff">${ch}</span>`;
-            } else if (ch === '.') {
-                return `<span style="color:#333">${ch}</span>`;
-            }
-            return ch === ' ' ? '&nbsp;' : ch;
-        }).join('');
-    }
+    const tailUnit = [
+        " ........",
+        "*........",
+        "********"
+    ].join('\n');
 
-    const patternLines = [
-        " ........", "*........", "*..*****",  "*..",
-        "*........", "*........", "*..****.. ", "*..   *..",
-        "*........", "*........", "*******.. ", "      *..",
-        " ........", "*........", "*..*****",  "*..",
-        "*........", "*........", "*..****.. ", "*..   *..",
-        "*........", "*........", "*******.. ", "      *..",
-        " ........", "*........", "*..*****",  "*..",
-        "*........", "*........", "*..****.. ", "*..   *..",
-        "*........", "*........", "*******.. ", "      *..",
-        " ........", "*........", "********"
-    ];
-
-    function buildBlock() {
-        const div = document.createElement('div');
-        div.className = 'ticker-logo-v';
-        div.innerHTML = patternLines.map(line => `<span>${renderLine(line)}</span>`).join('\n');
-        return div;
-    }
+    const fullBlockText = Array(40).fill(patternUnit).join('\n') + '\n' + tailUnit;
 
     function inject() {
         const container = document.getElementById('right-marquee');
         if (!container) return;
         container.innerHTML = '';
-        container.appendChild(buildBlock());
-        container.appendChild(buildBlock());
+
+        const block1 = document.createElement('div');
+        block1.className = 'ticker-logo-v';
+        block1.textContent = fullBlockText;
+
+        const block2 = document.createElement('div');
+        block2.className = 'ticker-logo-v';
+        block2.textContent = fullBlockText;
+
+        container.appendChild(block1);
+        container.appendChild(block2);
     }
 
     if (document.readyState === 'loading') {
@@ -170,19 +168,31 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-// ── buildCard — Catálogo Golosinassss (card completa) ────────
+// ── buildCard — Catálogo Golosinassss (diseño index v15) ─────
 function buildCard(item, animDelay) {
     ensureThumbnail(item);
 
     const previewHtml = item.preview_url
-        ? `<div class="card-preview"><img src="${item.preview_url}" alt="${item.titulo}" loading="lazy"></div>`
-        : `<div class="card-preview" style="background:#111;width:56px;height:56px;border:1px solid #1a1a1a;"></div>`;
+        ? `<div class="card-preview"><img src="${item.preview_url}" alt="${item.titulo}" class="preview-img" loading="lazy"></div>`
+        : `<div class="card-preview"></div>`;
 
     const color = palette[Math.floor(Math.random() * palette.length)];
 
-    const parts    = (item.descripcion || '').split(/\s*[-–—]\s*/);
-    const mainDesc = parts[0] || '';
-    const credit   = parts.slice(1).join(' — ');
+    const metaHtml = (item.categoria || item.date)
+        ? `<div class="card-meta">${item.categoria ? item.categoria.toUpperCase() : ''}${item.categoria && item.date ? ' | ' : ''}${item.date || ''}</div>`
+        : '';
+
+    // Tags siempre visibles, fuera de la .card
+    const itemTags = Array.isArray(item.tags) ? item.tags : [];
+    let tagsHtml = '';
+    if (itemTags.length) {
+        const spans = itemTags.map(tag => {
+            const norm = tag.trim().toLowerCase();
+            const c    = tagColors[norm] || '#777777';
+            return `<span class="card-tag" style="color:${c};border-color:${c}33;background:${c}09">${norm}</span>`;
+        }).join('');
+        tagsHtml = `<div class="card-tags">${spans}</div>`;
+    }
 
     const wrapperEl = document.createElement('div');
     wrapperEl.className = 'card-wrapper';
@@ -192,27 +202,23 @@ function buildCard(item, animDelay) {
 
     wrapperEl.innerHTML = `
         <div class="card">
-            <div class="card-header">
-                <div class="card-category">${item.categoria || ''}</div>
-                <div class="card-top-row">
-                    <div class="card-left">
-                        ${previewHtml}
-                        <div class="play-btn" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" style="stroke:${color};fill:none;stroke-width:2;">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="card-title-block">
-                        <h3>${item.titulo}</h3>
+            <div class="card-body">
+                <div class="card-left">
+                    ${previewHtml}
+                    <div class="play-btn" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" style="stroke:${color}; fill:none; stroke-width:2;">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
                     </div>
                 </div>
+                <div class="card-content">
+                    ${metaHtml}
+                    <h3>${item.titulo}</h3>
+                    <p>${item.descripcion || ''}</p>
+                </div>
             </div>
-            <div class="card-detail">
-                <p class="card-description">${mainDesc}</p>
-                ${credit ? `<p class="card-credit">${credit}</p>` : ''}
-            </div>
-        </div>`;
+        </div>
+        ${tagsHtml}`;
 
     wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
     wrapperEl.addEventListener('keydown', (e) => {
@@ -222,14 +228,18 @@ function buildCard(item, animDelay) {
     return wrapperEl;
 }
 
-// ── buildCompactCard — Archivo Vivo (solo GIF + título) ───────
+// ── buildCompactCard — Archivo Vivo (thumb izq + título der) ─
 function buildCompactCard(item, animDelay) {
     ensureThumbnail(item);
 
-    const thumbSrc = item.preview_url || '';
+    // Detectar si el preview es GIF propio (cuadrado) o thumbnail YouTube (rectangular)
+    const isYoutubThumb = item.preview_url && item.preview_url.includes('img.youtube.com');
+    const thumbClass   = isYoutubThumb ? 'compact-thumb-rect' : 'compact-thumb-sq';
+    const thumbSrc     = item.preview_url || '';
+
     const thumbHtml = thumbSrc
-        ? `<img src="${thumbSrc}" alt="${item.titulo}" loading="lazy">`
-        : `<div class="compact-thumb-placeholder"></div>`;
+        ? `<div class="compact-thumb ${thumbClass}"><img src="${thumbSrc}" alt="" loading="lazy"></div>`
+        : `<div class="compact-thumb compact-thumb-sq compact-thumb-empty"></div>`;
 
     const wrapperEl = document.createElement('div');
     wrapperEl.className = 'card-compact-wrapper';
@@ -240,7 +250,7 @@ function buildCompactCard(item, animDelay) {
 
     wrapperEl.innerHTML = `
         <div class="card-compact">
-            <div class="card-compact-thumb">${thumbHtml}</div>
+            ${thumbHtml}
             <p class="card-compact-title">${item.titulo}</p>
         </div>`;
 
