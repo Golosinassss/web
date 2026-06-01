@@ -150,13 +150,25 @@ function playNext() {
     all[currentVideoIndex].click();
 }
 
+// ── helper para separar descripción de créditos ───────────────
+function getParsedDesc(desc) {
+    if (!desc) return { mainDesc: '', credit: '' };
+    const lastHyphenIndex = desc.lastIndexOf(' - ');
+    if (lastHyphenIndex !== -1) {
+        return {
+            mainDesc: desc.substring(0, lastHyphenIndex).trim(),
+            credit: desc.substring(lastHyphenIndex + 3).trim()
+        };
+    }
+    return { mainDesc: desc.trim(), credit: '' };
+}
+
 // ── YouTube IFrame API ───────────────────────────────────────
 function onYouTubeIframeAPIReady() {
-    const first    = allData.find(i => i.destacado) || allData[0];
-    const initialId = first ? getYouTubeId(first.url_video) : null;
+    const initialId = 'WpIvp6I7obE';
 
     ytPlayer = new YT.Player('yt-player-container', {
-        videoId: initialId || '',
+        videoId: initialId,
         playerVars: { autoplay: 1, mute: 1, rel: 0, modestbranding: 1 },
         events: {
             onReady: function () {
@@ -194,6 +206,8 @@ function buildCard(item, animDelay) {
         tagsHtml = `<div class="card-tags">${spans}</div>`;
     }
 
+    const { mainDesc, credit } = getParsedDesc(item.descripcion);
+
     const wrapperEl = document.createElement('div');
     wrapperEl.className = 'card-wrapper';
     wrapperEl.setAttribute('aria-label', `Reproducir: ${item.titulo}`);
@@ -202,6 +216,7 @@ function buildCard(item, animDelay) {
 
     wrapperEl.innerHTML = `
         <div class="card">
+            ${metaHtml}
             <div class="card-body">
                 <div class="card-left">
                     ${previewHtml}
@@ -212,9 +227,9 @@ function buildCard(item, animDelay) {
                     </div>
                 </div>
                 <div class="card-content">
-                    ${metaHtml}
                     <h3>${item.titulo}</h3>
-                    <p>${item.descripcion || ''}</p>
+                    ${mainDesc ? `<p class="card-desc">${mainDesc}</p>` : ''}
+                    ${credit ? `<p class="card-credit">${credit}</p>` : ''}
                 </div>
             </div>
         </div>
@@ -241,6 +256,33 @@ function buildCompactCard(item, animDelay) {
         ? `<div class="compact-thumb ${thumbClass}"><img src="${thumbSrc}" alt="" loading="lazy"></div>`
         : `<div class="compact-thumb compact-thumb-sq compact-thumb-empty"></div>`;
 
+    // Compact description if title is short (< 35 chars)
+    const titleNotTooLong = item.titulo && item.titulo.length < 35;
+    const { mainDesc, credit } = getParsedDesc(item.descripcion);
+    const descText = titleNotTooLong && mainDesc ? mainDesc : '';
+
+    // Full card preview
+    const color = palette[Math.floor(Math.random() * palette.length)];
+    const previewHtml = item.preview_url
+        ? `<div class="card-preview"><img src="${item.preview_url}" alt="${item.titulo}" class="preview-img" loading="lazy"></div>`
+        : `<div class="card-preview"></div>`;
+
+    const metaHtml = (item.categoria || item.date)
+        ? `<div class="card-meta">${item.categoria ? item.categoria.toUpperCase() : ''}${item.categoria && item.date ? ' | ' : ''}${item.date || ''}</div>`
+        : '';
+
+    // Tags
+    const itemTags = Array.isArray(item.tags) ? item.tags : [];
+    let tagsHtml = '';
+    if (itemTags.length) {
+        const spans = itemTags.map(tag => {
+            const norm = tag.trim().toLowerCase();
+            const c    = tagColors[norm] || '#777777';
+            return `<span class="card-tag" style="color:${c};border-color:${c}33;background:${c}09">${norm}</span>`;
+        }).join('');
+        tagsHtml = `<div class="card-tags">${spans}</div>`;
+    }
+
     const wrapperEl = document.createElement('div');
     wrapperEl.className = 'card-compact-wrapper';
     wrapperEl.setAttribute('aria-label', `Reproducir: ${item.titulo}`);
@@ -249,10 +291,40 @@ function buildCompactCard(item, animDelay) {
     else { wrapperEl.style.opacity = '1'; }
 
     wrapperEl.innerHTML = `
+        <!-- COMPACT CARD (normal view) -->
         <div class="card-compact">
             ${thumbHtml}
-            <p class="card-compact-title">${item.titulo}</p>
-        </div>`;
+            <div class="card-compact-content">
+                <p class="card-compact-title">${item.titulo}</p>
+                ${descText ? `<p class="card-compact-desc">${descText}</p>` : ''}
+            </div>
+        </div>
+
+        <!-- FULL CARD OVERLAY (hover view) -->
+        <div class="card-full-overlay">
+            <div class="card">
+                ${metaHtml}
+                <div class="card-body">
+                    <div class="card-left">
+                        ${previewHtml}
+                        <div class="play-btn" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" style="stroke:${color}; fill:none; stroke-width:2;">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>${item.titulo}</h3>
+                        ${mainDesc ? `<p class="card-desc">${mainDesc}</p>` : ''}
+                        ${credit ? `<p class="card-credit">${credit}</p>` : ''}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAGS (always at the bottom of the wrapper) -->
+        ${tagsHtml}
+    `;
 
     wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
     wrapperEl.addEventListener('keydown', (e) => {
