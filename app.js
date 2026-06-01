@@ -4,19 +4,17 @@
 
 // ── Inyección del patrón del borde derecho ───────────────────
 (function setupRightBorderPattern() {
-    const starPalette = ['#ffb3ba', '#ffdfba', '#ffffba', '#baffc9', '#bae1ff'];
+    const starPalette = ['#ffffff'];
     let paletteIdx = 0;
 
     function renderLine(line) {
         return line.split('').map(ch => {
             if (ch === '*') {
-                const color = starPalette[paletteIdx % starPalette.length];
-                paletteIdx++;
-                return `<span style="color:${color}">${ch}</span>`;
+                return `<span style="color:#ffffff">${ch}</span>`;
             } else if (ch === '.') {
-                return `<span style="color:#aaa">${ch}</span>`;
+                return `<span style="color:#333">${ch}</span>`;
             }
-            return ch === ' ' ? ' ' : ch;
+            return ch === ' ' ? '&nbsp;' : ch;
         }).join('');
     }
 
@@ -172,9 +170,8 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-// ── buildCard ────────────────────────────────────────────────
-// showTags: false en Catálogo (tiene filtros), true en Archivo Vivo
-function buildCard(item, animDelay, showTags) {
+// ── buildCard — Catálogo Golosinassss (card completa) ────────
+function buildCard(item, animDelay) {
     ensureThumbnail(item);
 
     const previewHtml = item.preview_url
@@ -183,24 +180,9 @@ function buildCard(item, animDelay, showTags) {
 
     const color = palette[Math.floor(Math.random() * palette.length)];
 
-    // Separar descripción de crédito por guión largo o doble guión
     const parts    = (item.descripcion || '').split(/\s*[-–—]\s*/);
     const mainDesc = parts[0] || '';
     const credit   = parts.slice(1).join(' — ');
-
-    // Tags solo en Archivo Vivo
-    let tagsHtml = '';
-    if (showTags) {
-        const itemTags = Array.isArray(item.tags) ? item.tags : [];
-        if (itemTags.length) {
-            const spans = itemTags.map(tag => {
-                const norm = tag.trim().toLowerCase();
-                const c    = tagColors[norm] || '#777';
-                return `<span class="card-tag" style="color:${c};border-color:${c}33;background:${c}09">${norm}</span>`;
-            }).join('');
-            tagsHtml = `<div class="card-tags">${spans}</div>`;
-        }
-    }
 
     const wrapperEl = document.createElement('div');
     wrapperEl.className = 'card-wrapper';
@@ -230,8 +212,37 @@ function buildCard(item, animDelay, showTags) {
                 <p class="card-description">${mainDesc}</p>
                 ${credit ? `<p class="card-credit">${credit}</p>` : ''}
             </div>
-        </div>
-        ${tagsHtml}`;
+        </div>`;
+
+    wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
+    wrapperEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(item.url_video, wrapperEl); }
+    });
+
+    return wrapperEl;
+}
+
+// ── buildCompactCard — Archivo Vivo (solo GIF + título) ───────
+function buildCompactCard(item, animDelay) {
+    ensureThumbnail(item);
+
+    const thumbSrc = item.preview_url || '';
+    const thumbHtml = thumbSrc
+        ? `<img src="${thumbSrc}" alt="${item.titulo}" loading="lazy">`
+        : `<div class="compact-thumb-placeholder"></div>`;
+
+    const wrapperEl = document.createElement('div');
+    wrapperEl.className = 'card-compact-wrapper';
+    wrapperEl.setAttribute('aria-label', `Reproducir: ${item.titulo}`);
+    wrapperEl.setAttribute('tabindex', '0');
+    if (animDelay > 0) wrapperEl.style.animationDelay = `${animDelay * 0.05}s`;
+    else { wrapperEl.style.opacity = '1'; }
+
+    wrapperEl.innerHTML = `
+        <div class="card-compact">
+            <div class="card-compact-thumb">${thumbHtml}</div>
+            <p class="card-compact-title">${item.titulo}</p>
+        </div>`;
 
     wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
     wrapperEl.addEventListener('keydown', (e) => {
@@ -310,7 +321,7 @@ function renderCatalogo() {
         );
     }
     items.forEach((item, i) => {
-        const el = buildCard(item, i, false);  // sin tags
+        const el = buildCard(item, i);
         grid.appendChild(el);
         catalogoCards.push(el);
     });
@@ -342,16 +353,14 @@ function renderPortafolio() {
 
     // Original
     items.forEach((item, i) => {
-        const el = buildCard(item, i, true);  // con tags
+        const el = buildCompactCard(item, i);
         grid.appendChild(el);
         portafolioCards.push(el);
     });
     // Clon para loop sin corte
     items.forEach((item) => {
-        const el = buildCard(item, 0, true);
+        const el = buildCompactCard(item, 0);
         el.setAttribute('aria-hidden', 'true');
-        el.style.animationDelay = '0s';
-        el.style.opacity = '1';
         grid.appendChild(el);
     });
 

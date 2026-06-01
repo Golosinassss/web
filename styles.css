@@ -315,6 +315,84 @@ body, html {
     border-image-slice: 1;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   COMPACT CARDS — Archivo Vivo (solo gif + título siempre visible)
+   ══════════════════════════════════════════════════════════════ */
+
+.card-compact-wrapper {
+    flex: 0 0 170px;
+    width: 170px;
+    cursor: pointer;
+    opacity: 0;
+    animation: cardFadeIn 0.4s ease forwards;
+    position: relative;
+    z-index: 1;
+}
+
+.card-compact {
+    width: 100%;
+    background: #0d0d0d;
+    border: 1px solid #222;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-compact-wrapper:hover .card-compact,
+.card-compact-wrapper.is-active .card-compact {
+    border-color: #00e5ff;
+}
+
+/* Thumbnail rectangular */
+.card-compact-thumb {
+    width: 100%;
+    height: 96px;
+    background: #000;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-compact-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    transition: opacity 0.25s ease, transform 0.3s ease;
+    display: block;
+}
+
+.card-compact-wrapper:hover .card-compact-thumb img,
+.card-compact-wrapper.is-active .card-compact-thumb img {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+.compact-thumb-placeholder {
+    width: 100%; height: 100%;
+    background: #111;
+}
+
+/* Título siempre completo, sin truncar */
+.card-compact-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: #d0d0d0;
+    line-height: 1.3;
+    margin: 0;
+    padding: 7px 8px 8px;
+    white-space: normal;
+    overflow: visible;
+    display: block;
+    transition: color 0.25s ease;
+}
+
+.card-compact-wrapper:hover .card-compact-title,
+.card-compact-wrapper.is-active .card-compact-title {
+    color: #fff;
+}
+
 /* ── Footer ────────────────────────────────────────────────── */
 footer {
     text-align: left; font-size: 0.65rem; color: #666;
