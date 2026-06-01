@@ -1,6 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
    GOLOSINASSSS — Archivo Vivo
-   Estilo principal del portal web
    ══════════════════════════════════════════════════════════════ */
 
 /* ── Reset & Base ─────────────────────────────────────────── */
@@ -79,21 +78,25 @@ body, html {
 .ticker-logo-v {
     font-size: 0.19rem; font-family: 'JetBrains Mono', monospace;
     white-space: pre; line-height: 1.25; flex-shrink: 0;
-    padding: 0 3px 0 2px; text-align: left; color: #ffffff;
+    padding: 0 3px 0 2px; text-align: left;
 }
+.ticker-logo-v span { display: block; }
 
 /* ── Marquesina Animations ────────────────────────────────── */
 .marquee, .marquee-rev { display: flex; width: max-content; }
 .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
 .marquee     { animation: marquee 120s linear infinite; }
 .marquee-rev { animation: marquee-rev 120s linear infinite; }
-.marquee-v   { animation: marquee-v 120s linear infinite; animation-direction: reverse; }
-.marquee-v-rev { animation: marquee-v-rev 120s linear infinite; }
+/* Borde izquierdo sube, borde derecho baja — clases independientes */
+.marquee-v        { animation: marquee-v-down 120s linear infinite; }
+.marquee-v-up     { animation: marquee-v-up 120s linear infinite; }
+.marquee-v-rev    { animation: marquee-v-rev 120s linear infinite; }
 
-@keyframes marquee     { from { transform: translateX(0); }   to { transform: translateX(-50%); } }
-@keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-@keyframes marquee-v   { from { transform: translateY(0); }   to { transform: translateY(-50%); } }
-@keyframes marquee-v-rev { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+@keyframes marquee        { from { transform: translateX(0); }      to { transform: translateX(-50%); } }
+@keyframes marquee-rev    { from { transform: translateX(-50%); }   to { transform: translateX(0); } }
+@keyframes marquee-v-down { from { transform: translateY(0); }      to { transform: translateY(-50%); } }
+@keyframes marquee-v-up   { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
+@keyframes marquee-v-rev  { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 
 /* ── Section Headers ──────────────────────────────────────── */
 .section-header {
@@ -126,23 +129,48 @@ body, html {
     gap: 4px; align-items: baseline;
 }
 .tags-tabs-container .tab-btn {
-    font-size: 0.6rem;
-    padding: 3px 8px;
+    font-size: 0.6rem; padding: 3px 8px;
     border: 1px solid transparent;
     transition: color 0.2s, border-color 0.2s;
 }
-.tags-tabs-container .tab-btn.active {
-    border-color: #bae1ff33;
-}
+.tags-tabs-container .tab-btn.active { border-color: #bae1ff33; }
 
-/* ── Grids ─────────────────────────────────────────────────── */
-#grid-catalogo, #grid-portafolio {
+/* ── Grid Catálogo (scroll manual) ───────────────────────── */
+#grid-catalogo {
     display: flex; overflow-x: auto; overflow-y: hidden;
-    gap: 15px; margin-bottom: 15px;
+    gap: 8px; margin-bottom: 15px;
     scrollbar-width: none; padding: 10px 0;
 }
-#grid-catalogo::-webkit-scrollbar,
-#grid-portafolio::-webkit-scrollbar { display: none; }
+#grid-catalogo::-webkit-scrollbar { display: none; }
+
+/* ── Grid Portafolio (autoscroll infinito) ────────────────── */
+.portafolio-scroll-outer {
+    overflow: hidden; position: relative;
+    padding: 10px 0 15px;
+}
+.portafolio-scroll-outer::after {
+    content: ''; position: absolute;
+    top: 0; right: 0; width: 80px; height: 100%;
+    background: linear-gradient(to left, #080808 0%, transparent 100%);
+    pointer-events: none; z-index: 10;
+}
+.portafolio-scroll-outer::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 80px; height: 100%;
+    background: linear-gradient(to right, #080808 0%, transparent 100%);
+    pointer-events: none; z-index: 10;
+}
+#grid-portafolio {
+    display: flex; gap: 8px;
+    width: max-content;
+    animation: scroll-left 40s linear infinite;
+}
+#grid-portafolio:hover { animation-play-state: paused; }
+
+@keyframes scroll-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
 
 .grid-wrap { position: relative; }
 .grid-wrap::after {
@@ -152,55 +180,136 @@ body, html {
     pointer-events: none; z-index: 10;
 }
 
-/* ── Cards ─────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   CARDS — modo compacto + expansión en hover/activa
+   ══════════════════════════════════════════════════════════════ */
+
+/* Wrapper: ancho fijo siempre, altura se adapta */
 .card-wrapper {
-    flex: 0 0 240px; display: flex; flex-direction: column;
-    justify-content: flex-start; border-radius: 0; cursor: pointer;
+    flex: 0 0 140px;
+    width: 140px;
+    display: flex; flex-direction: column;
+    cursor: pointer;
     opacity: 0;
     animation: cardFadeIn 0.4s ease forwards;
+    position: relative;
+    z-index: 1;
+    transition: flex 0.35s ease, width 0.35s ease, z-index 0s;
 }
+.card-wrapper:hover,
+.card-wrapper.is-active {
+    flex: 0 0 240px;
+    width: 240px;
+    z-index: 20;
+}
+
 @keyframes cardFadeIn {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(6px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Card base ─────────────────────────────────────────────── */
 .card {
-    width: 100%; border: 1px solid #222; padding: 15px;
+    width: 100%; border: 1px solid #222; padding: 10px;
     background: #0d0d0d; display: flex; flex-direction: column;
-    border-radius: 0; transition: all 0.3s ease; box-sizing: border-box;
-}
-.card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
-.card-tag {
-    font-size: 0.55rem; font-family: 'JetBrains Mono', monospace;
-    font-weight: 300; text-transform: uppercase; letter-spacing: 0.5px;
-    padding: 2px 6px; border: 1px solid; line-height: 1.2;
+    border-radius: 0; transition: border-color 0.3s ease;
+    box-sizing: border-box; overflow: hidden;
 }
 
-/* Card hover */
+/* ── Cabecera: categoría encima del gif + título ──────────── */
+.card-header {
+    display: flex; flex-direction: column; gap: 6px;
+    margin-bottom: 0;
+}
+.card-category {
+    font-size: 0.42rem; color: #444; text-transform: uppercase;
+    letter-spacing: 1px; font-weight: 700; line-height: 1.2;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Fila: gif + título lado a lado */
+.card-top-row {
+    display: flex; gap: 8px; align-items: flex-start;
+}
+.card-preview {
+    width: 56px; height: 56px; flex-shrink: 0;
+    background: #000; border: 1px solid #222; overflow: hidden;
+}
+.card-preview img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.8; transition: opacity 0.3s;
+}
+.card-wrapper:hover .card-preview img,
+.card-wrapper.is-active .card-preview img { opacity: 1; }
+
+.card-title-block {
+    display: flex; flex-direction: column; justify-content: space-between;
+    flex: 1; min-width: 0;
+}
+.card h3 {
+    font-size: 0.7rem; color: #fff; margin: 0;
+    line-height: 1.2; font-weight: 700;
+    overflow: hidden;
+    /* 3 líneas máx en compacto */
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+}
+.card-wrapper:hover .card h3,
+.card-wrapper.is-active .card h3 {
+    -webkit-line-clamp: unset; display: block;
+}
+
+/* ── Play btn debajo del gif ──────────────────────────────── */
+.play-btn {
+    background: #151515; color: #00e5ff; border: 1px solid #222;
+    width: 56px; height: 20px; display: flex;
+    align-items: center; justify-content: center;
+    transition: all 0.2s ease; border-radius: 0; flex-shrink: 0;
+    margin-top: 4px;
+}
+.play-btn svg { width: 9px; height: 9px; }
+
+/* ── Detalle expandido — oculto en compacto ───────────────── */
+.card-detail {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    opacity: 0; margin-top: 0;
+}
+.card-wrapper:hover .card-detail,
+.card-wrapper.is-active .card-detail {
+    max-height: 200px; opacity: 1; margin-top: 10px;
+}
+
+.card-description {
+    font-size: 0.62rem; color: #888; line-height: 1.4; font-weight: 400;
+    margin: 0 0 6px;
+}
+.card-credit {
+    font-size: 0.52rem; color: #555; line-height: 1.3;
+    font-style: italic; margin: 0;
+}
+
+/* Tags — solo en Archivo Vivo (no catálogo) */
+.card-tags {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    opacity: 0; margin-top: 0;
+}
+.card-wrapper:hover .card-tags,
+.card-wrapper.is-active .card-tags {
+    max-height: 60px; opacity: 1; margin-top: 6px;
+}
+.card-tag {
+    font-size: 0.52rem; font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 2px 5px; border: 1px solid; line-height: 1.2;
+}
+
+/* ── Hover y activa ───────────────────────────────────────── */
 .card-wrapper:hover .card { border-color: #00e5ff; }
 .card-wrapper:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
 .card-wrapper:hover .play-btn svg { stroke: #000 !important; }
 
-.card h3 { font-size: 0.75rem; color: #fff; margin: 0 0 5px; line-height: 1.2; font-weight: 700; }
-.card p { font-size: 0.65rem; color: #888; margin-top: 8px; line-height: 1.4; font-weight: 400; }
-
-.card-body { display: flex; gap: 12px; align-items: flex-start; }
-.card-left { display: flex; flex-direction: column; gap: 8px; width: 56px; flex-shrink: 0; }
-
-.card-meta { font-size: 0.5rem; color: #444; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
-.card-preview { width: 56px; height: 56px; background: #000; border: 1px solid #222; overflow: hidden; }
-.card-preview img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s; }
-.card-wrapper:hover .card-preview img { opacity: 1; }
-
-.play-btn {
-    background: #151515; color: #00e5ff; border: 1px solid #222;
-    width: 56px; height: 24px; display: flex;
-    align-items: center; justify-content: center;
-    transition: all 0.2s ease; border-radius: 0;
-}
-.play-btn svg { width: 10px; height: 10px; }
-
-/* Card activa */
 .card.active-card {
     border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1;
     border-image-slice: 1;
@@ -225,7 +334,6 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════════════ */
-
 @media (max-width: 1024px) {
     #main-content { padding: 30px 35px; }
     .top, .bottom { height: 24px; }
@@ -242,10 +350,12 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .right { top: 18px; height: calc(100% - 36px); }
     .ticker { font-size: 0.65rem; }
     #video-hero { padding-bottom: 56.25%; }
-    .card-wrapper { flex: 0 0 210px; }
+    .card-wrapper { flex: 0 0 120px; width: 120px; }
+    .card-wrapper:hover, .card-wrapper.is-active { flex: 0 0 200px; width: 200px; }
     .section-header { flex-wrap: wrap; gap: 8px; }
     .section-label { width: 100%; display: block; padding-bottom: 2px; }
     .tags-tabs-container { gap: 3px; }
+    #grid-portafolio { animation-duration: 28s; }
 }
 
 @media (max-width: 480px) {
@@ -256,11 +366,10 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .right { top: 12px; height: calc(100% - 24px); }
     .ticker { font-size: 0.5rem; }
     #video-hero { padding-bottom: 56.25%; }
-    .card-wrapper { flex: 0 0 85vw; }
-    .card h3 { font-size: 0.7rem; }
-    .card p { font-size: 0.6rem; }
+    .card-wrapper { flex: 0 0 110px; width: 110px; }
+    .card-wrapper:hover, .card-wrapper.is-active { flex: 0 0 85vw; width: 85vw; }
     footer { font-size: 0.55rem; }
     .social-links { gap: 8px; }
-    .grid-wrap::after { width: 40px; }
     .tags-tabs-container .tab-btn { font-size: 0.5rem; padding: 2px 5px; }
+    #grid-portafolio { animation-duration: 20s; }
 }

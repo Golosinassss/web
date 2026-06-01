@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="border-container right">
-        <div class="marquee-v" id="right-marquee">
+        <div class="marquee-v-up" id="right-marquee">
             <!-- Patrón ASCII inyectado por JS -->
         </div>
     </div>
@@ -44,16 +44,16 @@
         <!-- VIDEO HERO -->
         <div id="video-hero"><div id="yt-player-container"></div></div>
 
-        <!-- SECCIÓN 1: CATÁLOGO (Tabs por Tags) -->
+        <!-- SECCIÓN 1: GOLOSINASSSS (Tabs por Tags) -->
         <div class="section-header" style="margin-top:10px">
-            <span class="section-label">Catálogo</span>
+            <span class="section-label">Golosinassss</span>
             <div class="tags-tabs-container" id="catalogo-tabs">
                 <!-- Tabs generados dinámicamente por app.js -->
             </div>
         </div>
         <div class="grid-wrap"><div id="grid-catalogo"></div></div>
 
-        <!-- SECCIÓN 2: ARCHIVO VIVO (Filtros de orden) -->
+        <!-- SECCIÓN 2: ARCHIVO VIVO (scroll infinito automático) -->
         <div class="section-header">
             <span class="section-label">Archivo Vivo</span>
             <button class="filter-btn active" id="f-recientes" onclick="setPortafolioFilter('recientes')">Recientes</button>
@@ -62,7 +62,7 @@
             <span style="color:#333">/</span>
             <button class="filter-btn" id="f-random" onclick="setPortafolioFilter('random')">Random</button>
         </div>
-        <div class="grid-wrap"><div id="grid-portafolio"></div></div>
+        <div class="portafolio-scroll-outer"><div id="grid-portafolio"></div></div>
 
         <!-- FOOTER -->
         <footer>
