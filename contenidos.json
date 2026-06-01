@@ -23,9 +23,21 @@
     "destacado": false,
     "tags": ["SONIDO INFINITO", "conciertos"]
   },
+   {
+    "id": "11",
+    "titulo": "Curso Candidatas Electorales Indigenas / Popayán, Cauca",
+    "categoria": "Contenido Web",
+    "descripcion": "CIM/OEA y Misión de Apoyo al Proceso de Paz",
+    "url_video": "https://youtu.be/dS2pXXdhr_Y?si=S79CFOqlc0F3g2nX",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2025",
+    "destacado": true,
+    "tags": ["institucional", "social"]
+  },
   {
     "id": "10",
-    "titulo": "MAPP/OEA - Mínimos Humanitarios / Arauca",
+    "titulo": "MAPP/OEA - Mínimos Humanitarios Arauca",
     "categoria": "Contenido Web",
     "descripcion": "Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
     "url_video": "https://youtu.be/jnzH0OW_tVw?si=SXQYAinurMvu5J2i",
@@ -33,7 +45,7 @@
     "preview_url": "",
     "date": "2025",
     "destacado": true,
-    "tags": ["cine", "periodismo", "música"]
+    "tags": ["institucional", "social"]
   },
   {
     "id": "1",
