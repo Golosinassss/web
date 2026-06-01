@@ -123,10 +123,18 @@ body, html {
 .filter-btn.active { color: #ffb3ba; }
 .tab-btn.active { color: #bae1ff; }
 
-/* ── Contenedor de tags-tabs (catálogo dinámico) ──────────── */
+/* ── Contenedor de tags-tabs (catálogo dinámico con scroll horizontal) ──── */
 .tags-tabs-container {
-    display: flex; flex-wrap: wrap;
-    gap: 4px; align-items: baseline;
+    display: flex; flex-wrap: nowrap;
+    overflow-x: auto; scrollbar-width: none;
+    gap: 4px; align-items: center;
+    flex: 1; min-width: 0;
+    width: 100%;
+}
+.tags-tabs-container::-webkit-scrollbar { display: none; }
+.tags-tabs-container .tab-btn,
+.tags-tabs-container span {
+    flex-shrink: 0;
 }
 .tags-tabs-container .tab-btn {
     font-size: 0.6rem; padding: 3px 8px;
@@ -145,8 +153,10 @@ body, html {
 
 /* ── Grid Portafolio (autoscroll infinito) ────────────────── */
 .portafolio-scroll-outer {
-    overflow: hidden; position: relative;
-    padding: 10px 0 35px; /* Dejar espacio en la sección abajo */
+    overflow: visible; position: relative;
+    padding: 10px 0;
+    height: 64px; /* altura exacta del compacto */
+    margin-bottom: 25px; /* espacio justo y fijo antes de la sección de abajo */
 }
 .portafolio-scroll-outer::after {
     content: ''; position: absolute;
@@ -163,6 +173,7 @@ body, html {
 #grid-portafolio {
     display: flex; gap: 8px;
     width: max-content;
+    height: 64px;
     animation: scroll-left 120s linear infinite; /* 3 veces más lento (40s -> 120s) */
 }
 #grid-portafolio:hover { animation-play-state: paused; }
@@ -287,18 +298,15 @@ body, html {
    COMPACT CARDS — Archivo Vivo (con despliegue a full card en hover)
    ══════════════════════════════════════════════════════════════ */
 
-/* Wrapper: mismo tamaño que card-wrapper para no mover secciones */
+/* Wrapper: mismo tamaño que card-wrapper en ancho, pero altura compacta en flujo */
 .card-compact-wrapper {
     flex: 0 0 240px;
     width: 240px;
-    height: 220px; /* Misma altura, evita mover la sección de contacto */
+    height: 64px; /* Altura compacta en flujo, evita mover la sección de contacto */
     cursor: pointer;
     opacity: 0;
     animation: cardFadeIn 0.4s ease forwards;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
 }
 
 /* Compacta normal */
@@ -439,12 +447,9 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .right { top: 18px; height: calc(100% - 36px); }
     .ticker { font-size: 0.65rem; }
     #video-hero { padding-bottom: 56.25%; }
-    .card-wrapper, .card-compact-wrapper { flex: 0 0 120px; width: 120px; }
-    .card-wrapper:hover, .card-wrapper.is-active,
-    .card-compact-wrapper:hover, .card-compact-wrapper.is-active { flex: 0 0 200px; width: 200px; }
     .section-header { flex-wrap: wrap; gap: 8px; }
     .section-label { width: 100%; display: block; padding-bottom: 2px; }
-    .tags-tabs-container { gap: 3px; }
+    .tags-tabs-container { gap: 3px; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
     #grid-portafolio { animation-duration: 84s; }
 }
 
@@ -456,11 +461,9 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .right { top: 12px; height: calc(100% - 24px); }
     .ticker { font-size: 0.5rem; }
     #video-hero { padding-bottom: 56.25%; }
-    .card-wrapper, .card-compact-wrapper { flex: 0 0 110px; width: 110px; }
-    .card-wrapper:hover, .card-wrapper.is-active,
-    .card-compact-wrapper:hover, .card-compact-wrapper.is-active { flex: 0 0 85vw; width: 85vw; }
     footer { font-size: 0.55rem; }
     .social-links { gap: 8px; }
     .tags-tabs-container .tab-btn { font-size: 0.5rem; padding: 2px 5px; }
+    .tags-tabs-container { gap: 3px; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
     #grid-portafolio { animation-duration: 60s; }
 }

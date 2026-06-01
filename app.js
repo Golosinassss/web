@@ -194,7 +194,7 @@ function buildCard(item, animDelay) {
         ? `<div class="card-meta">${item.categoria ? item.categoria.toUpperCase() : ''}${item.categoria && item.date ? ' | ' : ''}${item.date || ''}</div>`
         : '';
 
-    // Tags siempre visibles, fuera de la .card
+    // Tags siempre visibles, dentro de la .card
     const itemTags = Array.isArray(item.tags) ? item.tags : [];
     let tagsHtml = '';
     if (itemTags.length) {
@@ -232,8 +232,8 @@ function buildCard(item, animDelay) {
                     ${credit ? `<p class="card-credit">${credit}</p>` : ''}
                 </div>
             </div>
-        </div>
-        ${tagsHtml}`;
+            ${tagsHtml}
+        </div>`;
 
     wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
     wrapperEl.addEventListener('keydown', (e) => {
@@ -319,11 +319,9 @@ function buildCompactCard(item, animDelay) {
                         ${credit ? `<p class="card-credit">${credit}</p>` : ''}
                     </div>
                 </div>
+                ${tagsHtml}
             </div>
         </div>
-
-        <!-- TAGS (always at the bottom of the wrapper) -->
-        ${tagsHtml}
     `;
 
     wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
