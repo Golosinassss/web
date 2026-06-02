@@ -77,7 +77,7 @@ const tagColors = {
     'documental':         '#bae1ff',
     'a mano':             '#ffb3ba',
     'animación 2d':       '#ffb3ba',
-    'animación':          '#ffb3ba',
+    'dibujo - 2d':        '#ffb3ba',
     'motion graphics':    '#bae1ff',
     '3d':                 '#baffc9',
     'coding animation':   '#ffffba',
@@ -88,11 +88,26 @@ const tagColors = {
 
 const TAG_ORDER = [
     'social', 'periodismo', 'conciertos', 'cine',
-    'música', 'animación', 'sesiones musicales',
+    'música', 'dibujo - 2d', 'sesiones musicales',
     'videoclips', 'institucional', 'sonido infinito',
 ];
 
 const MAIN_CATEGORIES = ['todas', 'documental', 'música', 'animación'];
+
+// Colores únicos para destacar categorías principales activas
+const CATEGORY_COLORS = {
+    'todas': '#ffb3ba',
+    'documental': '#bae1ff',
+    'música': '#baffc9',
+    'animación': '#ffffba'
+};
+
+// Mapeos explícitos de subcategorías requeridos
+const CATEGORY_TAG_MAP = {
+    'documental': ['social', 'periodismo', 'conciertos', 'cine', 'institucional', 'sonido infinito'],
+    'música': ['conciertos', 'cine', 'sesiones musicales', 'videoclips', 'sonido infinito'],
+    'animación': ['dibujo - 2d']
+};
 
 // ── Helpers YouTube ──────────────────────────────────────────
 function getYouTubeId(url) {
@@ -120,7 +135,6 @@ function ensureThumbnail(item) {
 // ── Tarjeta activa ───────────────────────────────────────────
 function getAllCards() { return [...catalogoCards, ...portafolioCards]; }
 
-// Aplica el borde gradiente a todas las tarjetas que correspondan al video activo
 function setActiveCardByUrl(url) {
     const targetId = getYouTubeId(url);
     if (!targetId) return;
@@ -141,7 +155,6 @@ function playVideo(url, element) {
     const videoId = getYouTubeId(url);
     if (!videoId) return;
 
-    // Desbloqueo forzado de audio para políticas móviles ante interacción
     if (ytPlayer) {
         if (typeof ytPlayer.unMute === 'function') {
             ytPlayer.unMute();
@@ -198,7 +211,7 @@ function onYouTubeIframeAPIReady() {
             mute: 1, 
             rel: 0, 
             modestbranding: 1,
-            playsinline: 1 /* Impide pantalla completa nativa forzada en móviles */
+            playsinline: 1
         },
         events: {
             onReady: function () {
@@ -219,23 +232,17 @@ function itemMatchesMainFilter(item, filter) {
     if (filter === 'documental') {
         return category.includes('documental') || 
                category.includes('periodismo') || 
-               tags.includes('cine') || 
-               tags.includes('periodismo') || 
-               tags.includes('documental');
+               tags.some(t => CATEGORY_TAG_MAP['documental'].includes(t));
     }
     if (filter === 'música' || filter === 'musica') {
         return category.includes('conciertos') || 
                category.includes('sesiones') || 
-               tags.includes('música') || 
-               tags.includes('musica') || 
-               tags.includes('conciertos') || 
-               tags.includes('sonido infinito') || 
-               tags.includes('videoclips');
+               tags.some(t => CATEGORY_TAG_MAP['música'].includes(t));
     }
     if (filter === 'animación' || filter === 'animacion') {
         return category.includes('animación') || 
                category.includes('animacion') || 
-               tags.some(t => t.includes('animac') || t.includes('graphics') || t.includes('3d'));
+               tags.includes('dibujo - 2d');
     }
     return false;
 }
@@ -393,8 +400,15 @@ function buildCompactCard(item, animDelay) {
 function extractUniqueTags(data) {
     const tagSet = new Set();
     data.forEach(item => {
-        if (Array.isArray(item.tags))
-            item.tags.forEach(t => tagSet.add(t.trim().toLowerCase()));
+        if (Array.isArray(item.tags)) {
+            item.tags.forEach(t => {
+                const norm = t.trim().toLowerCase();
+                // Omitir subcategorías que correspondan a nombres de filtros principales
+                if (norm !== 'música' && norm !== 'musica' && norm !== 'animación' && norm !== 'animacion' && norm !== 'todas') {
+                    tagSet.add(norm);
+                }
+            });
+        }
     });
     return [...tagSet].sort((a, b) => {
         const ia = TAG_ORDER.indexOf(a), ib = TAG_ORDER.indexOf(b);
@@ -445,7 +459,7 @@ function buildInlineSubcategories(container, tags, category) {
     container.appendChild(rightBracket);
 }
 
-// ── Constructor de Categorías Principales ────────────────────
+// ── Constructor de Categorías Principales (Global) ───────────
 function buildCatalogoMainFilters() {
     const container = document.getElementById('catalogo-main-filters');
     if (!container) return;
@@ -459,6 +473,12 @@ function buildCatalogoMainFilters() {
         const btn = document.createElement('button');
         btn.className = `filter-btn ${currentMainFilter === cat ? 'active' : ''}`;
         btn.textContent = cat.toUpperCase();
+        
+        // Asignación de color estático inactivo y dinámico activo
+        const isCurrent = currentMainFilter === cat;
+        btn.style.color = isCurrent ? CATEGORY_COLORS[cat] : '#444';
+        btn.style.borderColor = isCurrent ? CATEGORY_COLORS[cat] + '33' : 'transparent';
+
         btn.addEventListener('click', () => {
             selectMainCategory(cat);
         });
@@ -490,9 +510,11 @@ function selectMainCategory(cat) {
     document.querySelectorAll('#catalogo-main-filters .filter-btn').forEach(btn => {
         const isCurrent = btn.textContent.trim().toLowerCase() === cat;
         btn.classList.toggle('active', isCurrent);
+        btn.style.color = isCurrent ? CATEGORY_COLORS[btn.textContent.trim().toLowerCase()] : '#444';
+        btn.style.borderColor = isCurrent ? CATEGORY_COLORS[btn.textContent.trim().toLowerCase()] + '33' : 'transparent';
     });
 
-    // Control dinámico de contracción y expansión
+    // Control dinámico de contracción y expansión en todas las plataformas
     MAIN_CATEGORIES.forEach(c => {
         const group = document.getElementById(`group-${c}`);
         if (!group) return;
@@ -501,9 +523,9 @@ function selectMainCategory(cat) {
             group.classList.add('expanded');
             const subContainer = document.getElementById(`sub-inline-${c}`);
             if (subContainer) {
-                const filteredItems = allData.filter(item => itemMatchesMainFilter(item, c));
-                const tags = extractUniqueTags(filteredItems);
-                buildInlineSubcategories(subContainer, tags, c);
+                // Filtrar tags para mostrar únicamente las subcategorías vinculadas y autorizadas
+                const mappedTags = CATEGORY_TAG_MAP[c] || [];
+                buildInlineSubcategories(subContainer, mappedTags, c);
             }
         } else {
             group.classList.remove('expanded');
@@ -518,12 +540,11 @@ function selectMainCategory(cat) {
 function setCatalogoTag(tag, category) {
     currentCatalogoTag = tag;
     
-    // Actualizar estados activos dentro del subcontenedor expandido
+    // Actualizar estados activos dentro de las subcategorías autorizadas
     const subContainer = document.getElementById(`sub-inline-${category}`);
     if (subContainer) {
-        const filteredItems = allData.filter(item => itemMatchesMainFilter(item, category));
-        const tags = extractUniqueTags(filteredItems);
-        buildInlineSubcategories(subContainer, tags, category);
+        const mappedTags = CATEGORY_TAG_MAP[category] || [];
+        buildInlineSubcategories(subContainer, mappedTags, category);
     }
 
     renderCatalogo();
@@ -550,120 +571,4 @@ function renderCatalogo() {
 }
 
 // ══════════════════════════════════════════════════════════════
-// ARCHIVO VIVO — scroll infinito automático
-// ══════════════════════════════════════════════════════════════
-function setPortafolioFilter(filter) {
-    currentPortafolioFilter = filter;
-    ['recientes', 'destacados', 'random'].forEach(f =>
-        document.getElementById('f-' + f).classList.toggle('active', f === filter)
-    );
-    renderPortafolio();
-}
-
-function renderPortafolio() {
-    const grid = document.getElementById('grid-portafolio');
-    portafolioCards = []; grid.innerHTML = '';
-    grid.style.animation = 'none';
-
-    let items = [...allData];
-    if (currentPortafolioFilter === 'random') {
-        items.sort(() => Math.random() - 0.5);
-    } else if (currentPortafolioFilter === 'destacados') {
-        const dest = items.filter(i => i.destacado);
-        if (dest.length > 0) items = dest;
-        items.sort((a, b) => (b.vistas || 0) - (a.vistas || 0));
-    }
-
-    let displayItems = [...items];
-    while (displayItems.length < 12) {
-        displayItems = displayItems.concat(items);
-    }
-
-    displayItems.forEach((item, i) => {
-        const el = buildCompactCard(item, i);
-        grid.appendChild(el);
-        portafolioCards.push(el);
-    });
-    
-    displayItems.forEach((item) => {
-        const el = buildCompactCard(item, 0);
-        el.setAttribute('aria-hidden', 'true');
-        grid.appendChild(el);
-    });
-
-    requestAnimationFrame(() => { grid.style.animation = ''; });
-}
-
-window.setPortafolioFilter = setPortafolioFilter;
-
-// ══════════════════════════════════════════════════════════════
-// CARGA DE DATOS
-// ══════════════════════════════════════════════════════════════
-fetch('contenidos.json')
-    .then(r  => { if (!r.ok) throw new Error('contenidos.json'); return r.json(); })
-    .then(data => {
-        const viewsMap = {
-            "1": 45000,
-            "2": 15000,
-            "5": 38000,
-            "6": 8200,
-            "7": 24000,
-            "8": 11500,
-            "9": 19000,
-            "10": 9800,
-            "11": 12500,
-            "12": 31000,
-            "13": 29000
-        };
-        allData = data.map(item => {
-            item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
-            return item;
-        });
-        initApp();
-    })
-    .catch(err => { console.warn('No se pudo cargar datos:', err.message); allData = []; initApp(); });
-
-function initApp() {
-    allData.forEach(item => ensureThumbnail(item));
-    buildCatalogoMainFilters();
-    renderCatalogo();
-    renderPortafolio();
-    currentVideoIndex = -1;
-    setupDragScroll();
-}
-
-function setupDragScroll() {
-    const container = document.querySelector('.portafolio-scroll-outer');
-    if (!container) return;
-
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    container.addEventListener('mousedown', (e) => {
-        if (e.button !== 0) return;
-        isDown = true;
-        container.classList.add('is-dragging');
-        startX = e.pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
-    });
-
-    container.addEventListener('mouseleave', () => {
-        isDown = false;
-        container.classList.remove('is-dragging');
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-    });
-
-    container.addEventListener('mouseup', () => {
-        isDown = false;
-        container.classList.remove('is-dragging');
-    });
-
-    container.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        container.scrollLeft = scrollLeft - walk;
-    });
-}
+// ARCHIVO VIVO — scroll infin
