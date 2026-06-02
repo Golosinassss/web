@@ -94,6 +94,21 @@ const TAG_ORDER = [
 
 const MAIN_CATEGORIES = ['todas', 'documental', 'música', 'animación'];
 
+// Color de cada categoría principal
+const mainCatColors = {
+    'todas':      '#e0e0e0',
+    'documental': '#ffb3ba',
+    'música':     '#bae1ff',
+    'animación':  '#baffc9',
+};
+
+// Subcategorías por categoría principal (en orden)
+const SUBCAT_MAP = {
+    'documental': ['social', 'periodismo', 'conciertos', 'cine', 'institucional', 'sonido infinito'],
+    'música':     ['conciertos', 'cine', 'sesiones musicales', 'videoclips', 'sonido infinito'],
+    'animación':  ['dibujo - 2d'],
+};
+
 // ── Helpers YouTube ──────────────────────────────────────────
 function getYouTubeId(url) {
     if (!url) return null;
@@ -217,26 +232,34 @@ function itemMatchesMainFilter(item, filter) {
     const tags = Array.isArray(item.tags) ? item.tags.map(t => t.toLowerCase()) : [];
 
     if (filter === 'documental') {
-        return category.includes('documental') || 
-               category.includes('periodismo') || 
-               tags.includes('cine') || 
-               tags.includes('periodismo') || 
-               tags.includes('documental');
+        return category.includes('documental') ||
+               category.includes('periodismo') ||
+               tags.includes('cine') ||
+               tags.includes('periodismo') ||
+               tags.includes('documental') ||
+               tags.includes('social') ||
+               tags.includes('institucional') ||
+               tags.includes('sonido infinito') ||
+               tags.includes('conciertos');
     }
     if (filter === 'música' || filter === 'musica') {
-        return category.includes('conciertos') || 
-               category.includes('sesiones') || 
-               tags.includes('música') || 
-               tags.includes('musica') || 
-               tags.includes('conciertos') || 
-               tags.includes('sonido infinito') || 
-               tags.includes('videoclips');
+        return category.includes('conciertos') ||
+               category.includes('sesiones') ||
+               tags.includes('música') ||
+               tags.includes('musica') ||
+               tags.includes('conciertos') ||
+               tags.includes('sonido infinito') ||
+               tags.includes('videoclips') ||
+               tags.includes('sesiones musicales') ||
+               tags.includes('cine');
     }
     if (filter === 'animación' || filter === 'animacion') {
-        return category.includes('animación') || 
-               category.includes('animacion') || 
-               tags.some(t => t.includes('animac') || t.includes('graphics') || t.includes('3d'));
+        return category.includes('animación') ||
+               category.includes('animacion') ||
+               tags.some(t => t.includes('animac') || t.includes('graphics') || t.includes('3d') || t.includes('dibujo'));
     }
+    return false;
+}
     return false;
 }
 
@@ -457,12 +480,12 @@ function buildCatalogoMainFilters() {
         group.id = `group-${cat}`;
 
         const btn = document.createElement('button');
-        btn.className = `filter-btn ${currentMainFilter === cat ? 'active' : ''}`;
+        btn.className = `filter-btn main-cat-btn${currentMainFilter === cat ? ' active' : ''}`;
         btn.textContent = cat.toUpperCase();
-        btn.addEventListener('click', () => {
-            selectMainCategory(cat);
-        });
-
+        const catColor = mainCatColors[cat] || '#e0e0e0';
+        btn.style.setProperty('--cat-color', catColor);
+        if (currentMainFilter === cat) btn.style.color = catColor;
+        btn.addEventListener('click', () => selectMainCategory(cat));
         group.appendChild(btn);
 
         if (cat !== 'todas') {
@@ -485,29 +508,29 @@ function buildCatalogoMainFilters() {
 
 function selectMainCategory(cat) {
     currentMainFilter = cat;
-    currentCatalogoTag = 'todos'; // Resetear tag subcategoría
+    currentCatalogoTag = 'todos';
 
-    document.querySelectorAll('#catalogo-main-filters .filter-btn').forEach(btn => {
+    document.querySelectorAll('#catalogo-main-filters .main-cat-btn').forEach(btn => {
         const isCurrent = btn.textContent.trim().toLowerCase() === cat;
         btn.classList.toggle('active', isCurrent);
+        const c = mainCatColors[btn.textContent.trim().toLowerCase()] || '#e0e0e0';
+        btn.style.color = isCurrent ? c : '';
     });
 
-    // Control dinámico de contracción y expansión
     MAIN_CATEGORIES.forEach(c => {
         const group = document.getElementById(`group-${c}`);
         if (!group) return;
+        const subContainer = document.getElementById(`sub-inline-${c}`);
 
         if (c === cat && cat !== 'todas') {
             group.classList.add('expanded');
-            const subContainer = document.getElementById(`sub-inline-${c}`);
             if (subContainer) {
-                const filteredItems = allData.filter(item => itemMatchesMainFilter(item, c));
-                const tags = extractUniqueTags(filteredItems);
-                buildInlineSubcategories(subContainer, tags, c);
+                // Usar subcategorías del mapa fijo, no derivadas dinámicamente
+                const subcats = SUBCAT_MAP[c] || [];
+                buildInlineSubcategories(subContainer, subcats, c);
             }
         } else {
             group.classList.remove('expanded');
-            const subContainer = document.getElementById(`sub-inline-${c}`);
             if (subContainer) subContainer.innerHTML = '';
         }
     });
@@ -517,15 +540,11 @@ function selectMainCategory(cat) {
 
 function setCatalogoTag(tag, category) {
     currentCatalogoTag = tag;
-    
-    // Actualizar estados activos dentro del subcontenedor expandido
     const subContainer = document.getElementById(`sub-inline-${category}`);
     if (subContainer) {
-        const filteredItems = allData.filter(item => itemMatchesMainFilter(item, category));
-        const tags = extractUniqueTags(filteredItems);
-        buildInlineSubcategories(subContainer, tags, category);
+        const subcats = SUBCAT_MAP[category] || [];
+        buildInlineSubcategories(subContainer, subcats, category);
     }
-
     renderCatalogo();
 }
 
@@ -636,9 +655,7 @@ function setupDragScroll() {
     const container = document.querySelector('.portafolio-scroll-outer');
     if (!container) return;
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    let isDown = false, startX, scrollLeft;
 
     container.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return;
@@ -647,23 +664,19 @@ function setupDragScroll() {
         startX = e.pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
     });
-
     container.addEventListener('mouseleave', () => {
         isDown = false;
         container.classList.remove('is-dragging');
-        container.scrollTo({ left: 0, behavior: 'smooth' });
+        // Sin reset de scroll — el autoscroll retoma naturalmente
     });
-
     container.addEventListener('mouseup', () => {
         isDown = false;
         container.classList.remove('is-dragging');
     });
-
     container.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        container.scrollLeft = scrollLeft - walk;
+        container.scrollLeft = scrollLeft - (x - startX) * 1.5;
     });
 }

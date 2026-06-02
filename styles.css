@@ -97,57 +97,84 @@ body, html {
 @keyframes marquee-v-up   { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 @keyframes marquee-v-rev  { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 
-/* ── Encabezados de Sección y Estilo de Título ─────────────── */
+/* ── Encabezados de Sección ───────────────────────────────── */
 .section-header {
     display: flex; align-items: center; gap: 14px;
     border-bottom: 1px solid #222;
-    margin: 12px 0 0; padding-bottom: 6px;
+    margin: 6px 0 0; padding-bottom: 5px;
     flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
 }
 .section-header::-webkit-scrollbar { display: none; }
 
+/* Archivo Vivo: pegado al borde inferior de las cápsulas */
+.section-header-archivo {
+    margin-top: 2px;
+}
+
 .section-label {
     font-size: 0.75rem; text-transform: uppercase;
     color: #666; letter-spacing: 1.5px;
-    padding: 4px 0; white-space: nowrap;
-    font-weight: 700;
+    padding: 4px 0; white-space: nowrap; font-weight: 700;
 }
 
-/* Modificador para Título GOLOSINASSSS (Más Grande) */
+/* Título grande con gradiente animado */
 .section-label-large {
-    font-size: 1.1rem; /* Escala visual incrementada */
-    text-transform: uppercase;
-    color: #fff; letter-spacing: 2px;
-    padding: 4px 0; white-space: nowrap;
-    font-weight: 700;
+    font-size: 1.1rem; text-transform: uppercase;
+    letter-spacing: 2px; padding: 4px 0;
+    white-space: nowrap; font-weight: 700;
+    flex-shrink: 0;
 }
 
-/* ── Sistema de Acordeón de Categorías Inline ─────────────── */
+.gradient-animated {
+    background: linear-gradient(90deg,
+        #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff,
+        #baffc9, #ffffba, #ffdfba, #ffb3ba, #ffdfba,
+        #ffffba, #baffc9, #bae1ff, #ffb3ba);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s linear infinite;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* ── Sistema de Categorías Principales ────────────────────── */
 .main-filters {
     display: flex; align-items: center; gap: 8px; flex-shrink: 0;
 }
 
+/* Cada grupo: botón arriba, subcats debajo */
 .category-group {
-    display: flex; align-items: center; gap: 4px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0;
 }
 
+/* El botón principal dentro del grupo */
+.category-group .main-cat-btn {
+    transition: color 0.2s;
+}
+
+/* Subcategorías: desplegadas debajo del botón */
 .subcategories-inline {
-    display: flex; align-items: center; gap: 6px;
-    max-width: 0; overflow: hidden; opacity: 0;
-    transition: max-width 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
-    white-space: nowrap;
+    display: flex; align-items: center; gap: 4px;
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease;
+    flex-wrap: nowrap; white-space: nowrap;
+    padding-left: 2px;
 }
 
-/* Expansión dinámica del acordeón */
 .category-group.expanded .subcategories-inline {
-    max-width: 750px;
+    max-height: 40px;
     opacity: 1;
-    margin-left: 8px;
-    padding: 0 4px;
+    margin-top: 3px;
 }
 
 .filter-separator {
     color: #222; font-size: 0.65rem; user-select: none;
+    align-self: flex-start; padding-top: 3px;
 }
 
 /* ── Botones de Filtro y Tab ──────────────────────────────── */
@@ -164,8 +191,12 @@ body, html {
 .filter-btn.active { color: #ffb3ba; }
 .tab-btn.active { color: #bae1ff; }
 
+/* Botón de categoría principal: hover con su color */
+.main-cat-btn:hover { color: var(--cat-color, #999) !important; }
+.main-cat-btn.active { color: var(--cat-color, #ffb3ba) !important; }
+
 .subcategories-inline .tab-btn {
-    font-size: 0.58rem; color: #555;
+    font-size: 0.56rem; color: #555;
     padding: 1px 4px; border: 1px solid transparent;
 }
 .subcategories-inline .tab-btn.active {
@@ -184,8 +215,8 @@ body, html {
 /* ── Grid Portafolio (Autoscroll) ────────────────────────── */
 .portafolio-scroll-outer {
     overflow-x: auto; overflow-y: hidden; position: relative;
-    padding: 6px 0; height: 190px;
-    margin-bottom: 12px; scrollbar-width: none;
+    padding: 4px 0; height: 190px;
+    margin-bottom: 4px; scrollbar-width: none;
 }
 .portafolio-scroll-outer::-webkit-scrollbar { display: none; }
 
@@ -368,30 +399,43 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 }
 
 @media (max-width: 768px) {
-    #main-content { padding: 18px 20px; }
+    /* Margen lateral: respeta los bordes de 18px */
+    #main-content { padding: 14px 24px; }
     .top, .bottom { height: 18px; }
     .left, .right { width: 18px; }
     .left, .right { top: 18px; height: calc(100% - 36px); }
     .ticker { font-size: 0.65rem; }
     #video-hero { padding-bottom: 56.25%; }
-    .section-header { flex-wrap: wrap; gap: 8px; }
-    .section-label-large { width: 100%; display: block; padding-bottom: 1px; }
-    .main-filters { width: 100%; margin-bottom: 4px; overflow-x: auto; scrollbar-width: none; }
+
+    /* Títulos grandes: bajan de línea solos */
+    .section-header {
+        flex-wrap: wrap; gap: 6px;
+        align-items: flex-start;
+    }
+    .section-label-large { width: 100%; padding-bottom: 2px; font-size: 1rem; }
+
+    /* Filtros principales en línea horizontal scrollable */
+    .main-filters {
+        width: 100%; overflow-x: auto;
+        scrollbar-width: none; flex-wrap: nowrap;
+    }
     .main-filters::-webkit-scrollbar { display: none; }
-    
-    /* Scroll notablemente más lento en tabletas para legibilidad táctil */
+
+    /* Subcategorías debajo del botón en móvil */
+    .category-group { flex-direction: column; align-items: flex-start; }
+
     #grid-portafolio { animation-duration: 210s; }
 }
 
 @media (max-width: 480px) {
-    #main-content { padding: 12px 14px; }
+    /* Margen lateral: respeta los bordes de 12px con holgura */
+    #main-content { padding: 10px 16px; }
     .top, .bottom { height: 12px; }
     .left, .right { width: 12px; }
     .left, .right { top: 12px; height: calc(100% - 24px); }
     .ticker { font-size: 0.5rem; }
+    .section-label-large { font-size: 0.9rem; }
     footer { font-size: 0.55rem; }
     .social-links { gap: 8px; }
-    
-    /* Scroll muy lento en pantallas pequeñas para permitir lectura del usuario */
     #grid-portafolio { animation-duration: 270s; }
 }
