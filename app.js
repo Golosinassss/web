@@ -1,5 +1,5 @@
 // ══════════════════════════════════════════════════════════════
-// GOLOSINASSSS — Archivo Vivo — Lógica Principal
+// GOLOSINASSSS — Archivo Vivo — Lógica Principal (Actualizado)
 // ══════════════════════════════════════════════════════════════
 
 // ── Inyección del patrón del borde derecho ───────────────────
@@ -60,7 +60,8 @@ let ytApiReady      = false;
 let pendingVideoId  = null;
 let allData         = [];
 let currentPortafolioFilter = 'recientes';
-let currentCatalogoTag      = 'todos';
+let currentMainFilter       = 'todas'; // 'todas', 'documental', 'música', 'animación'
+let currentCatalogoTag      = 'todos'; // subcategoría (tag) activa
 
 const palette = ['#ffb3ba', '#bae1ff', '#baffc9', '#ffffba', '#ffdfba'];
 
@@ -110,7 +111,7 @@ function loadVideoInPlayer(videoId, autoplay) {
 function ensureThumbnail(item) {
     if (!item.preview_url && item.tipo === 'youtube') {
         const videoId = getYouTubeId(item.url_video);
-        if (videoId) item.preview_url = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+        if (videoId) item.preview_url = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
     }
 }
 
@@ -150,7 +151,7 @@ function playNext() {
     all[currentVideoIndex].click();
 }
 
-// ── helper para separar descripción de créditos ───────────────
+// ── Helper para separar descripción de créditos ───────────────
 function getParsedDesc(desc) {
     if (!desc) return { mainDesc: '', credit: '' };
     const lastHyphenIndex = desc.lastIndexOf(' - ');
@@ -180,6 +181,36 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+// ── Mapeo lógico de Categorías Principales ────────────────────
+function itemMatchesMainFilter(item, filter) {
+    if (filter === 'todas') return true;
+    const category = (item.categoria || '').toLowerCase();
+    const tags = Array.isArray(item.tags) ? item.tags.map(t => t.toLowerCase()) : [];
+
+    if (filter === 'documental') {
+        return category.includes('documental') || 
+               category.includes('periodismo') || 
+               tags.includes('cine') || 
+               tags.includes('periodismo') || 
+               tags.includes('documental');
+    }
+    if (filter === 'música' || filter === 'musica') {
+        return category.includes('conciertos') || 
+               category.includes('sesiones') || 
+               tags.includes('música') || 
+               tags.includes('musica') || 
+               tags.includes('conciertos') || 
+               tags.includes('sonido infinito') || 
+               tags.includes('videoclips');
+    }
+    if (filter === 'animación' || filter === 'animacion') {
+        return category.includes('animación') || 
+               category.includes('animacion') || 
+               tags.some(t => t.includes('animac') || t.includes('graphics') || t.includes('3d'));
+    }
+    return false;
+}
+
 // ── buildCard — Catálogo Golosinassss (diseño index v15) ─────
 function buildCard(item, animDelay) {
     ensureThumbnail(item);
@@ -194,7 +225,6 @@ function buildCard(item, animDelay) {
         ? `<div class="card-meta">${item.categoria ? item.categoria.toUpperCase() : ''}${item.categoria && item.date ? ' | ' : ''}${item.date || ''}</div>`
         : '';
 
-    // Tags siempre visibles, dentro de la .card
     const itemTags = Array.isArray(item.tags) ? item.tags : [];
     let tagsHtml = '';
     if (itemTags.length) {
@@ -247,7 +277,6 @@ function buildCard(item, animDelay) {
 function buildCompactCard(item, animDelay) {
     ensureThumbnail(item);
 
-    // Detectar si el preview es GIF propio (cuadrado) o thumbnail YouTube (rectangular)
     const isYoutubThumb = item.preview_url && item.preview_url.includes('img.youtube.com');
     const thumbClass   = isYoutubThumb ? 'compact-thumb-rect' : 'compact-thumb-sq';
     const thumbSrc     = item.preview_url || '';
@@ -256,12 +285,10 @@ function buildCompactCard(item, animDelay) {
         ? `<div class="compact-thumb ${thumbClass}"><img src="${thumbSrc}" alt="" loading="lazy"></div>`
         : `<div class="compact-thumb compact-thumb-sq compact-thumb-empty"></div>`;
 
-    // Compact description if title is short (< 35 chars)
     const titleNotTooLong = item.titulo && item.titulo.length < 35;
     const { mainDesc, credit } = getParsedDesc(item.descripcion);
     const descText = titleNotTooLong && mainDesc ? mainDesc : '';
 
-    // Full card preview
     const color = palette[Math.floor(Math.random() * palette.length)];
     const previewHtml = item.preview_url
         ? `<div class="card-preview"><img src="${item.preview_url}" alt="${item.titulo}" class="preview-img" loading="lazy"></div>`
@@ -271,7 +298,6 @@ function buildCompactCard(item, animDelay) {
         ? `<div class="card-meta">${item.categoria ? item.categoria.toUpperCase() : ''}${item.categoria && item.date ? ' | ' : ''}${item.date || ''}</div>`
         : '';
 
-    // Tags
     const itemTags = Array.isArray(item.tags) ? item.tags : [];
     let tagsHtml = '';
     if (itemTags.length) {
@@ -332,9 +358,7 @@ function buildCompactCard(item, animDelay) {
     return wrapperEl;
 }
 
-// ══════════════════════════════════════════════════════════════
-// GOLOSINASSSS — Tabs en orden definido
-// ══════════════════════════════════════════════════════════════
+// ── Extractores de Tags basados en Filtro Activo ─────────────
 function extractUniqueTags(data) {
     const tagSet = new Set();
     data.forEach(item => {
@@ -350,6 +374,7 @@ function extractUniqueTags(data) {
     });
 }
 
+// ── Constructor de Tabs de Subcategoría ──────────────────────
 function buildCatalogoTabs(tags) {
     const container = document.getElementById('catalogo-tabs');
     container.innerHTML = '';
@@ -378,6 +403,32 @@ function buildCatalogoTabs(tags) {
     });
 }
 
+// Configuración inicial de los 4 filtros principales
+function setupMainFilters() {
+    const container = document.getElementById('catalogo-main-filters');
+    if (!container) return;
+    
+    const buttons = container.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Asignar filtro principal seleccionado
+            const filterAttr = btn.getAttribute('data-filter') || btn.textContent.trim().toLowerCase();
+            currentMainFilter = filterAttr;
+            currentCatalogoTag = 'todos'; // Reiniciar subcategorías
+            
+            // Extraer y construir tags correspondientes únicamente al filtro principal activo
+            const filteredItems = allData.filter(item => itemMatchesMainFilter(item, currentMainFilter));
+            const tags = extractUniqueTags(filteredItems);
+            
+            buildCatalogoTabs(tags);
+            renderCatalogo();
+        });
+    });
+}
+
 function setCatalogoTag(tag) {
     currentCatalogoTag = tag;
     document.getElementById('catalogo-tabs').querySelectorAll('.tab-btn').forEach(btn => {
@@ -393,13 +444,17 @@ function renderCatalogo() {
     const grid = document.getElementById('grid-catalogo');
     catalogoCards = []; grid.innerHTML = '';
 
-    let items = [...allData];
+    // 1. Filtrar por la categoría principal
+    let items = allData.filter(item => itemMatchesMainFilter(item, currentMainFilter));
+
+    // 2. Filtrar adicionalmente por la subcategoría de Tag activa
     if (currentCatalogoTag !== 'todos') {
         items = items.filter(item =>
             Array.isArray(item.tags) &&
             item.tags.some(t => t.trim().toLowerCase() === currentCatalogoTag)
         );
     }
+    
     items.forEach((item, i) => {
         const el = buildCard(item, i);
         grid.appendChild(el);
@@ -438,12 +493,12 @@ function renderPortafolio() {
         displayItems = displayItems.concat(items);
     }
 
-    // Original
     displayItems.forEach((item, i) => {
         const el = buildCompactCard(item, i);
         grid.appendChild(el);
         portafolioCards.push(el);
     });
+    
     // Clon para loop sin corte
     displayItems.forEach((item) => {
         const el = buildCompactCard(item, 0);
@@ -485,8 +540,9 @@ fetch('contenidos.json')
 
 function initApp() {
     allData.forEach(item => ensureThumbnail(item));
-    const tags = extractUniqueTags(allData);
-    buildCatalogoTabs(tags);
+    setupMainFilters();
+    const initialTags = extractUniqueTags(allData);
+    buildCatalogoTabs(initialTags);
     renderCatalogo();
     renderPortafolio();
     currentVideoIndex = -1;
