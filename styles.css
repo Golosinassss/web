@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   GOLOSINASSSS — Archivo Vivo (Actualizado)
+   GOLOSINASSSS — Archivo Vivo (Actualizado con Filtros Dinámicos)
    ══════════════════════════════════════════════════════════════ */
 
 /* ── Reset & Base ─────────────────────────────────────────── */
@@ -12,7 +12,7 @@ body, html {
 }
 
 #main-content {
-    padding: 24px 40px; /* Compactado para evitar vacíos verticales excesivos */
+    padding: 24px 40px;
     min-height: 100vh;
     overflow-y: auto; overflow-x: hidden;
     height: 100vh;
@@ -97,11 +97,11 @@ body, html {
 @keyframes marquee-v-up   { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 @keyframes marquee-v-rev  { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 
-/* ── Section Headers & Filters ────────────────────────────── */
+/* ── Encabezados de Sección y Estilo de Título ─────────────── */
 .section-header {
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 14px;
     border-bottom: 1px solid #222;
-    margin: 12px 0 0; padding-bottom: 4px;
+    margin: 12px 0 0; padding-bottom: 6px;
     flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
 }
 .section-header::-webkit-scrollbar { display: none; }
@@ -113,15 +113,41 @@ body, html {
     font-weight: 700;
 }
 
-/* Filtros fijos principales */
+/* Modificador para Título GOLOSINASSSS (Más Grande) */
+.section-label-large {
+    font-size: 1.1rem; /* Escala visual incrementada */
+    text-transform: uppercase;
+    color: #fff; letter-spacing: 2px;
+    padding: 4px 0; white-space: nowrap;
+    font-weight: 700;
+}
+
+/* ── Sistema de Acordeón de Categorías Inline ─────────────── */
 .main-filters {
-    display: flex; align-items: center; gap: 4px; flex-shrink: 0;
+    display: flex; align-items: center; gap: 8px; flex-shrink: 0;
 }
+
+.category-group {
+    display: flex; align-items: center; gap: 4px;
+}
+
+.subcategories-inline {
+    display: flex; align-items: center; gap: 6px;
+    max-width: 0; overflow: hidden; opacity: 0;
+    transition: max-width 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Expansión dinámica del acordeón */
+.category-group.expanded .subcategories-inline {
+    max-width: 750px;
+    opacity: 1;
+    margin-left: 8px;
+    padding: 0 4px;
+}
+
 .filter-separator {
-    color: #222; font-size: 0.6rem; user-select: none;
-}
-.filter-divider {
-    color: #333; font-size: 0.7rem; margin: 0 4px; user-select: none;
+    color: #222; font-size: 0.65rem; user-select: none;
 }
 
 /* ── Botones de Filtro y Tab ──────────────────────────────── */
@@ -138,29 +164,19 @@ body, html {
 .filter-btn.active { color: #ffb3ba; }
 .tab-btn.active { color: #bae1ff; }
 
-/* ── Contenedor de tags-tabs (subcategorías) ──────────────── */
-.tags-tabs-container {
-    display: flex; flex-wrap: nowrap;
-    overflow-x: auto; scrollbar-width: none;
-    gap: 4px; align-items: center;
-    flex: 1; min-width: 0;
+.subcategories-inline .tab-btn {
+    font-size: 0.58rem; color: #555;
+    padding: 1px 4px; border: 1px solid transparent;
 }
-.tags-tabs-container::-webkit-scrollbar { display: none; }
-.tags-tabs-container .tab-btn {
-    font-size: 0.58rem; padding: 2px 6px;
-    border: 1px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-    color: #555;
-}
-.tags-tabs-container .tab-btn.active { 
-    border-color: #bae1ff33; 
-    color: #bae1ff;
+.subcategories-inline .tab-btn.active {
+    color: #bae1ff; border-color: rgba(186, 225, 255, 0.2);
+    background: rgba(186, 225, 255, 0.05);
 }
 
 /* ── Grid Catálogo (Manual) ──────────────────────────────── */
 #grid-catalogo {
     display: flex; overflow-x: auto; overflow-y: hidden;
-    gap: 8px; margin-bottom: 5px; /* Reducido para compactar */
+    gap: 8px; margin-bottom: 5px;
     scrollbar-width: none; padding: 6px 0;
 }
 #grid-catalogo::-webkit-scrollbar { display: none; }
@@ -168,10 +184,8 @@ body, html {
 /* ── Grid Portafolio (Autoscroll) ────────────────────────── */
 .portafolio-scroll-outer {
     overflow-x: auto; overflow-y: hidden; position: relative;
-    padding: 6px 0;
-    height: 190px; /* Reducido de 220px para ahorrar espacio */
-    margin-bottom: 12px;
-    scrollbar-width: none;
+    padding: 6px 0; height: 190px;
+    margin-bottom: 12px; scrollbar-width: none;
 }
 .portafolio-scroll-outer::-webkit-scrollbar { display: none; }
 
@@ -189,12 +203,11 @@ body, html {
 }
 #grid-portafolio {
     display: flex; gap: 8px;
-    width: max-content;
-    height: 64px;
-    animation: scroll-left 120s linear infinite;
+    width: max-content; height: 64px;
+    animation: scroll-left 120s linear infinite; /* Escritorio normal */
 }
 
-/* Pausa solo en ordenadores con ratón */
+/* Pausa en ordenadores con puntero */
 @media (hover: hover) {
     #grid-portafolio:hover { animation-play-state: paused; }
 }
@@ -217,14 +230,11 @@ body, html {
    ══════════════════════════════════════════════════════════════ */
 .card-wrapper {
     flex: 0 0 240px;
-    width: 240px;
-    height: 235px;
+    width: 240px; height: 235px;
     display: flex; flex-direction: column;
     justify-content: flex-start;
-    border-radius: 0;
-    cursor: pointer;
-    opacity: 0;
-    animation: cardFadeIn 0.4s ease forwards;
+    border-radius: 0; cursor: pointer;
+    opacity: 0; animation: cardFadeIn 0.4s ease forwards;
 }
 
 @keyframes cardFadeIn {
@@ -233,13 +243,11 @@ body, html {
 }
 
 .card {
-    width: 100%;
-    height: 185px;
+    width: 100%; height: 185px;
     border: 1px solid #222; padding: 12px;
     background: #0d0d0d; display: flex; flex-direction: column;
     border-radius: 0; transition: all 0.3s ease;
-    box-sizing: border-box;
-    overflow: hidden;
+    box-sizing: border-box; overflow: hidden;
 }
 
 .card-body { display: flex; gap: 12px; align-items: flex-start; }
@@ -263,95 +271,68 @@ body, html {
 .card-tag {
     font-size: 0.50rem; font-family: 'JetBrains Mono', monospace;
     font-weight: 300; text-transform: uppercase; letter-spacing: 0.5px;
-    padding: 1px 4px; border: 1px solid; line-height: 1.2;
-    flex-shrink: 0;
+    padding: 1px 4px; border: 1px solid; line-height: 1.2; flex-shrink: 0;
 }
 
 .card-wrapper:hover .card { border-color: #00e5ff; }
 .card-wrapper:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
 .card-wrapper:hover .play-btn svg { stroke: #000 !important; }
 
-.card.active-card {
-    border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1;
-    border-image-slice: 1;
+/* Borde multicolor gradiente para tarjetas normales activas */
+.card-wrapper.is-active .card, .card.active-card {
+    border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1 !important;
+    border-image-slice: 1 !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   COMPACT CARDS — Sección 2 (Archivo Vivo)
-   ══════════════════════════════════════════════════════════════ */
+/* ── COMPACT CARDS — Sección 2 (Archivo Vivo) ─────────────── */
 .card-compact-wrapper {
     flex: 0 0 240px;
-    width: 240px;
-    height: 64px;
-    cursor: pointer;
-    opacity: 0;
+    width: 240px; height: 64px;
+    cursor: pointer; opacity: 0;
     animation: cardFadeIn 0.4s ease forwards;
     position: relative;
 }
 
 .card-compact {
-    width: 100%;
-    height: 64px;
-    background: #0d0d0d;
-    border: 1px solid #222;
-    box-sizing: border-box;
-    overflow: hidden;
+    width: 100%; height: 64px;
+    background: #0d0d0d; border: 1px solid #222;
+    box-sizing: border-box; overflow: hidden;
     transition: opacity 0.2s ease, border-color 0.25s ease;
-    display: flex;
-    align-items: stretch;
+    display: flex; align-items: stretch;
 }
 
-/* Bordes de color personalizado por cada cápsula compacta */
-.card-compact-wrapper:nth-child(5n+1) .card-compact { border-color: #ffb3ba; } /* Rosado */
-.card-compact-wrapper:nth-child(5n+2) .card-compact { border-color: #bae1ff; } /* Azul */
-.card-compact-wrapper:nth-child(5n+3) .card-compact { border-color: #baffc9; } /* Verde */
-.card-compact-wrapper:nth-child(5n+4) .card-compact { border-color: #ffffba; } /* Amarillo */
-.card-compact-wrapper:nth-child(5n+5) .card-compact { border-color: #ffdfba; } /* Naranja */
+/* Bordes por defecto secuenciales */
+.card-compact-wrapper:nth-child(5n+1) .card-compact { border-color: #ffb3ba; }
+.card-compact-wrapper:nth-child(5n+2) .card-compact { border-color: #bae1ff; }
+.card-compact-wrapper:nth-child(5n+3) .card-compact { border-color: #baffc9; }
+.card-compact-wrapper:nth-child(5n+4) .card-compact { border-color: #ffffba; }
+.card-compact-wrapper:nth-child(5n+5) .card-compact { border-color: #ffdfba; }
 
-/* Color en título según el color de su borde al hacer hover */
+/* Borde multicolor gradiente para tarjeta compacta activa */
+.card-compact-wrapper.is-active .card-compact {
+    border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1 !important;
+    border-image-slice: 1 !important;
+}
+
 @media (hover: hover) {
     .card-compact-wrapper:nth-child(5n+1):hover .card-compact-title { color: #ffb3ba; }
     .card-compact-wrapper:nth-child(5n+2):hover .card-compact-title { color: #bae1ff; }
     .card-compact-wrapper:nth-child(5n+3):hover .card-compact-title { color: #baffc9; }
     .card-compact-wrapper:nth-child(5n+4):hover .card-compact-title { color: #ffffba; }
     .card-compact-wrapper:nth-child(5n+5):hover .card-compact-title { color: #ffdfba; }
+
+    .card-compact-wrapper:hover .card-compact { opacity: 0; pointer-events: none; }
+    .card-compact-wrapper:hover .card-full-overlay { display: block; }
 }
 
-/* Cápsula seleccionada mantiene borde multicolor */
-.card-compact-wrapper.is-active .card-compact {
-    border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1 !important;
-    border-image-slice: 1 !important;
-}
-
-/* Control del hover solo en ordenadores */
-@media (hover: hover) {
-    .card-compact-wrapper:hover .card-compact {
-        opacity: 0;
-        pointer-events: none;
-    }
-    .card-compact-wrapper:hover .card-full-overlay {
-        display: block;
-    }
-}
-
-/* Evitar despliegue accidental y overlays invasivos en smartphones */
 @media (hover: none) {
-    .card-compact-wrapper .card-full-overlay {
-        display: none !important;
-    }
-    .card-compact-wrapper .card-compact {
-        opacity: 1 !important;
-        pointer-events: auto !important;
-    }
+    .card-compact-wrapper .card-full-overlay { display: none !important; }
+    .card-compact-wrapper .card-compact { opacity: 1 !important; pointer-events: auto !important; }
 }
 
 .card-full-overlay {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
+    display: none; position: absolute;
+    top: 0; left: 0; width: 100%; z-index: 100;
 }
 
 .compact-thumb { flex-shrink: 0; overflow: hidden; background: #000; height: 62px; }
@@ -364,15 +345,12 @@ body, html {
 .card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 700; color: #c8c8c8; line-height: 1.25; margin: 0; }
 .card-compact-desc { font-size: 0.52rem; color: #666; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* ── Footer (Fijo en el flujo, sin solapar) ───────────────── */
+/* ── Footer ────────────────────────────────────────────────── */
 footer {
     text-align: left; font-size: 0.65rem; color: #666;
     padding: 20px 0; border-top: 1px solid #1a1a1a;
-    margin-top: 24px; /* Cambiado de -140px a positivo para evitar solapamientos */
-    line-height: 1.6;
-    position: relative;
-    z-index: 20;
-    pointer-events: auto;
+    margin-top: 24px; line-height: 1.6;
+    position: relative; z-index: 20; pointer-events: auto;
 }
 .footer-line { margin: 2px 0; }
 footer a { color: #888; text-decoration: none; border-bottom: 1px solid #333; }
@@ -381,9 +359,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 .social-links a { text-decoration: none; font-size: 0.6rem; font-weight: 700; letter-spacing: 1px; border-bottom: 1px solid transparent; transition: opacity 0.2s; }
 .social-links a:hover { opacity: 0.7; }
 
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════════════════════════ */
+/* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1024px) {
     #main-content { padding: 20px 30px; }
     .top, .bottom { height: 24px; }
@@ -398,12 +374,13 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .left, .right { top: 18px; height: calc(100% - 36px); }
     .ticker { font-size: 0.65rem; }
     #video-hero { padding-bottom: 56.25%; }
-    .section-header { flex-wrap: wrap; gap: 6px; }
-    .section-label { width: 100%; display: block; padding-bottom: 1px; }
-    .main-filters { width: 100%; margin-bottom: 4px; }
-    .filter-divider { display: none; } /* Ocultar divisor en móvil */
-    .tags-tabs-container { gap: 3px; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
-    #grid-portafolio { animation-duration: 84s; }
+    .section-header { flex-wrap: wrap; gap: 8px; }
+    .section-label-large { width: 100%; display: block; padding-bottom: 1px; }
+    .main-filters { width: 100%; margin-bottom: 4px; overflow-x: auto; scrollbar-width: none; }
+    .main-filters::-webkit-scrollbar { display: none; }
+    
+    /* Scroll notablemente más lento en tabletas para legibilidad táctil */
+    #grid-portafolio { animation-duration: 210s; }
 }
 
 @media (max-width: 480px) {
@@ -414,6 +391,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .ticker { font-size: 0.5rem; }
     footer { font-size: 0.55rem; }
     .social-links { gap: 8px; }
-    .tags-tabs-container .tab-btn { font-size: 0.5rem; padding: 2px 4px; }
-    #grid-portafolio { animation-duration: 60s; }
+    
+    /* Scroll muy lento en pantallas pequeñas para permitir lectura del usuario */
+    #grid-portafolio { animation-duration: 270s; }
 }
