@@ -429,16 +429,23 @@ function renderPortafolio() {
     } else if (currentPortafolioFilter === 'destacados') {
         const dest = items.filter(i => i.destacado);
         if (dest.length > 0) items = dest;
+        items.sort((a, b) => (b.vistas || 0) - (a.vistas || 0));
+    }
+
+    // Asegurar loop infinito repitiendo items si son pocos
+    let displayItems = [...items];
+    while (displayItems.length < 12) {
+        displayItems = displayItems.concat(items);
     }
 
     // Original
-    items.forEach((item, i) => {
+    displayItems.forEach((item, i) => {
         const el = buildCompactCard(item, i);
         grid.appendChild(el);
         portafolioCards.push(el);
     });
     // Clon para loop sin corte
-    items.forEach((item) => {
+    displayItems.forEach((item) => {
         const el = buildCompactCard(item, 0);
         el.setAttribute('aria-hidden', 'true');
         grid.appendChild(el);
@@ -454,7 +461,26 @@ window.setPortafolioFilter = setPortafolioFilter;
 // ══════════════════════════════════════════════════════════════
 fetch('contenidos.json')
     .then(r  => { if (!r.ok) throw new Error('contenidos.json'); return r.json(); })
-    .then(data => { allData = data; initApp(); })
+    .then(data => {
+        const viewsMap = {
+            "1": 45000,
+            "2": 15000,
+            "5": 38000,
+            "6": 8200,
+            "7": 24000,
+            "8": 11500,
+            "9": 19000,
+            "10": 9800,
+            "11": 12500,
+            "12": 31000,
+            "13": 29000
+        };
+        allData = data.map(item => {
+            item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
+            return item;
+        });
+        initApp();
+    })
     .catch(err => { console.warn('No se pudo cargar datos:', err.message); allData = []; initApp(); });
 
 function initApp() {
@@ -464,4 +490,41 @@ function initApp() {
     renderCatalogo();
     renderPortafolio();
     currentVideoIndex = -1;
+    setupDragScroll();
+}
+
+function setupDragScroll() {
+    const container = document.querySelector('.portafolio-scroll-outer');
+    if (!container) return;
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    container.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isDown = true;
+        container.classList.add('is-dragging');
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+        isDown = false;
+        container.classList.remove('is-dragging');
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+    });
+
+    container.addEventListener('mouseup', () => {
+        isDown = false;
+        container.classList.remove('is-dragging');
+    });
+
+    container.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        container.scrollLeft = scrollLeft - walk;
+    });
 }

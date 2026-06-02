@@ -153,22 +153,25 @@ body, html {
 
 /* ── Grid Portafolio (autoscroll infinito) ────────────────── */
 .portafolio-scroll-outer {
-    overflow: visible; position: relative;
+    overflow-x: auto; overflow-y: hidden; position: relative;
     padding: 10px 0;
-    height: 64px; /* altura exacta del compacto */
+    height: 220px; /* altura suficiente para la tarjeta expandida sin cortar */
     margin-bottom: 25px; /* espacio justo y fijo antes de la sección de abajo */
+    scrollbar-width: none;
 }
+.portafolio-scroll-outer::-webkit-scrollbar { display: none; }
+
 .portafolio-scroll-outer::after {
     content: ''; position: absolute;
-    top: 0; right: 0; width: 80px; height: 100%;
+    top: 10px; right: 0; width: 80px; height: 64px; /* match the 64px compact card height */
     background: linear-gradient(to left, #080808 0%, transparent 100%);
-    pointer-events: none; z-index: 10;
+    pointer-events: none; z-index: 15;
 }
 .portafolio-scroll-outer::before {
     content: ''; position: absolute;
-    top: 0; left: 0; width: 80px; height: 100%;
+    top: 10px; left: 0; width: 80px; height: 64px; /* match the 64px compact card height */
     background: linear-gradient(to right, #080808 0%, transparent 100%);
-    pointer-events: none; z-index: 10;
+    pointer-events: none; z-index: 15;
 }
 #grid-portafolio {
     display: flex; gap: 8px;
@@ -195,11 +198,11 @@ body, html {
    CARDS — Diseño Golosinassss (estilo index v15 modificado)
    ══════════════════════════════════════════════════════════════ */
 
-/* Wrapper: ancho fijo 240px, altura fija 220px, tags fuera de la caja */
+/* Wrapper: ancho fijo 240px, altura fija 235px, tags dentro de la caja */
 .card-wrapper {
     flex: 0 0 240px;
     width: 240px;
-    height: 220px; /* Igualar dimensiones */
+    height: 235px; /* Ajustado para dar espacio a la tarjeta más alta */
     display: flex; flex-direction: column;
     justify-content: flex-start;
     border-radius: 0;
@@ -213,10 +216,10 @@ body, html {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Card base: altura fija 165px para igualar proporciones y dimensiones ── */
+/* ── Card base: altura fija 185px para igualar proporciones y dejar espacio a doble línea de tags ── */
 .card {
     width: 100%;
-    height: 165px;
+    height: 185px;
     border: 1px solid #222; padding: 12px;
     background: #0d0d0d; display: flex; flex-direction: column;
     border-radius: 0; transition: all 0.3s ease;
@@ -274,14 +277,17 @@ body, html {
 }
 .play-btn svg { width: 10px; height: 10px; }
 
-/* ── Tags — fuera de .card, siempre visibles */
+/* ── Tags — dentro de .card, alineados abajo a la derecha */
 .card-tags {
-    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px;
+    display: flex; flex-wrap: wrap; gap: 4px;
+    margin-top: auto; /* Justificar abajo */
+    justify-content: flex-end; /* Justificar a la derecha */
 }
 .card-tag {
-    font-size: 0.52rem; font-family: 'JetBrains Mono', monospace;
+    font-size: 0.50rem; font-family: 'JetBrains Mono', monospace;
     font-weight: 300; text-transform: uppercase; letter-spacing: 0.5px;
-    padding: 2px 6px; border: 1px solid; line-height: 1.2;
+    padding: 1px 4px; border: 1px solid; line-height: 1.2;
+    flex-shrink: 0;
 }
 
 /* ── Hover y activa */
@@ -416,7 +422,10 @@ body, html {
 footer {
     text-align: left; font-size: 0.65rem; color: #666;
     padding: 15px 0; border-top: 1px solid #1a1a1a;
-    margin-top: 15px; line-height: 1.6;
+    margin-top: -140px; line-height: 1.6;
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
 }
 .footer-line { margin: 2px 0; }
 footer a { color: #888; text-decoration: none; border-bottom: 1px solid #333; }
