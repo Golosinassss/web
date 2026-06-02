@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   GOLOSINASSSS — Archivo Vivo
+   GOLOSINASSSS — Archivo Vivo (Actualizado)
    ══════════════════════════════════════════════════════════════ */
 
 /* ── Reset & Base ─────────────────────────────────────────── */
@@ -12,7 +12,7 @@ body, html {
 }
 
 #main-content {
-    padding: 40px 50px;
+    padding: 24px 40px; /* Compactado para evitar vacíos verticales excesivos */
     min-height: 100vh;
     overflow-y: auto; overflow-x: hidden;
     height: 100vh;
@@ -87,7 +87,6 @@ body, html {
 .marquee-v, .marquee-v-rev { display: flex; flex-direction: column; height: max-content; }
 .marquee     { animation: marquee 120s linear infinite; }
 .marquee-rev { animation: marquee-rev 120s linear infinite; }
-/* Borde izquierdo sube, borde derecho baja — clases independientes */
 .marquee-v        { animation: marquee-v 120s linear infinite; animation-direction: reverse; }
 .marquee-v-up     { animation: marquee-v-up 120s linear infinite; }
 .marquee-v-rev    { animation: marquee-v-rev 120s linear infinite; }
@@ -98,16 +97,31 @@ body, html {
 @keyframes marquee-v-up   { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 @keyframes marquee-v-rev  { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 
-/* ── Section Headers ──────────────────────────────────────── */
+/* ── Section Headers & Filters ────────────────────────────── */
 .section-header {
-    display: flex; align-items: baseline; gap: 12px;
+    display: flex; align-items: center; gap: 10px;
     border-bottom: 1px solid #222;
-    margin: 10px 0 0; padding-bottom: 4px;
+    margin: 12px 0 0; padding-bottom: 4px;
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
 }
+.section-header::-webkit-scrollbar { display: none; }
+
 .section-label {
-    font-size: 0.8rem; text-transform: uppercase;
-    color: #666; letter-spacing: 2px;
-    padding: 8px 0 4px; white-space: nowrap;
+    font-size: 0.75rem; text-transform: uppercase;
+    color: #666; letter-spacing: 1.5px;
+    padding: 4px 0; white-space: nowrap;
+    font-weight: 700;
+}
+
+/* Filtros fijos principales */
+.main-filters {
+    display: flex; align-items: center; gap: 4px; flex-shrink: 0;
+}
+.filter-separator {
+    color: #222; font-size: 0.6rem; user-select: none;
+}
+.filter-divider {
+    color: #333; font-size: 0.7rem; margin: 0 4px; user-select: none;
 }
 
 /* ── Botones de Filtro y Tab ──────────────────────────────── */
@@ -115,61 +129,61 @@ body, html {
     background: none; border: none;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem; cursor: pointer;
-    padding: 2px 6px; color: #444;
+    padding: 2px 4px; color: #444;
     letter-spacing: 1px; text-transform: uppercase;
     transition: color 0.2s;
+    white-space: nowrap;
 }
 .filter-btn:hover, .tab-btn:hover { color: #999; }
 .filter-btn.active { color: #ffb3ba; }
 .tab-btn.active { color: #bae1ff; }
 
-/* ── Contenedor de tags-tabs (catálogo dinámico con scroll horizontal) ──── */
+/* ── Contenedor de tags-tabs (subcategorías) ──────────────── */
 .tags-tabs-container {
     display: flex; flex-wrap: nowrap;
     overflow-x: auto; scrollbar-width: none;
     gap: 4px; align-items: center;
     flex: 1; min-width: 0;
-    width: 100%;
 }
 .tags-tabs-container::-webkit-scrollbar { display: none; }
-.tags-tabs-container .tab-btn,
-.tags-tabs-container span {
-    flex-shrink: 0;
-}
 .tags-tabs-container .tab-btn {
-    font-size: 0.6rem; padding: 3px 8px;
+    font-size: 0.58rem; padding: 2px 6px;
     border: 1px solid transparent;
     transition: color 0.2s, border-color 0.2s;
+    color: #555;
 }
-.tags-tabs-container .tab-btn.active { border-color: #bae1ff33; }
+.tags-tabs-container .tab-btn.active { 
+    border-color: #bae1ff33; 
+    color: #bae1ff;
+}
 
-/* ── Grid Catálogo (scroll manual) ───────────────────────── */
+/* ── Grid Catálogo (Manual) ──────────────────────────────── */
 #grid-catalogo {
     display: flex; overflow-x: auto; overflow-y: hidden;
-    gap: 8px; margin-bottom: 15px;
-    scrollbar-width: none; padding: 10px 0;
+    gap: 8px; margin-bottom: 5px; /* Reducido para compactar */
+    scrollbar-width: none; padding: 6px 0;
 }
 #grid-catalogo::-webkit-scrollbar { display: none; }
 
-/* ── Grid Portafolio (autoscroll infinito) ────────────────── */
+/* ── Grid Portafolio (Autoscroll) ────────────────────────── */
 .portafolio-scroll-outer {
     overflow-x: auto; overflow-y: hidden; position: relative;
-    padding: 10px 0;
-    height: 220px; /* altura suficiente para la tarjeta expandida sin cortar */
-    margin-bottom: 25px; /* espacio justo y fijo antes de la sección de abajo */
+    padding: 6px 0;
+    height: 190px; /* Reducido de 220px para ahorrar espacio */
+    margin-bottom: 12px;
     scrollbar-width: none;
 }
 .portafolio-scroll-outer::-webkit-scrollbar { display: none; }
 
 .portafolio-scroll-outer::after {
     content: ''; position: absolute;
-    top: 10px; right: 0; width: 80px; height: 64px; /* match the 64px compact card height */
+    top: 6px; right: 0; width: 80px; height: 64px;
     background: linear-gradient(to left, #080808 0%, transparent 100%);
     pointer-events: none; z-index: 15;
 }
 .portafolio-scroll-outer::before {
     content: ''; position: absolute;
-    top: 10px; left: 0; width: 80px; height: 64px; /* match the 64px compact card height */
+    top: 6px; left: 0; width: 80px; height: 64px;
     background: linear-gradient(to right, #080808 0%, transparent 100%);
     pointer-events: none; z-index: 15;
 }
@@ -177,9 +191,13 @@ body, html {
     display: flex; gap: 8px;
     width: max-content;
     height: 64px;
-    animation: scroll-left 120s linear infinite; /* 3 veces más lento (40s -> 120s) */
+    animation: scroll-left 120s linear infinite;
 }
-#grid-portafolio:hover { animation-play-state: paused; }
+
+/* Pausa solo en ordenadores con ratón */
+@media (hover: hover) {
+    #grid-portafolio:hover { animation-play-state: paused; }
+}
 
 @keyframes scroll-left {
     from { transform: translateX(0); }
@@ -195,14 +213,12 @@ body, html {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   CARDS — Diseño Golosinassss (estilo index v15 modificado)
+   CARDS — Sección 1
    ══════════════════════════════════════════════════════════════ */
-
-/* Wrapper: ancho fijo 240px, altura fija 235px, tags dentro de la caja */
 .card-wrapper {
     flex: 0 0 240px;
     width: 240px;
-    height: 235px; /* Ajustado para dar espacio a la tarjeta más alta */
+    height: 235px;
     display: flex; flex-direction: column;
     justify-content: flex-start;
     border-radius: 0;
@@ -216,7 +232,6 @@ body, html {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Card base: altura fija 185px para igualar proporciones y dejar espacio a doble línea de tags ── */
 .card {
     width: 100%;
     height: 185px;
@@ -227,48 +242,15 @@ body, html {
     overflow: hidden;
 }
 
-/* ── Layout interno: gif+play a la izquierda, texto a la derecha */
-.card-body {
-    display: flex; gap: 12px; align-items: flex-start;
-}
-.card-left {
-    display: flex; flex-direction: column;
-    gap: 8px; width: 56px; flex-shrink: 0;
-}
+.card-body { display: flex; gap: 12px; align-items: flex-start; }
+.card-left { display: flex; flex-direction: column; gap: 8px; width: 56px; flex-shrink: 0; }
+.card-preview { width: 56px; height: 56px; background: #000; border: 1px solid #222; overflow: hidden; }
+.card-preview img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+.card-meta { font-size: 0.52rem; color: #555; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px; }
+.card h3 { font-size: 0.72rem; color: #fff; margin: 0 0 4px; line-height: 1.2; font-weight: 700; }
+.card-desc { font-size: 0.62rem; color: #888; margin: 0; line-height: 1.35; font-weight: 400; }
+.card-credit { font-size: 0.55rem; color: #555; margin: 4px 0 0; line-height: 1.25; font-weight: 300; text-transform: uppercase; letter-spacing: 0.2px; }
 
-/* ── Thumbnail */
-.card-preview {
-    width: 56px; height: 56px;
-    background: #000; border: 1px solid #222; overflow: hidden;
-}
-.card-preview img {
-    width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
-}
-
-/* ── Metadata: categoría + año en la parte superior, arriba de todo */
-.card-meta {
-    font-size: 0.52rem; color: #555;
-    text-transform: uppercase; margin-bottom: 8px; font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-/* ── Título, descripción y créditos */
-.card h3 {
-    font-size: 0.72rem; color: #fff; margin: 0 0 4px;
-    line-height: 1.2; font-weight: 700;
-}
-.card-desc {
-    font-size: 0.62rem; color: #888;
-    margin: 0; line-height: 1.35; font-weight: 400;
-}
-.card-credit {
-    font-size: 0.55rem; color: #555;
-    margin: 4px 0 0; line-height: 1.25; font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 0.2px;
-}
-
-/* ── Play btn */
 .play-btn {
     background: #151515; color: #00e5ff; border: 1px solid #222;
     width: 56px; height: 24px; display: flex;
@@ -277,12 +259,7 @@ body, html {
 }
 .play-btn svg { width: 10px; height: 10px; }
 
-/* ── Tags — dentro de .card, alineados abajo a la derecha */
-.card-tags {
-    display: flex; flex-wrap: wrap; gap: 4px;
-    margin-top: auto; /* Justificar abajo */
-    justify-content: flex-end; /* Justificar a la derecha */
-}
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; justify-content: flex-end; }
 .card-tag {
     font-size: 0.50rem; font-family: 'JetBrains Mono', monospace;
     font-weight: 300; text-transform: uppercase; letter-spacing: 0.5px;
@@ -290,7 +267,6 @@ body, html {
     flex-shrink: 0;
 }
 
-/* ── Hover y activa */
 .card-wrapper:hover .card { border-color: #00e5ff; }
 .card-wrapper:hover .play-btn { background: #00e5ff; border-color: #00e5ff; }
 .card-wrapper:hover .play-btn svg { stroke: #000 !important; }
@@ -301,21 +277,18 @@ body, html {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   COMPACT CARDS — Archivo Vivo (con despliegue a full card en hover)
+   COMPACT CARDS — Sección 2 (Archivo Vivo)
    ══════════════════════════════════════════════════════════════ */
-
-/* Wrapper: mismo tamaño que card-wrapper en ancho, pero altura compacta en flujo */
 .card-compact-wrapper {
     flex: 0 0 240px;
     width: 240px;
-    height: 64px; /* Altura compacta en flujo, evita mover la sección de contacto */
+    height: 64px;
     cursor: pointer;
     opacity: 0;
     animation: cardFadeIn 0.4s ease forwards;
     position: relative;
 }
 
-/* Compacta normal */
 .card-compact {
     width: 100%;
     height: 64px;
@@ -325,26 +298,53 @@ body, html {
     overflow: hidden;
     transition: opacity 0.2s ease, border-color 0.25s ease;
     display: flex;
-    flex-direction: row;      /* horizontal */
     align-items: stretch;
 }
 
-/* Si está seleccionado/activo: se compacta, pero con borde multicolor */
+/* Bordes de color personalizado por cada cápsula compacta */
+.card-compact-wrapper:nth-child(5n+1) .card-compact { border-color: #ffb3ba; } /* Rosado */
+.card-compact-wrapper:nth-child(5n+2) .card-compact { border-color: #bae1ff; } /* Azul */
+.card-compact-wrapper:nth-child(5n+3) .card-compact { border-color: #baffc9; } /* Verde */
+.card-compact-wrapper:nth-child(5n+4) .card-compact { border-color: #ffffba; } /* Amarillo */
+.card-compact-wrapper:nth-child(5n+5) .card-compact { border-color: #ffdfba; } /* Naranja */
+
+/* Color en título según el color de su borde al hacer hover */
+@media (hover: hover) {
+    .card-compact-wrapper:nth-child(5n+1):hover .card-compact-title { color: #ffb3ba; }
+    .card-compact-wrapper:nth-child(5n+2):hover .card-compact-title { color: #bae1ff; }
+    .card-compact-wrapper:nth-child(5n+3):hover .card-compact-title { color: #baffc9; }
+    .card-compact-wrapper:nth-child(5n+4):hover .card-compact-title { color: #ffffba; }
+    .card-compact-wrapper:nth-child(5n+5):hover .card-compact-title { color: #ffdfba; }
+}
+
+/* Cápsula seleccionada mantiene borde multicolor */
 .card-compact-wrapper.is-active .card-compact {
-    border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1;
-    border-image-slice: 1;
+    border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1 !important;
+    border-image-slice: 1 !important;
 }
 
-/* Hover: se oculta el compacto y se despliega el overlay de tamaño cápsula */
-.card-compact-wrapper:hover .card-compact {
-    opacity: 0;
-    pointer-events: none;
-}
-.card-compact-wrapper:hover .card-full-overlay {
-    display: block;
+/* Control del hover solo en ordenadores */
+@media (hover: hover) {
+    .card-compact-wrapper:hover .card-compact {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .card-compact-wrapper:hover .card-full-overlay {
+        display: block;
+    }
 }
 
-/* Overlay de la full card: absoluta para no desplazar elementos */
+/* Evitar despliegue accidental y overlays invasivos en smartphones */
+@media (hover: none) {
+    .card-compact-wrapper .card-full-overlay {
+        display: none !important;
+    }
+    .card-compact-wrapper .card-compact {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+}
+
 .card-full-overlay {
     display: none;
     position: absolute;
@@ -354,75 +354,22 @@ body, html {
     z-index: 100;
 }
 
-/* Base del thumbnail */
-.compact-thumb {
-    flex-shrink: 0;
-    overflow: hidden;
-    background: #000;
-    height: 64px;
-}
-.compact-thumb img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
-    transition: opacity 0.25s ease, transform 0.3s ease;
-    display: block;
-}
-.card-compact-wrapper:hover .compact-thumb img {
-    opacity: 1;
-    transform: scale(1.04);
-}
-
-/* GIF propio → cuadrado 64×64 */
-.compact-thumb-sq   { width: 64px; }
-
-/* Thumbnail YouTube → 16:9 proporcional */
-.compact-thumb-rect { width: 114px; }
-
-/* Sin preview */
+.compact-thumb { flex-shrink: 0; overflow: hidden; background: #000; height: 62px; }
+.compact-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; display: block; }
+.compact-thumb-sq   { width: 62px; }
+.compact-thumb-rect { width: 110px; }
 .compact-thumb-empty { background: #111; }
 
-/* Contenido de texto en la compacta */
-.card-compact-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 6px 9px;
-    flex: 1;
-    min-width: 0;
-}
+.card-compact-content { display: flex; flex-direction: column; justify-content: center; padding: 6px 9px; flex: 1; min-width: 0; }
+.card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 700; color: #c8c8c8; line-height: 1.25; margin: 0; }
+.card-compact-desc { font-size: 0.52rem; color: #666; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* Título: siempre completo */
-.card-compact-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.58rem;
-    font-weight: 700;
-    color: #c8c8c8;
-    line-height: 1.25;
-    margin: 0;
-    white-space: normal;
-    overflow: visible;
-}
-
-/* Descripción en compacto (si el título no es tan largo) */
-.card-compact-desc {
-    font-size: 0.52rem;
-    color: #666;
-    margin-top: 3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.card-compact-wrapper:hover .card-compact-title {
-    color: #fff;
-}
-
-/* ── Footer ────────────────────────────────────────────────── */
+/* ── Footer (Fijo en el flujo, sin solapar) ───────────────── */
 footer {
     text-align: left; font-size: 0.65rem; color: #666;
-    padding: 15px 0; border-top: 1px solid #1a1a1a;
-    margin-top: -140px; line-height: 1.6;
+    padding: 20px 0; border-top: 1px solid #1a1a1a;
+    margin-top: 24px; /* Cambiado de -140px a positivo para evitar solapamientos */
+    line-height: 1.6;
     position: relative;
     z-index: 20;
     pointer-events: auto;
@@ -431,48 +378,42 @@ footer {
 footer a { color: #888; text-decoration: none; border-bottom: 1px solid #333; }
 footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 .social-links { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-.social-links a {
-    text-decoration: none; font-size: 0.6rem; font-weight: 700;
-    letter-spacing: 1px; border-bottom: 1px solid transparent; transition: opacity 0.2s;
-}
+.social-links a { text-decoration: none; font-size: 0.6rem; font-weight: 700; letter-spacing: 1px; border-bottom: 1px solid transparent; transition: opacity 0.2s; }
 .social-links a:hover { opacity: 0.7; }
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-    #main-content { padding: 30px 35px; }
+    #main-content { padding: 20px 30px; }
     .top, .bottom { height: 24px; }
     .left, .right { width: 24px; }
-    .left { top: 24px; height: calc(100% - 48px); }
-    .right { top: 24px; height: calc(100% - 48px); }
+    .left, .right { top: 24px; height: calc(100% - 48px); }
 }
 
 @media (max-width: 768px) {
-    #main-content { padding: 25px 25px; }
+    #main-content { padding: 18px 20px; }
     .top, .bottom { height: 18px; }
     .left, .right { width: 18px; }
-    .left { top: 18px; height: calc(100% - 36px); }
-    .right { top: 18px; height: calc(100% - 36px); }
+    .left, .right { top: 18px; height: calc(100% - 36px); }
     .ticker { font-size: 0.65rem; }
     #video-hero { padding-bottom: 56.25%; }
-    .section-header { flex-wrap: wrap; gap: 8px; }
-    .section-label { width: 100%; display: block; padding-bottom: 2px; }
+    .section-header { flex-wrap: wrap; gap: 6px; }
+    .section-label { width: 100%; display: block; padding-bottom: 1px; }
+    .main-filters { width: 100%; margin-bottom: 4px; }
+    .filter-divider { display: none; } /* Ocultar divisor en móvil */
     .tags-tabs-container { gap: 3px; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
     #grid-portafolio { animation-duration: 84s; }
 }
 
 @media (max-width: 480px) {
-    #main-content { padding: 15px 18px; }
+    #main-content { padding: 12px 14px; }
     .top, .bottom { height: 12px; }
     .left, .right { width: 12px; }
-    .left { top: 12px; height: calc(100% - 24px); }
-    .right { top: 12px; height: calc(100% - 24px); }
+    .left, .right { top: 12px; height: calc(100% - 24px); }
     .ticker { font-size: 0.5rem; }
-    #video-hero { padding-bottom: 56.25%; }
     footer { font-size: 0.55rem; }
     .social-links { gap: 8px; }
-    .tags-tabs-container .tab-btn { font-size: 0.5rem; padding: 2px 5px; }
-    .tags-tabs-container { gap: 3px; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+    .tags-tabs-container .tab-btn { font-size: 0.5rem; padding: 2px 4px; }
     #grid-portafolio { animation-duration: 60s; }
 }
