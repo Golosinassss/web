@@ -44,11 +44,25 @@
         <!-- VIDEO HERO -->
         <div id="video-hero"><div id="yt-player-container"></div></div>
 
-        <!-- SECCIÓN 1: GOLOSINASSSS (Tabs por Tags) -->
+        <!-- SECCIÓN 1: GOLOSINASSSS (4 Filtros fijos + Subcategorías por Tags) -->
         <div class="section-header" style="margin-top:10px">
             <span class="section-label">Golosinassss</span>
-            <div class="tags-tabs-container" id="catalogo-tabs">
-                <!-- Tabs generados dinámicamente por app.js -->
+            
+            <!-- Grupo de Filtros Principales con Subcategorías Integradas -->
+            <div class="main-filters" id="catalogo-main-filters">
+                <button class="filter-btn active" id="btn-todas" onclick="filtrarCatalogoPrincipal('todas', this)">Todas</button>
+                
+                <span class="filter-separator">/</span>
+                <button class="filter-btn" id="btn-documental" onclick="filtrarCatalogoPrincipal('documental', this)">Documental</button>
+                <div class="subtags-container" id="tags-documental"></div>
+
+                <span class="filter-separator">/</span>
+                <button class="filter-btn" id="btn-musica" onclick="filtrarCatalogoPrincipal('musica', this)">Música</button>
+                <div class="subtags-container" id="tags-musica"></div>
+
+                <span class="filter-separator">/</span>
+                <button class="filter-btn" id="btn-animacion" onclick="filtrarCatalogoPrincipal('animacion', this)">Animación</button>
+                <div class="subtags-container" id="tags-animacion"></div>
             </div>
         </div>
         <div class="grid-wrap"><div id="grid-catalogo"></div></div>
