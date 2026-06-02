@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   GOLOSINASSSS — Archivo Vivo (Versión Definitiva)
+   GOLOSINASSSS — Archivo Vivo (Actualizado con Filtros Dinámicos)
    ══════════════════════════════════════════════════════════════ */
 
 /* ── Reset & Base ─────────────────────────────────────────── */
@@ -97,7 +97,7 @@ body, html {
 @keyframes marquee-v-up   { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 @keyframes marquee-v-rev  { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
 
-/* ── Encabezados de Sección y Estilo de Título GOLOSINASSSS ── */
+/* ── Encabezados de Sección y Estilo de Título ─────────────── */
 .section-header {
     display: flex; align-items: center; gap: 14px;
     border-bottom: 1px solid #222;
@@ -113,28 +113,16 @@ body, html {
     font-weight: 700;
 }
 
-/* Título GOLOSINASSSS: Letras Grandes y Gradiente en Movimiento Continuo */
+/* Modificador para Título GOLOSINASSSS (Más Grande) */
 .section-label-large {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.8rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 2px;
+    font-size: 1.1rem; /* Escala visual incrementada */
+    text-transform: uppercase;
+    color: #fff; letter-spacing: 2px;
     padding: 4px 0; white-space: nowrap;
-    
-    background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    animation: textGradientShift 8s linear infinite;
-    user-select: none;
+    font-weight: 700;
 }
 
-@keyframes textGradientShift {
-    to { background-position: 200% center; }
-}
-
-/* ── Sistema de Acordeón de Categorías Inline (Global) ────── */
+/* ── Sistema de Acordeón de Categorías Inline ─────────────── */
 .main-filters {
     display: flex; align-items: center; gap: 8px; flex-shrink: 0;
 }
@@ -150,7 +138,7 @@ body, html {
     white-space: nowrap;
 }
 
-/* Expansión del acordeón */
+/* Expansión dinámica del acordeón */
 .category-group.expanded .subcategories-inline {
     max-width: 750px;
     opacity: 1;
@@ -164,22 +152,17 @@ body, html {
 
 /* ── Botones de Filtro y Tab ──────────────────────────────── */
 .filter-btn, .tab-btn {
-    background: none; border: 1px solid transparent;
+    background: none; border: none;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem; cursor: pointer;
-    padding: 3px 8px; color: #444;
+    padding: 2px 4px; color: #444;
     letter-spacing: 1px; text-transform: uppercase;
-    transition: all 0.25s ease;
+    transition: color 0.2s;
     white-space: nowrap;
 }
-.filter-btn:hover { color: #888; background: rgba(255, 255, 255, 0.02); }
-
-/* Ajustes específicos para los símbolos de Archivo Vivo */
-.section-header .filter-btn {
-    font-size: 1rem;
-    padding: 2px 8px;
-    border-radius: 0;
-}
+.filter-btn:hover, .tab-btn:hover { color: #999; }
+.filter-btn.active { color: #ffb3ba; }
+.tab-btn.active { color: #bae1ff; }
 
 .subcategories-inline .tab-btn {
     font-size: 0.58rem; color: #555;
@@ -221,9 +204,10 @@ body, html {
 #grid-portafolio {
     display: flex; gap: 8px;
     width: max-content; height: 64px;
-    animation: scroll-left 120s linear infinite; /* Velocidad escritorio */
+    animation: scroll-left 120s linear infinite; /* Escritorio normal */
 }
 
+/* Pausa en ordenadores con puntero */
 @media (hover: hover) {
     #grid-portafolio:hover { animation-play-state: paused; }
 }
@@ -390,13 +374,13 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .left, .right { top: 18px; height: calc(100% - 36px); }
     .ticker { font-size: 0.65rem; }
     #video-hero { padding-bottom: 56.25%; }
-    .section-header { flex-wrap: wrap; gap: 10px; }
-    .section-label-large { width: 100%; display: block; padding-bottom: 2px; text-align: left; font-size: 1.5rem; }
+    .section-header { flex-wrap: wrap; gap: 8px; }
+    .section-label-large { width: 100%; display: block; padding-bottom: 1px; }
     .main-filters { width: 100%; margin-bottom: 4px; overflow-x: auto; scrollbar-width: none; }
     .main-filters::-webkit-scrollbar { display: none; }
     
-    /* Autoscroll ralentizado en móviles */
-    #grid-portafolio { animation-duration: 220s; }
+    /* Scroll notablemente más lento en tabletas para legibilidad táctil */
+    #grid-portafolio { animation-duration: 210s; }
 }
 
 @media (max-width: 480px) {
@@ -407,8 +391,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .ticker { font-size: 0.5rem; }
     footer { font-size: 0.55rem; }
     .social-links { gap: 8px; }
-    .section-label-large { font-size: 1.3rem; }
     
-    /* Autoscroll muy lento en smartphones */
-    #grid-portafolio { animation-duration: 260s; }
+    /* Scroll muy lento en pantallas pequeñas para permitir lectura del usuario */
+    #grid-portafolio { animation-duration: 270s; }
 }
