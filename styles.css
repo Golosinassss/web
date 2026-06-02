@@ -105,35 +105,19 @@ body, html {
     margin: 10px 0 0; padding-bottom: 4px;
 }
 .section-label {
-    font-size: 1.4rem; text-transform: uppercase;
-    color: #fff; letter-spacing: 2px;
-    padding: 8px 0; white-space: nowrap;
-    font-weight: 700;
+    font-size: 0.8rem; text-transform: uppercase;
+    color: #666; letter-spacing: 2px;
+    padding: 8px 0 4px; white-space: nowrap;
 }
 
-.main-filters {
-    display: flex; align-items: center; gap: 8px; flex-shrink: 0;
-}
-
-.subtags-container {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    max-width: 0;
-    overflow: hidden;
-    transition: max-width 0.5s ease-in-out, opacity 0.3s ease;
-    opacity: 0;
-    white-space: nowrap;
-}
-
-.subtags-container.is-expanded {
-    max-width: 1000px;
-    opacity: 1;
-    margin: 0 10px;
-}
-
-.filter-separator {
-    color: #333; font-size: 0.8rem; user-select: none;
+/* ── Botones de Filtro y Tab ──────────────────────────────── */
+.filter-btn, .tab-btn {
+    background: none; border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; cursor: pointer;
+    padding: 2px 6px; color: #444;
+    letter-spacing: 1px; text-transform: uppercase;
+    transition: color 0.2s;
 }
 .filter-btn:hover, .tab-btn:hover { color: #999; }
 .filter-btn.active { color: #ffb3ba; }
@@ -171,21 +155,21 @@ body, html {
 .portafolio-scroll-outer {
     overflow-x: auto; overflow-y: hidden; position: relative;
     padding: 10px 0;
-    height: 220px;
-    margin-bottom: 25px;
+    height: 220px; /* altura suficiente para la tarjeta expandida sin cortar */
+    margin-bottom: 25px; /* espacio justo y fijo antes de la sección de abajo */
     scrollbar-width: none;
 }
 .portafolio-scroll-outer::-webkit-scrollbar { display: none; }
 
 .portafolio-scroll-outer::after {
     content: ''; position: absolute;
-    top: 10px; right: 0; width: 80px; height: 64px;
+    top: 10px; right: 0; width: 80px; height: 64px; /* match the 64px compact card height */
     background: linear-gradient(to left, #080808 0%, transparent 100%);
     pointer-events: none; z-index: 15;
 }
 .portafolio-scroll-outer::before {
     content: ''; position: absolute;
-    top: 10px; left: 0; width: 80px; height: 64px;
+    top: 10px; left: 0; width: 80px; height: 64px; /* match the 64px compact card height */
     background: linear-gradient(to right, #080808 0%, transparent 100%);
     pointer-events: none; z-index: 15;
 }
@@ -193,30 +177,13 @@ body, html {
     display: flex; gap: 8px;
     width: max-content;
     height: 64px;
-    animation: scroll-left 120s linear infinite;
+    animation: scroll-left 120s linear infinite; /* 3 veces más lento (40s -> 120s) */
 }
 #grid-portafolio:hover { animation-play-state: paused; }
 
 @keyframes scroll-left {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
-}
-
-/* Bordes gradientes para tarjeta activa */
-.card.active-card, 
-.card-compact-wrapper.is-active .card-compact {
-    border: 2px solid transparent !important;
-    background-image: linear-gradient(#0d0d0d, #0d0d0d), 
-                      linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    animation: gradient-border 3s linear infinite;
-    z-index: 50;
-}
-
-@keyframes gradient-border {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
 }
 
 .grid-wrap { position: relative; }
@@ -492,7 +459,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .section-header { flex-wrap: wrap; gap: 8px; }
     .section-label { width: 100%; display: block; padding-bottom: 2px; }
     .tags-tabs-container { gap: 3px; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
-    #grid-portafolio { animation-duration: 250s; }
+    #grid-portafolio { animation-duration: 84s; }
 }
 
 @media (max-width: 480px) {
@@ -507,5 +474,5 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .social-links { gap: 8px; }
     .tags-tabs-container .tab-btn { font-size: 0.5rem; padding: 2px 5px; }
     .tags-tabs-container { gap: 3px; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
-    #grid-portafolio { animation-duration: 200s; }
+    #grid-portafolio { animation-duration: 60s; }
 }
