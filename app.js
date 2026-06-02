@@ -1,5 +1,5 @@
 // ══════════════════════════════════════════════════════════════
-// GOLOSINASSSS — Archivo Vivo — Lógica Principal (Actualizado)
+// GOLOSINASSSS — Archivo Vivo — Lógica Principal (Actualizada)
 // ══════════════════════════════════════════════════════════════
 
 // ── Inyección del patrón del borde derecho ───────────────────
@@ -92,6 +92,8 @@ const TAG_ORDER = [
     'videoclips', 'institucional', 'sonido infinito',
 ];
 
+const MAIN_CATEGORIES = ['todas', 'documental', 'música', 'animación'];
+
 // ── Helpers YouTube ──────────────────────────────────────────
 function getYouTubeId(url) {
     if (!url) return null;
@@ -118,28 +120,44 @@ function ensureThumbnail(item) {
 // ── Tarjeta activa ───────────────────────────────────────────
 function getAllCards() { return [...catalogoCards, ...portafolioCards]; }
 
-function setActiveCard(index) {
-    const all = getAllCards();
-    all.forEach((wrapper, i) => {
-        wrapper.classList.toggle('is-active', i === index);
+// Aplica el borde gradiente a todas las tarjetas que correspondan al video activo
+function setActiveCardByUrl(url) {
+    const targetId = getYouTubeId(url);
+    if (!targetId) return;
+
+    document.querySelectorAll('.card-wrapper, .card-compact-wrapper').forEach(wrapper => {
+        const cardUrl = wrapper.getAttribute('data-url');
+        const cardId = getYouTubeId(cardUrl);
+        const isPlaying = (cardId === targetId);
+
+        wrapper.classList.toggle('is-active', isPlaying);
         const inner = wrapper.querySelector('.card');
-        if (inner) inner.classList.toggle('active-card', i === index);
+        if (inner) inner.classList.toggle('active-card', isPlaying);
     });
-    if (all[index]) {
-        all[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
 }
 
 // ── Reproducción ─────────────────────────────────────────────
 function playVideo(url, element) {
     const videoId = getYouTubeId(url);
     if (!videoId) return;
+
+    // Desbloqueo forzado de audio para políticas móviles ante interacción
+    if (ytPlayer) {
+        if (typeof ytPlayer.unMute === 'function') {
+            ytPlayer.unMute();
+        }
+        if (typeof ytPlayer.setVolume === 'function') {
+            ytPlayer.setVolume(100);
+        }
+    }
+
     if (element) {
         const all = getAllCards();
         const idx = all.indexOf(element);
         if (idx !== -1) currentVideoIndex = idx;
     }
-    setActiveCard(currentVideoIndex);
+
+    setActiveCardByUrl(url);
     loadVideoInPlayer(videoId, true);
     document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -148,7 +166,12 @@ function playNext() {
     const all = getAllCards();
     if (all.length === 0) return;
     currentVideoIndex = (currentVideoIndex + 1) % all.length;
-    all[currentVideoIndex].click();
+    
+    const nextCard = all[currentVideoIndex];
+    if (nextCard) {
+        const url = nextCard.getAttribute('data-url');
+        if (url) playVideo(url, nextCard);
+    }
 }
 
 // ── Helper para separar descripción de créditos ───────────────
@@ -170,7 +193,13 @@ function onYouTubeIframeAPIReady() {
 
     ytPlayer = new YT.Player('yt-player-container', {
         videoId: initialId,
-        playerVars: { autoplay: 1, mute: 1, rel: 0, modestbranding: 1 },
+        playerVars: { 
+            autoplay: 1, 
+            mute: 1, 
+            rel: 0, 
+            modestbranding: 1,
+            playsinline: 1 /* Impide pantalla completa nativa forzada en móviles */
+        },
         events: {
             onReady: function () {
                 ytApiReady = true;
@@ -240,6 +269,7 @@ function buildCard(item, animDelay) {
 
     const wrapperEl = document.createElement('div');
     wrapperEl.className = 'card-wrapper';
+    wrapperEl.setAttribute('data-url', item.url_video);
     wrapperEl.setAttribute('aria-label', `Reproducir: ${item.titulo}`);
     wrapperEl.setAttribute('tabindex', '0');
     wrapperEl.style.animationDelay = `${animDelay * 0.05}s`;
@@ -311,6 +341,7 @@ function buildCompactCard(item, animDelay) {
 
     const wrapperEl = document.createElement('div');
     wrapperEl.className = 'card-compact-wrapper';
+    wrapperEl.setAttribute('data-url', item.url_video);
     wrapperEl.setAttribute('aria-label', `Reproducir: ${item.titulo}`);
     wrapperEl.setAttribute('tabindex', '0');
     if (animDelay > 0) wrapperEl.style.animationDelay = `${animDelay * 0.05}s`;
@@ -374,69 +405,127 @@ function extractUniqueTags(data) {
     });
 }
 
-// ── Constructor de Tabs de Subcategoría ──────────────────────
-function buildCatalogoTabs(tags) {
-    const container = document.getElementById('catalogo-tabs');
+// ── Constructor de Tabs de Subcategoría (Acordeón Inline) ────
+function buildInlineSubcategories(container, tags, category) {
     container.innerHTML = '';
 
+    const leftBracket = document.createElement('span');
+    leftBracket.style.color = '#333'; leftBracket.textContent = '[';
+    container.appendChild(leftBracket);
+
     const todosBtn = document.createElement('button');
-    todosBtn.className = 'tab-btn active';
+    todosBtn.className = `tab-btn ${currentCatalogoTag === 'todos' ? 'active' : ''}`;
     todosBtn.textContent = 'TODAS';
-    todosBtn.id = 'tag-todos';
-    todosBtn.addEventListener('click', () => setCatalogoTag('todos'));
+    todosBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setCatalogoTag('todos', category);
+    });
     container.appendChild(todosBtn);
 
     tags.forEach(tag => {
         const sep = document.createElement('span');
-        sep.style.color = '#333'; sep.textContent = '/';
+        sep.style.color = '#222'; sep.textContent = '|';
         container.appendChild(sep);
 
-        const btn   = document.createElement('button');
-        btn.className   = 'tab-btn';
+        const btn = document.createElement('button');
+        btn.className = `tab-btn ${currentCatalogoTag === tag ? 'active' : ''}`;
         btn.textContent = tag.toUpperCase();
-        btn.id = `tag-${tag.replace(/\s+/g, '-')}`;
-        const c = tagColors[tag] || '#bae1ff';
-        btn.addEventListener('mouseenter', () => { if (!btn.classList.contains('active')) btn.style.color = c + '99'; });
+        const color = tagColors[tag] || '#bae1ff';
+        btn.addEventListener('mouseenter', () => { if (!btn.classList.contains('active')) btn.style.color = color + '99'; });
         btn.addEventListener('mouseleave', () => { if (!btn.classList.contains('active')) btn.style.color = ''; });
-        btn.addEventListener('click', () => setCatalogoTag(tag));
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setCatalogoTag(tag, category);
+        });
         container.appendChild(btn);
     });
+
+    const rightBracket = document.createElement('span');
+    rightBracket.style.color = '#333'; rightBracket.textContent = ']';
+    container.appendChild(rightBracket);
 }
 
-// Configuración inicial de los 4 filtros principales
-function setupMainFilters() {
+// ── Constructor de Categorías Principales ────────────────────
+function buildCatalogoMainFilters() {
     const container = document.getElementById('catalogo-main-filters');
     if (!container) return;
-    
-    const buttons = container.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => {
+    container.innerHTML = '';
+
+    MAIN_CATEGORIES.forEach((cat, index) => {
+        const group = document.createElement('div');
+        group.className = 'category-group';
+        group.id = `group-${cat}`;
+
+        const btn = document.createElement('button');
+        btn.className = `filter-btn ${currentMainFilter === cat ? 'active' : ''}`;
+        btn.textContent = cat.toUpperCase();
         btn.addEventListener('click', () => {
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Asignar filtro principal seleccionado
-            const filterAttr = btn.getAttribute('data-filter') || btn.textContent.trim().toLowerCase();
-            currentMainFilter = filterAttr;
-            currentCatalogoTag = 'todos'; // Reiniciar subcategorías
-            
-            // Extraer y construir tags correspondientes únicamente al filtro principal activo
-            const filteredItems = allData.filter(item => itemMatchesMainFilter(item, currentMainFilter));
-            const tags = extractUniqueTags(filteredItems);
-            
-            buildCatalogoTabs(tags);
-            renderCatalogo();
+            selectMainCategory(cat);
         });
+
+        group.appendChild(btn);
+
+        if (cat !== 'todas') {
+            const subContainer = document.createElement('div');
+            subContainer.className = 'subcategories-inline';
+            subContainer.id = `sub-inline-${cat}`;
+            group.appendChild(subContainer);
+        }
+
+        container.appendChild(group);
+
+        if (index < MAIN_CATEGORIES.length - 1) {
+            const sep = document.createElement('span');
+            sep.className = 'filter-separator';
+            sep.textContent = '/';
+            container.appendChild(sep);
+        }
     });
 }
 
-function setCatalogoTag(tag) {
-    currentCatalogoTag = tag;
-    document.getElementById('catalogo-tabs').querySelectorAll('.tab-btn').forEach(btn => {
-        const active = (tag === 'todos' && btn.id === 'tag-todos') ||
-                       btn.id === `tag-${tag.replace(/\s+/g, '-')}`;
-        btn.classList.toggle('active', active);
-        btn.style.color = active && tag !== 'todos' ? (tagColors[tag] || '#bae1ff') : '';
+function selectMainCategory(cat) {
+    currentMainFilter = cat;
+    currentCatalogoTag = 'todos'; // Resetear tag subcategoría
+
+    document.querySelectorAll('#catalogo-main-filters .filter-btn').forEach(btn => {
+        const isCurrent = btn.textContent.trim().toLowerCase() === cat;
+        btn.classList.toggle('active', isCurrent);
     });
+
+    // Control dinámico de contracción y expansión
+    MAIN_CATEGORIES.forEach(c => {
+        const group = document.getElementById(`group-${c}`);
+        if (!group) return;
+
+        if (c === cat && cat !== 'todas') {
+            group.classList.add('expanded');
+            const subContainer = document.getElementById(`sub-inline-${c}`);
+            if (subContainer) {
+                const filteredItems = allData.filter(item => itemMatchesMainFilter(item, c));
+                const tags = extractUniqueTags(filteredItems);
+                buildInlineSubcategories(subContainer, tags, c);
+            }
+        } else {
+            group.classList.remove('expanded');
+            const subContainer = document.getElementById(`sub-inline-${c}`);
+            if (subContainer) subContainer.innerHTML = '';
+        }
+    });
+
+    renderCatalogo();
+}
+
+function setCatalogoTag(tag, category) {
+    currentCatalogoTag = tag;
+    
+    // Actualizar estados activos dentro del subcontenedor expandido
+    const subContainer = document.getElementById(`sub-inline-${category}`);
+    if (subContainer) {
+        const filteredItems = allData.filter(item => itemMatchesMainFilter(item, category));
+        const tags = extractUniqueTags(filteredItems);
+        buildInlineSubcategories(subContainer, tags, category);
+    }
+
     renderCatalogo();
 }
 
@@ -444,10 +533,8 @@ function renderCatalogo() {
     const grid = document.getElementById('grid-catalogo');
     catalogoCards = []; grid.innerHTML = '';
 
-    // 1. Filtrar por la categoría principal
     let items = allData.filter(item => itemMatchesMainFilter(item, currentMainFilter));
 
-    // 2. Filtrar adicionalmente por la subcategoría de Tag activa
     if (currentCatalogoTag !== 'todos') {
         items = items.filter(item =>
             Array.isArray(item.tags) &&
@@ -487,7 +574,6 @@ function renderPortafolio() {
         items.sort((a, b) => (b.vistas || 0) - (a.vistas || 0));
     }
 
-    // Asegurar loop infinito repitiendo items si son pocos
     let displayItems = [...items];
     while (displayItems.length < 12) {
         displayItems = displayItems.concat(items);
@@ -499,7 +585,6 @@ function renderPortafolio() {
         portafolioCards.push(el);
     });
     
-    // Clon para loop sin corte
     displayItems.forEach((item) => {
         const el = buildCompactCard(item, 0);
         el.setAttribute('aria-hidden', 'true');
@@ -540,9 +625,7 @@ fetch('contenidos.json')
 
 function initApp() {
     allData.forEach(item => ensureThumbnail(item));
-    setupMainFilters();
-    const initialTags = extractUniqueTags(allData);
-    buildCatalogoTabs(initialTags);
+    buildCatalogoMainFilters();
     renderCatalogo();
     renderPortafolio();
     currentVideoIndex = -1;
