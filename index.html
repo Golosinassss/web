@@ -44,24 +44,25 @@
         <!-- VIDEO HERO -->
         <div id="video-hero"><div id="yt-player-container"></div></div>
 
-        <!-- SECCIÓN 1: GOLOSINASSSS -->
+        <!-- SECCIÓN 1: GOLOSINASSSS (Categorías Principales con Acordeón de Subcategorías Inline) -->
         <div class="section-header" style="margin-top:10px">
             <span class="section-label-large" id="golosinassss-title">Golosinassss</span>
             
+            <!-- Contenedor del Acordeón Integrado -->
             <div class="main-filters" id="catalogo-main-filters">
-                <!-- Se inyecta dinámicamente desde app.js (Soporte acordeón total) -->
+                <!-- Se inyecta dinámicamente desde app.js -->
             </div>
         </div>
         <div class="grid-wrap"><div id="grid-catalogo"></div></div>
 
-        <!-- SECCIÓN 2: ARCHIVO VIVO (Iconografía de Símbolos en Categorías) -->
+        <!-- SECCIÓN 2: ARCHIVO VIVO (scroll infinito automático) -->
         <div class="section-header">
             <span class="section-label">Archivo Vivo</span>
-            <button class="filter-btn active" id="f-recientes" onclick="setPortafolioFilter('recientes')" title="Recientes">◉</button>
+            <button class="filter-btn active" id="f-recientes" onclick="setPortafolioFilter('recientes')">Recientes</button>
             <span class="filter-separator">/</span>
-            <button class="filter-btn" id="f-destacados" onclick="setPortafolioFilter('destacados')" title="Destacados">★</button>
+            <button class="filter-btn" id="f-destacados" onclick="setPortafolioFilter('destacados')">Destacados</button>
             <span class="filter-separator">/</span>
-            <button class="filter-btn" id="f-random" onclick="setPortafolioFilter('random')" title="Random">✦</button>
+            <button class="filter-btn" id="f-random" onclick="setPortafolioFilter('random')">Random</button>
         </div>
         <div class="portafolio-scroll-outer"><div id="grid-portafolio"></div></div>
 
