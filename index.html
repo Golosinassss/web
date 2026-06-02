@@ -44,26 +44,13 @@
         <!-- VIDEO HERO -->
         <div id="video-hero"><div id="yt-player-container"></div></div>
 
-        <!-- SECCIÓN 1: GOLOSINASSSS (4 Filtros fijos + Subcategorías por Tags) -->
+        <!-- SECCIÓN 1: GOLOSINASSSS (Categorías Principales con Acordeón de Subcategorías Inline) -->
         <div class="section-header" style="margin-top:10px">
-            <span class="section-label">Golosinassss</span>
+            <span class="section-label-large" id="golosinassss-title">Golosinassss</span>
             
-            <!-- Grupo de 4 Filtros Principales -->
+            <!-- Contenedor del Acordeón Integrado -->
             <div class="main-filters" id="catalogo-main-filters">
-                <button class="filter-btn active" onclick="filtrarCatalogoPrincipal('todas', this)">Todas</button>
-                <span class="filter-separator">/</span>
-                <button class="filter-btn" onclick="filtrarCatalogoPrincipal('documental', this)">Documental</button>
-                <span class="filter-separator">/</span>
-                <button class="filter-btn" onclick="filtrarCatalogoPrincipal('musica', this)">Música</button>
-                <span class="filter-separator">/</span>
-                <button class="filter-btn" onclick="filtrarCatalogoPrincipal('animacion', this)">Animación</button>
-            </div>
-            
-            <span class="filter-divider">|</span>
-            
-            <!-- Contenedor dinámico de Subcategorías (Tags) -->
-            <div class="tags-tabs-container" id="catalogo-tabs">
-                <!-- Se inyectan mediante app.js -->
+                <!-- Se inyecta dinámicamente desde app.js -->
             </div>
         </div>
         <div class="grid-wrap"><div id="grid-catalogo"></div></div>
