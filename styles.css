@@ -16,7 +16,7 @@ body, html {
     width: 100%;
     max-width: 560px; /* Letrero HD — canvas 2000x200 */
     aspect-ratio: 2000 / 200; /* 10:1 — proporción real del PNG */
-    margin: 10px auto 12px; /* centrado horizontal */
+    margin: 6px auto 6px; /* margen simétrico igual al espacio entre secciones */
 }
 
 #logo-img-gradient {
@@ -417,7 +417,7 @@ body, html {
 
 /* ── Footer ────────────────────────────────────────────────── */
 footer {
-    text-align: left; font-size: 0.65rem; color: #666;
+    text-align: center; font-size: 0.65rem; color: #666;
     padding: 20px 0; border-top: 1px solid #1a1a1a;
     margin-top: 24px; line-height: 1.6;
     position: relative; z-index: 20; pointer-events: auto;
@@ -425,7 +425,7 @@ footer {
 .footer-line { margin: 2px 0; }
 footer a { color: #888; text-decoration: none; border-bottom: 1px solid #333; }
 footer a:hover { color: #00e5ff; border-color: #00e5ff; }
-.social-links { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.social-links { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
 .social-links a { text-decoration: none; font-size: 0.6rem; font-weight: 700; letter-spacing: 1px; border-bottom: 1px solid transparent; transition: opacity 0.2s; }
 .social-links a:hover { opacity: 0.7; }
 
