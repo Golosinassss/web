@@ -51,6 +51,10 @@ body, html {
     height: 100vh;
     box-sizing: border-box;
     width: 100%; max-width: 100%;
+    scrollbar-width: none; /* Ocultar en Firefox */
+}
+#main-content::-webkit-scrollbar {
+    display: none; /* Ocultar en Chrome, Safari, Edge, etc. */
 }
 
 /* ── Video Hero ───────────────────────────────────────────── */
@@ -142,6 +146,76 @@ body, html {
 /* Archivo Vivo: pegado al borde inferior de las cápsulas */
 .section-header-archivo {
     margin-top: 2px;
+}
+
+.section-header-cat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+/* Estilo del icono de GOLOSINASSSS en categorías */
+.main-cat-icon {
+    height: 13px;
+    width: auto;
+    vertical-align: middle;
+    display: inline-block;
+    transition: opacity 0.2s;
+}
+
+/* ── Subcategorías Estilo Código/Directorio ────────────────── */
+.subcategories-row {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding-left: 20px; /* Tabulado/indented */
+    margin-top: 4px;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+}
+.subcategories-row::-webkit-scrollbar { display: none; }
+
+.subcategories-row .branch-char {
+    color: #333;
+    margin-right: 6px;
+    user-select: none;
+    font-weight: bold;
+}
+
+.subcategories-row .branch-connector {
+    color: #222;
+    margin-right: 2px;
+    user-select: none;
+}
+
+.subcategories-row .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 2px 6px;
+    font-size: 0.62rem;
+    color: #444;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.subcategories-row .tab-btn:hover {
+    color: #888;
+}
+
+.subcategories-row .tab-btn.active {
+    color: var(--active-color, #ffb3ba);
+}
+
+.subcategories-row .tab-btn.active .branch-connector {
+    color: var(--active-color, #ffb3ba);
+    opacity: 0.6;
 }
 
 .section-label {
@@ -254,7 +328,7 @@ body, html {
 /* ── Grid Portafolio (Autoscroll) ────────────────────────── */
 .portafolio-scroll-outer {
     overflow-x: auto; overflow-y: hidden; position: relative;
-    padding: 4px 0; height: 190px;
+    padding: 4px 0; height: 210px;
     margin-bottom: 4px; scrollbar-width: none;
 }
 .portafolio-scroll-outer::-webkit-scrollbar { display: none; }
@@ -262,7 +336,7 @@ body, html {
 /* Eliminados los pseudoelementos de degradado de portafolio-scroll-outer */
 #grid-portafolio {
     display: flex; gap: 8px;
-    width: max-content; height: 64px;
+    width: max-content; height: 82px;
     animation: scroll-left 120s linear infinite; /* Escritorio normal */
 }
 
@@ -341,18 +415,19 @@ body, html {
 /* ── COMPACT CARDS — Sección 2 (Archivo Vivo) ─────────────── */
 .card-compact-wrapper {
     flex: 0 0 240px;
-    width: 240px; height: 64px;
+    width: 240px; height: 82px;
     cursor: pointer; opacity: 0;
     animation: cardFadeIn 0.4s ease forwards;
     position: relative;
 }
 
 .card-compact {
-    width: 100%; height: 64px;
+    width: 100%; height: 82px;
     background: #0d0d0d; border: 1px solid #222;
     box-sizing: border-box; overflow: hidden;
     transition: opacity 0.2s ease, border-color 0.25s ease;
     display: flex; align-items: stretch;
+    padding: 7px; /* margen interior */
 }
 
 /* Bordes por defecto secuenciales */
@@ -389,13 +464,13 @@ body, html {
     top: 0; left: 0; width: 100%; z-index: 100;
 }
 
-.compact-thumb { flex-shrink: 0; overflow: hidden; background: #000; height: 62px; }
+.compact-thumb { flex-shrink: 0; overflow: hidden; background: #000; height: 100%; }
 .compact-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; display: block; }
-.compact-thumb-sq   { width: 62px; }
-.compact-thumb-rect { width: 110px; }
+.compact-thumb-sq   { width: 68px; }
+.compact-thumb-rect { width: 120px; }
 .compact-thumb-empty { background: #111; }
 
-.card-compact-content { display: flex; flex-direction: column; justify-content: center; padding: 6px 9px; flex: 1; min-width: 0; }
+.card-compact-content { display: flex; flex-direction: column; justify-content: center; padding: 4px 8px; flex: 1; min-width: 0; text-align: right; }
 .card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: #fff; line-height: 1.25; margin: 0; }
 .card-compact-desc { font-size: 0.52rem; color: #666; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
@@ -502,9 +577,6 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     #grid-portafolio { height: 82px; }
     .card-compact-wrapper { height: 82px; flex: 0 0 220px; width: 220px; }
     .card-compact { height: 82px; }
-    .compact-thumb { height: 80px; }
-    .compact-thumb-sq { width: 80px; }
-    .compact-thumb-rect { width: 120px; }
 }
 
 

@@ -108,9 +108,9 @@ const mainCatColors = {
 
 // Subcategorías por categoría principal (en orden)
 const SUBCAT_MAP = {
-    'documental': ['social', 'periodismo', 'conciertos', 'cine', 'institucional', 'sonido infinito'],
-    'música':     ['conciertos', 'cine', 'sesiones musicales', 'videoclips', 'sonido infinito'],
-    'animación':  ['animación', 'animación 2d', 'motion graphics', '3d'],
+    'documental': ['social', 'periodismo', 'cine', 'institucional'],
+    'música':     ['conciertos', 'sesiones musicales', 'videoclips', 'sonido infinito'],
+    'animación':  [],
 };
 
 // ── Helpers YouTube ──────────────────────────────────────────
@@ -441,40 +441,34 @@ function extractUniqueTags(data) {
 function buildInlineSubcategories(container, tags, category) {
     container.innerHTML = '';
 
-    const leftBracket = document.createElement('span');
-    leftBracket.style.color = '#333'; leftBracket.textContent = '[';
-    container.appendChild(leftBracket);
+    const prefix = document.createElement('span');
+    prefix.className = 'branch-char';
+    prefix.textContent = '└─';
+    container.appendChild(prefix);
 
-    const todosBtn = document.createElement('button');
-    todosBtn.className = `tab-btn ${currentCatalogoTag === 'todos' ? 'active' : ''}`;
-    todosBtn.textContent = 'TODAS';
-    todosBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        setCatalogoTag('todos', category);
-    });
-    container.appendChild(todosBtn);
+    const list = ['todos', ...tags];
 
-    tags.forEach(tag => {
-        const sep = document.createElement('span');
-        sep.style.color = '#222'; sep.textContent = '|';
-        container.appendChild(sep);
-
+    list.forEach((sub, idx) => {
         const btn = document.createElement('button');
-        btn.className = `tab-btn ${currentCatalogoTag === tag ? 'active' : ''}`;
-        btn.textContent = tag.toUpperCase();
-        const color = tagColors[tag] || '#bae1ff';
-        btn.addEventListener('mouseenter', () => { if (!btn.classList.contains('active')) btn.style.color = color + '99'; });
-        btn.addEventListener('mouseleave', () => { if (!btn.classList.contains('active')) btn.style.color = ''; });
+        btn.className = `filter-btn tab-btn${currentCatalogoTag === sub ? ' active' : ''}`;
+        
+        const branchChar = (idx === list.length - 1) ? ' └─ ' : ' ├─ ';
+        const catColor = mainCatColors[category] || '#e0e0e0';
+        btn.style.setProperty('--active-color', catColor);
+        
+        if (currentCatalogoTag === sub) {
+            btn.style.color = catColor;
+        } else {
+            btn.style.color = '';
+        }
+        
+        btn.innerHTML = `<span class="branch-connector">${branchChar}</span><span class="tag-name">${sub}</span>`;
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            setCatalogoTag(tag, category);
+            setCatalogoTag(sub, category);
         });
         container.appendChild(btn);
     });
-
-    const rightBracket = document.createElement('span');
-    rightBracket.style.color = '#333'; rightBracket.textContent = ']';
-    container.appendChild(rightBracket);
 }
 
 // ── Constructor de Categorías Principales ────────────────────
@@ -484,27 +478,27 @@ function buildCatalogoMainFilters() {
     container.innerHTML = '';
 
     MAIN_CATEGORIES.forEach((cat, index) => {
-        const group = document.createElement('div');
-        group.className = 'category-group';
-        group.id = `group-${cat}`;
-
         const btn = document.createElement('button');
         btn.className = `filter-btn main-cat-btn${currentMainFilter === cat ? ' active' : ''}`;
-        btn.textContent = cat.toUpperCase();
+        btn.setAttribute('data-cat', cat);
+
+        if (cat === 'todas') {
+            const img = document.createElement('img');
+            img.src = 'ICON_GOLOSINASSSS.png';
+            img.alt = 'TODAS';
+            img.className = 'main-cat-icon';
+            img.style.opacity = currentMainFilter === 'todas' ? '1' : '0.4';
+            btn.appendChild(img);
+        } else {
+            btn.textContent = cat.toUpperCase();
+        }
+
         const catColor = mainCatColors[cat] || '#e0e0e0';
         btn.style.setProperty('--cat-color', catColor);
         if (currentMainFilter === cat) btn.style.color = catColor;
         btn.addEventListener('click', () => selectMainCategory(cat));
-        group.appendChild(btn);
 
-        if (cat !== 'todas') {
-            const subContainer = document.createElement('div');
-            subContainer.className = 'subcategories-inline';
-            subContainer.id = `sub-inline-${cat}`;
-            group.appendChild(subContainer);
-        }
-
-        container.appendChild(group);
+        container.appendChild(btn);
 
         if (index < MAIN_CATEGORIES.length - 1) {
             const sep = document.createElement('span');
@@ -520,36 +514,36 @@ function selectMainCategory(cat) {
     currentCatalogoTag = 'todos';
 
     document.querySelectorAll('#catalogo-main-filters .main-cat-btn').forEach(btn => {
-        const isCurrent = btn.textContent.trim().toLowerCase() === cat;
+        const btnCat = btn.getAttribute('data-cat');
+        const isCurrent = btnCat === cat;
         btn.classList.toggle('active', isCurrent);
-        const c = mainCatColors[btn.textContent.trim().toLowerCase()] || '#e0e0e0';
+        const c = mainCatColors[btnCat] || '#e0e0e0';
         btn.style.color = isCurrent ? c : '';
-    });
 
-    MAIN_CATEGORIES.forEach(c => {
-        const group = document.getElementById(`group-${c}`);
-        if (!group) return;
-        const subContainer = document.getElementById(`sub-inline-${c}`);
-
-        if (c === cat && cat !== 'todas') {
-            group.classList.add('expanded');
-            if (subContainer) {
-                // Usar subcategorías del mapa fijo, no derivadas dinámicamente
-                const subcats = SUBCAT_MAP[c] || [];
-                buildInlineSubcategories(subContainer, subcats, c);
-            }
-        } else {
-            group.classList.remove('expanded');
-            if (subContainer) subContainer.innerHTML = '';
+        const img = btn.querySelector('.main-cat-icon');
+        if (img) {
+            img.style.opacity = isCurrent ? '1' : '0.4';
         }
     });
+
+    const subContainer = document.getElementById('catalogo-sub-filters');
+    if (subContainer) {
+        const subcats = SUBCAT_MAP[cat] || [];
+        if (subcats.length > 0) {
+            subContainer.style.display = 'flex';
+            buildInlineSubcategories(subContainer, subcats, cat);
+        } else {
+            subContainer.style.display = 'none';
+            subContainer.innerHTML = '';
+        }
+    }
 
     renderCatalogo();
 }
 
 function setCatalogoTag(tag, category) {
     currentCatalogoTag = tag;
-    const subContainer = document.getElementById(`sub-inline-${category}`);
+    const subContainer = document.getElementById('catalogo-sub-filters');
     if (subContainer) {
         const subcats = SUBCAT_MAP[category] || [];
         buildInlineSubcategories(subContainer, subcats, category);
