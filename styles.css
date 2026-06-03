@@ -14,9 +14,9 @@ body, html {
 /* ── Logo Imagen con Gradiente Animado ────────────────────── */
 #logo-img-wrap {
     width: 100%;
-    max-width: 560px; /* Letrero HD — canvas 2000x200 */
-    aspect-ratio: 2000 / 200; /* 10:1 — proporción real del PNG */
-    margin: 6px auto 6px; /* margen simétrico igual al espacio entre secciones */
+    max-width: 560px;
+    aspect-ratio: 2000 / 200;
+    margin: 22px auto 22px; /* separador generoso entre secciones */
 }
 
 #logo-img-gradient {
@@ -246,8 +246,8 @@ body, html {
 /* ── Grid Catálogo (Manual) ──────────────────────────────── */
 #grid-catalogo {
     display: flex; overflow-x: auto; overflow-y: hidden;
-    gap: 8px; margin-bottom: 5px;
-    scrollbar-width: none; padding: 6px 0;
+    gap: 8px; margin-bottom: 0;   /* el letrero maneja el espacio inferior */
+    scrollbar-width: none; padding: 6px 0 0;  /* sin padding inferior — flush con borde de cápsulas */
 }
 #grid-catalogo::-webkit-scrollbar { display: none; }
 
