@@ -576,9 +576,10 @@ function renderCatalogo() {
 // ══════════════════════════════════════════════════════════════
 function setPortafolioFilter(filter) {
     currentPortafolioFilter = filter;
-    ['recientes', 'destacados', 'random'].forEach(f =>
-        document.getElementById('f-' + f).classList.toggle('active', f === filter)
-    );
+    ['recientes', 'destacados', 'random'].forEach(f => {
+        const el = document.getElementById('f-' + f);
+        if (el) el.classList.toggle('active', f === filter);
+    });
     renderPortafolio();
 }
 
