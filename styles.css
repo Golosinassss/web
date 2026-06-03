@@ -11,44 +11,29 @@ body, html {
     overflow: hidden;
 }
 
-/* ── Logo ASCII Art ───────────────────────────────────────── */
-#logo-ascii-wrap {
+/* ── Logo Imagen con Gradiente Animado ────────────────────── */
+#logo-img-wrap {
     width: 100%;
-    max-width: 488px; /* Ancho de las 2 primeras cápsulas (240px + 8px + 240px) */
+    max-width: 488px; /* Ancho de las 2 primeras cápsulas */
+    aspect-ratio: 1024 / 102;
     margin-top: 10px;
-    margin-bottom: 0;
-    container-type: inline-size;
-    overflow: hidden;
+    margin-bottom: 12px;
 }
 
-#logo-ascii-text {
-    margin: 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.73cqw; /* Ajustado para 240 columnas de caracteres */
-    line-height: 1.02;
-    letter-spacing: -0.015cqw;
-    font-weight: bold;
-    white-space: pre;
-
-    /* Gradiente animado continuo */
+#logo-img-gradient {
+    width: 100%;
+    height: 100%;
     background: linear-gradient(90deg,
         #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff,
         #baffc9, #ffffba, #ffdfba, #ffb3ba);
     background-size: 300% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     animation: gradientShift 6s linear infinite;
-}
-
-@supports not (container-type: inline-size) {
-    #logo-ascii-text {
-        font-size: 0.7vw;
-    }
-}
-
-@media (max-width: 480px) {
-    #logo-ascii-wrap { margin-top: 6px; }
+    
+    /* Enmascarar con la imagen transparente del logo */
+    -webkit-mask: url('logo-golosinassss.png') no-repeat center;
+    mask: url('logo-golosinassss.png') no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
 }
 
 
@@ -490,205 +475,4 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .compact-thumb-rect { width: 120px; }
 }
 
-/* ── Logo Mode Selector ────────────────────────────────────── */
-.logo-mode-selector {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    padding-left: 2px;
-}
 
-.logo-mode-selector .selector-btn {
-    background: none;
-    border: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    cursor: pointer;
-    color: #444;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    padding: 2px 4px;
-}
-
-.logo-mode-selector .selector-btn:hover {
-    color: #999;
-}
-
-.logo-mode-selector .selector-btn.active {
-    color: #ffb3ba;
-}
-
-.logo-mode-selector .selector-separator {
-    color: #222;
-    font-size: 0.65rem;
-    user-select: none;
-}
-
-/* ── LyliGo T-Display S3 Simulator Board ──────────────────── */
-#logo-board-wrap {
-    width: 100%;
-    max-width: 488px;
-    margin-top: 10px;
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.lilygo-board {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 420 / 210;
-    background: #111111; /* Carbon black PCB */
-    border: 2px solid #222222;
-    border-radius: 8px;
-    box-shadow: 
-        inset 0 0 15px rgba(255,255,255,0.03),
-        0 8px 30px rgba(0,0,0,0.8);
-    overflow: visible;
-}
-
-/* PCB copper tracks decoration */
-.lilygo-board::before {
-    content: '';
-    position: absolute;
-    top: 5%; left: 5%; width: 90%; height: 90%;
-    border: 1px solid rgba(229, 193, 88, 0.08); /* Faint gold copper track */
-    pointer-events: none;
-    border-radius: 6px;
-}
-
-/* USB-C Port */
-.board-usb {
-    position: absolute;
-    left: -8px;
-    top: 40%;
-    width: 8px;
-    height: 20%;
-    background: #1c1c1c;
-    border: 2px solid #444;
-    border-right: none;
-    border-radius: 4px 0 0 4px;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
-    z-index: 5;
-}
-
-/* Buttons */
-.board-button {
-    position: absolute;
-    left: 4%;
-    width: 4.5%;
-    height: 12%;
-    background: #252525;
-    border: 1.5px solid #e5c158; /* Gold border */
-    border-radius: 2px;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-    transition: all 0.1s ease;
-}
-
-.board-button:hover {
-    background: #3a3a3a;
-    transform: scale(1.05);
-}
-
-.board-button:active {
-    background: #e5c158;
-    transform: scale(0.95);
-}
-
-.btn-top {
-    top: 25%;
-}
-
-.btn-bottom {
-    top: 63%;
-}
-
-/* LED Indicator */
-.board-led {
-    position: absolute;
-    left: 20%;
-    top: 6%;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #00ff66;
-    box-shadow: 0 0 8px #00ff66;
-    animation: ledPulse 2s infinite ease-in-out;
-    z-index: 10;
-}
-
-@keyframes ledPulse {
-    0%, 100% { opacity: 0.4; box-shadow: 0 0 2px #00ff66; }
-    50% { opacity: 1; box-shadow: 0 0 10px #00ff66, 0 0 15px #00ff66; }
-}
-
-/* Screen Container */
-.board-screen-container {
-    position: absolute;
-    left: 12%;
-    top: 10%;
-    width: 76%;
-    height: 80%;
-    background: #000;
-    border: 2.5px solid #2a2a2a;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 
-        inset 0 0 10px rgba(0,0,0,0.9),
-        0 0 20px rgba(0,229,255,0.08);
-}
-
-.board-screen-container canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    image-rendering: pixelated;
-}
-
-/* Screen overlays: scanlines, reflection, glow */
-.screen-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 15;
-    background: 
-        /* Scanlines */
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%),
-        /* Glass Reflection */
-        linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 30%, rgba(255,255,255,0) 31%, rgba(255,255,255,0) 100%);
-    background-size: 100% 3px, 100% 100%;
-    box-shadow: inset 0 0 12px rgba(0,0,0,0.9);
-}
-
-/* Solder Pins (Top & Bottom edges) */
-.board-pins {
-    position: absolute;
-    width: 72%;
-    height: 6px;
-    display: flex;
-    justify-content: space-between;
-    left: 14%;
-}
-
-.pins-left {
-    top: -4px;
-}
-
-.pins-right {
-    bottom: -4px;
-}
-
-.board-pins .pin {
-    width: 5px;
-    height: 6px;
-    background: #e5c158; /* Gold plated solder pads */
-    border-radius: 1px;
-    box-shadow: 0 0 2px rgba(229, 193, 88, 0.4);
-}
