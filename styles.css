@@ -14,8 +14,8 @@ body, html {
 /* ── Logo Imagen con Gradiente Animado ────────────────────── */
 #logo-img-wrap {
     width: 100%;
-    max-width: 488px; /* Ancho de las 2 primeras cápsulas */
-    aspect-ratio: 1024 / 102;
+    max-width: 600px; /* Letrero HD — canvas 2100x1500 */
+    aspect-ratio: 2100 / 1500; /* 7/5 — proporción real del PNG */
     margin-top: 10px;
     margin-bottom: 12px;
 }
@@ -29,9 +29,9 @@ body, html {
     background-size: 300% 100%;
     animation: gradientShift 6s linear infinite;
     
-    /* Enmascarar con la imagen transparente del logo */
-    -webkit-mask: url('logo-golosinassss.png') no-repeat center;
-    mask: url('logo-golosinassss.png') no-repeat center;
+    /* Enmascarar con el letrero HD */
+    -webkit-mask: url('Letrero.Web-GOLOSINASSSS.png') no-repeat center;
+    mask: url('Letrero.Web-GOLOSINASSSS.png') no-repeat center;
     -webkit-mask-size: contain;
     mask-size: contain;
 }
