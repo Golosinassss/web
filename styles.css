@@ -11,47 +11,22 @@ body, html {
     overflow: hidden;
 }
 
-/* ── ASCII Logo ───────────────────────────────────────────── */
-#logo-ascii-wrap {
+/* ── Logo PNG ────────────────────────────────────────────── */
+#logo-img-wrap {
     width: 100%;
-    overflow: hidden;
     margin-top: 10px;
     margin-bottom: 0;
-    line-height: 1;
+    line-height: 0; /* elimina espacio extra debajo del img */
 }
 
-#ascii-logo {
+#logo-img {
     display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
-    /* 300 chars × font-size = contenedor width  →  font-size = width/300 */
-    font-size: calc((100vw - 64px) / 300);
-    line-height: 1.0;
-    letter-spacing: 0;
-    white-space: pre;
-    margin: 0;
-    padding: 0;
-    border: none;
-    background: transparent;
-    user-select: none;
-    /* Gradiente animado sobre los puntos */
-    background: linear-gradient(90deg,
-        #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff,
-        #baffc9, #ffffba, #ffdfba, #ffb3ba, #ffdfba,
-        #ffffba, #baffc9, #bae1ff, #ffb3ba);
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 6s linear infinite;
+    width: 100%;
+    height: auto;
 }
 
-@media (max-width: 768px) {
-    #ascii-logo { font-size: calc((100vw - 40px) / 300); }
-}
 @media (max-width: 480px) {
-    #ascii-logo { font-size: calc((100vw - 28px) / 300); line-height: 1.0; }
-    #logo-ascii-wrap { margin-top: 4px; }
+    #logo-img-wrap { margin-top: 6px; }
 }
 
 
