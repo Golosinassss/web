@@ -53,8 +53,36 @@
         <div id="video-hero"><div id="yt-player-container"></div></div>
 
         <!-- SECCIÓN 1: GOLOSINASSSS -->
-        <div id="logo-img-wrap">
-            <div id="logo-led" aria-label="GOLOSINASSSS"></div>
+        <div class="logo-mode-selector">
+            <button class="selector-btn active" id="btn-view-ascii" onclick="setLogoMode('ascii')">[ VISTA: LOGO ASCII ]</button>
+            <span class="selector-separator">/</span>
+            <button class="selector-btn" id="btn-view-lcd" onclick="setLogoMode('lcd')">[ VISTA: PANTALLA LCD S3 ]</button>
+        </div>
+        <div id="logo-ascii-wrap">
+            <pre id="logo-ascii-text" aria-label="GOLOSINASSSS"></pre>
+        </div>
+        <div id="logo-board-wrap" style="display: none;">
+            <div class="lilygo-board" id="lilygo-board">
+                <!-- Botones físicos de la placa -->
+                <div class="board-button btn-top" id="board-btn-top" title="Cambiar Modo de Pantalla (Tucunaré / Logo / Off)"></div>
+                <div class="board-button btn-bottom" id="board-btn-bottom" title="Reiniciar Pantalla"></div>
+                <!-- Conector USB-C -->
+                <div class="board-usb"></div>
+                <!-- LED de encendido -->
+                <div class="board-led"></div>
+                <!-- Pantalla LCD -->
+                <div class="board-screen-container">
+                    <canvas id="lilygo-screen" width="320" height="170"></canvas>
+                    <div class="screen-overlay"></div>
+                </div>
+                <!-- Pines de soldadura (Izquierda y Derecha) -->
+                <div class="board-pins pins-left">
+                    <div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div>
+                </div>
+                <div class="board-pins pins-right">
+                    <div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div><div class="pin"></div>
+                </div>
+            </div>
         </div>
         <div class="section-header section-header-cat" style="margin-top:6px">
             <div class="main-filters" id="catalogo-main-filters"></div>

@@ -51,6 +51,19 @@
     }
 })();
 
+// ── Logo ASCII Art ───────────────────────────────────────────
+(function setupAsciiLogo() {
+    fetch('logo-ascii.json')
+        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+        .then(lines => {
+            const container = document.getElementById('logo-ascii-text');
+            if (container) {
+                container.textContent = lines.join('\n');
+            }
+        })
+        .catch(() => console.warn("No se pudo cargar el logo ASCII geométrico."));
+})();
+
 // ── Estado Global ────────────────────────────────────────────
 let ytPlayer        = null;
 let portafolioCards = [];
@@ -696,3 +709,274 @@ function setupDragScroll() {
         container.scrollLeft = scrollLeft - (x - startX) * 1.5;
     }, { passive: true });
 }
+
+// ══════════════════════════════════════════════════════════════
+// SIMULADOR LYLI-GO T-DISPLAY S3 & REPRODUCTOR TUCUNARÉ
+// ══════════════════════════════════════════════════════════════
+(function setupLilyGoSimulator() {
+    let currentLogoMode = 'ascii'; // 'ascii' o 'lcd'
+    let lcdLoopActive = false;
+    let lcdAnimFrameId = null;
+    let screenMode = 'tucunare'; // 'tucunare', 'logo', 'off'
+
+    let screenVideo = null;
+    let screenCanvas = null;
+    let screenCtx = null;
+    
+    let logoImg = null;
+    let logoImgLoaded = false;
+    let glitchActive = 0;
+    let bootTime = 0;
+    
+    // Lista de mensajes de código para el fondo del logo
+    const debugMessages = [
+        "Initializing ESP32-S3...",
+        "TFT_eSPI Library v2.5.0",
+        "Display width: 320, height: 170",
+        "SPI Speed: 40MHz",
+        "Loading binary contents...",
+        "tucu_frames.bin mounted",
+        "VGA Buffer: OK",
+        "CPU Temp: 42 C",
+        "FPS: 15.4",
+        "WiFi Status: Connected",
+        "IP: 192.168.1.45"
+    ];
+    let debugLines = [];
+
+    function init() {
+        screenCanvas = document.getElementById('lilygo-screen');
+        if (!screenCanvas) return;
+        screenCtx = screenCanvas.getContext('2d');
+
+        // 1. Crear elemento de video invisible para Tucunaré
+        screenVideo = document.createElement('video');
+        screenVideo.src = 'tucu.mp4';
+        screenVideo.loop = true;
+        screenVideo.muted = true;
+        screenVideo.playsInline = true;
+        screenVideo.style.display = 'none';
+        document.body.appendChild(screenVideo);
+
+        // Pre-cargar video
+        screenVideo.load();
+
+        // 2. Cargar imagen del logo
+        logoImg = new Image();
+        logoImg.src = 'logo-golosinassss.png';
+        logoImg.onload = () => {
+            logoImgLoaded = true;
+        };
+
+        // 3. Vincular eventos de botones de la placa
+        const btnTop = document.getElementById('board-btn-top');
+        const btnBottom = document.getElementById('board-btn-bottom');
+
+        if (btnTop) {
+            btnTop.addEventListener('click', (e) => {
+                e.stopPropagation();
+                cycleMode();
+            });
+        }
+        if (btnBottom) {
+            btnBottom.addEventListener('click', (e) => {
+                e.stopPropagation();
+                restartMode();
+            });
+        }
+
+        // Registrar función global para cambiar de vista
+        window.setLogoMode = function(mode) {
+            currentLogoMode = mode;
+            const asciiWrap = document.getElementById('logo-ascii-wrap');
+            const boardWrap = document.getElementById('logo-board-wrap');
+            const btnAscii = document.getElementById('btn-view-ascii');
+            const btnLcd = document.getElementById('btn-view-lcd');
+
+            if (mode === 'ascii') {
+                if (asciiWrap) asciiWrap.style.display = 'block';
+                if (boardWrap) boardWrap.style.display = 'none';
+                if (btnAscii) btnAscii.classList.add('active');
+                if (btnLcd) btnLcd.classList.remove('active');
+                stopLcdLoop();
+            } else {
+                if (asciiWrap) asciiWrap.style.display = 'none';
+                if (boardWrap) boardWrap.style.display = 'flex';
+                if (btnAscii) btnAscii.classList.remove('active');
+                if (btnLcd) btnLcd.classList.add('active');
+                startLcdLoop();
+            }
+        };
+    }
+
+    function startLcdLoop() {
+        if (lcdLoopActive) return;
+        lcdLoopActive = true;
+        if (screenMode === 'tucunare' && screenVideo) {
+            screenVideo.play().catch(() => {});
+        }
+        bootTime = 0;
+        debugLines = [];
+        lcdLoop();
+    }
+
+    function stopLcdLoop() {
+        lcdLoopActive = false;
+        if (lcdAnimFrameId) {
+            cancelAnimationFrame(lcdAnimFrameId);
+            lcdAnimFrameId = null;
+        }
+        if (screenVideo) {
+            screenVideo.pause();
+        }
+    }
+
+    function cycleMode() {
+        if (screenMode === 'tucunare') {
+            screenMode = 'logo';
+            if (screenVideo) screenVideo.pause();
+            bootTime = 0;
+            debugLines = [];
+        } else if (screenMode === 'logo') {
+            screenMode = 'off';
+            if (screenVideo) screenVideo.pause();
+        } else {
+            screenMode = 'tucunare';
+            if (lcdLoopActive && screenVideo) {
+                screenVideo.play().catch(() => {});
+            }
+        }
+        triggerGlitch();
+    }
+
+    function restartMode() {
+        triggerGlitch();
+        if (screenMode === 'tucunare' && screenVideo) {
+            screenVideo.currentTime = 0;
+            screenVideo.play().catch(() => {});
+        } else if (screenMode === 'logo') {
+            bootTime = 0;
+            debugLines = [];
+        }
+    }
+
+    function triggerGlitch() {
+        glitchActive = 12; // Número de frames con interferencia
+    }
+
+    function drawNoise() {
+        const imgData = screenCtx.getImageData(0, 0, 320, 170);
+        const data = imgData.data;
+        for (let i = 0; i < data.length; i += 4) {
+            const noise = Math.random() * 80;
+            data[i] = Math.min(255, data[i] + noise);     // R
+            data[i+1] = Math.min(255, data[i+1] + noise); // G
+            data[i+2] = Math.min(255, data[i+2] + noise); // B
+        }
+        screenCtx.putImageData(imgData, 0, 0);
+    }
+
+    function lcdLoop() {
+        if (!lcdLoopActive) return;
+
+        // Renderizado básico por modo
+        if (screenMode === 'off') {
+            screenCtx.fillStyle = '#050505';
+            screenCtx.fillRect(0, 0, 320, 170);
+        } else if (screenMode === 'tucunare') {
+            // Verificar si el video está listo
+            if (screenVideo && screenVideo.readyState >= 2) {
+                screenCtx.drawImage(screenVideo, 0, 0, 320, 170);
+            } else {
+                // Pantalla de carga estilo terminal
+                screenCtx.fillStyle = '#080808';
+                screenCtx.fillRect(0, 0, 320, 170);
+                screenCtx.fillStyle = '#bae1ff';
+                screenCtx.font = '10px "JetBrains Mono", monospace';
+                screenCtx.fillText("CARGANDO ANIMACIÓN...", 20, 85);
+            }
+        } else if (screenMode === 'logo') {
+            // Modo Logotipo digital
+            screenCtx.fillStyle = '#060a0d';
+            screenCtx.fillRect(0, 0, 320, 170);
+
+            bootTime++;
+
+            // Generar código de depuración que corre en el fondo
+            if (bootTime % 15 === 0 && debugLines.length < 9) {
+                const nextMsg = debugMessages[Math.floor(Math.random() * debugMessages.length)];
+                debugLines.push(`> ${nextMsg}`);
+            }
+            if (debugLines.length > 8) {
+                debugLines.shift();
+            }
+
+            // Dibujar consola de fondo
+            screenCtx.font = '7px "JetBrains Mono", monospace';
+            screenCtx.fillStyle = 'rgba(186, 225, 255, 0.2)';
+            debugLines.forEach((line, index) => {
+                screenCtx.fillText(line, 15, 20 + index * 10);
+            });
+
+            // Dibujar el logo centrado
+            if (logoImgLoaded) {
+                // Dibujar el logo con gradiente animado en canvas
+                const wLogo = 220;
+                const hLogo = 220 * (logoImg.height / logoImg.width);
+                const xLogo = (320 - wLogo) / 2;
+                const yLogo = (170 - hLogo) / 2;
+
+                screenCtx.save();
+                // Renderizar máscara del logo con color verde/azul neón
+                screenCtx.drawImage(logoImg, xLogo, yLogo, wLogo, hLogo);
+                screenCtx.globalCompositeOperation = 'source-in';
+                
+                const grad = screenCtx.createLinearGradient(0, 0, 320, 0);
+                const t = Date.now() * 0.002;
+                const c1 = `hsl(${(t * 40) % 360}, 100%, 75%)`;
+                const c2 = `hsl(${(t * 40 + 60) % 360}, 100%, 70%)`;
+                grad.addColorStop(0, c1);
+                grad.addColorStop(1, c2);
+                screenCtx.fillStyle = grad;
+                screenCtx.fillRect(0, 0, 320, 170);
+                screenCtx.restore();
+            } else {
+                screenCtx.fillStyle = '#ffb3ba';
+                screenCtx.font = '10px "JetBrains Mono", monospace';
+                screenCtx.fillText("GOLOSINASSSS", 100, 85);
+            }
+        }
+
+        // Aplicar efecto de glitch si está activo
+        if (glitchActive > 0) {
+            glitchActive--;
+            // Desplazamiento horizontal aleatorio de tiras de pantalla
+            if (Math.random() > 0.3) {
+                const y = Math.random() * 140;
+                const h = Math.random() * 30 + 10;
+                const offset = (Math.random() - 0.5) * 30;
+                screenCtx.drawImage(screenCanvas, 0, y, 320, h, offset, y, 320, h);
+            }
+            // Líneas horizontales de estática
+            if (Math.random() > 0.4) {
+                screenCtx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#00e5ff';
+                screenCtx.fillRect(0, Math.random() * 170, 320, 1.5);
+            }
+            drawNoise();
+        }
+
+        // sutil estática general
+        if (screenMode !== 'off' && Math.random() > 0.95) {
+            screenCtx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+            screenCtx.fillRect(0, Math.random() * 170, 320, 1);
+        }
+
+        lcdAnimFrameId = requestAnimationFrame(lcdLoop);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
