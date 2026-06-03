@@ -530,11 +530,13 @@ function selectMainCategory(cat) {
     if (subContainer) {
         const subcats = SUBCAT_MAP[cat] || [];
         if (subcats.length > 0) {
-            subContainer.style.display = 'flex';
             buildInlineSubcategories(subContainer, subcats, cat);
+            subContainer.style.opacity = '1';
+            subContainer.style.pointerEvents = 'auto';
         } else {
-            subContainer.style.display = 'none';
             subContainer.innerHTML = '';
+            subContainer.style.opacity = '0';
+            subContainer.style.pointerEvents = 'none';
         }
     }
 

@@ -175,6 +175,8 @@ body, html {
     scrollbar-width: none;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.62rem;
+    height: 20px; /* reserva espacio para que no se muevan las cápsulas */
+    transition: opacity 0.2s ease;
 }
 .subcategories-row::-webkit-scrollbar { display: none; }
 
@@ -414,8 +416,10 @@ body, html {
 
 /* ── COMPACT CARDS — Sección 2 (Archivo Vivo) ─────────────── */
 .card-compact-wrapper {
-    flex: 0 0 240px;
-    width: 240px; height: 82px;
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 240px;
+    height: 82px;
     cursor: pointer; opacity: 0;
     animation: cardFadeIn 0.4s ease forwards;
     position: relative;
@@ -441,6 +445,55 @@ body, html {
 .card-compact-wrapper.is-active .card-compact {
     border-image: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) 1 !important;
     border-image-slice: 1 !important;
+}
+
+/* Cuando el mouse pasa sobre el contenedor del portafolio, el resto de cápsulas pierden el borde de color */
+#grid-portafolio:hover .card-compact {
+    border-color: #222 !important;
+    border-image: none !important;
+}
+
+/* Efecto invertido fondo tornasol animado y texto negro para la cápsula expandida al activarse con el cursor */
+.card-full-overlay .card {
+    background: linear-gradient(45deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff) !important;
+    background-size: 200% 200% !important;
+    animation: tornasolShift 3s ease infinite !important;
+    color: #080808 !important;
+    border: 1px solid #fff !important;
+    box-shadow: 0 0 15px rgba(255,255,255,0.15);
+}
+
+@keyframes tornasolShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.card-full-overlay .card h3 {
+    color: #080808 !important;
+}
+
+.card-full-overlay .card .card-desc,
+.card-full-overlay .card .card-credit,
+.card-full-overlay .card .card-meta {
+    color: #222 !important;
+}
+
+.card-full-overlay .card .play-btn {
+    background: #080808 !important;
+    color: #fff !important;
+    border-color: #080808 !important;
+}
+
+.card-full-overlay .card .play-btn svg {
+    stroke: #fff !important;
+    fill: #fff !important;
+}
+
+.card-full-overlay .card .card-tag {
+    border-color: #080808 !important;
+    color: #080808 !important;
+    background: rgba(0,0,0,0.05) !important;
 }
 
 @media (hover: hover) {
@@ -471,7 +524,7 @@ body, html {
 .compact-thumb-empty { background: #111; }
 
 .card-compact-content { display: flex; flex-direction: column; justify-content: center; padding: 4px 8px; flex: 1; min-width: 0; text-align: right; }
-.card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: #fff; line-height: 1.25; margin: 0; }
+.card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: #fff; line-height: 1.25; margin: 0; white-space: nowrap; }
 .card-compact-desc { font-size: 0.52rem; color: #666; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* ── Modal Móvil (tap en cápsula compacta) ──────────────── */
