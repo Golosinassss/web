@@ -152,6 +152,7 @@ body, html {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    margin-top: 10px; /* 10px de margen entre el reproductor y las categorías */
 }
 
 /* Estilo del icono de GOLOSINASSSS en categorías */
@@ -416,9 +417,8 @@ body, html {
 
 /* ── COMPACT CARDS — Sección 2 (Archivo Vivo) ─────────────── */
 .card-compact-wrapper {
-    flex: 0 0 auto;
-    width: auto;
-    min-width: 240px;
+    flex: 0 0 240px; /* todas las cápsulas del mismo tamaño, alineadas como dulces */
+    width: 240px;
     height: 82px;
     cursor: pointer; opacity: 0;
     animation: cardFadeIn 0.4s ease forwards;
@@ -524,7 +524,7 @@ body, html {
 .compact-thumb-empty { background: #111; }
 
 .card-compact-content { display: flex; flex-direction: column; justify-content: center; padding: 4px 8px; flex: 1; min-width: 0; text-align: right; }
-.card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: #fff; line-height: 1.25; margin: 0; white-space: nowrap; }
+.card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: #fff; line-height: 1.2; margin: 0; white-space: normal; }
 .card-compact-desc { font-size: 0.52rem; color: #666; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* ── Modal Móvil (tap en cápsula compacta) ──────────────── */
@@ -600,12 +600,12 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     }
     .section-label-large { width: 100%; padding-bottom: 2px; font-size: 1rem; }
 
-    /* Filtros principales en línea horizontal scrollable */
+    /* Filtros principales fijos (no scrollables, se mantienen en su lugar) */
     .main-filters {
-        width: 100%; overflow-x: auto;
-        scrollbar-width: none; flex-wrap: nowrap;
+        width: auto;
+        overflow-x: visible;
+        flex-wrap: nowrap;
     }
-    .main-filters::-webkit-scrollbar { display: none; }
 
     /* Subcategorías debajo del botón en móvil */
     .category-group { flex-direction: column; align-items: flex-start; }
