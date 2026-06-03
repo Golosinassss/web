@@ -1,5 +1,5 @@
 // ══════════════════════════════════════════════════════════════
-// GOLOSINASSSS — Archivo Vivo — Lógica Principal (Corregida)
+// GOLOSINASSSS — Archivo Vivo — Lógica Principal (Actualizada)
 // ══════════════════════════════════════════════════════════════
 
 // ── Inyección del patrón del borde derecho ───────────────────
@@ -77,7 +77,7 @@ const tagColors = {
     'documental':         '#bae1ff',
     'a mano':             '#ffb3ba',
     'animación 2d':       '#ffb3ba',
-    'dibujo - 2d':        '#ffb3ba',
+    'animación':          '#ffb3ba',
     'motion graphics':    '#bae1ff',
     '3d':                 '#baffc9',
     'coding animation':   '#ffffba',
@@ -88,25 +88,25 @@ const tagColors = {
 
 const TAG_ORDER = [
     'social', 'periodismo', 'conciertos', 'cine',
-    'música', 'dibujo - 2d', 'sesiones musicales',
+    'música', 'animación', 'sesiones musicales',
     'videoclips', 'institucional', 'sonido infinito',
 ];
 
 const MAIN_CATEGORIES = ['todas', 'documental', 'música', 'animación'];
 
-// Colores únicos para destacar categorías principales activas
-const CATEGORY_COLORS = {
-    'todas': '#ffb3ba',
-    'documental': '#bae1ff',
-    'música': '#baffc9',
-    'animación': '#ffffba'
+// Color de cada categoría principal
+const mainCatColors = {
+    'todas':      '#e0e0e0',
+    'documental': '#ffb3ba',
+    'música':     '#bae1ff',
+    'animación':  '#baffc9',
 };
 
-// Mapeos explícitos de subcategorías requeridos
-const CATEGORY_TAG_MAP = {
+// Subcategorías por categoría principal (en orden)
+const SUBCAT_MAP = {
     'documental': ['social', 'periodismo', 'conciertos', 'cine', 'institucional', 'sonido infinito'],
-    'música': ['conciertos', 'cine', 'sesiones musicales', 'videoclips', 'sonido infinito'],
-    'animación': ['dibujo - 2d']
+    'música':     ['conciertos', 'cine', 'sesiones musicales', 'videoclips', 'sonido infinito'],
+    'animación':  ['animación', 'animación 2d', 'motion graphics', '3d'],
 };
 
 // ── Helpers YouTube ──────────────────────────────────────────
@@ -135,6 +135,7 @@ function ensureThumbnail(item) {
 // ── Tarjeta activa ───────────────────────────────────────────
 function getAllCards() { return [...catalogoCards, ...portafolioCards]; }
 
+// Aplica el borde gradiente a todas las tarjetas que correspondan al video activo
 function setActiveCardByUrl(url) {
     const targetId = getYouTubeId(url);
     if (!targetId) return;
@@ -147,26 +148,21 @@ function setActiveCardByUrl(url) {
         wrapper.classList.toggle('is-active', isPlaying);
         const inner = wrapper.querySelector('.card');
         if (inner) inner.classList.toggle('active-card', isPlaying);
-
-        // Desplaza la tarjeta activa a la vista (omitiendo clones invisibles)
-        if (isPlaying && wrapper.getAttribute('aria-hidden') !== 'true') {
-            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
     });
 }
 
 // ── Reproducción ─────────────────────────────────────────────
-function playVideo(url, element, isUserGesture = false) {
+function playVideo(url, element) {
     const videoId = getYouTubeId(url);
     if (!videoId) return;
 
-    // El desbloqueo de volumen solo se ejecuta si proviene de un clic real (isUserGesture)
-    if (isUserGesture && ytPlayer) {
+    // Desbloqueo forzado de audio para políticas móviles ante interacción
+    if (ytPlayer) {
         if (typeof ytPlayer.unMute === 'function') {
-            try { ytPlayer.unMute(); } catch(e) {}
+            ytPlayer.unMute();
         }
         if (typeof ytPlayer.setVolume === 'function') {
-            try { ytPlayer.setVolume(100); } catch(e) {}
+            ytPlayer.setVolume(100);
         }
     }
 
@@ -189,7 +185,7 @@ function playNext() {
     const nextCard = all[currentVideoIndex];
     if (nextCard) {
         const url = nextCard.getAttribute('data-url');
-        if (url) playVideo(url, nextCard, false); // isUserGesture = false para transiciones de fondo
+        if (url) playVideo(url, nextCard);
     }
 }
 
@@ -217,17 +213,12 @@ function onYouTubeIframeAPIReady() {
             mute: 1, 
             rel: 0, 
             modestbranding: 1,
-            playsinline: 1
+            playsinline: 1 /* Impide pantalla completa nativa forzada en móviles */
         },
         events: {
             onReady: function () {
                 ytApiReady = true;
-                if (pendingVideoId) { 
-                    ytPlayer.loadVideoById(pendingVideoId); 
-                    pendingVideoId = null; 
-                } else {
-                    setActiveCardByUrl('https://www.youtube.com/watch?v=' + initialId);
-                }
+                if (pendingVideoId) { ytPlayer.loadVideoById(pendingVideoId); pendingVideoId = null; }
             },
             onStateChange: function (e) { if (e.data === 0) playNext(); }
         }
@@ -241,22 +232,35 @@ function itemMatchesMainFilter(item, filter) {
     const tags = Array.isArray(item.tags) ? item.tags.map(t => t.toLowerCase()) : [];
 
     if (filter === 'documental') {
-        return category.includes('documental') || 
-               category.includes('periodismo') || 
-               tags.some(t => CATEGORY_TAG_MAP['documental'].includes(t));
+        return category.includes('documental') ||
+               category.includes('periodismo') ||
+               tags.includes('cine') ||
+               tags.includes('periodismo') ||
+               tags.includes('documental') ||
+               tags.includes('social') ||
+               tags.includes('institucional') ||
+               tags.includes('sonido infinito') ||
+               tags.includes('conciertos');
     }
     if (filter === 'música' || filter === 'musica') {
-        return category.includes('conciertos') || 
-               category.includes('sesiones') || 
-               tags.some(t => CATEGORY_TAG_MAP['música'].includes(t));
+        return category.includes('conciertos') ||
+               category.includes('sesiones') ||
+               tags.includes('música') ||
+               tags.includes('musica') ||
+               tags.includes('conciertos') ||
+               tags.includes('sonido infinito') ||
+               tags.includes('videoclips') ||
+               tags.includes('sesiones musicales') ||
+               tags.includes('cine');
     }
     if (filter === 'animación' || filter === 'animacion') {
-        return category.includes('animación') || 
-               category.includes('animacion') || 
-               tags.includes('dibujo - 2d');
+        return category.includes('animación') ||
+               category.includes('animacion') ||
+               tags.some(t => t.includes('animac') || t.includes('graphics') || t.includes('3d') || t.includes('dibujo'));
     }
     return false;
 }
+
 
 // ── buildCard — Catálogo Golosinassss (diseño index v15) ─────
 function buildCard(item, animDelay) {
@@ -283,7 +287,7 @@ function buildCard(item, animDelay) {
         tagsHtml = `<div class="card-tags">${spans}</div>`;
     }
 
-    const { mainDesc, credit = '' } = getParsedDesc(item.descripcion);
+    const { mainDesc, credit } = getParsedDesc(item.descripcion);
 
     const wrapperEl = document.createElement('div');
     wrapperEl.className = 'card-wrapper';
@@ -313,10 +317,9 @@ function buildCard(item, animDelay) {
             ${tagsHtml}
         </div>`;
 
-    // Clic del usuario (isUserGesture = true)
-    wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl, true));
+    wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
     wrapperEl.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(item.url_video, wrapperEl, true); }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(item.url_video, wrapperEl); }
     });
 
     return wrapperEl;
@@ -335,7 +338,7 @@ function buildCompactCard(item, animDelay) {
         : `<div class="compact-thumb compact-thumb-sq compact-thumb-empty"></div>`;
 
     const titleNotTooLong = item.titulo && item.titulo.length < 35;
-    const { mainDesc, credit = '' } = getParsedDesc(item.descripcion);
+    const { mainDesc, credit } = getParsedDesc(item.descripcion);
     const descText = titleNotTooLong && mainDesc ? mainDesc : '';
 
     const color = palette[Math.floor(Math.random() * palette.length)];
@@ -400,10 +403,9 @@ function buildCompactCard(item, animDelay) {
         </div>
     `;
 
-    // Clic del usuario (isUserGesture = true)
-    wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl, true));
+    wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
     wrapperEl.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(item.url_video, wrapperEl, true); }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(item.url_video, wrapperEl); }
     });
 
     return wrapperEl;
@@ -413,14 +415,8 @@ function buildCompactCard(item, animDelay) {
 function extractUniqueTags(data) {
     const tagSet = new Set();
     data.forEach(item => {
-        if (Array.isArray(item.tags)) {
-            item.tags.forEach(t => {
-                const norm = t.trim().toLowerCase();
-                if (norm !== 'música' && norm !== 'musica' && norm !== 'animación' && norm !== 'animacion' && norm !== 'todas') {
-                    tagSet.add(norm);
-                }
-            });
-        }
+        if (Array.isArray(item.tags))
+            item.tags.forEach(t => tagSet.add(t.trim().toLowerCase()));
     });
     return [...tagSet].sort((a, b) => {
         const ia = TAG_ORDER.indexOf(a), ib = TAG_ORDER.indexOf(b);
@@ -471,7 +467,7 @@ function buildInlineSubcategories(container, tags, category) {
     container.appendChild(rightBracket);
 }
 
-// ── Constructor de Categorías Principales (Global) ───────────
+// ── Constructor de Categorías Principales ────────────────────
 function buildCatalogoMainFilters() {
     const container = document.getElementById('catalogo-main-filters');
     if (!container) return;
@@ -483,18 +479,12 @@ function buildCatalogoMainFilters() {
         group.id = `group-${cat}`;
 
         const btn = document.createElement('button');
-        btn.className = `filter-btn ${currentMainFilter === cat ? 'active' : ''}`;
+        btn.className = `filter-btn main-cat-btn${currentMainFilter === cat ? ' active' : ''}`;
         btn.textContent = cat.toUpperCase();
-        btn.setAttribute('data-filter', cat); // Atributo seguro contra normalización de caracteres
-
-        const isCurrent = currentMainFilter === cat;
-        btn.style.color = isCurrent ? CATEGORY_COLORS[cat] : '#444';
-        btn.style.borderColor = isCurrent ? CATEGORY_COLORS[cat] + '33' : 'transparent';
-
-        btn.addEventListener('click', () => {
-            selectMainCategory(cat);
-        });
-
+        const catColor = mainCatColors[cat] || '#e0e0e0';
+        btn.style.setProperty('--cat-color', catColor);
+        if (currentMainFilter === cat) btn.style.color = catColor;
+        btn.addEventListener('click', () => selectMainCategory(cat));
         group.appendChild(btn);
 
         if (cat !== 'todas') {
@@ -519,28 +509,27 @@ function selectMainCategory(cat) {
     currentMainFilter = cat;
     currentCatalogoTag = 'todos';
 
-    document.querySelectorAll('#catalogo-main-filters .filter-btn').forEach(btn => {
-        const btnFilter = btn.getAttribute('data-filter');
-        const isCurrent = (btnFilter === cat);
+    document.querySelectorAll('#catalogo-main-filters .main-cat-btn').forEach(btn => {
+        const isCurrent = btn.textContent.trim().toLowerCase() === cat;
         btn.classList.toggle('active', isCurrent);
-        btn.style.color = isCurrent ? (CATEGORY_COLORS[btnFilter] || '#ffb3ba') : '#444';
-        btn.style.borderColor = isCurrent ? ((CATEGORY_COLORS[btnFilter] || '#ffb3ba') + '33') : 'transparent';
+        const c = mainCatColors[btn.textContent.trim().toLowerCase()] || '#e0e0e0';
+        btn.style.color = isCurrent ? c : '';
     });
 
     MAIN_CATEGORIES.forEach(c => {
         const group = document.getElementById(`group-${c}`);
         if (!group) return;
+        const subContainer = document.getElementById(`sub-inline-${c}`);
 
         if (c === cat && cat !== 'todas') {
             group.classList.add('expanded');
-            const subContainer = document.getElementById(`sub-inline-${c}`);
             if (subContainer) {
-                const mappedTags = CATEGORY_TAG_MAP[c] || [];
-                buildInlineSubcategories(subContainer, mappedTags, c);
+                // Usar subcategorías del mapa fijo, no derivadas dinámicamente
+                const subcats = SUBCAT_MAP[c] || [];
+                buildInlineSubcategories(subContainer, subcats, c);
             }
         } else {
             group.classList.remove('expanded');
-            const subContainer = document.getElementById(`sub-inline-${c}`);
             if (subContainer) subContainer.innerHTML = '';
         }
     });
@@ -550,13 +539,11 @@ function selectMainCategory(cat) {
 
 function setCatalogoTag(tag, category) {
     currentCatalogoTag = tag;
-    
     const subContainer = document.getElementById(`sub-inline-${category}`);
     if (subContainer) {
-        const mappedTags = CATEGORY_TAG_MAP[category] || [];
-        buildInlineSubcategories(subContainer, mappedTags, category);
+        const subcats = SUBCAT_MAP[category] || [];
+        buildInlineSubcategories(subContainer, subcats, category);
     }
-
     renderCatalogo();
 }
 
@@ -627,22 +614,6 @@ function renderPortafolio() {
 
 window.setPortafolioFilter = setPortafolioFilter;
 
-// ── Normalización de tags en base de datos para Animación ──────
-function normalizarTagsData(data) {
-    return data.map(item => {
-        if (Array.isArray(item.tags)) {
-            item.tags = item.tags.map(t => {
-                const norm = t.trim().toLowerCase();
-                if (norm === 'animación' || norm === 'animacion' || norm === 'animación 2d') {
-                    return 'dibujo - 2d';
-                }
-                return norm;
-            });
-        }
-        return item;
-    });
-}
-
 // ══════════════════════════════════════════════════════════════
 // CARGA DE DATOS
 // ══════════════════════════════════════════════════════════════
@@ -662,8 +633,7 @@ fetch('contenidos.json')
             "12": 31000,
             "13": 29000
         };
-        const normalizedData = normalizarTagsData(data);
-        allData = normalizedData.map(item => {
+        allData = data.map(item => {
             item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
             return item;
         });
@@ -684,9 +654,7 @@ function setupDragScroll() {
     const container = document.querySelector('.portafolio-scroll-outer');
     if (!container) return;
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    let isDown = false, startX, scrollLeft;
 
     container.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return;
@@ -695,23 +663,34 @@ function setupDragScroll() {
         startX = e.pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
     });
-
     container.addEventListener('mouseleave', () => {
         isDown = false;
         container.classList.remove('is-dragging');
-        container.scrollTo({ left: 0, behavior: 'smooth' });
+        // Sin reset de scroll — el autoscroll retoma naturalmente
     });
-
     container.addEventListener('mouseup', () => {
         isDown = false;
         container.classList.remove('is-dragging');
     });
-
     container.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        container.scrollLeft = scrollLeft - walk;
+        container.scrollLeft = scrollLeft - (x - startX) * 1.5;
     });
+
+    // ── Touch events (móvil) ──────────────────────────────────
+    container.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    }, { passive: true });
+    container.addEventListener('touchend', () => {
+        isDown = false;
+    });
+    container.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - container.offsetLeft;
+        container.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    }, { passive: true });
 }

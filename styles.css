@@ -429,7 +429,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 @media (max-width: 480px) {
     /* Margen lateral: respeta los bordes de 12px con holgura */
-    #main-content { padding: 10px 16px; }
+    #main-content { padding: 16px 16px 10px; } /* P2-B: top subido de 10→ 16px para no solapar con marquesina */
     .top, .bottom { height: 12px; }
     .left, .right { width: 12px; }
     .left, .right { top: 12px; height: calc(100% - 24px); }
@@ -438,4 +438,13 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     footer { font-size: 0.55rem; }
     .social-links { gap: 8px; }
     #grid-portafolio { animation-duration: 270s; }
+
+    /* P2-C: compact cards más grandes en móvil — mínimo 44px de toque */
+    .portafolio-scroll-outer { height: 210px; }
+    #grid-portafolio { height: 82px; }
+    .card-compact-wrapper { height: 82px; flex: 0 0 220px; width: 220px; }
+    .card-compact { height: 82px; }
+    .compact-thumb { height: 80px; }
+    .compact-thumb-sq { width: 80px; }
+    .compact-thumb-rect { width: 120px; }
 }
