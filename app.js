@@ -407,7 +407,13 @@ function buildCompactCard(item, animDelay) {
         </div>
     `;
 
-    wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
+    wrapperEl.addEventListener('click', () => {
+        if (window.matchMedia('(hover: none)').matches) {
+            openMobileModal(item, wrapperEl);
+        } else {
+            playVideo(item.url_video, wrapperEl);
+        }
+    });
     wrapperEl.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(item.url_video, wrapperEl); }
     });
@@ -569,6 +575,55 @@ function renderCatalogo() {
         grid.appendChild(el);
         catalogoCards.push(el);
     });
+}
+
+// ════════════════════════════════════════════════════════════
+// MODAL MÓVIL — primer tap en cápsula compacta
+// ════════════════════════════════════════════════════════════
+function closeMobileModal() {
+    const modal = document.getElementById('mobile-card-modal');
+    if (modal) modal.classList.remove('is-open');
+}
+
+function openMobileModal(item, sourceEl) {
+    // Crear modal fijo en body la primera vez (fuera del transform del scroll)
+    let modal = document.getElementById('mobile-card-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'mobile-card-modal';
+        modal.innerHTML =
+            '<div id="mcm-backdrop"></div>' +
+            '<div id="mcm-card"></div>';
+        document.body.appendChild(modal);
+        document.getElementById('mcm-backdrop')
+            .addEventListener('click', closeMobileModal);
+    }
+
+    const slot = document.getElementById('mcm-card');
+    slot.innerHTML = '';
+
+    // Botón cerrar
+    const closeBtn = document.createElement('button');
+    closeBtn.id = 'mcm-close';
+    closeBtn.textContent = '\u2715 cerrar';
+    closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closeMobileModal(); });
+    slot.appendChild(closeBtn);
+
+    // Clonar la tarjeta completa sin listeners nativos
+    const rawCard = buildCard(item, 0);
+    const card = rawCard.cloneNode(true);
+    card.style.opacity = '1';
+    card.style.animationDelay = '0s';
+
+    // Tap en la tarjeta = reproducir + cerrar modal
+    card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileModal();
+        playVideo(item.url_video, sourceEl);
+    });
+    slot.appendChild(card);
+
+    modal.classList.add('is-open');
 }
 
 // ══════════════════════════════════════════════════════════════

@@ -16,7 +16,7 @@ body, html {
     width: 100%;
     max-width: 560px;
     aspect-ratio: 2000 / 200;
-    margin: 22px auto 22px; /* separador generoso entre secciones */
+    margin: 0 auto 44px; /* sin espacio superior — 44px bajo las cápsulas */
 }
 
 #logo-img-gradient {
@@ -412,8 +412,43 @@ body, html {
 .compact-thumb-empty { background: #111; }
 
 .card-compact-content { display: flex; flex-direction: column; justify-content: center; padding: 6px 9px; flex: 1; min-width: 0; }
-.card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 700; color: #c8c8c8; line-height: 1.25; margin: 0; }
+.card-compact-title { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: #fff; line-height: 1.25; margin: 0; }
 .card-compact-desc { font-size: 0.52rem; color: #666; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Modal Móvil (tap en cápsula compacta) ──────────────── */
+#mobile-card-modal {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+}
+#mobile-card-modal.is-open { display: block; }
+
+#mcm-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(8,8,8,0.88);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+#mcm-card {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+}
+
+#mcm-close {
+    display: block; width: 100%; text-align: right;
+    background: none; border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem; color: #555; cursor: pointer;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 0 0 6px; transition: color 0.2s;
+}
+#mcm-close:hover { color: #fff; }
+
+#mcm-card .card-wrapper {
+    opacity: 1 !important;
+    animation: none !important;
+    width: 260px; flex: none;
+}
 
 /* ── Footer ────────────────────────────────────────────────── */
 footer {
