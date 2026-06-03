@@ -45,7 +45,7 @@ body, html {
 
 
 #main-content {
-    padding: 24px 40px;
+    padding: 40px;
     min-height: 100vh;
     overflow-y: auto; overflow-x: hidden;
     height: 100vh;
@@ -259,18 +259,7 @@ body, html {
 }
 .portafolio-scroll-outer::-webkit-scrollbar { display: none; }
 
-.portafolio-scroll-outer::after {
-    content: ''; position: absolute;
-    top: 6px; right: 0; width: 80px; height: 64px;
-    background: linear-gradient(to left, #080808 0%, transparent 100%);
-    pointer-events: none; z-index: 15;
-}
-.portafolio-scroll-outer::before {
-    content: ''; position: absolute;
-    top: 6px; left: 0; width: 80px; height: 64px;
-    background: linear-gradient(to right, #080808 0%, transparent 100%);
-    pointer-events: none; z-index: 15;
-}
+/* Eliminados los pseudoelementos de degradado de portafolio-scroll-outer */
 #grid-portafolio {
     display: flex; gap: 8px;
     width: max-content; height: 64px;
@@ -288,12 +277,7 @@ body, html {
 }
 
 .grid-wrap { position: relative; }
-.grid-wrap::after {
-    content: ''; position: absolute;
-    top: 0; right: 0; width: 80px; height: 100%;
-    background: linear-gradient(to left, #080808 0%, transparent 100%);
-    pointer-events: none; z-index: 10;
-}
+/* Eliminado el pseudoelemento de degradado de grid-wrap */
 
 /* ══════════════════════════════════════════════════════════════
    CARDS — Sección 1
@@ -466,7 +450,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1024px) {
-    #main-content { padding: 20px 30px; }
+    #main-content { padding: 34px; }
     .top, .bottom { height: 24px; }
     .left, .right { width: 24px; }
     .left, .right { top: 24px; height: calc(100% - 48px); }
@@ -474,7 +458,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 @media (max-width: 768px) {
     /* Margen lateral: respeta los bordes de 18px */
-    #main-content { padding: 14px 24px; }
+    #main-content { padding: 28px; }
     .top, .bottom { height: 18px; }
     .left, .right { width: 18px; }
     .left, .right { top: 18px; height: calc(100% - 36px); }
@@ -503,7 +487,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 @media (max-width: 480px) {
     /* Margen lateral: respeta los bordes de 12px con holgura */
-    #main-content { padding: 16px 16px 10px; } /* P2-B: top subido de 10→ 16px para no solapar con marquesina */
+    #main-content { padding: 22px; }
     .top, .bottom { height: 12px; }
     .left, .right { width: 12px; }
     .left, .right { top: 12px; height: calc(100% - 24px); }
