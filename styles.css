@@ -14,8 +14,8 @@ body, html {
 /* ── Logo Imagen con Gradiente Animado ────────────────────── */
 #logo-img-wrap {
     width: 100%;
-    max-width: 600px; /* Letrero HD — canvas 2100x1500 */
-    aspect-ratio: 2100 / 1500; /* 7/5 — proporción real del PNG */
+    max-width: 560px; /* Letrero HD — canvas 2000x200 */
+    aspect-ratio: 2000 / 200; /* 10:1 — proporción real del PNG */
     margin-top: 10px;
     margin-bottom: 12px;
 }
