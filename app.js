@@ -507,22 +507,24 @@ function updateVolumeIcon(isMutedState) {
     }
 }
 
-function updateLcdDisplay(title) {
-    const lcdText = document.getElementById('lcd-text');
-    if (!lcdText) return;
+function updateLcdDisplay(title, desc) {
+    const titleEl = document.getElementById('lcd-title-fixed');
+    const descEl = document.getElementById('lcd-desc-scroll');
+    if (!titleEl || !descEl) return;
     
-    lcdText.textContent = title;
-    lcdText.classList.remove('marquee-anim');
-    lcdText.style.animation = '';
+    titleEl.textContent = title;
+    descEl.textContent = desc || '';
+    descEl.classList.remove('marquee-anim');
+    descEl.style.animation = '';
 
     // Esperar un frame
     requestAnimationFrame(() => {
-        const container = lcdText.parentElement;
-        if (container && lcdText.scrollWidth > container.clientWidth) {
-            lcdText.classList.add('marquee-anim');
-            // Velocidad constante de scroll basada en la longitud del texto
-            const duration = Math.max(8, Math.floor(lcdText.scrollWidth / 30));
-            lcdText.style.animation = `lcdScroll ${duration}s linear infinite`;
+        const container = descEl.parentElement;
+        if (container && descEl.scrollWidth > container.clientWidth) {
+            descEl.classList.add('marquee-anim');
+            // Velocidad de scroll basada en la longitud del texto de descripción
+            const duration = Math.max(10, Math.floor(descEl.scrollWidth / 25));
+            descEl.style.animation = `lcdScroll ${duration}s linear infinite`;
         }
     });
 }
@@ -540,8 +542,8 @@ function startCustomTimelineUpdate() {
             if (duration > 0) {
                 const pct = (current / duration) * 100;
                 timeline.value = pct;
-                // Pintar el progreso completado con el gradiente tornasol y el resto con el color base #222
-                timeline.style.background = `linear-gradient(to right, #ffb3ba 0%, #bae1ff ${pct * 0.25}%, #baffc9 ${pct * 0.5}%, #ffffba ${pct * 0.75}%, #ffdfba ${pct}%, #222 ${pct}%, #222 100%)`;
+                // Pintar el avance en color rojo (#ff3b30) y el resto de la barra con el color base #222
+                timeline.style.background = `linear-gradient(to right, #ff3b30 0%, #ff3b30 ${pct}%, #222 ${pct}%, #222 100%)`;
             }
             if (lcdTime) {
                 lcdTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
@@ -1289,6 +1291,7 @@ function initApp() {
     renderPortafolio();
     currentVideoIndex = -1;
     setupDragScroll();
+    updateLcdDisplay("GOLOSINASSSS", "SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA");
 }
 
 function setupDragScroll() {

@@ -76,45 +76,35 @@ body, html {
 
 /* ── Bordes con Marquesina ────────────────────────────────── */
 .border-container {
-    position: fixed; background: #080808;
+    position: fixed;
+    background: linear-gradient(90deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba);
+    background-size: 300% 100%;
+    animation: logoGradientShift 6s linear infinite;
     z-index: 100; overflow: hidden; display: flex;
 }
 .top {
     top: 0; left: 0; width: 100%; height: 30px;
     align-items: center; justify-content: flex-start;
-    border-bottom: 1px solid transparent;
-    background: linear-gradient(#080808,#080808) padding-box,
-                linear-gradient(90deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
-}
-.bottom {
-    bottom: 0; left: 0; width: 100%; height: 30px;
-    align-items: center; justify-content: flex-start;
-    border-top: 1px solid transparent;
-    background: linear-gradient(#080808,#080808) padding-box,
-                linear-gradient(90deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box;
+    border-bottom: 1px solid #080808;
 }
 .left {
-    top: 30px; left: 0; width: 30px; height: calc(100% - 60px);
+    top: 30px; left: 0; width: 30px; height: calc(100% - 70px); /* 30px top + 40px player */
     justify-content: center; align-items: flex-start;
-    border-left: 1px solid transparent;
-    background: linear-gradient(#080808,#080808) padding-box,
-                linear-gradient(180deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
+    border-right: 1px solid #080808;
 }
 .right {
-    top: 30px; right: 0; width: 30px; height: calc(100% - 60px);
+    top: 30px; right: 0; width: 30px; height: calc(100% - 70px); /* 30px top + 40px player */
     justify-content: center; align-items: flex-start;
-    border-left: 1px solid transparent;
-    background: linear-gradient(#080808,#080808) padding-box,
-                linear-gradient(180deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box;
+    border-left: 1px solid #080808;
 }
 
 /* ── Tickers ──────────────────────────────────────────────── */
 .ticker {
     font-size: 0.8rem;
-    background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #080808;
+    -webkit-text-fill-color: #080808;
     white-space: nowrap; flex-shrink: 0; padding-right: 30px;
+    font-weight: 700;
 }
 .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
 .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
@@ -122,7 +112,7 @@ body, html {
     font-size: 0.19rem; font-family: 'JetBrains Mono', monospace;
     white-space: pre; line-height: 1.25; flex-shrink: 0;
     padding: 0 3px 0 2px; text-align: left;
-    color: #ffffff;
+    color: #080808;
 }
 
 /* ── Marquesina Animations ────────────────────────────────── */
@@ -658,21 +648,23 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 /* ── Reproductor Personalizado Fijo ────────────────────────── */
 #custom-player {
     position: fixed;
-    bottom: 30px; /* Sobre la marquesina bottom (30px) */
-    left: 30px;
-    right: 30px;
-    height: 48px;
-    background: #080808;
-    border-top: 1px solid #1a1a1a;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(90deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba);
+    background-size: 300% 100%;
+    animation: logoGradientShift 6s linear infinite;
+    border-top: 1px solid #080808;
     z-index: 99;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 6px 12px 4px 12px;
+    padding: 4px 12px 0 12px;
     box-sizing: border-box;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
-    border-radius: 3px 3px 0 0;
+    border-radius: 0;
 }
 
 .player-row-main {
@@ -685,9 +677,11 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 .player-row-timeline {
     width: 100%;
-    height: 8px;
+    height: 6px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    padding: 0;
+    margin: 0;
 }
 
 .player-controls-left {
@@ -706,9 +700,9 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 .player-lcd {
     flex: 1;
     max-width: 50%;
-    height: 26px;
+    height: 24px;
     background: #040404;
-    border: 1px solid #1a1a1a;
+    border: 1px solid #080808;
     border-radius: 2px;
     padding: 0 8px;
     display: flex;
@@ -729,19 +723,41 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     overflow: hidden;
 }
 
-.lcd-text-container {
+.lcd-track-display {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+    margin-right: 8px;
+}
+
+.lcd-title-fixed {
+    font-weight: 700;
+    color: #00e5ff;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.lcd-divider {
+    color: #ffb3ba;
+    margin: 0 6px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.lcd-desc-container {
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-    margin-right: 8px;
 }
 
-.lcd-text {
+.lcd-desc-scroll {
     display: inline-block;
+    color: #bae1ff; /* un color azul pastel suave para la descripción */
 }
 
-.lcd-text.marquee-anim {
+.lcd-desc-scroll.marquee-anim {
     display: inline-block;
     white-space: nowrap;
     padding-left: 100%;
@@ -763,10 +779,10 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 /* Cápsulas independientes por botón */
 .player-btn-capsule {
-    background: #0d0d0d;
-    border: 1px solid #222;
+    background: #080808;
+    border: 1px solid #080808;
     border-radius: 3px;
-    height: 26px;
+    height: 24px;
     padding: 0 8px;
     display: inline-flex;
     align-items: center;
@@ -778,14 +794,14 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     outline: none;
 }
 .player-btn-capsule:hover {
-    border-color: #444;
-    background: #121212;
+    border-color: #333;
+    background: #111;
 }
 .player-btn-capsule:active {
     transform: scale(0.95);
 }
 .player-btn-capsule.active {
-    border-color: rgba(0, 229, 255, 0.4);
+    border-color: #00e5ff;
     background: rgba(0, 229, 255, 0.05);
 }
 
@@ -794,10 +810,10 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     display: flex;
     align-items: center;
     gap: 6px;
-    background: #0d0d0d;
-    border: 1px solid #222;
+    background: #080808;
+    border: 1px solid #080808;
     border-radius: 3px;
-    height: 26px;
+    height: 24px;
     padding: 0 6px 0 8px;
     box-sizing: border-box;
 }
@@ -849,28 +865,52 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 #custom-player input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
+    outline: none;
+}
+
+/* Timeline: sin círculo selector y ocupando toda la barra */
+#player-timeline {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 4px;
+    background: #222;
+    border-radius: 0;
+    cursor: pointer;
+}
+#player-timeline::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: none;
+}
+#player-timeline::-moz-range-thumb {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: none;
+}
+
+/* Barra de volumen: mantiene su selector */
+#player-volume {
     background: #222;
     height: 3px;
     border-radius: 2px;
-    outline: none;
     cursor: pointer;
 }
-#custom-player input[type="range"]::-webkit-slider-thumb {
+#player-volume::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 6px;
     height: 10px;
-    background: #888;
+    background: #ffb3ba;
     border-radius: 1px;
     transition: background 0.2s;
 }
-#custom-player input[type="range"]:hover::-webkit-slider-thumb {
-    background: #ffb3ba;
-}
-
-#player-timeline {
-    width: 100%;
-    /* El background se controla dinámicamente con JS */
+#player-volume:hover::-webkit-slider-thumb {
+    background: #00e5ff;
 }
 
 /* Playlist Drawer (Panel desplegable) */
@@ -1092,23 +1132,23 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 /* Adaptabilidad del reproductor y playlist */
 @media (max-width: 1024px) {
     #custom-player {
-        bottom: 24px;
-        left: 24px;
-        right: 24px;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
     .playlist-drawer {
-        bottom: 76px;
+        bottom: 44px;
         right: 24px;
     }
 }
 @media (max-width: 768px) {
     #custom-player {
-        bottom: 24px;
-        left: 24px;
-        right: 24px;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
     .playlist-drawer {
-        bottom: 76px;
+        bottom: 44px;
         right: 24px;
         width: calc(100% - 48px);
         left: 24px;
@@ -1116,18 +1156,18 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 }
 @media (max-width: 480px) {
     #custom-player {
-        bottom: 18px;
-        left: 18px;
-        right: 18px;
+        bottom: 0;
+        left: 0;
+        right: 0;
         font-size: 0.55rem;
-        padding: 4px 6px 2px 6px;
-        height: 48px;
+        padding: 4px 6px 0 6px;
+        height: 40px;
     }
     .player-row-main {
         height: 26px;
     }
     .player-row-timeline {
-        height: 8px;
+        height: 6px;
     }
     .player-btn-capsule {
         height: 22px;
@@ -1149,10 +1189,10 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
         font-size: 0.52rem;
     }
     .lcd-time {
-        display: none; /* Ocultar el tiempo en la LCD en móviles muy pequeños para dar espacio al título */
+        display: none; /* Ocultar el tiempo en la LCD en móviles muy pequeños para dar espacio al título/descripción */
     }
     .playlist-drawer {
-        bottom: 70px;
+        bottom: 44px;
         right: 18px;
         left: 18px;
         width: auto;
