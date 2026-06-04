@@ -88,14 +88,14 @@ body, html {
                 linear-gradient(90deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
 }
 .left {
-    top: 30px; left: 0; width: 30px; height: calc(100% - 70px); /* 30px top + 40px player */
+    top: 30px; left: 0; width: 30px; bottom: 40px; /* 30px top, ends at top of bottom player (bottom: 40px) */
     justify-content: center; align-items: flex-start;
-    border-right: 1px solid transparent;
+    border-left: 1px solid transparent; /* flipped from border-right to align inside rotated container */
     background: linear-gradient(#080808,#080808) padding-box,
                 linear-gradient(180deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
 }
 .right {
-    top: 30px; right: 0; width: 30px; height: calc(100% - 70px); /* 30px top + 40px player */
+    top: 30px; right: 0; width: 30px; bottom: 40px; /* 30px top, ends at top of bottom player (bottom: 40px) */
     justify-content: center; align-items: flex-start;
     border-left: 1px solid transparent;
     background: linear-gradient(#080808,#080808) padding-box,
@@ -593,17 +593,17 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1024px) {
     #main-content { padding: 34px 34px 74px 34px; }
-    .top, .bottom { height: 24px; }
+    .top { height: 24px; }
     .left, .right { width: 24px; }
-    .left, .right { top: 24px; height: calc(100% - 48px); }
+    .left, .right { top: 24px; bottom: 40px; }
 }
 
 @media (max-width: 768px) {
     /* Margen lateral: respeta los bordes de 24px */
     #main-content { padding: 34px 34px 74px 34px; }
-    .top, .bottom { height: 24px; }
+    .top { height: 24px; }
     .left, .right { width: 24px; }
-    .left, .right { top: 24px; height: calc(100% - 48px); }
+    .left, .right { top: 24px; bottom: 40px; }
     .ticker { font-size: 0.65rem; }
     .ticker-logo-v { font-size: 0.15rem; } /* ajusta el código animado para que quepa en el borde */
     #video-hero { padding-bottom: 56.25%; }
@@ -633,9 +633,9 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 @media (max-width: 480px) {
     /* Margen lateral: respeta los bordes de 18px con holgura */
     #main-content { padding: 28px 28px 64px 28px; }
-    .top, .bottom { height: 18px; }
+    .top { height: 18px; }
     .left, .right { width: 18px; }
-    .left, .right { top: 18px; height: calc(100% - 36px); }
+    .left, .right { top: 18px; bottom: 40px; }
     .ticker { font-size: 0.55rem; }
     .ticker-logo-v { font-size: 0.11rem; } /* ajusta el código animado para que quepa en el borde de 18px */
     .section-label-large { font-size: 0.9rem; }
@@ -654,8 +654,8 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 #custom-player {
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: 30px;
+    right: 30px;
     height: 40px;
     background: linear-gradient(#080808,#080808) padding-box,
                 linear-gradient(90deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
@@ -727,45 +727,31 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     overflow: hidden;
 }
 
-.lcd-track-display {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    overflow: hidden;
-    margin-right: 8px;
-}
-
-.lcd-title-fixed {
-    font-weight: 700;
-    color: #00e5ff;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.lcd-divider {
-    color: #ffb3ba;
-    margin: 0 6px;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-
-.lcd-desc-container {
+.lcd-text-container {
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
+    margin-right: 8px;
 }
 
-.lcd-desc-scroll {
-    display: inline-block;
-    color: #bae1ff; /* un color azul pastel suave para la descripción */
+.lcd-text-marquee {
+    display: flex;
+    width: max-content;
 }
 
-.lcd-desc-scroll.marquee-anim {
+.lcd-text-span {
     display: inline-block;
+    padding-right: 30px; /* Spacer between repeated texts */
     white-space: nowrap;
-    padding-left: 100%;
-    animation: lcdScroll 12s linear infinite;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58rem;
+    color: #00e5ff;
+    text-shadow: 0 0 3px rgba(0, 229, 255, 0.4);
+}
+
+.lcd-marquee-anim {
+    animation: lcdScrollInfinite 15s linear infinite;
 }
 
 .lcd-time {
@@ -776,9 +762,9 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     user-select: none;
 }
 
-@keyframes lcdScroll {
+@keyframes lcdScrollInfinite {
     0%   { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-100%, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
 }
 
 /* Cápsulas independientes por botón */
@@ -904,7 +890,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     border: none;
 }
 
-/* Barra de volumen: mantiene su selector */
+/* Barra de volumen: sin círculo selector */
 #player-volume {
     background: #222;
     height: 3px;
@@ -914,14 +900,16 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 #player-volume::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 6px;
-    height: 10px;
-    background: #ffb3ba;
-    border-radius: 1px;
-    transition: background 0.2s;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: none;
 }
-#player-volume:hover::-webkit-slider-thumb {
-    background: #00e5ff;
+#player-volume::-moz-range-thumb {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: none;
 }
 
 /* Playlist Drawer (Panel desplegable) */
@@ -1144,8 +1132,8 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 @media (max-width: 1024px) {
     #custom-player {
         bottom: 0;
-        left: 0;
-        right: 0;
+        left: 24px;
+        right: 24px;
     }
     .playlist-drawer {
         bottom: 44px;
@@ -1155,8 +1143,8 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 @media (max-width: 768px) {
     #custom-player {
         bottom: 0;
-        left: 0;
-        right: 0;
+        left: 24px;
+        right: 24px;
     }
     .playlist-drawer {
         bottom: 44px;
@@ -1168,8 +1156,8 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 @media (max-width: 480px) {
     #custom-player {
         bottom: 0;
-        left: 0;
-        right: 0;
+        left: 18px;
+        right: 18px;
         font-size: 0.55rem;
         padding: 4px 6px 0 6px;
         height: 40px;

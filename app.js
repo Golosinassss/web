@@ -201,9 +201,16 @@ function playVideo(url, element) {
     // Buscar información del track para la pantalla LCD
     const trackItem = allData.find(item => item.url_video === url);
     if (trackItem) {
-        updateLcdDisplay(trackItem.titulo.toUpperCase());
+        const { mainDesc } = getParsedDesc(trackItem.descripcion);
+        const cleanDesc = mainDesc ? mainDesc.toUpperCase() : '';
+        const cat = trackItem.categoria ? trackItem.categoria.toUpperCase() : '';
+        let infoText = `${trackItem.titulo.toUpperCase()}`;
+        if (cleanDesc) infoText += ` • ${cleanDesc}`;
+        if (cat) infoText += ` • ${cat}`;
+        infoText += ` • `;
+        updateLcdDisplay(infoText);
     } else {
-        updateLcdDisplay("REPRODUCIENDO...");
+        updateLcdDisplay("REPRODUCIENDO... • ");
     }
 
     // Desbloqueo forzado de audio para políticas móviles ante interacción
@@ -216,7 +223,11 @@ function playVideo(url, element) {
                 muteBtn.classList.remove('active');
             }
             const volumeSlider = document.getElementById('player-volume');
-            if (volumeSlider) volumeSlider.value = ytPlayer.getVolume() || 100;
+            if (volumeSlider) {
+                const vol = ytPlayer.getVolume() || 100;
+                volumeSlider.value = vol;
+                updateVolumeSliderBackground(vol);
+            }
         }
         if (typeof ytPlayer.setVolume === 'function') {
             ytPlayer.setVolume(100);
@@ -395,18 +406,16 @@ function setupCustomPlayerControls() {
             e.stopPropagation();
             const isOpen = playlistDrawer.style.display !== 'none';
             playlistDrawer.style.display = isOpen ? 'none' : 'flex';
-            playlistBtn.classList.toggle('active', !isOpen);
             if (!isOpen) {
                 updatePlaylistDrawerUI();
             }
         });
     }
 
-    if (closeDrawerBtn && playlistDrawer && playlistBtn) {
+    if (closeDrawerBtn && playlistDrawer) {
         closeDrawerBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             playlistDrawer.style.display = 'none';
-            playlistBtn.classList.remove('active');
         });
     }
 
@@ -415,7 +424,6 @@ function setupCustomPlayerControls() {
         if (playlistDrawer && playlistDrawer.style.display !== 'none') {
             if (!playlistDrawer.contains(e.target) && !playlistBtn.contains(e.target)) {
                 playlistDrawer.style.display = 'none';
-                playlistBtn.classList.remove('active');
             }
         }
     });
@@ -428,11 +436,18 @@ function setupCustomPlayerControls() {
         ytPlayer.seekTo(targetSeconds, true);
     });
 
+    // Inicializar volumen
+    if (volumeSlider) {
+        updateVolumeSliderBackground(volumeSlider.value);
+    }
+
     // 6. Barra de volumen
     volumeSlider.addEventListener('input', (e) => {
+        const val = e.target.value;
+        updateVolumeSliderBackground(val);
         if (!ytPlayer || typeof ytPlayer.setVolume !== 'function') return;
-        ytPlayer.setVolume(e.target.value);
-        if (e.target.value > 0) {
+        ytPlayer.setVolume(val);
+        if (val > 0) {
             if (ytPlayer.isMuted()) {
                 ytPlayer.unMute();
             }
@@ -454,12 +469,15 @@ function setupCustomPlayerControls() {
             ytPlayer.unMute();
             updateVolumeIcon(false);
             muteBtn.classList.remove('muted');
-            volumeSlider.value = ytPlayer.getVolume() || 100;
+            const vol = ytPlayer.getVolume() || 100;
+            volumeSlider.value = vol;
+            updateVolumeSliderBackground(vol);
         } else {
             ytPlayer.mute();
             updateVolumeIcon(true);
             muteBtn.classList.add('muted');
             volumeSlider.value = 0;
+            updateVolumeSliderBackground(0);
         }
     });
 
@@ -470,14 +488,12 @@ function setupCustomPlayerControls() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen()
                     .then(() => {
-                        fullscreenBtn.classList.add('active');
                         if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
                     })
                     .catch(err => console.warn('Error al iniciar Fullscreen:', err));
             } else {
                 document.exitFullscreen()
                     .then(() => {
-                        fullscreenBtn.classList.remove('active');
                         if (container) container.innerHTML = FULLSCREEN_SVG;
                     })
                     .catch(err => console.warn('Error al salir de Fullscreen:', err));
@@ -490,10 +506,8 @@ function setupCustomPlayerControls() {
         if (fullscreenBtn) {
             const container = document.getElementById('player-fullscreen-svg-container');
             if (document.fullscreenElement) {
-                fullscreenBtn.classList.add('active');
                 if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
             } else {
-                fullscreenBtn.classList.remove('active');
                 if (container) container.innerHTML = FULLSCREEN_SVG;
             }
         }
@@ -507,26 +521,37 @@ function updateVolumeIcon(isMutedState) {
     }
 }
 
-function updateLcdDisplay(title, desc) {
-    const titleEl = document.getElementById('lcd-title-fixed');
-    const descEl = document.getElementById('lcd-desc-scroll');
-    if (!titleEl || !descEl) return;
-    
-    titleEl.textContent = title;
-    descEl.textContent = desc || '';
-    descEl.classList.remove('marquee-anim');
-    descEl.style.animation = '';
+function updateVolumeSliderBackground(value) {
+    const volumeSlider = document.getElementById('player-volume');
+    if (volumeSlider) {
+        volumeSlider.style.background = `linear-gradient(to right, #00e5ff 0%, #00e5ff ${value}%, #222 ${value}%, #222 100%)`;
+    }
+}
 
-    // Esperar un frame
-    requestAnimationFrame(() => {
-        const container = descEl.parentElement;
-        if (container && descEl.scrollWidth > container.clientWidth) {
-            descEl.classList.add('marquee-anim');
-            // Velocidad de scroll basada en la longitud del texto de descripción
-            const duration = Math.max(10, Math.floor(descEl.scrollWidth / 25));
-            descEl.style.animation = `lcdScroll ${duration}s linear infinite`;
-        }
-    });
+function updateLcdDisplay(text) {
+    const span1 = document.getElementById('lcd-text-1');
+    const span2 = document.getElementById('lcd-text-2');
+    const marquee = document.querySelector('.lcd-text-marquee');
+    if (!span1 || !span2 || !marquee) return;
+
+    // Detener animación temporalmente
+    marquee.classList.remove('lcd-marquee-anim');
+    marquee.style.animation = 'none';
+
+    // Asignar el texto a ambos spans
+    span1.textContent = text;
+    span2.textContent = text;
+
+    // Forzar reflujo/reflow
+    void marquee.offsetWidth;
+
+    // Calcular duración de la animación basada en el tamaño del texto
+    const textWidth = span1.scrollWidth;
+    const duration = Math.max(5, textWidth / 35);
+    
+    // Iniciar animación
+    marquee.classList.add('lcd-marquee-anim');
+    marquee.style.animation = `lcdScrollInfinite ${duration}s linear infinite`;
 }
 
 function startCustomTimelineUpdate() {
@@ -1291,7 +1316,7 @@ function initApp() {
     renderPortafolio();
     currentVideoIndex = -1;
     setupDragScroll();
-    updateLcdDisplay("GOLOSINASSSS", "SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA");
+    updateLcdDisplay("GOLOSINASSSS • SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA • ");
 }
 
 function setupDragScroll() {
