@@ -693,17 +693,20 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     display: flex;
     align-items: center;
     gap: 6px;
+    flex-shrink: 0;
 }
 
 .player-controls-right {
     display: flex;
     align-items: center;
     gap: 6px;
+    flex-shrink: 0;
 }
 
 /* Pantalla LCD estilo autoestéreo */
 .player-lcd {
     flex: 1;
+    min-width: 0; /* Prevents flex item from expanding to content size */
     height: 24px;
     background: #040404;
     border: 1px solid #080808;
