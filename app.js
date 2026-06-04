@@ -204,13 +204,17 @@ function playVideo(url, element) {
         const { mainDesc } = getParsedDesc(trackItem.descripcion);
         const cleanDesc = mainDesc ? mainDesc.toUpperCase() : '';
         const cat = trackItem.categoria ? trackItem.categoria.toUpperCase() : '';
-        let infoText = `${trackItem.titulo.toUpperCase()}`;
-        if (cleanDesc) infoText += ` • ${cleanDesc}`;
-        if (cat) infoText += ` • ${cat}`;
-        infoText += ` • `;
-        updateLcdDisplay(infoText);
+        let htmlContent = `<span class="lcd-title">${trackItem.titulo.toUpperCase()}</span>`;
+        if (cleanDesc) {
+            htmlContent += ` • <span class="lcd-desc">${cleanDesc}</span>`;
+        }
+        if (cat) {
+            htmlContent += ` • <span class="lcd-cat">${cat}</span>`;
+        }
+        htmlContent += ` • `;
+        updateLcdDisplay(htmlContent);
     } else {
-        updateLcdDisplay("REPRODUCIENDO... • ");
+        updateLcdDisplay(`<span class="lcd-title">REPRODUCIENDO...</span> • `);
     }
 
     // Desbloqueo forzado de audio para políticas móviles ante interacción
@@ -528,7 +532,7 @@ function updateVolumeSliderBackground(value) {
     }
 }
 
-function updateLcdDisplay(text) {
+function updateLcdDisplay(htmlContent) {
     const span1 = document.getElementById('lcd-text-1');
     const span2 = document.getElementById('lcd-text-2');
     const marquee = document.querySelector('.lcd-text-marquee');
@@ -538,9 +542,9 @@ function updateLcdDisplay(text) {
     marquee.classList.remove('lcd-marquee-anim');
     marquee.style.animation = 'none';
 
-    // Asignar el texto a ambos spans
-    span1.textContent = text;
-    span2.textContent = text;
+    // Asignar el HTML a ambos spans
+    span1.innerHTML = htmlContent;
+    span2.innerHTML = htmlContent;
 
     // Forzar reflujo/reflow
     void marquee.offsetWidth;
@@ -1316,7 +1320,7 @@ function initApp() {
     renderPortafolio();
     currentVideoIndex = -1;
     setupDragScroll();
-    updateLcdDisplay("GOLOSINASSSS • SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA • ");
+    updateLcdDisplay(`<span class="lcd-title">GOLOSINASSSS</span> • <span class="lcd-desc">SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA</span> • `);
 }
 
 function setupDragScroll() {
