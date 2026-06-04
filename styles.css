@@ -598,12 +598,13 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 }
 
 @media (max-width: 768px) {
-    /* Margen lateral: respeta los bordes de 18px */
-    #main-content { padding: 28px; }
-    .top, .bottom { height: 18px; }
-    .left, .right { width: 18px; }
-    .left, .right { top: 18px; height: calc(100% - 36px); }
+    /* Margen lateral: respeta los bordes de 24px */
+    #main-content { padding: 34px; }
+    .top, .bottom { height: 24px; }
+    .left, .right { width: 24px; }
+    .left, .right { top: 24px; height: calc(100% - 48px); }
     .ticker { font-size: 0.65rem; }
+    .ticker-logo-v { font-size: 0.15rem; } /* ajusta el código animado para que quepa en el borde */
     #video-hero { padding-bottom: 56.25%; }
 
     /* Títulos grandes: bajan de línea solos */
@@ -624,23 +625,25 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .category-group { flex-direction: column; align-items: flex-start; }
 
     #grid-portafolio { animation-duration: 210s; }
+    .portafolio-scroll-outer { height: 100px; } /* reduce el gran espacio vacío bajo las cápsulas compactas */
     footer { margin-top: 0; border-top: none; }
 }
 
 @media (max-width: 480px) {
-    /* Margen lateral: respeta los bordes de 12px con holgura */
-    #main-content { padding: 22px; }
-    .top, .bottom { height: 12px; }
-    .left, .right { width: 12px; }
-    .left, .right { top: 12px; height: calc(100% - 24px); }
-    .ticker { font-size: 0.5rem; }
+    /* Margen lateral: respeta los bordes de 18px con holgura */
+    #main-content { padding: 28px; }
+    .top, .bottom { height: 18px; }
+    .left, .right { width: 18px; }
+    .left, .right { top: 18px; height: calc(100% - 36px); }
+    .ticker { font-size: 0.55rem; }
+    .ticker-logo-v { font-size: 0.11rem; } /* ajusta el código animado para que quepa en el borde de 18px */
     .section-label-large { font-size: 0.9rem; }
     footer { font-size: 0.55rem; }
     .social-links { gap: 8px; }
     #grid-portafolio { animation-duration: 270s; }
 
     /* P2-C: compact cards más grandes en móvil — mínimo 44px de toque */
-    .portafolio-scroll-outer { height: 210px; }
+    .portafolio-scroll-outer { height: 100px; } /* reduce el gran espacio vacío bajo las cápsulas compactas */
     #grid-portafolio { height: 82px; }
     .card-compact-wrapper { height: 82px; flex: 0 0 220px; width: 220px; }
     .card-compact { height: 82px; }
