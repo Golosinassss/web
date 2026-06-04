@@ -450,14 +450,17 @@ body, html {
     border-image-slice: 1 !important;
 }
 
-/* Cuando el mouse pasa sobre el contenedor del portafolio, el resto de cápsulas pierden el borde de color */
-#grid-portafolio:hover .card-compact {
-    border-color: #222 !important;
-    border-image: none !important;
+/* Cuando el mouse pasa sobre el contenedor del portafolio, el resto de cápsulas pierden el borde de color (solo en PC) */
+@media (hover: hover) {
+    #grid-portafolio:hover .card-compact {
+        border-color: #222 !important;
+        border-image: none !important;
+    }
 }
 
-/* Efecto invertido fondo tornasol animado y texto negro para la cápsula expandida al activarse con el cursor */
-.card-full-overlay .card {
+/* Efecto invertido fondo tornasol animado y texto negro para la cápsula expandida (hover en PC o modal aislado en Móvil) */
+.card-full-overlay .card,
+#mcm-card .card {
     background: linear-gradient(45deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff) !important;
     background-size: 200% 200% !important;
     animation: tornasolShift 3s ease infinite !important;
@@ -472,28 +475,35 @@ body, html {
     100% { background-position: 0% 50%; }
 }
 
-.card-full-overlay .card h3 {
+.card-full-overlay .card h3,
+#mcm-card .card h3 {
     color: #080808 !important;
 }
 
 .card-full-overlay .card .card-desc,
 .card-full-overlay .card .card-credit,
-.card-full-overlay .card .card-meta {
+.card-full-overlay .card .card-meta,
+#mcm-card .card .card-desc,
+#mcm-card .card .card-credit,
+#mcm-card .card .card-meta {
     color: #222 !important;
 }
 
-.card-full-overlay .card .play-btn {
+.card-full-overlay .card .play-btn,
+#mcm-card .card .play-btn {
     background: #080808 !important;
     color: #fff !important;
     border-color: #080808 !important;
 }
 
-.card-full-overlay .card .play-btn svg {
+.card-full-overlay .card .play-btn svg,
+#mcm-card .card .play-btn svg {
     stroke: #fff !important;
     fill: #fff !important;
 }
 
-.card-full-overlay .card .card-tag {
+.card-full-overlay .card .card-tag,
+#mcm-card .card .card-tag {
     border-color: #080808 !important;
     color: #080808 !important;
     background: rgba(0,0,0,0.05) !important;
@@ -614,6 +624,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     .category-group { flex-direction: column; align-items: flex-start; }
 
     #grid-portafolio { animation-duration: 210s; }
+    footer { margin-top: 0; border-top: none; }
 }
 
 @media (max-width: 480px) {
