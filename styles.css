@@ -23,17 +23,23 @@ body, html {
     width: 100%;
     height: 100%;
 
-    /* Capa 1: asteriscos estáticos (textura tipográfica) — SVG inline */
-    /* Capa 2: gradiente arcoíris animado                               */
+    /* Capa 1: Interlaciado horizontal (scanlines) para bajar intensidad    */
+    /* Capa 2: Gradiente arcoíris animado                                   */
     background-image:
-        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='3' height='3'><text x='1.5' y='3' font-size='4' text-anchor='middle' fill='%23080808'>*</text></svg>"),
+        repeating-linear-gradient(
+            to bottom,
+            #080808,
+            #080808 1px,
+            transparent 1px,
+            transparent 2px
+        ),
         linear-gradient(90deg,
             #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff,
             #baffc9, #ffffba, #ffdfba, #ffb3ba);
-    background-size: 3px 3px, 300% 100%;
+    background-size: auto, 300% 100%;
     background-position: 0 0, 0% 50%;
 
-    /* Los puntos quedan fijos — solo el gradiente se mueve */
+    /* Las líneas de interlaciado quedan fijas — solo el gradiente se mueve */
     animation: logoGradientShift 6s linear infinite;
 
     /* Enmascarar con el letrero HD */
@@ -361,7 +367,7 @@ body, html {
    ══════════════════════════════════════════════════════════════ */
 .card-wrapper {
     flex: 0 0 240px;
-    width: 240px; height: 235px;
+    width: 240px; height: 185px; /* ajustado a la altura real de la cápsula (185px) para eliminar espacio vacío sobrante */
     display: flex; flex-direction: column;
     justify-content: flex-start;
     border-radius: 3px; cursor: pointer;
