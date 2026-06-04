@@ -661,18 +661,33 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     bottom: 30px; /* Sobre la marquesina bottom (30px) */
     left: 30px;
     right: 30px;
-    height: 38px;
+    height: 48px;
     background: #080808;
     border-top: 1px solid #1a1a1a;
     z-index: 99;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 0 12px;
+    padding: 6px 12px 4px 12px;
     box-sizing: border-box;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
     border-radius: 3px 3px 0 0;
+}
+
+.player-row-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 28px;
+}
+
+.player-row-timeline {
+    width: 100%;
+    height: 8px;
+    display: flex;
+    align-items: center;
 }
 
 .player-controls-left {
@@ -681,18 +696,69 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     gap: 6px;
 }
 
-.player-controls-center {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-    max-width: 60%;
-}
-
 .player-controls-right {
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+/* Pantalla LCD estilo autoestéreo */
+.player-lcd {
+    flex: 1;
+    max-width: 50%;
+    height: 26px;
+    background: #040404;
+    border: 1px solid #1a1a1a;
+    border-radius: 2px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+.lcd-screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58rem;
+    color: #00e5ff; /* Color cian brillante digital */
+    text-shadow: 0 0 3px rgba(0, 229, 255, 0.4);
+    overflow: hidden;
+}
+
+.lcd-text-container {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    margin-right: 8px;
+}
+
+.lcd-text {
+    display: inline-block;
+}
+
+.lcd-text.marquee-anim {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: lcdScroll 12s linear infinite;
+}
+
+.lcd-time {
+    font-size: 0.55rem;
+    color: #00e5ff;
+    opacity: 0.85;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+@keyframes lcdScroll {
+    0%   { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
 }
 
 /* Cápsulas independientes por botón */
@@ -723,8 +789,42 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     background: rgba(0, 229, 255, 0.05);
 }
 
-/* Iconos de texto con degradado tornasol */
-.player-btn-capsule .btn-icon {
+/* Cajón de volumen unificado (parlante + barra) */
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 3px;
+    height: 26px;
+    padding: 0 6px 0 8px;
+    box-sizing: border-box;
+}
+
+.player-mute-btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.player-mute-btn-icon:hover svg {
+    transform: scale(1.1);
+}
+.player-mute-btn-icon:active svg {
+    transform: scale(0.9);
+}
+.player-mute-btn-icon.muted svg {
+    opacity: 0.5;
+}
+
+/* Iconos de texto y SVGs con degradado tornasol */
+.btn-icon {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.6rem;
     font-weight: 700;
@@ -737,15 +837,12 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     transition: background-position 0.3s;
     user-select: none;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
 }
-.player-btn-capsule:hover .btn-icon {
+.player-btn-capsule:hover .btn-icon,
+.volume-container:hover .btn-icon {
     background-position: right center;
-}
-.player-btn-capsule.active .btn-icon {
-    background: linear-gradient(90deg, #00e5ff, #bae1ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 /* Estilo de los inputs range (barra de progreso y volumen) */
@@ -776,20 +873,13 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     /* El background se controla dinámicamente con JS */
 }
 
-#player-time-display {
-    color: #666;
-    font-size: 0.58rem;
-    white-space: nowrap;
-    user-select: none;
-}
-
 /* Playlist Drawer (Panel desplegable) */
 .playlist-drawer {
     position: fixed;
-    bottom: 74px;
+    bottom: 82px;
     right: 30px;
-    width: 320px;
-    max-height: 280px;
+    width: 340px;
+    max-height: 320px;
     background: #0d0d0d;
     border: 1px solid #222;
     border-radius: 3px;
@@ -811,6 +901,12 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     font-weight: bold;
     color: #8c8c8c;
     letter-spacing: 1px;
+}
+
+.playlist-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 #playlist-drawer-close {
@@ -835,15 +931,17 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     display: none;
 }
 
+/* Item de Playlist con drag & drop y botones reordenar */
 .playlist-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-bottom: 1px solid #111;
     font-size: 0.6rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, opacity 0.2s;
+    user-select: none;
 }
 .playlist-item:hover {
     background: #141414;
@@ -851,6 +949,11 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 .playlist-item.active-track {
     background: rgba(0, 229, 255, 0.03);
 }
+.playlist-item.dragging {
+    opacity: 0.4;
+    background: #181818;
+}
+
 .playlist-item-title {
     color: #8c8c8c;
     white-space: nowrap;
@@ -866,6 +969,37 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     color: #00e5ff;
     font-weight: bold;
 }
+
+.playlist-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.playlist-item-reorder-btn {
+    background: none;
+    border: none;
+    color: #444;
+    cursor: pointer;
+    padding: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+.playlist-item-reorder-btn:hover {
+    color: #00e5ff;
+}
+.playlist-item-reorder-btn.disabled {
+    color: #1a1a1a;
+    cursor: default;
+    pointer-events: none;
+}
+.playlist-item-reorder-btn svg {
+    width: 10px;
+    height: 10px;
+}
+
 .playlist-item-remove {
     background: none;
     border: none;
@@ -874,6 +1008,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     font-size: 0.65rem;
     padding: 2px;
     transition: color 0.2s;
+    margin-left: 4px;
 }
 .playlist-item-remove:hover {
     color: #ffb3ba;
@@ -962,7 +1097,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
         right: 24px;
     }
     .playlist-drawer {
-        bottom: 66px;
+        bottom: 76px;
         right: 24px;
     }
 }
@@ -973,7 +1108,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
         right: 24px;
     }
     .playlist-drawer {
-        bottom: 66px;
+        bottom: 76px;
         right: 24px;
         width: calc(100% - 48px);
         left: 24px;
@@ -985,26 +1120,43 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
         left: 18px;
         right: 18px;
         font-size: 0.55rem;
-        gap: 4px;
-        padding: 0 6px;
-        height: 36px;
+        padding: 4px 6px 2px 6px;
+        height: 48px;
+    }
+    .player-row-main {
+        height: 26px;
+    }
+    .player-row-timeline {
+        height: 8px;
     }
     .player-btn-capsule {
         height: 22px;
         padding: 0 5px;
     }
-    .player-btn-capsule .btn-icon {
+    .volume-container {
+        height: 22px;
+        padding: 0 4px;
+    }
+    #player-volume {
+        width: 35px !important;
+    }
+    .player-lcd {
+        height: 22px;
+        padding: 0 4px;
+        max-width: 42%;
+    }
+    .lcd-screen {
         font-size: 0.52rem;
     }
-    #player-time-display {
-        font-size: 0.5rem;
+    .lcd-time {
+        display: none; /* Ocultar el tiempo en la LCD en móviles muy pequeños para dar espacio al título */
     }
     .playlist-drawer {
-        bottom: 58px;
+        bottom: 70px;
         right: 18px;
         left: 18px;
         width: auto;
-        max-height: 200px;
+        max-height: 220px;
     }
 }
 

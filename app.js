@@ -69,6 +69,40 @@ let playlistPlaying     = false;
 let currentPlaylistIndex = -1;
 let isShuffle           = false;
 
+// ── Iconos SVG ────────────────────────────────────────────────
+const SPEAKER_SVG = `
+<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+</svg>`;
+
+const SPEAKER_MUTED_SVG = `
+<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <line x1="23" y1="9" x2="17" y2="15"/>
+    <line x1="17" y1="9" x2="23" y2="15"/>
+</svg>`;
+
+const FULLSCREEN_SVG = `
+<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+</svg>`;
+
+const FULLSCREEN_EXIT_SVG = `
+<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+    <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4"/>
+</svg>`;
+
+const ARROW_UP_SVG = `
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+</svg>`;
+
+const ARROW_DOWN_SVG = `
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 12 15 18 9"/>
+</svg>`;
+
 const palette = ['#ffb3ba', '#bae1ff', '#baffc9', '#ffffba', '#ffdfba'];
 
 
@@ -164,14 +198,21 @@ function playVideo(url, element) {
     const videoId = getYouTubeId(url);
     if (!videoId) return;
 
+    // Buscar información del track para la pantalla LCD
+    const trackItem = allData.find(item => item.url_video === url);
+    if (trackItem) {
+        updateLcdDisplay(trackItem.titulo.toUpperCase());
+    } else {
+        updateLcdDisplay("REPRODUCIENDO...");
+    }
+
     // Desbloqueo forzado de audio para políticas móviles ante interacción
     if (ytPlayer) {
         if (typeof ytPlayer.unMute === 'function') {
             ytPlayer.unMute();
             const muteBtn = document.getElementById('player-mute-btn');
             if (muteBtn) {
-                const icon = muteBtn.querySelector('.btn-icon');
-                if (icon) icon.textContent = 'MUT';
+                updateVolumeIcon(false);
                 muteBtn.classList.remove('active');
             }
             const volumeSlider = document.getElementById('player-volume');
@@ -310,12 +351,11 @@ function setupCustomPlayerControls() {
     const playBtn = document.getElementById('player-play-btn');
     const prevBtn = document.getElementById('player-prev-btn');
     const nextBtn = document.getElementById('player-next-btn');
-    const shuffleBtn = document.getElementById('player-shuffle-btn');
+    const shuffleBtn = document.getElementById('playlist-shuffle-btn');
     const playlistBtn = document.getElementById('player-playlist-btn');
     const muteBtn = document.getElementById('player-mute-btn');
     const fullscreenBtn = document.getElementById('player-fullscreen-btn');
     const timeline = document.getElementById('player-timeline');
-    const timeDisplay = document.getElementById('player-time-display');
     const volumeSlider = document.getElementById('player-volume');
     const playlistDrawer = document.getElementById('playlist-drawer');
     const closeDrawerBtn = document.getElementById('playlist-drawer-close');
@@ -341,7 +381,7 @@ function setupCustomPlayerControls() {
         playNext();
     });
 
-    // 3. Modo Aleatorio (Shuffle)
+    // 3. Modo Aleatorio (Shuffle) — Ahora está en la cabecera de la lista
     if (shuffleBtn) {
         shuffleBtn.addEventListener('click', () => {
             isShuffle = !isShuffle;
@@ -396,32 +436,29 @@ function setupCustomPlayerControls() {
             if (ytPlayer.isMuted()) {
                 ytPlayer.unMute();
             }
-            const icon = muteBtn.querySelector('.btn-icon');
-            if (icon) icon.textContent = 'MUT';
-            muteBtn.classList.remove('active');
+            updateVolumeIcon(false);
+            muteBtn.classList.remove('muted');
         } else {
             if (!ytPlayer.isMuted()) {
                 ytPlayer.mute();
             }
-            const icon = muteBtn.querySelector('.btn-icon');
-            if (icon) icon.textContent = 'UNMT';
-            muteBtn.classList.add('active');
+            updateVolumeIcon(true);
+            muteBtn.classList.add('muted');
         }
     });
 
     // 7. Silenciar / Activar audio (Mute)
     muteBtn.addEventListener('click', () => {
         if (!ytPlayer || typeof ytPlayer.isMuted !== 'function') return;
-        const icon = muteBtn.querySelector('.btn-icon');
         if (ytPlayer.isMuted()) {
             ytPlayer.unMute();
-            if (icon) icon.textContent = 'MUT';
-            muteBtn.classList.remove('active');
+            updateVolumeIcon(false);
+            muteBtn.classList.remove('muted');
             volumeSlider.value = ytPlayer.getVolume() || 100;
         } else {
             ytPlayer.mute();
-            if (icon) icon.textContent = 'UNMT';
-            muteBtn.classList.add('active');
+            updateVolumeIcon(true);
+            muteBtn.classList.add('muted');
             volumeSlider.value = 0;
         }
     });
@@ -429,20 +466,19 @@ function setupCustomPlayerControls() {
     // 8. Pantalla Completa de la Página (Fullscreen)
     if (fullscreenBtn) {
         fullscreenBtn.addEventListener('click', () => {
+            const container = document.getElementById('player-fullscreen-svg-container');
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen()
                     .then(() => {
                         fullscreenBtn.classList.add('active');
-                        const icon = fullscreenBtn.querySelector('.btn-icon');
-                        if (icon) icon.textContent = 'EXIT';
+                        if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
                     })
                     .catch(err => console.warn('Error al iniciar Fullscreen:', err));
             } else {
                 document.exitFullscreen()
                     .then(() => {
                         fullscreenBtn.classList.remove('active');
-                        const icon = fullscreenBtn.querySelector('.btn-icon');
-                        if (icon) icon.textContent = 'FULL';
+                        if (container) container.innerHTML = FULLSCREEN_SVG;
                     })
                     .catch(err => console.warn('Error al salir de Fullscreen:', err));
             }
@@ -452,21 +488,48 @@ function setupCustomPlayerControls() {
     // Escuchar cambios de fullscreen (por si usan Esc)
     document.addEventListener('fullscreenchange', () => {
         if (fullscreenBtn) {
-            const icon = fullscreenBtn.querySelector('.btn-icon');
+            const container = document.getElementById('player-fullscreen-svg-container');
             if (document.fullscreenElement) {
                 fullscreenBtn.classList.add('active');
-                if (icon) icon.textContent = 'EXIT';
+                if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
             } else {
                 fullscreenBtn.classList.remove('active');
-                if (icon) icon.textContent = 'FULL';
+                if (container) container.innerHTML = FULLSCREEN_SVG;
             }
+        }
+    });
+}
+
+function updateVolumeIcon(isMutedState) {
+    const container = document.getElementById('player-mute-svg-container');
+    if (container) {
+        container.innerHTML = isMutedState ? SPEAKER_MUTED_SVG : SPEAKER_SVG;
+    }
+}
+
+function updateLcdDisplay(title) {
+    const lcdText = document.getElementById('lcd-text');
+    if (!lcdText) return;
+    
+    lcdText.textContent = title;
+    lcdText.classList.remove('marquee-anim');
+    lcdText.style.animation = '';
+
+    // Esperar un frame
+    requestAnimationFrame(() => {
+        const container = lcdText.parentElement;
+        if (container && lcdText.scrollWidth > container.clientWidth) {
+            lcdText.classList.add('marquee-anim');
+            // Velocidad constante de scroll basada en la longitud del texto
+            const duration = Math.max(8, Math.floor(lcdText.scrollWidth / 30));
+            lcdText.style.animation = `lcdScroll ${duration}s linear infinite`;
         }
     });
 }
 
 function startCustomTimelineUpdate() {
     const timeline = document.getElementById('player-timeline');
-    const timeDisplay = document.getElementById('player-time-display');
+    const lcdTime = document.getElementById('lcd-time');
 
     clearInterval(customPlayerUpdateInterval);
     customPlayerUpdateInterval = setInterval(() => {
@@ -480,7 +543,9 @@ function startCustomTimelineUpdate() {
                 // Pintar el progreso completado con el gradiente tornasol y el resto con el color base #222
                 timeline.style.background = `linear-gradient(to right, #ffb3ba 0%, #bae1ff ${pct * 0.25}%, #baffc9 ${pct * 0.5}%, #ffffba ${pct * 0.75}%, #ffdfba ${pct}%, #222 ${pct}%, #222 100%)`;
             }
-            timeDisplay.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+            if (lcdTime) {
+                lcdTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+            }
         }
     }, 250); // Menor intervalo para mayor suavidad
 }
@@ -1069,17 +1134,46 @@ function updatePlaylistDrawerUI() {
         const isActive = playlistPlaying && (currentPlaylistIndex === index);
         const itemEl = document.createElement('div');
         itemEl.className = `playlist-item${isActive ? ' active-track' : ''}`;
+        itemEl.setAttribute('draggable', 'true');
         
+        const isFirst = index === 0;
+        const isLast = index === playlist.length - 1;
+
         itemEl.innerHTML = `
             <span class="playlist-item-title">${item.titulo}</span>
-            <button class="playlist-item-remove" title="Quitar de la lista">✕</button>
+            <div class="playlist-item-controls">
+                <button class="playlist-item-reorder-btn up${isFirst ? ' disabled' : ''}" title="Subir">
+                    ${ARROW_UP_SVG}
+                </button>
+                <button class="playlist-item-reorder-btn down${isLast ? ' disabled' : ''}" title="Bajar">
+                    ${ARROW_DOWN_SVG}
+                </button>
+                <button class="playlist-item-remove" title="Quitar de la lista">✕</button>
+            </div>
         `;
 
-        // Hacer click en el item para reproducirlo
+        // Hacer click en el item para reproducirlo (si no se hizo en los botones)
         itemEl.addEventListener('click', (e) => {
-            if (e.target.closest('.playlist-item-remove')) return;
+            if (e.target.closest('.playlist-item-remove') || e.target.closest('.playlist-item-reorder-btn')) return;
             playPlaylistItem(index);
         });
+
+        // Reordenación con botones
+        const upBtn = itemEl.querySelector('.playlist-item-reorder-btn.up');
+        if (upBtn && !isFirst) {
+            upBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                movePlaylistItem(index, -1);
+            });
+        }
+
+        const downBtn = itemEl.querySelector('.playlist-item-reorder-btn.down');
+        if (downBtn && !isLast) {
+            downBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                movePlaylistItem(index, 1);
+            });
+        }
 
         // Quitar de la playlist
         const removeBtn = itemEl.querySelector('.playlist-item-remove');
@@ -1090,8 +1184,63 @@ function updatePlaylistDrawerUI() {
             });
         }
 
+        // Drag & Drop HTML5
+        itemEl.addEventListener('dragstart', (e) => {
+            itemEl.classList.add('dragging');
+            e.dataTransfer.setData('text/plain', index);
+        });
+        itemEl.addEventListener('dragend', () => {
+            itemEl.classList.remove('dragging');
+        });
+        itemEl.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+        itemEl.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const fromIndex = parseInt(e.dataTransfer.getData('text/plain'), 10);
+            const toIndex = index;
+            if (fromIndex !== toIndex && !isNaN(fromIndex)) {
+                // Mover elemento
+                const [movedItem] = playlist.splice(fromIndex, 1);
+                playlist.splice(toIndex, 0, movedItem);
+                
+                // Sincronizar el track de reproducción actual si está en la playlist
+                if (playlistPlaying) {
+                    if (currentPlaylistIndex === fromIndex) {
+                        currentPlaylistIndex = toIndex;
+                    } else if (currentPlaylistIndex > fromIndex && currentPlaylistIndex <= toIndex) {
+                        currentPlaylistIndex--;
+                    } else if (currentPlaylistIndex < fromIndex && currentPlaylistIndex >= toIndex) {
+                        currentPlaylistIndex++;
+                    }
+                }
+                updatePlaylistDrawerUI();
+            }
+        });
+
         container.appendChild(itemEl);
     });
+}
+
+function movePlaylistItem(fromIndex, direction) {
+    const toIndex = fromIndex + direction;
+    if (toIndex < 0 || toIndex >= playlist.length) return;
+    
+    // Intercambiar
+    const temp = playlist[fromIndex];
+    playlist[fromIndex] = playlist[toIndex];
+    playlist[toIndex] = temp;
+    
+    // Sincronizar el track de reproducción actual si está en la playlist
+    if (playlistPlaying) {
+        if (currentPlaylistIndex === fromIndex) {
+            currentPlaylistIndex = toIndex;
+        } else if (currentPlaylistIndex === toIndex) {
+            currentPlaylistIndex = fromIndex;
+        }
+    }
+    
+    updatePlaylistDrawerUI();
 }
 
 function playPlaylistItem(index) {

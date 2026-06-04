@@ -95,11 +95,37 @@
         </footer>
     </div>
 
+    <!-- GRADIENTE TORNASOL GLOBAL PARA SVGs -->
+    <svg style="width:0; height:0; position:absolute;" aria-hidden="true">
+        <defs>
+            <linearGradient id="tornasol-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ffb3ba" />
+                <stop offset="25%" stop-color="#bae1ff" />
+                <stop offset="50%" stop-color="#baffc9" />
+                <stop offset="75%" stop-color="#ffffba" />
+                <stop offset="100%" stop-color="#ffdfba" />
+            </linearGradient>
+        </defs>
+    </svg>
+
     <!-- LISTA DE AGREGADOS (PLAYLIST DESPLEGABLE) -->
     <div id="playlist-drawer" class="playlist-drawer" style="display: none;">
         <div class="playlist-drawer-header">
             <span>LISTA DE AGREGADOS</span>
-            <button id="playlist-drawer-close" title="Cerrar">✕</button>
+            <div class="playlist-header-actions">
+                <button id="playlist-shuffle-btn" class="player-btn-capsule" title="Aleatorio (RAND)">
+                    <span class="btn-icon">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px; height:12px; display:block;">
+                            <polyline points="16 3 21 3 21 8"/>
+                            <line x1="4" y1="20" x2="21" y2="3"/>
+                            <polyline points="21 16 21 21 16 21"/>
+                            <line x1="15" y1="15" x2="21" y2="21"/>
+                            <line x1="4" y1="4" x2="9" y2="9"/>
+                        </svg>
+                    </span>
+                </button>
+                <button id="playlist-drawer-close" title="Cerrar">✕</button>
+            </div>
         </div>
         <div id="playlist-drawer-items" class="playlist-drawer-items">
             <!-- Items agregados dinámicamente -->
@@ -108,40 +134,68 @@
 
     <!-- REPRODUCTOR PERSONALIZADO FIJO (Segunda línea en la parte inferior) -->
     <div id="custom-player" aria-label="Reproductor de Audio y Video">
-        <!-- Controles de reproducción -->
-        <div class="player-controls-left">
-            <button id="player-prev-btn" class="player-btn-capsule" title="Anterior (<<)" aria-label="Anterior">
-                <span class="btn-icon">&lt;&lt;</span>
-            </button>
-            <button id="player-play-btn" class="player-btn-capsule" title="Play / Pausa (▶)" aria-label="Reproducir">
-                <span class="btn-icon">▶</span>
-            </button>
-            <button id="player-next-btn" class="player-btn-capsule" title="Siguiente (>>)" aria-label="Siguiente">
-                <span class="btn-icon">&gt;&gt;</span>
-            </button>
-            <button id="player-shuffle-btn" class="player-btn-capsule" title="Aleatorio (RAND)" aria-label="Aleatorio">
-                <span class="btn-icon">⇄</span>
-            </button>
+        <!-- Fila Principal: Botones e Info LCD -->
+        <div class="player-row-main">
+            <!-- Controles de reproducción izquierdos -->
+            <div class="player-controls-left">
+                <button id="player-prev-btn" class="player-btn-capsule" title="Anterior (<<)" aria-label="Anterior">
+                    <span class="btn-icon">&lt;&lt;</span>
+                </button>
+                <button id="player-play-btn" class="player-btn-capsule" title="Play / Pausa (▶)" aria-label="Reproducir">
+                    <span class="btn-icon">▶</span>
+                </button>
+                <button id="player-next-btn" class="player-btn-capsule" title="Siguiente (>>)" aria-label="Siguiente">
+                    <span class="btn-icon">&gt;&gt;</span>
+                </button>
+            </div>
+
+            <!-- Pantalla LCD estilo autoestéreo de carro -->
+            <div class="player-lcd">
+                <div class="lcd-screen">
+                    <div class="lcd-text-container">
+                        <div id="lcd-text" class="lcd-text">GOLOSINASSSS - SELECCIONE PISTA</div>
+                    </div>
+                    <div id="lcd-time" class="lcd-time">00:00 / 00:00</div>
+                </div>
+            </div>
+
+            <!-- Controles extras y volumen derechos -->
+            <div class="player-controls-right">
+                <button id="player-playlist-btn" class="player-btn-capsule" title="Lista de Agregados" aria-label="Lista de Agregados">
+                    <span class="btn-icon">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" style="width:13px; height:13px; display:block;">
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </span>
+                </button>
+                
+                <div class="volume-container">
+                    <button id="player-mute-btn" class="player-mute-btn-icon" title="Silenciar" aria-label="Silenciar">
+                        <span class="btn-icon" id="player-mute-svg-container">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <input type="range" id="player-volume" min="0" max="100" value="100" aria-label="Volumen" style="width: 50px;">
+                </div>
+
+                <button id="player-fullscreen-btn" class="player-btn-capsule" title="Pantalla Completa" aria-label="Pantalla Completa">
+                    <span class="btn-icon" id="player-fullscreen-svg-container">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
         </div>
 
-        <!-- Barra de progreso y reloj -->
-        <div class="player-controls-center">
+        <!-- Fila Inferior: Timeline expandido al 100% de la barra -->
+        <div class="player-row-timeline">
             <input type="range" id="player-timeline" min="0" max="100" value="0" aria-label="Barra de tiempo">
-            <span id="player-time-display">00:00 / 00:00</span>
-        </div>
-
-        <!-- Controles extras y volumen -->
-        <div class="player-controls-right">
-            <button id="player-playlist-btn" class="player-btn-capsule" title="Lista de Agregados (LIST)" aria-label="Lista de Agregados">
-                <span class="btn-icon">LIST</span>
-            </button>
-            <button id="player-mute-btn" class="player-btn-capsule" title="Silenciar (MUT)" aria-label="Silenciar">
-                <span class="btn-icon">MUT</span>
-            </button>
-            <button id="player-fullscreen-btn" class="player-btn-capsule" title="Pantalla Completa (FULL)" aria-label="Pantalla Completa">
-                <span class="btn-icon">FULL</span>
-            </button>
-            <input type="range" id="player-volume" min="0" max="100" value="100" aria-label="Volumen" style="width: 50px;">
         </div>
     </div>
 
