@@ -16,7 +16,7 @@ body, html {
     width: 100%;
     max-width: 560px;
     aspect-ratio: 2000 / 200;
-    margin: 0 auto 44px; /* sin espacio superior — 44px bajo las cápsulas */
+    margin: 10px auto 10px; /* margen simétrico de 10px arriba y abajo */
 }
 
 #logo-img-gradient {
