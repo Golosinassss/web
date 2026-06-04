@@ -95,13 +95,33 @@
         </footer>
     </div>
 
+    <!-- LISTA DE AGREGADOS (PLAYLIST DESPLEGABLE) -->
+    <div id="playlist-drawer" class="playlist-drawer" style="display: none;">
+        <div class="playlist-drawer-header">
+            <span>LISTA DE AGREGADOS</span>
+            <button id="playlist-drawer-close" title="Cerrar">✕</button>
+        </div>
+        <div id="playlist-drawer-items" class="playlist-drawer-items">
+            <!-- Items agregados dinámicamente -->
+        </div>
+    </div>
+
     <!-- REPRODUCTOR PERSONALIZADO FIJO (Segunda línea en la parte inferior) -->
     <div id="custom-player" aria-label="Reproductor de Audio y Video">
         <!-- Controles de reproducción -->
         <div class="player-controls-left">
-            <button id="player-prev-btn" title="Anterior (⏮)" aria-label="Anterior">⏮</button>
-            <button id="player-play-btn" title="Play / Pausa (▶/⏸)" aria-label="Reproducir">▶</button>
-            <button id="player-next-btn" title="Siguiente (⏭)" aria-label="Siguiente">⏭</button>
+            <button id="player-prev-btn" class="player-btn-capsule" title="Anterior (<<)" aria-label="Anterior">
+                <span class="btn-icon">&lt;&lt;</span>
+            </button>
+            <button id="player-play-btn" class="player-btn-capsule" title="Play / Pausa (▶)" aria-label="Reproducir">
+                <span class="btn-icon">▶</span>
+            </button>
+            <button id="player-next-btn" class="player-btn-capsule" title="Siguiente (>>)" aria-label="Siguiente">
+                <span class="btn-icon">&gt;&gt;</span>
+            </button>
+            <button id="player-shuffle-btn" class="player-btn-capsule" title="Aleatorio (RAND)" aria-label="Aleatorio">
+                <span class="btn-icon">⇄</span>
+            </button>
         </div>
 
         <!-- Barra de progreso y reloj -->
@@ -110,9 +130,17 @@
             <span id="player-time-display">00:00 / 00:00</span>
         </div>
 
-        <!-- Control de volumen -->
+        <!-- Controles extras y volumen -->
         <div class="player-controls-right">
-            <button id="player-mute-btn" title="Silenciar (🔊)" aria-label="Silenciar">🔊</button>
+            <button id="player-playlist-btn" class="player-btn-capsule" title="Lista de Agregados (LIST)" aria-label="Lista de Agregados">
+                <span class="btn-icon">LIST</span>
+            </button>
+            <button id="player-mute-btn" class="player-btn-capsule" title="Silenciar (MUT)" aria-label="Silenciar">
+                <span class="btn-icon">MUT</span>
+            </button>
+            <button id="player-fullscreen-btn" class="player-btn-capsule" title="Pantalla Completa (FULL)" aria-label="Pantalla Completa">
+                <span class="btn-icon">FULL</span>
+            </button>
             <input type="range" id="player-volume" min="0" max="100" value="100" aria-label="Volumen" style="width: 50px;">
         </div>
     </div>

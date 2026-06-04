@@ -64,6 +64,10 @@ let allData         = [];
 let currentPortafolioFilter = 'recientes';
 let currentMainFilter       = 'todas'; // 'todas', 'documental', 'música', 'animación'
 let currentCatalogoTag      = 'todos'; // subcategoría (tag) activa
+let playlist            = [];
+let playlistPlaying     = false;
+let currentPlaylistIndex = -1;
+let isShuffle           = false;
 
 const palette = ['#ffb3ba', '#bae1ff', '#baffc9', '#ffffba', '#ffdfba'];
 
@@ -165,7 +169,11 @@ function playVideo(url, element) {
         if (typeof ytPlayer.unMute === 'function') {
             ytPlayer.unMute();
             const muteBtn = document.getElementById('player-mute-btn');
-            if (muteBtn) muteBtn.textContent = '🔊';
+            if (muteBtn) {
+                const icon = muteBtn.querySelector('.btn-icon');
+                if (icon) icon.textContent = 'MUT';
+                muteBtn.classList.remove('active');
+            }
             const volumeSlider = document.getElementById('player-volume');
             if (volumeSlider) volumeSlider.value = ytPlayer.getVolume() || 100;
         }
@@ -174,38 +182,80 @@ function playVideo(url, element) {
         }
     }
 
-    if (element) {
-        const all = getAllCards();
-        const idx = all.indexOf(element);
-        if (idx !== -1) currentVideoIndex = idx;
+    if (element === 'playlist') {
+        playlistPlaying = true;
+        const plIdx = playlist.findIndex(p => p.url_video === url);
+        if (plIdx !== -1) currentPlaylistIndex = plIdx;
+    } else {
+        playlistPlaying = false;
+        currentPlaylistIndex = -1;
+        if (element) {
+            const all = getAllCards();
+            const idx = all.indexOf(element);
+            if (idx !== -1) currentVideoIndex = idx;
+        } else {
+            // Intentar buscar el índice en base a la url
+            const all = getAllCards();
+            const idx = all.findIndex(c => c.getAttribute('data-url') === url);
+            if (idx !== -1) currentVideoIndex = idx;
+        }
     }
 
     setActiveCardByUrl(url);
     loadVideoInPlayer(videoId, true);
     document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Actualizar drawer para sincronizar elemento activo
+    updatePlaylistDrawerUI();
 }
 
 function playNext() {
-    const all = getAllCards();
-    if (all.length === 0) return;
-    currentVideoIndex = (currentVideoIndex + 1) % all.length;
-    
-    const nextCard = all[currentVideoIndex];
-    if (nextCard) {
-        const url = nextCard.getAttribute('data-url');
-        if (url) playVideo(url, nextCard);
+    if (playlistPlaying && playlist.length > 0) {
+        if (isShuffle) {
+            currentPlaylistIndex = Math.floor(Math.random() * playlist.length);
+        } else {
+            currentPlaylistIndex = (currentPlaylistIndex + 1) % playlist.length;
+        }
+        const item = playlist[currentPlaylistIndex];
+        if (item) playVideo(item.url_video, 'playlist');
+    } else {
+        const all = getAllCards();
+        if (all.length === 0) return;
+        if (isShuffle) {
+            currentVideoIndex = Math.floor(Math.random() * all.length);
+        } else {
+            currentVideoIndex = (currentVideoIndex + 1) % all.length;
+        }
+        const nextCard = all[currentVideoIndex];
+        if (nextCard) {
+            const url = nextCard.getAttribute('data-url');
+            if (url) playVideo(url, nextCard);
+        }
     }
 }
 
 function playPrev() {
-    const all = getAllCards();
-    if (all.length === 0) return;
-    currentVideoIndex = (currentVideoIndex - 1 + all.length) % all.length;
-    
-    const prevCard = all[currentVideoIndex];
-    if (prevCard) {
-        const url = prevCard.getAttribute('data-url');
-        if (url) playVideo(url, prevCard);
+    if (playlistPlaying && playlist.length > 0) {
+        if (isShuffle) {
+            currentPlaylistIndex = Math.floor(Math.random() * playlist.length);
+        } else {
+            currentPlaylistIndex = (currentPlaylistIndex - 1 + playlist.length) % playlist.length;
+        }
+        const item = playlist[currentPlaylistIndex];
+        if (item) playVideo(item.url_video, 'playlist');
+    } else {
+        const all = getAllCards();
+        if (all.length === 0) return;
+        if (isShuffle) {
+            currentVideoIndex = Math.floor(Math.random() * all.length);
+        } else {
+            currentVideoIndex = (currentVideoIndex - 1 + all.length) % all.length;
+        }
+        const prevCard = all[currentVideoIndex];
+        if (prevCard) {
+            const url = prevCard.getAttribute('data-url');
+            if (url) playVideo(url, prevCard);
+        }
     }
 }
 
@@ -260,10 +310,15 @@ function setupCustomPlayerControls() {
     const playBtn = document.getElementById('player-play-btn');
     const prevBtn = document.getElementById('player-prev-btn');
     const nextBtn = document.getElementById('player-next-btn');
+    const shuffleBtn = document.getElementById('player-shuffle-btn');
+    const playlistBtn = document.getElementById('player-playlist-btn');
+    const muteBtn = document.getElementById('player-mute-btn');
+    const fullscreenBtn = document.getElementById('player-fullscreen-btn');
     const timeline = document.getElementById('player-timeline');
     const timeDisplay = document.getElementById('player-time-display');
-    const muteBtn = document.getElementById('player-mute-btn');
     const volumeSlider = document.getElementById('player-volume');
+    const playlistDrawer = document.getElementById('playlist-drawer');
+    const closeDrawerBtn = document.getElementById('playlist-drawer-close');
 
     if (!playBtn) return;
 
@@ -286,7 +341,46 @@ function setupCustomPlayerControls() {
         playNext();
     });
 
-    // 3. Barra de navegación temporal (Timeline)
+    // 3. Modo Aleatorio (Shuffle)
+    if (shuffleBtn) {
+        shuffleBtn.addEventListener('click', () => {
+            isShuffle = !isShuffle;
+            shuffleBtn.classList.toggle('active', isShuffle);
+        });
+    }
+
+    // 4. Panel de Playlist
+    if (playlistBtn && playlistDrawer) {
+        playlistBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = playlistDrawer.style.display !== 'none';
+            playlistDrawer.style.display = isOpen ? 'none' : 'flex';
+            playlistBtn.classList.toggle('active', !isOpen);
+            if (!isOpen) {
+                updatePlaylistDrawerUI();
+            }
+        });
+    }
+
+    if (closeDrawerBtn && playlistDrawer && playlistBtn) {
+        closeDrawerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playlistDrawer.style.display = 'none';
+            playlistBtn.classList.remove('active');
+        });
+    }
+
+    // Cerrar playlist al hacer clic fuera del panel
+    document.addEventListener('click', (e) => {
+        if (playlistDrawer && playlistDrawer.style.display !== 'none') {
+            if (!playlistDrawer.contains(e.target) && !playlistBtn.contains(e.target)) {
+                playlistDrawer.style.display = 'none';
+                playlistBtn.classList.remove('active');
+            }
+        }
+    });
+
+    // 5. Barra de navegación temporal (Timeline)
     timeline.addEventListener('input', (e) => {
         if (!ytPlayer || typeof ytPlayer.getDuration !== 'function') return;
         const duration = ytPlayer.getDuration();
@@ -294,27 +388,78 @@ function setupCustomPlayerControls() {
         ytPlayer.seekTo(targetSeconds, true);
     });
 
-    // 4. Barra de volumen
+    // 6. Barra de volumen
     volumeSlider.addEventListener('input', (e) => {
         if (!ytPlayer || typeof ytPlayer.setVolume !== 'function') return;
         ytPlayer.setVolume(e.target.value);
-        if (e.target.value > 0 && ytPlayer.isMuted()) {
-            ytPlayer.unMute();
-            muteBtn.textContent = '🔊';
+        if (e.target.value > 0) {
+            if (ytPlayer.isMuted()) {
+                ytPlayer.unMute();
+            }
+            const icon = muteBtn.querySelector('.btn-icon');
+            if (icon) icon.textContent = 'MUT';
+            muteBtn.classList.remove('active');
+        } else {
+            if (!ytPlayer.isMuted()) {
+                ytPlayer.mute();
+            }
+            const icon = muteBtn.querySelector('.btn-icon');
+            if (icon) icon.textContent = 'UNMT';
+            muteBtn.classList.add('active');
         }
     });
 
-    // 5. Silenciar / Activar audio
+    // 7. Silenciar / Activar audio (Mute)
     muteBtn.addEventListener('click', () => {
         if (!ytPlayer || typeof ytPlayer.isMuted !== 'function') return;
+        const icon = muteBtn.querySelector('.btn-icon');
         if (ytPlayer.isMuted()) {
             ytPlayer.unMute();
-            muteBtn.textContent = '🔊';
-            volumeSlider.value = ytPlayer.getVolume();
+            if (icon) icon.textContent = 'MUT';
+            muteBtn.classList.remove('active');
+            volumeSlider.value = ytPlayer.getVolume() || 100;
         } else {
             ytPlayer.mute();
-            muteBtn.textContent = '🔇';
+            if (icon) icon.textContent = 'UNMT';
+            muteBtn.classList.add('active');
             volumeSlider.value = 0;
+        }
+    });
+
+    // 8. Pantalla Completa de la Página (Fullscreen)
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen()
+                    .then(() => {
+                        fullscreenBtn.classList.add('active');
+                        const icon = fullscreenBtn.querySelector('.btn-icon');
+                        if (icon) icon.textContent = 'EXIT';
+                    })
+                    .catch(err => console.warn('Error al iniciar Fullscreen:', err));
+            } else {
+                document.exitFullscreen()
+                    .then(() => {
+                        fullscreenBtn.classList.remove('active');
+                        const icon = fullscreenBtn.querySelector('.btn-icon');
+                        if (icon) icon.textContent = 'FULL';
+                    })
+                    .catch(err => console.warn('Error al salir de Fullscreen:', err));
+            }
+        });
+    }
+
+    // Escuchar cambios de fullscreen (por si usan Esc)
+    document.addEventListener('fullscreenchange', () => {
+        if (fullscreenBtn) {
+            const icon = fullscreenBtn.querySelector('.btn-icon');
+            if (document.fullscreenElement) {
+                fullscreenBtn.classList.add('active');
+                if (icon) icon.textContent = 'EXIT';
+            } else {
+                fullscreenBtn.classList.remove('active');
+                if (icon) icon.textContent = 'FULL';
+            }
         }
     });
 }
@@ -330,11 +475,14 @@ function startCustomTimelineUpdate() {
             const duration = ytPlayer.getDuration();
             
             if (duration > 0) {
-                timeline.value = (current / duration) * 100;
+                const pct = (current / duration) * 100;
+                timeline.value = pct;
+                // Pintar el progreso completado con el gradiente tornasol y el resto con el color base #222
+                timeline.style.background = `linear-gradient(to right, #ffb3ba 0%, #bae1ff ${pct * 0.25}%, #baffc9 ${pct * 0.5}%, #ffffba ${pct * 0.75}%, #ffdfba ${pct}%, #222 ${pct}%, #222 100%)`;
             }
             timeDisplay.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
         }
-    }, 500);
+    }, 250); // Menor intervalo para mayor suavidad
 }
 
 function formatTime(seconds) {
@@ -348,11 +496,13 @@ function updateCustomPlayerUI(state) {
     const playBtn = document.getElementById('player-play-btn');
     if (!playBtn) return;
 
+    const icon = playBtn.querySelector('.btn-icon');
+
     if (state === YT.PlayerState.PLAYING) {
-        playBtn.textContent = '⏸';
+        if (icon) icon.textContent = '||';
         startCustomTimelineUpdate();
     } else {
-        playBtn.textContent = '▶';
+        if (icon) icon.textContent = '▶';
         if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
             clearInterval(customPlayerUpdateInterval);
         }
@@ -430,8 +580,12 @@ function buildCard(item, animDelay) {
     wrapperEl.setAttribute('tabindex', '0');
     wrapperEl.style.animationDelay = `${animDelay * 0.05}s`;
 
+    const isAdded = playlist.some(p => p.url_video === item.url_video);
+    const addBtnHtml = `<button class="card-add-btn${isAdded ? ' added' : ''}" title="${isAdded ? 'Quitar de Playlist' : 'Agregar a Playlist'}">${isAdded ? '✓' : '+'}</button>`;
+
     wrapperEl.innerHTML = `
         <div class="card">
+            ${addBtnHtml}
             ${metaHtml}
             <div class="card-body">
                 <div class="card-left">
@@ -451,10 +605,26 @@ function buildCard(item, animDelay) {
             ${tagsHtml}
         </div>`;
 
-    wrapperEl.addEventListener('click',   () => playVideo(item.url_video, wrapperEl));
-    wrapperEl.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(item.url_video, wrapperEl); }
+    wrapperEl.addEventListener('click', (e) => {
+        if (e.target.closest('.card-add-btn')) return; // Evitar reproducir al agregar a playlist
+        playVideo(item.url_video, wrapperEl);
     });
+
+    wrapperEl.addEventListener('keydown', (e) => {
+        if (e.target.closest('.card-add-btn')) return;
+        if (e.key === 'Enter' || e.key === ' ') { 
+            e.preventDefault(); 
+            playVideo(item.url_video, wrapperEl); 
+        }
+    });
+
+    const addBtn = wrapperEl.querySelector('.card-add-btn');
+    if (addBtn) {
+        addBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            togglePlaylistItem(item);
+        });
+    }
 
     return wrapperEl;
 }
@@ -503,9 +673,14 @@ function buildCompactCard(item, animDelay) {
     if (animDelay > 0) wrapperEl.style.animationDelay = `${animDelay * 0.05}s`;
     else { wrapperEl.style.opacity = '1'; }
 
+    const isAdded = playlist.some(p => p.url_video === item.url_video);
+    const compactAddBtnHtml = `<button class="card-compact-add-btn${isAdded ? ' added' : ''}" title="${isAdded ? 'Quitar de Playlist' : 'Agregar a Playlist'}">${isAdded ? '✓' : '+'}</button>`;
+    const overlayAddBtnHtml = `<button class="card-add-btn${isAdded ? ' added' : ''}" title="${isAdded ? 'Quitar de Playlist' : 'Agregar a Playlist'}">${isAdded ? '✓' : '+'}</button>`;
+
     wrapperEl.innerHTML = `
         <!-- COMPACT CARD (normal view) -->
         <div class="card-compact">
+            ${compactAddBtnHtml}
             ${thumbHtml}
             <div class="card-compact-content">
                 <p class="card-compact-title">${item.titulo}</p>
@@ -516,6 +691,7 @@ function buildCompactCard(item, animDelay) {
         <!-- FULL CARD OVERLAY (hover view) -->
         <div class="card-full-overlay">
             <div class="card">
+                ${overlayAddBtnHtml}
                 ${metaHtml}
                 <div class="card-body">
                     <div class="card-left">
@@ -537,16 +713,39 @@ function buildCompactCard(item, animDelay) {
         </div>
     `;
 
-    wrapperEl.addEventListener('click', () => {
+    wrapperEl.addEventListener('click', (e) => {
+        if (e.target.closest('.card-compact-add-btn') || e.target.closest('.card-add-btn')) return; // Evitar reproducir al agregar a playlist
         if (window.matchMedia('(hover: none)').matches) {
             openMobileModal(item, wrapperEl);
         } else {
             playVideo(item.url_video, wrapperEl);
         }
     });
+
     wrapperEl.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(item.url_video, wrapperEl); }
+        if (e.target.closest('.card-compact-add-btn') || e.target.closest('.card-add-btn')) return;
+        if (e.key === 'Enter' || e.key === ' ') { 
+            e.preventDefault(); 
+            playVideo(item.url_video, wrapperEl); 
+        }
     });
+
+    const addBtnNormal = wrapperEl.querySelector('.card-compact-add-btn');
+    const addBtnOverlay = wrapperEl.querySelector('.card-full-overlay .card-add-btn');
+
+    if (addBtnNormal) {
+        addBtnNormal.addEventListener('click', (e) => {
+            e.stopPropagation();
+            togglePlaylistItem(item);
+        });
+    }
+
+    if (addBtnOverlay) {
+        addBtnOverlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            togglePlaylistItem(item);
+        });
+    }
 
     return wrapperEl;
 }
@@ -735,14 +934,14 @@ function openMobileModal(item, sourceEl) {
     closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closeMobileModal(); });
     slot.appendChild(closeBtn);
 
-    // Clonar la tarjeta completa sin listeners nativos
-    const rawCard = buildCard(item, 0);
-    const card = rawCard.cloneNode(true);
+    // Usar la tarjeta construida directamente para conservar los event listeners de playlist
+    const card = buildCard(item, 0);
     card.style.opacity = '1';
     card.style.animationDelay = '0s';
 
-    // Tap en la tarjeta = reproducir + cerrar modal
+    // Tap en la tarjeta = reproducir + cerrar modal (ignorando el botón de playlist)
     card.addEventListener('click', (e) => {
+        if (e.target.closest('.card-add-btn')) return;
         e.stopPropagation();
         closeMobileModal();
         playVideo(item.url_video, sourceEl);
@@ -799,6 +998,113 @@ function renderPortafolio() {
 }
 
 window.setPortafolioFilter = setPortafolioFilter;
+
+// ── Lista de Agregados (Playlist) Lógica ──────────────────────
+function togglePlaylistItem(item) {
+    const index = playlist.findIndex(p => p.url_video === item.url_video);
+    let isNowAdded = false;
+
+    if (index === -1) {
+        playlist.push(item);
+        isNowAdded = true;
+    } else {
+        playlist.splice(index, 1);
+        isNowAdded = false;
+        // Si el elemento removido era el que se estaba reproduciendo en la playlist, ajustar índices
+        if (playlistPlaying) {
+            if (currentPlaylistIndex === index) {
+                // Si la playlist quedó vacía, apagar el modo playlist
+                if (playlist.length === 0) {
+                    playlistPlaying = false;
+                    currentPlaylistIndex = -1;
+                } else {
+                    // Reproducir el siguiente disponible
+                    currentPlaylistIndex = currentPlaylistIndex % playlist.length;
+                    playPlaylistItem(currentPlaylistIndex);
+                }
+            } else if (currentPlaylistIndex > index) {
+                currentPlaylistIndex--;
+            }
+        }
+    }
+
+    // Actualizar todos los botones del DOM que correspondan a este video
+    document.querySelectorAll(`[data-url="${item.url_video}"]`).forEach(wrapper => {
+        const btn1 = wrapper.querySelector('.card-add-btn');
+        const btn2 = wrapper.querySelector('.card-compact-add-btn');
+        [btn1, btn2].forEach(btn => {
+            if (btn) {
+                btn.classList.toggle('added', isNowAdded);
+                btn.textContent = isNowAdded ? '✓' : '+';
+                btn.title = isNowAdded ? 'Quitar de Playlist' : 'Agregar a Playlist';
+            }
+        });
+    });
+
+    // Si el modal móvil está abierto, actualizarlo también
+    const modal = document.getElementById('mobile-card-modal');
+    if (modal && modal.classList.contains('is-open')) {
+        const modalBtn = modal.querySelector('.card-add-btn');
+        if (modalBtn) {
+            modalBtn.classList.toggle('added', isNowAdded);
+            modalBtn.textContent = isNowAdded ? '✓' : '+';
+        }
+    }
+
+    updatePlaylistDrawerUI();
+}
+
+function updatePlaylistDrawerUI() {
+    const container = document.getElementById('playlist-drawer-items');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    if (playlist.length === 0) {
+        container.innerHTML = '<div class="playlist-empty-state">LISTA VACÍA</div>';
+        return;
+    }
+
+    playlist.forEach((item, index) => {
+        const isActive = playlistPlaying && (currentPlaylistIndex === index);
+        const itemEl = document.createElement('div');
+        itemEl.className = `playlist-item${isActive ? ' active-track' : ''}`;
+        
+        itemEl.innerHTML = `
+            <span class="playlist-item-title">${item.titulo}</span>
+            <button class="playlist-item-remove" title="Quitar de la lista">✕</button>
+        `;
+
+        // Hacer click en el item para reproducirlo
+        itemEl.addEventListener('click', (e) => {
+            if (e.target.closest('.playlist-item-remove')) return;
+            playPlaylistItem(index);
+        });
+
+        // Quitar de la playlist
+        const removeBtn = itemEl.querySelector('.playlist-item-remove');
+        if (removeBtn) {
+            removeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                togglePlaylistItem(item);
+            });
+        }
+
+        container.appendChild(itemEl);
+    });
+}
+
+function playPlaylistItem(index) {
+    if (index < 0 || index >= playlist.length) return;
+    playlistPlaying = true;
+    currentPlaylistIndex = index;
+    const item = playlist[index];
+    playVideo(item.url_video, 'playlist');
+}
+
+window.togglePlaylistItem = togglePlaylistItem;
+window.updatePlaylistDrawerUI = updatePlaylistDrawerUI;
+window.playPlaylistItem = playPlaylistItem;
 
 // ══════════════════════════════════════════════════════════════
 // CARGA DE DATOS

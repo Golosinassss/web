@@ -678,7 +678,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 .player-controls-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
 }
 
 .player-controls-center {
@@ -692,27 +692,60 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 .player-controls-right {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
-/* Botones del reproductor */
-#custom-player button {
-    background: none;
-    border: none;
-    color: #888;
-    cursor: pointer;
-    font-size: 0.75rem;
-    padding: 4px;
-    transition: color 0.2s, transform 0.1s;
+/* Cápsulas independientes por botón */
+.player-btn-capsule {
+    background: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 3px;
+    height: 26px;
+    padding: 0 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
 }
-#custom-player button:hover {
-    color: #00e5ff;
+.player-btn-capsule:hover {
+    border-color: #444;
+    background: #121212;
 }
-#custom-player button:active {
-    transform: scale(0.92);
+.player-btn-capsule:active {
+    transform: scale(0.95);
+}
+.player-btn-capsule.active {
+    border-color: rgba(0, 229, 255, 0.4);
+    background: rgba(0, 229, 255, 0.05);
+}
+
+/* Iconos de texto con degradado tornasol */
+.player-btn-capsule .btn-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transition: background-position 0.3s;
+    user-select: none;
+    white-space: nowrap;
+}
+.player-btn-capsule:hover .btn-icon {
+    background-position: right center;
+}
+.player-btn-capsule.active .btn-icon {
+    background: linear-gradient(90deg, #00e5ff, #bae1ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Estilo de los inputs range (barra de progreso y volumen) */
@@ -724,7 +757,6 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     border-radius: 2px;
     outline: none;
     cursor: pointer;
-    transition: background 0.2s;
 }
 #custom-player input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -736,14 +768,12 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     transition: background 0.2s;
 }
 #custom-player input[type="range"]:hover::-webkit-slider-thumb {
-    background: #00e5ff;
-}
-#custom-player input[type="range"]:hover {
-    background: #333;
+    background: #ffb3ba;
 }
 
 #player-timeline {
     width: 100%;
+    /* El background se controla dinámicamente con JS */
 }
 
 #player-time-display {
@@ -753,11 +783,186 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     user-select: none;
 }
 
-/* Adaptabilidad del reproductor */
+/* Playlist Drawer (Panel desplegable) */
+.playlist-drawer {
+    position: fixed;
+    bottom: 74px;
+    right: 30px;
+    width: 320px;
+    max-height: 280px;
+    background: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 3px;
+    z-index: 98;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+}
+
+.playlist-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: #8c8c8c;
+    letter-spacing: 1px;
+}
+
+#playlist-drawer-close {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0;
+    transition: color 0.2s;
+}
+#playlist-drawer-close:hover {
+    color: #ffb3ba;
+}
+
+.playlist-drawer-items {
+    overflow-y: auto;
+    flex: 1;
+    scrollbar-width: none;
+}
+.playlist-drawer-items::-webkit-scrollbar {
+    display: none;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #111;
+    font-size: 0.6rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.playlist-item:hover {
+    background: #141414;
+}
+.playlist-item.active-track {
+    background: rgba(0, 229, 255, 0.03);
+}
+.playlist-item-title {
+    color: #8c8c8c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 12px;
+    flex: 1;
+}
+.playlist-item:hover .playlist-item-title {
+    color: #eee;
+}
+.playlist-item.active-track .playlist-item-title {
+    color: #00e5ff;
+    font-weight: bold;
+}
+.playlist-item-remove {
+    background: none;
+    border: none;
+    color: #444;
+    cursor: pointer;
+    font-size: 0.65rem;
+    padding: 2px;
+    transition: color 0.2s;
+}
+.playlist-item-remove:hover {
+    color: #ffb3ba;
+}
+
+.playlist-empty-state {
+    padding: 24px;
+    text-align: center;
+    color: #555;
+    font-size: 0.6rem;
+}
+
+/* Botones de Playlist en Tarjetas */
+.card-add-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(13,13,13,0.85);
+    border: 1px solid #222;
+    color: #666;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 2px;
+    z-index: 10;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(2px);
+}
+.card-add-btn:hover {
+    color: #ffb3ba;
+    border-color: #ffb3ba;
+    background: #0d0d0d;
+}
+.card-add-btn.added {
+    color: #00e5ff;
+    border-color: #00e5ff;
+    background: rgba(0, 229, 255, 0.05);
+}
+
+.card-compact {
+    position: relative;
+}
+.card-compact-add-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(13,13,13,0.85);
+    border: 1px solid #222;
+    color: #666;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 2px;
+    z-index: 10;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(2px);
+}
+.card-compact-add-btn:hover {
+    color: #ffb3ba;
+    border-color: #ffb3ba;
+    background: #0d0d0d;
+}
+.card-compact-add-btn.added {
+    color: #00e5ff;
+    border-color: #00e5ff;
+    background: rgba(0, 229, 255, 0.05);
+}
+
+/* Adaptabilidad del reproductor y playlist */
 @media (max-width: 1024px) {
     #custom-player {
         bottom: 24px;
         left: 24px;
+        right: 24px;
+    }
+    .playlist-drawer {
+        bottom: 66px;
         right: 24px;
     }
 }
@@ -767,6 +972,12 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
         left: 24px;
         right: 24px;
     }
+    .playlist-drawer {
+        bottom: 66px;
+        right: 24px;
+        width: calc(100% - 48px);
+        left: 24px;
+    }
 }
 @media (max-width: 480px) {
     #custom-player {
@@ -774,15 +985,26 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
         left: 18px;
         right: 18px;
         font-size: 0.55rem;
-        gap: 6px;
-        padding: 0 8px;
+        gap: 4px;
+        padding: 0 6px;
         height: 36px;
     }
-    #custom-player button {
-        font-size: 0.65rem;
+    .player-btn-capsule {
+        height: 22px;
+        padding: 0 5px;
+    }
+    .player-btn-capsule .btn-icon {
+        font-size: 0.52rem;
     }
     #player-time-display {
         font-size: 0.5rem;
+    }
+    .playlist-drawer {
+        bottom: 58px;
+        right: 18px;
+        left: 18px;
+        width: auto;
+        max-height: 200px;
     }
 }
 
