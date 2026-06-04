@@ -95,6 +95,28 @@
         </footer>
     </div>
 
+    <!-- REPRODUCTOR PERSONALIZADO FIJO (Segunda línea en la parte inferior) -->
+    <div id="custom-player" aria-label="Reproductor de Audio y Video">
+        <!-- Controles de reproducción -->
+        <div class="player-controls-left">
+            <button id="player-prev-btn" title="Anterior (⏮)" aria-label="Anterior">⏮</button>
+            <button id="player-play-btn" title="Play / Pausa (▶/⏸)" aria-label="Reproducir">▶</button>
+            <button id="player-next-btn" title="Siguiente (⏭)" aria-label="Siguiente">⏭</button>
+        </div>
+
+        <!-- Barra de progreso y reloj -->
+        <div class="player-controls-center">
+            <input type="range" id="player-timeline" min="0" max="100" value="0" aria-label="Barra de tiempo">
+            <span id="player-time-display">00:00 / 00:00</span>
+        </div>
+
+        <!-- Control de volumen -->
+        <div class="player-controls-right">
+            <button id="player-mute-btn" title="Silenciar (🔊)" aria-label="Silenciar">🔊</button>
+            <input type="range" id="player-volume" min="0" max="100" value="100" aria-label="Volumen" style="width: 50px;">
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="app.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>

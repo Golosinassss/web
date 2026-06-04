@@ -51,7 +51,7 @@ body, html {
 
 
 #main-content {
-    padding: 40px;
+    padding: 40px 40px 80px 40px; /* margen inferior de 80px para que el footer no quede cubierto por el reproductor */
     min-height: 100vh;
     overflow-y: auto; overflow-x: hidden;
     height: 100vh;
@@ -597,7 +597,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1024px) {
-    #main-content { padding: 34px; }
+    #main-content { padding: 34px 34px 74px 34px; }
     .top, .bottom { height: 24px; }
     .left, .right { width: 24px; }
     .left, .right { top: 24px; height: calc(100% - 48px); }
@@ -605,7 +605,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 @media (max-width: 768px) {
     /* Margen lateral: respeta los bordes de 24px */
-    #main-content { padding: 34px; }
+    #main-content { padding: 34px 34px 74px 34px; }
     .top, .bottom { height: 24px; }
     .left, .right { width: 24px; }
     .left, .right { top: 24px; height: calc(100% - 48px); }
@@ -637,7 +637,7 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 @media (max-width: 480px) {
     /* Margen lateral: respeta los bordes de 18px con holgura */
-    #main-content { padding: 28px; }
+    #main-content { padding: 28px 28px 64px 28px; }
     .top, .bottom { height: 18px; }
     .left, .right { width: 18px; }
     .left, .right { top: 18px; height: calc(100% - 36px); }
@@ -653,6 +653,137 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     #grid-portafolio { height: 82px; }
     .card-compact-wrapper { height: 82px; flex: 0 0 220px; width: 220px; }
     .card-compact { height: 82px; }
+}
+
+/* ── Reproductor Personalizado Fijo ────────────────────────── */
+#custom-player {
+    position: fixed;
+    bottom: 30px; /* Sobre la marquesina bottom (30px) */
+    left: 30px;
+    right: 30px;
+    height: 38px;
+    background: #080808;
+    border-top: 1px solid #1a1a1a;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    box-sizing: border-box;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    border-radius: 3px 3px 0 0;
+}
+
+.player-controls-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-controls-center {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    max-width: 60%;
+}
+
+.player-controls-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botones del reproductor */
+#custom-player button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 4px;
+    transition: color 0.2s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+#custom-player button:hover {
+    color: #00e5ff;
+}
+#custom-player button:active {
+    transform: scale(0.92);
+}
+
+/* Estilo de los inputs range (barra de progreso y volumen) */
+#custom-player input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #222;
+    height: 3px;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#custom-player input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 6px;
+    height: 10px;
+    background: #888;
+    border-radius: 1px;
+    transition: background 0.2s;
+}
+#custom-player input[type="range"]:hover::-webkit-slider-thumb {
+    background: #00e5ff;
+}
+#custom-player input[type="range"]:hover {
+    background: #333;
+}
+
+#player-timeline {
+    width: 100%;
+}
+
+#player-time-display {
+    color: #666;
+    font-size: 0.58rem;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* Adaptabilidad del reproductor */
+@media (max-width: 1024px) {
+    #custom-player {
+        bottom: 24px;
+        left: 24px;
+        right: 24px;
+    }
+}
+@media (max-width: 768px) {
+    #custom-player {
+        bottom: 24px;
+        left: 24px;
+        right: 24px;
+    }
+}
+@media (max-width: 480px) {
+    #custom-player {
+        bottom: 18px;
+        left: 18px;
+        right: 18px;
+        font-size: 0.55rem;
+        gap: 6px;
+        padding: 0 8px;
+        height: 36px;
+    }
+    #custom-player button {
+        font-size: 0.65rem;
+    }
+    #player-time-display {
+        font-size: 0.5rem;
+    }
 }
 
 

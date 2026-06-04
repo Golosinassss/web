@@ -164,6 +164,10 @@ function playVideo(url, element) {
     if (ytPlayer) {
         if (typeof ytPlayer.unMute === 'function') {
             ytPlayer.unMute();
+            const muteBtn = document.getElementById('player-mute-btn');
+            if (muteBtn) muteBtn.textContent = '🔊';
+            const volumeSlider = document.getElementById('player-volume');
+            if (volumeSlider) volumeSlider.value = ytPlayer.getVolume() || 100;
         }
         if (typeof ytPlayer.setVolume === 'function') {
             ytPlayer.setVolume(100);
@@ -193,6 +197,18 @@ function playNext() {
     }
 }
 
+function playPrev() {
+    const all = getAllCards();
+    if (all.length === 0) return;
+    currentVideoIndex = (currentVideoIndex - 1 + all.length) % all.length;
+    
+    const prevCard = all[currentVideoIndex];
+    if (prevCard) {
+        const url = prevCard.getAttribute('data-url');
+        if (url) playVideo(url, prevCard);
+    }
+}
+
 // ── Helper para separar descripción de créditos ───────────────
 function getParsedDesc(desc) {
     if (!desc) return { mainDesc: '', credit: '' };
@@ -217,16 +233,130 @@ function onYouTubeIframeAPIReady() {
             mute: 1, 
             rel: 0, 
             modestbranding: 1,
-            playsinline: 1 /* Impide pantalla completa nativa forzada en móviles */
+            playsinline: 1,
+            controls: 0,            // Ocultar controles nativos de YouTube
+            disablekb: 1,           // Desactivar atajos nativos de YT
+            iv_load_policy: 3,      // Ocultar anotaciones externas
+            fs: 0                   // Desactivar pantalla completa nativa de YT
         },
         events: {
             onReady: function () {
                 ytApiReady = true;
+                setupCustomPlayerControls();
                 if (pendingVideoId) { ytPlayer.loadVideoById(pendingVideoId); pendingVideoId = null; }
             },
-            onStateChange: function (e) { if (e.data === 0) playNext(); }
+            onStateChange: function (e) { 
+                if (e.data === 0) playNext(); 
+                updateCustomPlayerUI(e.data);
+            }
         }
     });
+}
+
+// ── Lógica de Controles de Reproducción Personalizados ───────
+let customPlayerUpdateInterval = null;
+
+function setupCustomPlayerControls() {
+    const playBtn = document.getElementById('player-play-btn');
+    const prevBtn = document.getElementById('player-prev-btn');
+    const nextBtn = document.getElementById('player-next-btn');
+    const timeline = document.getElementById('player-timeline');
+    const timeDisplay = document.getElementById('player-time-display');
+    const muteBtn = document.getElementById('player-mute-btn');
+    const volumeSlider = document.getElementById('player-volume');
+
+    if (!playBtn) return;
+
+    // 1. Play / Pause
+    playBtn.addEventListener('click', () => {
+        if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') return;
+        const state = ytPlayer.getPlayerState();
+        if (state === YT.PlayerState.PLAYING) {
+            ytPlayer.pauseVideo();
+        } else {
+            ytPlayer.playVideo();
+        }
+    });
+
+    // 2. Navegación Siguiente / Anterior
+    prevBtn.addEventListener('click', () => {
+        playPrev();
+    });
+    nextBtn.addEventListener('click', () => {
+        playNext();
+    });
+
+    // 3. Barra de navegación temporal (Timeline)
+    timeline.addEventListener('input', (e) => {
+        if (!ytPlayer || typeof ytPlayer.getDuration !== 'function') return;
+        const duration = ytPlayer.getDuration();
+        const targetSeconds = (e.target.value / 100) * duration;
+        ytPlayer.seekTo(targetSeconds, true);
+    });
+
+    // 4. Barra de volumen
+    volumeSlider.addEventListener('input', (e) => {
+        if (!ytPlayer || typeof ytPlayer.setVolume !== 'function') return;
+        ytPlayer.setVolume(e.target.value);
+        if (e.target.value > 0 && ytPlayer.isMuted()) {
+            ytPlayer.unMute();
+            muteBtn.textContent = '🔊';
+        }
+    });
+
+    // 5. Silenciar / Activar audio
+    muteBtn.addEventListener('click', () => {
+        if (!ytPlayer || typeof ytPlayer.isMuted !== 'function') return;
+        if (ytPlayer.isMuted()) {
+            ytPlayer.unMute();
+            muteBtn.textContent = '🔊';
+            volumeSlider.value = ytPlayer.getVolume();
+        } else {
+            ytPlayer.mute();
+            muteBtn.textContent = '🔇';
+            volumeSlider.value = 0;
+        }
+    });
+}
+
+function startCustomTimelineUpdate() {
+    const timeline = document.getElementById('player-timeline');
+    const timeDisplay = document.getElementById('player-time-display');
+
+    clearInterval(customPlayerUpdateInterval);
+    customPlayerUpdateInterval = setInterval(() => {
+        if (ytPlayer && typeof ytPlayer.getCurrentTime === 'function' && typeof ytPlayer.getDuration === 'function') {
+            const current = ytPlayer.getCurrentTime();
+            const duration = ytPlayer.getDuration();
+            
+            if (duration > 0) {
+                timeline.value = (current / duration) * 100;
+            }
+            timeDisplay.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+        }
+    }, 500);
+}
+
+function formatTime(seconds) {
+    if (isNaN(seconds) || seconds === Infinity) return '00:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+function updateCustomPlayerUI(state) {
+    const playBtn = document.getElementById('player-play-btn');
+    if (!playBtn) return;
+
+    if (state === YT.PlayerState.PLAYING) {
+        playBtn.textContent = '⏸';
+        startCustomTimelineUpdate();
+    } else {
+        playBtn.textContent = '▶';
+        if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
+            clearInterval(customPlayerUpdateInterval);
+        }
+    }
 }
 
 // ── Mapeo lógico de Categorías Principales ────────────────────
