@@ -77,32 +77,37 @@ body, html {
 /* ── Bordes con Marquesina ────────────────────────────────── */
 .border-container {
     position: fixed;
-    background: linear-gradient(90deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba);
-    background-size: 300% 100%;
-    animation: logoGradientShift 6s linear infinite;
+    background: #080808;
     z-index: 100; overflow: hidden; display: flex;
 }
 .top {
     top: 0; left: 0; width: 100%; height: 30px;
     align-items: center; justify-content: flex-start;
-    border-bottom: 1px solid #080808;
+    border-bottom: 1px solid transparent;
+    background: linear-gradient(#080808,#080808) padding-box,
+                linear-gradient(90deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
 }
 .left {
     top: 30px; left: 0; width: 30px; height: calc(100% - 70px); /* 30px top + 40px player */
     justify-content: center; align-items: flex-start;
-    border-right: 1px solid #080808;
+    border-right: 1px solid transparent;
+    background: linear-gradient(#080808,#080808) padding-box,
+                linear-gradient(180deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
 }
 .right {
     top: 30px; right: 0; width: 30px; height: calc(100% - 70px); /* 30px top + 40px player */
     justify-content: center; align-items: flex-start;
-    border-left: 1px solid #080808;
+    border-left: 1px solid transparent;
+    background: linear-gradient(#080808,#080808) padding-box,
+                linear-gradient(180deg,#ffdfba,#ffffba,#baffc9,#bae1ff,#ffb3ba) border-box;
 }
 
 /* ── Tickers ──────────────────────────────────────────────── */
 .ticker {
     font-size: 0.8rem;
-    color: #080808;
-    -webkit-text-fill-color: #080808;
+    background: linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
     white-space: nowrap; flex-shrink: 0; padding-right: 30px;
     font-weight: 700;
 }
@@ -112,7 +117,7 @@ body, html {
     font-size: 0.19rem; font-family: 'JetBrains Mono', monospace;
     white-space: pre; line-height: 1.25; flex-shrink: 0;
     padding: 0 3px 0 2px; text-align: left;
-    color: #080808;
+    color: #ffffff;
 }
 
 /* ── Marquesina Animations ────────────────────────────────── */
@@ -652,10 +657,9 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     left: 0;
     right: 0;
     height: 40px;
-    background: linear-gradient(90deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #baffc9, #ffffba, #ffdfba, #ffb3ba);
-    background-size: 300% 100%;
-    animation: logoGradientShift 6s linear infinite;
-    border-top: 1px solid #080808;
+    background: linear-gradient(#080808,#080808) padding-box,
+                linear-gradient(90deg,#ffb3ba,#bae1ff,#baffc9,#ffffba,#ffdfba) border-box;
+    border-top: 1px solid transparent;
     z-index: 99;
     display: flex;
     flex-direction: column;
@@ -779,8 +783,9 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
 
 /* Cápsulas independientes por botón */
 .player-btn-capsule {
-    background: #080808;
-    border: 1px solid #080808;
+    background: linear-gradient(#0d0d0d, #0d0d0d) padding-box,
+                linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) border-box;
+    border: 1px solid transparent;
     border-radius: 3px;
     height: 24px;
     padding: 0 8px;
@@ -788,21 +793,21 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.1s ease, background 0.2s ease;
     box-sizing: border-box;
     text-decoration: none;
     outline: none;
 }
 .player-btn-capsule:hover {
-    border-color: #333;
-    background: #111;
+    background: linear-gradient(#151515, #151515) padding-box,
+                linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) border-box;
 }
 .player-btn-capsule:active {
     transform: scale(0.95);
 }
 .player-btn-capsule.active {
-    border-color: #00e5ff;
-    background: rgba(0, 229, 255, 0.05);
+    background: linear-gradient(#00e5ff10, #00e5ff10) padding-box,
+                linear-gradient(90deg, #00e5ff, #bae1ff) border-box;
 }
 
 /* Cajón de volumen unificado (parlante + barra) */
@@ -810,12 +815,18 @@ footer a:hover { color: #00e5ff; border-color: #00e5ff; }
     display: flex;
     align-items: center;
     gap: 6px;
-    background: #080808;
-    border: 1px solid #080808;
+    background: linear-gradient(#0d0d0d, #0d0d0d) padding-box,
+                linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) border-box;
+    border: 1px solid transparent;
     border-radius: 3px;
     height: 24px;
     padding: 0 6px 0 8px;
     box-sizing: border-box;
+    transition: background 0.2s ease;
+}
+.volume-container:hover {
+    background: linear-gradient(#151515, #151515) padding-box,
+                linear-gradient(90deg, #ffb3ba, #bae1ff, #baffc9, #ffffba, #ffdfba) border-box;
 }
 
 .player-mute-btn-icon {
