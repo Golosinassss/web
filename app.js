@@ -305,25 +305,25 @@ store.subscribe((key, newValue, oldValue) => {
 
 // ── Iconos SVG ────────────────────────────────────────────────
 const SPEAKER_SVG = `
-<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
     <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
 </svg>`;
 
 const SPEAKER_MUTED_SVG = `
-<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
     <line x1="23" y1="9" x2="17" y2="15"/>
     <line x1="17" y1="9" x2="23" y2="15"/>
 </svg>`;
 
 const FULLSCREEN_SVG = `
-<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
 </svg>`;
 
 const FULLSCREEN_EXIT_SVG = `
-<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4"/>
 </svg>`;
 
@@ -441,35 +441,38 @@ function playVideo(url, element) {
         const cat = trackItem.categoria ? trackItem.categoria.toUpperCase() : '';
         let htmlContent = `<span class="lcd-title">${trackItem.titulo.toUpperCase()}</span>`;
         if (cleanDesc) {
-            htmlContent += ` • <span class="lcd-desc">${cleanDesc}</span>`;
+            htmlContent += ` <span class="lcd-sep">•</span> <span class="lcd-desc">${cleanDesc}</span>`;
         }
         if (cat) {
-            htmlContent += ` • <span class="lcd-cat">${cat}</span>`;
+            htmlContent += ` <span class="lcd-sep">•</span> <span class="lcd-cat">${cat}</span>`;
         }
-        htmlContent += ` • `;
+        htmlContent += ` <span class="lcd-sep">•</span> `;
         updateLcdDisplay(htmlContent);
     } else {
-        updateLcdDisplay(`<span class="lcd-title">REPRODUCIENDO...</span> • `);
+        updateLcdDisplay(`<span class="lcd-title">REPRODUCIENDO...</span> <span class="lcd-sep">•</span> `);
     }
 
-    // Desbloqueo forzado de audio para políticas móviles ante interacción
+    // Desbloqueo de audio respetando el slider del reproductor
     if (ytPlayer) {
-        if (typeof ytPlayer.unMute === 'function') {
-            ytPlayer.unMute();
+        const volumeSlider = document.getElementById('player-volume');
+        const vol = volumeSlider ? parseInt(volumeSlider.value) : 0;
+        
+        if (vol > 0) {
+            if (typeof ytPlayer.unMute === 'function') ytPlayer.unMute();
+            if (typeof ytPlayer.setVolume === 'function') ytPlayer.setVolume(vol);
             const muteBtn = document.getElementById('player-mute-btn');
             if (muteBtn) {
                 updateVolumeIcon(false);
-                muteBtn.classList.remove('active');
+                muteBtn.classList.remove('muted');
             }
-            const volumeSlider = document.getElementById('player-volume');
-            if (volumeSlider) {
-                const vol = ytPlayer.getVolume() || 100;
-                volumeSlider.value = vol;
-                updateVolumeSliderBackground(vol);
+        } else {
+            if (typeof ytPlayer.mute === 'function') ytPlayer.mute();
+            if (typeof ytPlayer.setVolume === 'function') ytPlayer.setVolume(0);
+            const muteBtn = document.getElementById('player-mute-btn');
+            if (muteBtn) {
+                updateVolumeIcon(true);
+                muteBtn.classList.add('muted');
             }
-        }
-        if (typeof ytPlayer.setVolume === 'function') {
-            ytPlayer.setVolume(100);
         }
     }
 
@@ -675,9 +678,14 @@ function setupCustomPlayerControls() {
         ytPlayer.seekTo(targetSeconds, true);
     });
 
-    // Inicializar volumen
+    // Inicializar volumen en silencio total (mute)
     if (volumeSlider) {
-        updateVolumeSliderBackground(volumeSlider.value);
+        volumeSlider.value = 0;
+        updateVolumeSliderBackground(0);
+    }
+    if (muteBtn) {
+        muteBtn.classList.add('muted');
+        updateVolumeIcon(true);
     }
 
     // 6. Barra de volumen
@@ -724,30 +732,41 @@ function setupCustomPlayerControls() {
     if (fullscreenBtn) {
         fullscreenBtn.addEventListener('click', () => {
             const container = document.getElementById('player-fullscreen-svg-container');
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen()
-                    .then(() => {
-                        if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
-                    })
-                    .catch(err => console.warn('Error al iniciar Fullscreen:', err));
+            const body = document.body;
+            const isFullscreenCSS = body.classList.contains('fullscreen-mode');
+
+            if (!isFullscreenCSS) {
+                body.classList.add('fullscreen-mode');
+                if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
+                
+                // Intentar native fullscreen
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen().catch(() => {});
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen();
+                }
             } else {
-                document.exitFullscreen()
-                    .then(() => {
-                        if (container) container.innerHTML = FULLSCREEN_SVG;
-                    })
-                    .catch(err => console.warn('Error al salir de Fullscreen:', err));
+                body.classList.remove('fullscreen-mode');
+                if (container) container.innerHTML = FULLSCREEN_SVG;
+                
+                // Salir de native fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().catch(() => {});
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
             }
         });
     }
 
     // Escuchar cambios de fullscreen (por si usan Esc)
     document.addEventListener('fullscreenchange', () => {
+        const isNative = !!document.fullscreenElement;
+        document.body.classList.toggle('fullscreen-mode', isNative);
         if (fullscreenBtn) {
             const container = document.getElementById('player-fullscreen-svg-container');
-            if (document.fullscreenElement) {
-                if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
-            } else {
-                if (container) container.innerHTML = FULLSCREEN_SVG;
+            if (container) {
+                container.innerHTML = isNative ? FULLSCREEN_EXIT_SVG : FULLSCREEN_SVG;
             }
         }
     });
@@ -815,7 +834,7 @@ function startCustomTimelineUpdate() {
                 if (timeline) {
                     timeline.value = pct;
                     timeline.style.background =
-                        `linear-gradient(to right, #ff3b30 0%, #ff3b30 ${pct}%, #222 ${pct}%, #222 100%)`;
+                        `linear-gradient(90deg, var(--t1), var(--t2), var(--t3), var(--t4), var(--t5)) 0% 0% / ${pct}% 100% no-repeat #222`;
                 }
                 if (lcdTime) lcdTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
             }
@@ -1002,13 +1021,11 @@ function buildCompactCard(item, animDelay) {
     else { wrapperEl.style.opacity = '1'; }
 
     const isAdded = playlist.some(p => p.url_video === item.url_video);
-    const compactAddBtnHtml = `<button class="card-compact-add-btn${isAdded ? ' added' : ''}" title="${isAdded ? 'Quitar de Playlist' : 'Agregar a Playlist'}">${isAdded ? '✓' : '+'}</button>`;
     const overlayAddBtnHtml = `<button class="card-add-btn${isAdded ? ' added' : ''}" title="${isAdded ? 'Quitar de Playlist' : 'Agregar a Playlist'}">${isAdded ? '✓' : '+'}</button>`;
 
     wrapperEl.innerHTML = `
         <!-- COMPACT CARD (normal view) -->
         <div class="card-compact">
-            ${compactAddBtnHtml}
             ${thumbHtml}
             <div class="card-compact-content">
                 <p class="card-compact-title">${item.titulo}</p>

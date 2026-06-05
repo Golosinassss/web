@@ -147,6 +147,7 @@
                 <button id="player-next-btn" class="player-btn-capsule" title="Siguiente (>>)" aria-label="Siguiente">
                     <span class="btn-icon">&gt;&gt;</span>
                 </button>
+                <div id="lcd-time" class="lcd-time">00:00 / 00:00</div>
             </div>
 
             <!-- Pantalla LCD estilo autoestéreo de carro -->
@@ -154,11 +155,10 @@
                 <div class="lcd-screen">
                     <div class="lcd-text-container">
                         <div class="lcd-text-marquee">
-                            <span class="lcd-text-span" id="lcd-text-1">GOLOSINASSSS • SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA • </span>
-                            <span class="lcd-text-span" id="lcd-text-2">GOLOSINASSSS • SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA • </span>
+                            <span class="lcd-text-span" id="lcd-text-1"><span class="lcd-title">GOLOSINASSSS</span> <span class="lcd-sep">•</span> <span class="lcd-desc">SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA</span> <span class="lcd-sep">•</span> </span>
+                            <span class="lcd-text-span" id="lcd-text-2"><span class="lcd-title">GOLOSINASSSS</span> <span class="lcd-sep">•</span> <span class="lcd-desc">SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA</span> <span class="lcd-sep">•</span> </span>
                         </div>
                     </div>
-                    <div id="lcd-time" class="lcd-time">00:00 / 00:00</div>
                 </div>
             </div>
 
@@ -171,18 +171,18 @@
                 <div class="volume-container">
                     <button id="player-mute-btn" class="player-mute-btn-icon" title="Silenciar" aria-label="Silenciar">
                         <span class="btn-icon" id="player-mute-svg-container">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                                 <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
                             </svg>
                         </span>
                     </button>
-                    <input type="range" id="player-volume" min="0" max="100" value="100" aria-label="Volumen">
+                    <input type="range" id="player-volume" min="0" max="100" value="0" aria-label="Volumen">
                 </div>
 
                 <button id="player-fullscreen-btn" class="player-btn-capsule" title="Pantalla Completa" aria-label="Pantalla Completa">
                     <span class="btn-icon" id="player-fullscreen-svg-container">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
                         </svg>
                     </span>
