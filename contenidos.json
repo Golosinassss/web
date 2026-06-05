@@ -1,4 +1,17 @@
 [
+  
+  {
+    "id": "12",
+    "titulo": "47 Salón Nacional de Artistas",
+    "categoria": "Documental",
+    "descripcion": "- KAUKA, asamblea de mundos posibles",
+    "url_video": "https://youtu.be/hHJ1aVs6Q98?si=WOlsyzdSD60pSQeL",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2025",
+    "destacado": true,
+    "tags": ["institucional", "social"]
+  },
   {
     "id": "9",
     "titulo": "SONIDO INFINITO: Conjunto Media Luna - Kumbia Medallo",
