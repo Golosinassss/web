@@ -61,6 +61,18 @@ let ytApiReady      = false;
 let pendingVideoId  = null;
 let allData         = [];
 
+let shuffleQueuePlaylist = [];
+let shuffleQueueAll = [];
+
+function generateShuffledQueue(length) {
+    const arr = Array.from({ length }, (_, i) => i);
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
 // ── Store Observable (Lógica Reactiva Centralizada) ───────────
 class ObservableStore {
     constructor(initialState) {
@@ -439,6 +451,107 @@ function setActiveCardByUrl(url) {
     });
 }
 
+function selectCategoryAndTagForVideo(trackItem) {
+    let targetMainFilter = 'todas';
+    let targetTagFilter = 'todos';
+
+    // Buscar categoría principal coincidente
+    for (const cat of ['documental', 'música', 'animación']) {
+        if (itemMatchesMainFilter(trackItem, cat)) {
+            targetMainFilter = cat;
+            break;
+        }
+    }
+
+    // Buscar subcategoría (tag) coincidente
+    if (targetMainFilter !== 'todas') {
+        const allowedSubcats = SUBCAT_MAP[targetMainFilter] || [];
+        if (Array.isArray(trackItem.tags)) {
+            for (const tag of trackItem.tags) {
+                const cleanTag = tag.trim().toLowerCase();
+                if (allowedSubcats.includes(cleanTag)) {
+                    targetTagFilter = cleanTag;
+                    break;
+                }
+            }
+        }
+    }
+
+    let changed = false;
+    if (currentMainFilter !== targetMainFilter) {
+        currentMainFilter = targetMainFilter;
+        changed = true;
+    }
+    if (currentCatalogoTag !== targetTagFilter) {
+        currentCatalogoTag = targetTagFilter;
+        changed = true;
+    }
+
+    if (changed) {
+        buildCatalogoMainFilters();
+        const subContainer = document.getElementById('catalogo-sub-filters');
+        if (subContainer) {
+            const subcats = SUBCAT_MAP[targetMainFilter] || [];
+            if (subcats.length > 0) {
+                buildInlineSubcategories(subContainer, subcats, targetMainFilter);
+                subContainer.style.opacity = '1';
+                subContainer.style.pointerEvents = 'auto';
+            } else {
+                subContainer.innerHTML = '';
+                subContainer.style.opacity = '0';
+                subContainer.style.pointerEvents = 'none';
+            }
+        }
+        renderCatalogo();
+    }
+}
+
+function scrollActiveCardIntoView() {
+    const activeCard = document.querySelector('#grid-catalogo .card-wrapper.is-active');
+    if (activeCard) {
+        const grid = document.getElementById('grid-catalogo');
+        if (grid) {
+            const gridWidth = grid.clientWidth;
+            const cardLeft = activeCard.offsetLeft;
+            const cardWidth = activeCard.clientWidth;
+            const targetScrollLeft = cardLeft - (gridWidth / 2) + (cardWidth / 2);
+            grid.scrollTo({
+                left: targetScrollLeft,
+                behavior: 'smooth'
+            });
+        }
+    }
+}
+
+function scrollActiveFiltersIntoView() {
+    const activeMainBtn = document.querySelector('#catalogo-main-filters .main-cat-btn.active');
+    if (activeMainBtn) {
+        const container = document.getElementById('catalogo-main-filters');
+        if (container && container.scrollWidth > container.clientWidth) {
+            const containerWidth = container.clientWidth;
+            const btnLeft = activeMainBtn.offsetLeft;
+            const btnWidth = activeMainBtn.clientWidth;
+            container.scrollTo({
+                left: btnLeft - (containerWidth / 2) + (btnWidth / 2),
+                behavior: 'smooth'
+            });
+        }
+    }
+    const activeSubBtn = document.querySelector('#catalogo-sub-filters .tab-btn.active');
+    if (activeSubBtn) {
+        const container = document.getElementById('catalogo-sub-filters');
+        if (container && container.scrollWidth > container.clientWidth) {
+            const containerWidth = container.clientWidth;
+            const btnLeft = activeSubBtn.offsetLeft;
+            const btnWidth = activeSubBtn.clientWidth;
+            container.scrollTo({
+                left: btnLeft - (containerWidth / 2) + (btnWidth / 2),
+                behavior: 'smooth'
+            });
+        }
+    }
+}
+
 // ── Reproducción ─────────────────────────────────────────────
 function playVideo(url, element) {
     const videoId = getYouTubeId(url);
@@ -459,6 +572,9 @@ function playVideo(url, element) {
         }
         htmlContent += ` <span class="lcd-sep">•</span> `;
         updateLcdDisplay(htmlContent);
+
+        // Seleccionar categoría y tag automáticamente para este video
+        selectCategoryAndTagForVideo(trackItem);
     } else {
         updateLcdDisplay(`<span class="lcd-title">REPRODUCIENDO...</span> <span class="lcd-sep">•</span> `);
     }
@@ -510,6 +626,12 @@ function playVideo(url, element) {
     loadVideoInPlayer(videoId, true);
     document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
 
+    // Ubicar cápsula y filtros activos en pantalla de manera automática
+    setTimeout(() => {
+        scrollActiveCardIntoView();
+        scrollActiveFiltersIntoView();
+    }, 100);
+
     // Actualizar drawer para sincronizar elemento activo
     updatePlaylistDrawerUI();
 }
@@ -517,7 +639,10 @@ function playVideo(url, element) {
 function playNext() {
     if (playlistPlaying && playlist.length > 0) {
         if (isShuffle) {
-            currentPlaylistIndex = Math.floor(Math.random() * playlist.length);
+            if (!shuffleQueuePlaylist || shuffleQueuePlaylist.length === 0 || shuffleQueuePlaylist.some(idx => idx >= playlist.length)) {
+                shuffleQueuePlaylist = generateShuffledQueue(playlist.length);
+            }
+            currentPlaylistIndex = shuffleQueuePlaylist.shift();
         } else {
             currentPlaylistIndex = (currentPlaylistIndex + 1) % playlist.length;
         }
@@ -527,7 +652,10 @@ function playNext() {
         const all = getAllCards();
         if (all.length === 0) return;
         if (isShuffle) {
-            currentVideoIndex = Math.floor(Math.random() * all.length);
+            if (!shuffleQueueAll || shuffleQueueAll.length === 0 || shuffleQueueAll.some(idx => idx >= all.length)) {
+                shuffleQueueAll = generateShuffledQueue(all.length);
+            }
+            currentVideoIndex = shuffleQueueAll.shift();
         } else {
             currentVideoIndex = (currentVideoIndex + 1) % all.length;
         }
@@ -542,7 +670,10 @@ function playNext() {
 function playPrev() {
     if (playlistPlaying && playlist.length > 0) {
         if (isShuffle) {
-            currentPlaylistIndex = Math.floor(Math.random() * playlist.length);
+            if (!shuffleQueuePlaylist || shuffleQueuePlaylist.length === 0 || shuffleQueuePlaylist.some(idx => idx >= playlist.length)) {
+                shuffleQueuePlaylist = generateShuffledQueue(playlist.length);
+            }
+            currentPlaylistIndex = shuffleQueuePlaylist.shift();
         } else {
             currentPlaylistIndex = (currentPlaylistIndex - 1 + playlist.length) % playlist.length;
         }
@@ -552,7 +683,10 @@ function playPrev() {
         const all = getAllCards();
         if (all.length === 0) return;
         if (isShuffle) {
-            currentVideoIndex = Math.floor(Math.random() * all.length);
+            if (!shuffleQueueAll || shuffleQueueAll.length === 0 || shuffleQueueAll.some(idx => idx >= all.length)) {
+                shuffleQueueAll = generateShuffledQueue(all.length);
+            }
+            currentVideoIndex = shuffleQueueAll.shift();
         } else {
             currentVideoIndex = (currentVideoIndex - 1 + all.length) % all.length;
         }
@@ -650,6 +784,8 @@ function setupCustomPlayerControls() {
         shuffleBtn.addEventListener('click', () => {
             isShuffle = !isShuffle;
             shuffleBtn.classList.toggle('active', isShuffle);
+            shuffleQueuePlaylist = [];
+            shuffleQueueAll = [];
         });
     }
 
@@ -789,6 +925,28 @@ function setupCustomPlayerControls() {
                 container.innerHTML = isNative ? FULLSCREEN_EXIT_SVG : FULLSCREEN_SVG;
             }
         }
+    });
+
+    // 9. Clic en pantalla LCD para autoubicar en el player
+    const lcdScreen = document.querySelector('.player-lcd');
+    if (lcdScreen) {
+        lcdScreen.style.cursor = 'pointer';
+        lcdScreen.addEventListener('click', () => {
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) {
+                mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    }
+
+    // 10. GIFs de esquinas como disparadores de pantalla completa
+    const cornerGifs = document.querySelectorAll('.corner-gif');
+    cornerGifs.forEach(gif => {
+        gif.style.cursor = 'pointer';
+        gif.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (fullscreenBtn) fullscreenBtn.click();
+        });
     });
 }
 

@@ -174,8 +174,8 @@
 
             <!-- Controles extras y volumen derechos -->
             <div class="player-controls-right">
-                <div id="lcd-time" class="lcd-time">00:00 / 00:00</div>
                 <div class="volume-container">
+                    <input type="range" id="player-volume" min="0" max="100" value="0" aria-label="Volumen">
                     <button id="player-mute-btn" class="player-mute-btn-icon" title="Silenciar" aria-label="Silenciar">
                         <span class="btn-icon" id="player-mute-svg-container">
                             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -184,8 +184,8 @@
                             </svg>
                         </span>
                     </button>
-                    <input type="range" id="player-volume" min="0" max="100" value="0" aria-label="Volumen">
                 </div>
+                <div id="lcd-time" class="lcd-time">00:00 / 00:00</div>
             </div>
         </div>
 
