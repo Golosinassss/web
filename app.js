@@ -1831,6 +1831,9 @@ function initApp() {
 
     setupDragScroll();
     updateLcdDisplay(`<span class="lcd-title">GOLOSINASSSS</span> • <span class="lcd-desc">Escoge tu próxima golosina</span> • `);
+    
+    // Iniciar navegación por teclado
+    initKeyboardNavigation();
 }
 
 function setupDragScroll() {
@@ -1876,6 +1879,191 @@ function setupDragScroll() {
         const x = e.touches[0].pageX - container.offsetLeft;
         container.scrollLeft = scrollLeft - (x - startX) * 1.5;
     }, { passive: true });
+}
+
+// ── NAVEGACIÓN POR TECLADO (Estilo Videojuego WASD / Flechas) ──
+let keyboardFocusActive = false;
+let activeSection = 0; // 0: Reproductor, 1: Filtros, 2: Catálogo, 3: Portafolio
+let activeIndex = 0;
+
+function getSectionElements(sectionId) {
+    if (sectionId === 0) {
+        const selectors = [
+            '#player-play-btn',
+            '#player-prev-btn',
+            '#player-next-btn',
+            '#playlist-shuffle-btn',
+            '#player-mute-btn',
+            '#player-fullscreen-btn'
+        ];
+        return selectors
+            .map(sel => document.querySelector(sel))
+            .filter(el => el && getComputedStyle(el).display !== 'none');
+    }
+    if (sectionId === 1) {
+        const btns = [
+            ...document.querySelectorAll('#catalogo-main-filters .main-cat-btn'),
+            ...document.querySelectorAll('#catalogo-sub-filters .tab-btn')
+        ];
+        return btns.filter(el => el && getComputedStyle(el).display !== 'none');
+    }
+    if (sectionId === 2) {
+        return Array.from(document.querySelectorAll('#grid-catalogo .card-wrapper'))
+            .filter(el => el && getComputedStyle(el).display !== 'none');
+    }
+    if (sectionId === 3) {
+        return Array.from(document.querySelectorAll('#grid-portafolio .card-compact-wrapper'))
+            .filter(el => el && getComputedStyle(el).display !== 'none');
+    }
+    return [];
+}
+
+function applyKeyboardFocus() {
+    document.querySelectorAll('.keyboard-focused').forEach(el => {
+        el.classList.remove('keyboard-focused');
+    });
+
+    const elements = getSectionElements(activeSection);
+    if (elements.length === 0) return;
+
+    if (activeIndex < 0) activeIndex = elements.length - 1;
+    if (activeIndex >= elements.length) activeIndex = 0;
+
+    const targetEl = elements[activeIndex];
+    if (targetEl) {
+        targetEl.classList.add('keyboard-focused');
+        targetEl.focus({ preventScroll: true });
+
+        targetEl.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center'
+        });
+    }
+}
+
+document.addEventListener('click', () => {
+    document.querySelectorAll('.keyboard-focused').forEach(el => {
+        el.classList.remove('keyboard-focused');
+    });
+    keyboardFocusActive = false;
+});
+
+function initKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
+            if (e.key === 'Escape') {
+                e.target.blur();
+                document.querySelectorAll('.keyboard-focused').forEach(el => el.classList.remove('keyboard-focused'));
+                keyboardFocusActive = false;
+            }
+            return;
+        }
+
+        const key = e.key.toLowerCase();
+
+        // 1. Hotkeys Globales de Reproducción
+        if (key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            const playBtn = document.getElementById('player-play-btn');
+            if (playBtn) playBtn.click();
+            return;
+        }
+        if (key === 'n') {
+            e.preventDefault();
+            const nextBtn = document.getElementById('player-next-btn');
+            if (nextBtn) nextBtn.click();
+            return;
+        }
+        if (key === 'b') {
+            e.preventDefault();
+            const prevBtn = document.getElementById('player-prev-btn');
+            if (prevBtn) prevBtn.click();
+            return;
+        }
+        if (key === 'm') {
+            e.preventDefault();
+            const muteBtn = document.getElementById('player-mute-btn');
+            if (muteBtn) muteBtn.click();
+            return;
+        }
+        if (key === 'f') {
+            e.preventDefault();
+            const fullscreenBtn = document.getElementById('player-fullscreen-btn');
+            if (fullscreenBtn) fullscreenBtn.click();
+            return;
+        }
+        if (key === 'r') {
+            e.preventDefault();
+            const shuffleBtn = document.getElementById('playlist-shuffle-btn');
+            if (shuffleBtn) shuffleBtn.click();
+            return;
+        }
+        if (key === 'p') {
+            e.preventDefault();
+            const playlistBtn = document.getElementById('player-playlist-btn');
+            if (playlistBtn) playlistBtn.click();
+            return;
+        }
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            const playlistDrawer = document.getElementById('playlist-drawer');
+            if (playlistDrawer) playlistDrawer.style.display = 'none';
+            document.querySelectorAll('.keyboard-focused').forEach(el => el.classList.remove('keyboard-focused'));
+            keyboardFocusActive = false;
+            return;
+        }
+
+        // 2. Movimiento direccional WASD / Flechas
+        let actionTriggered = false;
+
+        if (key === 'w' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            keyboardFocusActive = true;
+            activeSection = (activeSection - 1 + 4) % 4;
+            const elements = getSectionElements(activeSection);
+            if (elements.length > 0) {
+                activeIndex = Math.min(activeIndex, elements.length - 1);
+            } else {
+                activeIndex = 0;
+            }
+            actionTriggered = true;
+        } else if (key === 's' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            keyboardFocusActive = true;
+            activeSection = (activeSection + 1) % 4;
+            const elements = getSectionElements(activeSection);
+            if (elements.length > 0) {
+                activeIndex = Math.min(activeIndex, elements.length - 1);
+            } else {
+                activeIndex = 0;
+            }
+            actionTriggered = true;
+        } else if (key === 'a' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            keyboardFocusActive = true;
+            activeIndex--;
+            actionTriggered = true;
+        } else if (key === 'd' || e.key === 'ArrowRight') {
+            e.preventDefault();
+            keyboardFocusActive = true;
+            activeIndex++;
+            actionTriggered = true;
+        } else if (e.key === 'Enter') {
+            if (keyboardFocusActive) {
+                e.preventDefault();
+                const elements = getSectionElements(activeSection);
+                const focusedEl = elements[activeIndex];
+                if (focusedEl) {
+                    focusedEl.click();
+                }
+            }
+        }
+
+        if (actionTriggered) {
+            applyKeyboardFocus();
+        }
+    });
 }
 
 
