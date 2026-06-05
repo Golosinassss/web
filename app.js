@@ -1512,31 +1512,83 @@ window.updatePlaylistDrawerUI = updatePlaylistDrawerUI;
 window.playPlaylistItem = playPlaylistItem;
 
 // ══════════════════════════════════════════════════════════════
-// CARGA DE DATOS
+// CARGA DE DATOS (CMS Google Sheets con Respaldo Local)
 // ══════════════════════════════════════════════════════════════
-fetch('contenidos.json')
-    .then(r  => { if (!r.ok) throw new Error('contenidos.json'); return r.json(); })
-    .then(data => {
-        const viewsMap = {
-            "1": 45000,
-            "2": 15000,
-            "5": 38000,
-            "6": 8200,
-            "7": 24000,
-            "8": 11500,
-            "9": 19000,
-            "10": 9800,
-            "11": 12500,
-            "12": 31000,
-            "13": 29000
-        };
-        allData = data.map(item => {
+const SHEET_ID = '1-NpQprddYp2vYyl4kRxLO-i_LJbF06MYEf9zaC1s880';
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+function parseGoogleSheetJson(text) {
+    try {
+        const jsonStr = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+        const json = JSON.parse(jsonStr);
+        const cols = json.table.cols.map(c => (c.label || '').trim().toLowerCase());
+        return json.table.rows.map(row => {
+            const item = {};
+            row.c.forEach((cell, idx) => {
+                const colName = cols[idx];
+                if (colName) {
+                    let val = cell ? cell.v : '';
+                    if (colName === 'destacado') {
+                        val = (String(val).toUpperCase() === 'SI');
+                    } else if (colName === 'tags') {
+                        val = val ? String(val).split(',').map(t => t.trim()) : [];
+                    }
+                    item[colName] = val;
+                }
+            });
+            return item;
+        });
+    } catch (e) {
+        console.error('Error al parsear JSON de Google Sheets:', e);
+        return null;
+    }
+}
+
+const viewsMap = {
+    "1": 45000,
+    "2": 15000,
+    "5": 38000,
+    "6": 8200,
+    "7": 24000,
+    "8": 11500,
+    "9": 19000,
+    "10": 9800,
+    "11": 12500,
+    "12": 31000,
+    "13": 29000
+};
+
+fetch(SHEET_URL)
+    .then(r => {
+        if (!r.ok) throw new Error('Google Sheets responded with error status');
+        return r.text();
+    })
+    .then(text => {
+        const parsedData = parseGoogleSheetJson(text);
+        if (!parsedData || parsedData.length === 0) throw new Error('Parsed data is empty or invalid');
+        allData = parsedData.map(item => {
             item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
             return item;
         });
         initApp();
     })
-    .catch(err => { console.warn('No se pudo cargar datos:', err.message); allData = []; initApp(); });
+    .catch(err => {
+        console.warn('Usando contenidos.json de respaldo local:', err.message);
+        fetch('contenidos.json')
+            .then(r  => { if (!r.ok) throw new Error('contenidos.json'); return r.json(); })
+            .then(data => {
+                allData = data.map(item => {
+                    item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
+                    return item;
+                });
+                initApp();
+            })
+            .catch(err2 => {
+                console.error('Falla total en carga de datos:', err2.message);
+                allData = [];
+                initApp();
+            });
+    });
 
 // ── Delegación de Eventos en Grids ───────────────────────────────────────────
 // Un solo listener por grid en lugar de uno por cada tarjeta generada.

@@ -29,12 +29,12 @@
         --t5-20:  color-mix(in srgb, var(--t5) 20%, transparent);
         --t5-05:  color-mix(in srgb, var(--t5) 5%, transparent);
 
-        /* ── Gradiente tornasol (reutilizable) ── */
-        --grad-tornasol: linear-gradient(90deg, var(--t1), var(--t5), var(--t4), var(--t3), var(--t2));
-        --grad-tornasol-rev: linear-gradient(90deg, var(--t2), var(--t3), var(--t4), var(--t5), var(--t1));
-        --grad-tornasol-45: linear-gradient(45deg, var(--t1), var(--t2), var(--t3), var(--t4), var(--t5));
-        --grad-tornasol-180: linear-gradient(180deg, var(--t1), var(--t5), var(--t4), var(--t3), var(--t2));
-        --grad-tornasol-180r: linear-gradient(180deg, var(--t2), var(--t3), var(--t4), var(--t5), var(--t1));
+        /* ── Gradiente tornasol (reutilizable y más difuso) ── */
+        --grad-tornasol: linear-gradient(90deg, var(--t1), var(--t5), var(--t2), var(--t1));
+        --grad-tornasol-rev: linear-gradient(90deg, var(--t2), var(--t5), var(--t1), var(--t2));
+        --grad-tornasol-45: linear-gradient(45deg, var(--t1), var(--t5), var(--t2), var(--t1));
+        --grad-tornasol-180: linear-gradient(180deg, var(--t1), var(--t5), var(--t2), var(--t1));
+        --grad-tornasol-180r: linear-gradient(180deg, var(--t2), var(--t5), var(--t1), var(--t2));
 
         /* ── Fondos ── */
         --bg:        #080808;
@@ -149,14 +149,14 @@
                     var(--grad-tornasol) border-box;
     }
     .left {
-        top: 30px; left: 0; width: 30px; bottom: 30px;
+        top: 30px; left: 0; width: 30px; bottom: 40px;
         justify-content: center; align-items: flex-start;
         border-left: 1px solid transparent;
         background: linear-gradient(var(--bg),var(--bg)) padding-box,
                     var(--grad-tornasol-180) border-box;
     }
     .right {
-        top: 30px; right: 0; width: 30px; bottom: 30px;
+        top: 30px; right: 0; width: 30px; bottom: 40px;
         justify-content: center; align-items: flex-start;
         border-left: 1px solid transparent;
         background: linear-gradient(var(--bg),var(--bg)) padding-box,
@@ -926,12 +926,29 @@
         background: var(--t5-05);
     }
 
-    /* Hover en Tarjetas */
-    .card-wrapper:hover .card { border-color: var(--cyan); }
-    .card-wrapper:hover .play-btn { background: var(--cyan); border-color: var(--cyan); }
-    .card-wrapper:hover .play-btn svg { stroke: #000; fill: #000; }
+    /* Hover en Tarjetas (Solo en dispositivos con puntero/hover) */
+    @media (hover: hover) {
+        .card-wrapper:hover .card { border-color: var(--cyan); }
+        .card-wrapper:hover .play-btn { background: var(--cyan); border-color: var(--cyan); }
+        .card-wrapper:hover .play-btn svg { stroke: #000; fill: #000; }
 
-    /* Tarjetas Activas */
+        /* Hover sobre portafolio y compactos */
+        #grid-portafolio:hover .card-compact {
+            border-color: var(--border);
+            border-image: none;
+        }
+
+        .card-compact-wrapper:nth-child(5n+1):hover .card-compact-title { color: var(--t1); }
+        .card-compact-wrapper:nth-child(5n+2):hover .card-compact-title { color: var(--t5); }
+        .card-compact-wrapper:nth-child(5n+3):hover .card-compact-title { color: var(--t4); }
+        .card-compact-wrapper:nth-child(5n+4):hover .card-compact-title { color: var(--t3); }
+        .card-compact-wrapper:nth-child(5n+5):hover .card-compact-title { color: var(--t2); }
+
+        .card-compact-wrapper:hover .card-compact { opacity: 0; pointer-events: none; }
+        .card-compact-wrapper:hover .card-full-overlay { display: block; }
+    }
+
+    /* Tarjetas Activas (Globales) */
     .card-wrapper.is-active .card, .card.active-card {
         border-image: var(--grad-tornasol) 1;
         border-image-slice: 1;
@@ -941,21 +958,6 @@
         border-image: var(--grad-tornasol) 1;
         border-image-slice: 1;
     }
-
-    /* Hover sobre portafolio */
-    #grid-portafolio:hover .card-compact {
-        border-color: var(--border);
-        border-image: none;
-    }
-
-    .card-compact-wrapper:nth-child(5n+1):hover .card-compact-title { color: var(--t1); }
-    .card-compact-wrapper:nth-child(5n+2):hover .card-compact-title { color: var(--t5); }
-    .card-compact-wrapper:nth-child(5n+3):hover .card-compact-title { color: var(--t4); }
-    .card-compact-wrapper:nth-child(5n+4):hover .card-compact-title { color: var(--t3); }
-    .card-compact-wrapper:nth-child(5n+5):hover .card-compact-title { color: var(--t2); }
-
-    .card-compact-wrapper:hover .card-compact { opacity: 0; pointer-events: none; }
-    .card-compact-wrapper:hover .card-full-overlay { display: block; }
 
     /* Efecto invertido fondo tornasol para expandidos */
     .card-full-overlay .card,
@@ -1067,18 +1069,18 @@
     @media (max-width: 1024px) {
         #main-content { padding: 34px 34px 120px 34px; }
         .top { height: 24px; }
-        .left, .right { width: 24px; top: 24px; bottom: 24px; }
-        #custom-player { left: 24px; right: 24px; height: 24px; }
-        .playlist-drawer { bottom: 28px; right: 24px; }
+        .left, .right { width: 24px; top: 24px; bottom: 32px; }
+        #custom-player { left: 24px; right: 24px; height: 32px; }
+        .playlist-drawer { bottom: 36px; right: 24px; }
         body.fullscreen-mode #video-hero { height: calc(100vh - 140px); }
     }
 
     @media (max-width: 768px) {
         #main-content { padding: 34px 34px 120px 34px; }
         .top { height: 24px; }
-        .left, .right { width: 24px; top: 24px; bottom: 24px; }
+        .left, .right { width: 24px; top: 24px; bottom: 32px; }
         .ticker { font-size: 0.65rem; }
-        .lcd-text-span { font-size: 0.65rem; }
+        .lcd-text-span { font-size: 0.62rem; }
         .ticker-logo-v { font-size: 0.15rem; }
         #video-hero { padding-bottom: 56.25%; }
         body.fullscreen-mode #video-hero { height: calc(100vh - 140px); }
@@ -1092,18 +1094,17 @@
         .portafolio-scroll-outer { height: 100px; }
         footer { margin-top: 0; border-top: none; }
 
-        #custom-player { left: 24px; right: 24px; height: 24px; }
-        .playlist-drawer { bottom: 28px; right: 24px; width: calc(100% - 48px); left: 24px; }
-        .player-btn-capsule { height: 18px; padding: 0 4px; font-size: 0.55rem; }
-        .volume-container { height: 18px; padding: 0 3px; }
-        .player-lcd { height: 18px; padding: 0 4px; margin: 0 6px; }
-        .lcd-text-span { font-size: 0.55rem; }
+        #custom-player { left: 24px; right: 24px; height: 32px; }
+        .playlist-drawer { bottom: 36px; right: 24px; width: calc(100% - 48px); left: 24px; }
+        .player-btn-capsule { height: 24px; padding: 0 6px; font-size: 0.6rem; }
+        .volume-container { height: 24px; padding: 0 4px; }
+        .player-lcd { height: 24px; padding: 0 6px; margin: 0 6px; }
     }
 
     @media (max-width: 480px) {
         #main-content { padding: 28px 28px 110px 28px; }
         .top { height: 18px; }
-        .left, .right { width: 18px; top: 18px; bottom: 18px; }
+        .left, .right { width: 18px; top: 18px; bottom: 36px; }
         .ticker { font-size: 0.55rem; }
         .ticker-logo-v { font-size: 0.11rem; }
         .section-label-large { font-size: 0.9rem; }
@@ -1119,21 +1120,20 @@
 
         #custom-player {
             left: 18px; right: 18px;
-            font-size: 0.45rem; padding: 0; height: 18px;
+            font-size: 0.55rem; padding: 0; height: 36px;
         }
         .player-row-main { height: 100%; }
         .player-row-timeline { height: 4px; top: -1px; transform: translateY(-50%); }
-        .player-btn-capsule { height: 14px; padding: 0 3px; font-size: 0.45rem; }
-        .volume-container { height: 14px; padding: 0 2px; }
+        .player-btn-capsule { height: 28px; padding: 0 6px; font-size: 0.6rem; }
+        .volume-container { height: 28px; padding: 0 3px; }
         
-        /* Cero !important gracias a la prioridad de la capa responsive */
-        #player-volume { width: 25px; } 
+        #player-volume { width: 32px; } 
 
-        .player-lcd { height: 14px; padding: 0 3px; margin: 0 4px; }
-        .lcd-text-span { font-size: 0.48rem; }
-        .lcd-screen { font-size: 0.45rem; }
+        .player-lcd { height: 28px; padding: 0 5px; margin: 0 4px; }
+        .lcd-text-span { font-size: 0.65rem; }
+        .lcd-screen { font-size: 0.6rem; }
         .lcd-time { display: none; }
-        .playlist-drawer { bottom: 22px; right: 18px; left: 18px; width: auto; max-height: 220px; }
+        .playlist-drawer { bottom: 40px; right: 18px; left: 18px; width: auto; max-height: 220px; }
     }
 }
 
