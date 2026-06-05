@@ -1742,6 +1742,14 @@ fetch(SHEET_URL)
             item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
             return item;
         });
+        allData.sort((a, b) => {
+            const idA = parseInt(a.id) || 0;
+            const idB = parseInt(b.id) || 0;
+            if (idB !== idA) return idB - idA;
+            const dateA = parseInt(a.date) || 0;
+            const dateB = parseInt(b.date) || 0;
+            return dateB - dateA;
+        });
         initApp();
     })
     .catch(err => {
@@ -1752,6 +1760,14 @@ fetch(SHEET_URL)
                 allData = data.map(item => {
                     item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
                     return item;
+                });
+                allData.sort((a, b) => {
+                    const idA = parseInt(a.id) || 0;
+                    const idB = parseInt(b.id) || 0;
+                    if (idB !== idA) return idB - idA;
+                    const dateA = parseInt(a.date) || 0;
+                    const dateB = parseInt(b.date) || 0;
+                    return dateB - dateA;
                 });
                 initApp();
             })
