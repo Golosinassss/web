@@ -53,21 +53,255 @@
 
 
 
-// ── Estado Global ────────────────────────────────────────────
+// ── Estado Global No-Reactivo ─────────────────────────────────
 let ytPlayer        = null;
 let portafolioCards = [];
 let catalogoCards   = [];
-let currentVideoIndex = -1;
 let ytApiReady      = false;
 let pendingVideoId  = null;
 let allData         = [];
-let currentPortafolioFilter = 'recientes';
-let currentMainFilter       = 'todas'; // 'todas', 'documental', 'música', 'animación'
-let currentCatalogoTag      = 'todos'; // subcategoría (tag) activa
-let playlist            = [];
-let playlistPlaying     = false;
-let currentPlaylistIndex = -1;
-let isShuffle           = false;
+
+// ── Store Observable (Lógica Reactiva Centralizada) ───────────
+class ObservableStore {
+    constructor(initialState) {
+        this.state = initialState;
+        this.listeners = [];
+    }
+
+    get(key) {
+        return this.state[key];
+    }
+
+    set(key, value) {
+        const oldValue = this.state[key];
+        if (oldValue === value) return;
+        this.state[key] = value;
+        this.notify(key, value, oldValue);
+    }
+
+    setMultiple(updates) {
+        const changes = [];
+        for (const key in updates) {
+            const oldValue = this.state[key];
+            const newValue = updates[key];
+            if (oldValue !== newValue) {
+                this.state[key] = newValue;
+                changes.push({ key, newValue, oldValue });
+            }
+        }
+        if (changes.length > 0) {
+            this.listeners.forEach(listener => {
+                changes.forEach(change => {
+                    listener(change.key, change.newValue, change.oldValue);
+                });
+            });
+        }
+    }
+
+    subscribe(listener) {
+        this.listeners.push(listener);
+        return () => {
+            this.listeners = this.listeners.filter(l => l !== listener);
+        };
+    }
+
+    notify(key, newValue, oldValue) {
+        this.listeners.forEach(listener => listener(key, newValue, oldValue));
+    }
+}
+
+const store = new ObservableStore({
+    currentVideoIndex: -1,
+    currentPortafolioFilter: 'recientes',
+    currentMainFilter: 'todas',
+    currentCatalogoTag: 'todos',
+    playlist: [],
+    playlistPlaying: false,
+    currentPlaylistIndex: -1,
+    isShuffle: false
+});
+
+// Proxy para mutaciones del array en-sitio (como push, splice, reordenar)
+function createReactiveArray(arr, onChange) {
+    return new Proxy(arr, {
+        get(target, prop, receiver) {
+            const value = Reflect.get(target, prop, receiver);
+            if (typeof value === 'function') {
+                const mutators = ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'];
+                if (mutators.includes(prop)) {
+                    return function(...args) {
+                        const result = value.apply(target, args);
+                        onChange(target);
+                        return result;
+                    };
+                }
+            }
+            return value;
+        },
+        set(target, prop, value, receiver) {
+            const result = Reflect.set(target, prop, value, receiver);
+            if (prop !== 'length') {
+                onChange(target);
+            }
+            return result;
+        }
+    });
+}
+
+// Redireccionar variables globales a getters/setters del store para compatibilidad absoluta
+Object.defineProperties(window, {
+    currentVideoIndex: {
+        get() { return store.get('currentVideoIndex'); },
+        set(val) { store.set('currentVideoIndex', val); }
+    },
+    currentPortafolioFilter: {
+        get() { return store.get('currentPortafolioFilter'); },
+        set(val) { store.set('currentPortafolioFilter', val); }
+    },
+    currentMainFilter: {
+        get() { return store.get('currentMainFilter'); },
+        set(val) { store.set('currentMainFilter', val); }
+    },
+    currentCatalogoTag: {
+        get() { return store.get('currentCatalogoTag'); },
+        set(val) { store.set('currentCatalogoTag', val); }
+    },
+    playlist: {
+        get() { 
+            return createReactiveArray(store.get('playlist'), (newArr) => {
+                store.notify('playlist', [...newArr], store.state.playlist);
+            }); 
+        },
+        set(val) { store.set('playlist', val); }
+    },
+    playlistPlaying: {
+        get() { return store.get('playlistPlaying'); },
+        set(val) { store.set('playlistPlaying', val); }
+    },
+    currentPlaylistIndex: {
+        get() { return store.get('currentPlaylistIndex'); },
+        set(val) { store.set('currentPlaylistIndex', val); }
+    },
+    isShuffle: {
+        get() { return store.get('isShuffle'); },
+        set(val) { store.set('isShuffle', val); }
+    }
+});
+
+// Sincronización del DOM para los botones de Playlist
+function syncAllAddButtons() {
+    const currentPlaylist = store.get('playlist');
+    document.querySelectorAll('[data-url]').forEach(wrapper => {
+        const url = wrapper.getAttribute('data-url');
+        const isAdded = currentPlaylist.some(p => p.url_video === url);
+        const btn1 = wrapper.querySelector('.card-add-btn');
+        const btn2 = wrapper.querySelector('.card-compact-add-btn');
+        [btn1, btn2].forEach(btn => {
+            if (btn) {
+                btn.classList.toggle('added', isAdded);
+                btn.textContent = isAdded ? '✓' : '+';
+                btn.title = isAdded ? 'Quitar de Playlist' : 'Agregar a Playlist';
+            }
+        });
+    });
+
+    // Sincronizar modal móvil
+    const modal = document.getElementById('mobile-card-modal');
+    if (modal && modal.classList.contains('is-open')) {
+        const cardWrapper = modal.querySelector('[data-url]');
+        if (cardWrapper) {
+            const url = cardWrapper.getAttribute('data-url');
+            const isAdded = currentPlaylist.some(p => p.url_video === url);
+            const modalBtn = modal.querySelector('.card-add-btn');
+            if (modalBtn) {
+                modalBtn.classList.toggle('added', isAdded);
+                modalBtn.textContent = isAdded ? '✓' : '+';
+            }
+        }
+    }
+}
+
+// Suscriptor reactivo de la UI
+store.subscribe((key, newValue, oldValue) => {
+    switch (key) {
+        case 'currentPortafolioFilter':
+            ['recientes', 'destacados', 'random'].forEach(f => {
+                const el = document.getElementById('f-' + f);
+                if (el) el.classList.toggle('active', f === newValue);
+            });
+            renderPortafolio();
+            break;
+
+        case 'currentMainFilter':
+            document.querySelectorAll('#catalogo-main-filters .main-cat-btn').forEach(btn => {
+                const btnCat = btn.getAttribute('data-cat');
+                const isCurrent = btnCat === newValue;
+                btn.classList.toggle('active', isCurrent);
+                const c = mainCatColors[btnCat] || '#e0e0e0';
+                btn.style.color = isCurrent ? c : '';
+
+                const img = btn.querySelector('.main-cat-icon');
+                if (img) {
+                    img.style.opacity = isCurrent ? '1' : '0.4';
+                }
+            });
+
+            const subContainer = document.getElementById('catalogo-sub-filters');
+            if (subContainer) {
+                const subcats = SUBCAT_MAP[newValue] || [];
+                if (subcats.length > 0) {
+                    buildInlineSubcategories(subContainer, subcats, newValue);
+                    subContainer.style.opacity = '1';
+                    subContainer.style.pointerEvents = 'auto';
+                } else {
+                    subContainer.innerHTML = '';
+                    subContainer.style.opacity = '0';
+                    subContainer.style.pointerEvents = 'none';
+                }
+            }
+            renderCatalogo();
+            break;
+
+        case 'currentCatalogoTag':
+            const subContainerTag = document.getElementById('catalogo-sub-filters');
+            if (subContainerTag) {
+                const mainCat = store.get('currentMainFilter');
+                const subcats = SUBCAT_MAP[mainCat] || [];
+                buildInlineSubcategories(subContainerTag, subcats, mainCat);
+            }
+            renderCatalogo();
+            break;
+
+        case 'playlist':
+            syncAllAddButtons();
+            updatePlaylistDrawerUI();
+            break;
+
+        case 'isShuffle':
+            const shuffleBtn = document.getElementById('playlist-shuffle-btn');
+            if (shuffleBtn) shuffleBtn.classList.toggle('active', newValue);
+            break;
+
+        case 'playlistPlaying':
+        case 'currentPlaylistIndex':
+        case 'currentVideoIndex':
+            let activeUrl = null;
+            if (store.get('playlistPlaying') && store.get('playlist').length > 0) {
+                const idx = store.get('currentPlaylistIndex');
+                const item = store.get('playlist')[idx];
+                if (item) activeUrl = item.url_video;
+            } else {
+                const idx = store.get('currentVideoIndex');
+                const all = getAllCards();
+                const card = all[idx];
+                if (card) activeUrl = card.getAttribute('data-url');
+            }
+            if (activeUrl) {
+                setActiveCardByUrl(activeUrl);
+            }
+            break;
+    }
+});
 
 // ── Iconos SVG ────────────────────────────────────────────────
 const SPEAKER_SVG = `
@@ -154,9 +388,10 @@ const SUBCAT_MAP = {
 // ── Helpers YouTube ──────────────────────────────────────────
 function getYouTubeId(url) {
     if (!url) return null;
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    // Soporta youtu.be/ID, watch?v=ID, embed/ID, shorts/ID y parámetros ?si= modernos
+    const regExp = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|u\/\w\/|shorts\/))([^#&?\/\s]{11})/;
     const match  = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
+    return match ? match[1] : null;
 }
 
 function loadVideoInPlayer(videoId, autoplay) {
@@ -360,7 +595,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 // ── Lógica de Controles de Reproducción Personalizados ───────
-let customPlayerUpdateInterval = null;
+let customPlayerRafId = null; // rAF handle para el timeline (reemplaza setInterval)
 
 function setupCustomPlayerControls() {
     const playBtn = document.getElementById('player-play-btn');
@@ -558,27 +793,44 @@ function updateLcdDisplay(htmlContent) {
     marquee.style.animation = `lcdScrollInfinite ${duration}s linear infinite`;
 }
 
+// ── Timeline con requestAnimationFrame (60fps, 0% CPU en background) ─────────
 function startCustomTimelineUpdate() {
     const timeline = document.getElementById('player-timeline');
-    const lcdTime = document.getElementById('lcd-time');
+    const lcdTime  = document.getElementById('lcd-time');
 
-    clearInterval(customPlayerUpdateInterval);
-    customPlayerUpdateInterval = setInterval(() => {
-        if (ytPlayer && typeof ytPlayer.getCurrentTime === 'function' && typeof ytPlayer.getDuration === 'function') {
-            const current = ytPlayer.getCurrentTime();
+    stopCustomTimelineUpdate(); // cancela rAF previo si existe
+
+    function tick() {
+        // Pestaña oculta: reagendar sin hacer trabajo (CPU 0%)
+        if (!document.hidden &&
+            ytPlayer &&
+            typeof ytPlayer.getCurrentTime === 'function' &&
+            typeof ytPlayer.getDuration === 'function') {
+
+            const current  = ytPlayer.getCurrentTime();
             const duration = ytPlayer.getDuration();
-            
+
             if (duration > 0) {
                 const pct = (current / duration) * 100;
-                timeline.value = pct;
-                // Pintar el avance en color rojo (#ff3b30) y el resto de la barra con el color base #222
-                timeline.style.background = `linear-gradient(to right, #ff3b30 0%, #ff3b30 ${pct}%, #222 ${pct}%, #222 100%)`;
-            }
-            if (lcdTime) {
-                lcdTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+                if (timeline) {
+                    timeline.value = pct;
+                    timeline.style.background =
+                        `linear-gradient(to right, #ff3b30 0%, #ff3b30 ${pct}%, #222 ${pct}%, #222 100%)`;
+                }
+                if (lcdTime) lcdTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
             }
         }
-    }, 250); // Menor intervalo para mayor suavidad
+        customPlayerRafId = requestAnimationFrame(tick);
+    }
+
+    customPlayerRafId = requestAnimationFrame(tick);
+}
+
+function stopCustomTimelineUpdate() {
+    if (customPlayerRafId) {
+        cancelAnimationFrame(customPlayerRafId);
+        customPlayerRafId = null;
+    }
 }
 
 function formatTime(seconds) {
@@ -600,7 +852,7 @@ function updateCustomPlayerUI(state) {
     } else {
         if (icon) icon.textContent = '▶';
         if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
-            clearInterval(customPlayerUpdateInterval);
+            stopCustomTimelineUpdate(); // reemplaza clearInterval — limpia el rAF
         }
     }
 }
@@ -701,27 +953,7 @@ function buildCard(item, animDelay) {
             ${tagsHtml}
         </div>`;
 
-    wrapperEl.addEventListener('click', (e) => {
-        if (e.target.closest('.card-add-btn')) return; // Evitar reproducir al agregar a playlist
-        playVideo(item.url_video, wrapperEl);
-    });
-
-    wrapperEl.addEventListener('keydown', (e) => {
-        if (e.target.closest('.card-add-btn')) return;
-        if (e.key === 'Enter' || e.key === ' ') { 
-            e.preventDefault(); 
-            playVideo(item.url_video, wrapperEl); 
-        }
-    });
-
-    const addBtn = wrapperEl.querySelector('.card-add-btn');
-    if (addBtn) {
-        addBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            togglePlaylistItem(item);
-        });
-    }
-
+    // Los eventos se manejan via delegación en setupGridDelegation() — sin listeners por tarjeta
     return wrapperEl;
 }
 
@@ -809,40 +1041,7 @@ function buildCompactCard(item, animDelay) {
         </div>
     `;
 
-    wrapperEl.addEventListener('click', (e) => {
-        if (e.target.closest('.card-compact-add-btn') || e.target.closest('.card-add-btn')) return; // Evitar reproducir al agregar a playlist
-        if (window.matchMedia('(hover: none)').matches) {
-            openMobileModal(item, wrapperEl);
-        } else {
-            playVideo(item.url_video, wrapperEl);
-        }
-    });
-
-    wrapperEl.addEventListener('keydown', (e) => {
-        if (e.target.closest('.card-compact-add-btn') || e.target.closest('.card-add-btn')) return;
-        if (e.key === 'Enter' || e.key === ' ') { 
-            e.preventDefault(); 
-            playVideo(item.url_video, wrapperEl); 
-        }
-    });
-
-    const addBtnNormal = wrapperEl.querySelector('.card-compact-add-btn');
-    const addBtnOverlay = wrapperEl.querySelector('.card-full-overlay .card-add-btn');
-
-    if (addBtnNormal) {
-        addBtnNormal.addEventListener('click', (e) => {
-            e.stopPropagation();
-            togglePlaylistItem(item);
-        });
-    }
-
-    if (addBtnOverlay) {
-        addBtnOverlay.addEventListener('click', (e) => {
-            e.stopPropagation();
-            togglePlaylistItem(item);
-        });
-    }
-
+    // Los eventos se manejan via delegación en setupGridDelegation() — sin listeners por tarjeta
     return wrapperEl;
 }
 
@@ -1313,12 +1512,57 @@ fetch('contenidos.json')
     })
     .catch(err => { console.warn('No se pudo cargar datos:', err.message); allData = []; initApp(); });
 
+// ── Delegación de Eventos en Grids ───────────────────────────────────────────
+// Un solo listener por grid en lugar de uno por cada tarjeta generada.
+// Elimina el memory leak de 40 addEventListener sin removeEventListener.
+function setupGridDelegation(gridEl, isCompact) {
+    gridEl.addEventListener('click', (e) => {
+        // 1. Botón de playlist (+/✓)
+        const addBtn = e.target.closest('.card-add-btn, .card-compact-add-btn');
+        if (addBtn) {
+            e.stopPropagation();
+            const wrapper = addBtn.closest('[data-url]');
+            if (!wrapper) return;
+            const item = allData.find(d => d.url_video === wrapper.dataset.url);
+            if (item) togglePlaylistItem(item);
+            return;
+        }
+        // 2. Click en tarjeta
+        const wrapper = e.target.closest('[data-url]');
+        if (!wrapper) return;
+        if (isCompact && window.matchMedia('(hover: none)').matches) {
+            const item = allData.find(d => d.url_video === wrapper.dataset.url);
+            if (item) openMobileModal(item, wrapper);
+        } else {
+            playVideo(wrapper.dataset.url, wrapper);
+        }
+    });
+
+    // Accesibilidad: navegación por teclado (Tab + Enter/Espacio)
+    gridEl.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const addBtn = e.target.closest('.card-add-btn, .card-compact-add-btn');
+        if (addBtn) return; // el botón maneja su propio evento
+        const wrapper = e.target.closest('[data-url]');
+        if (!wrapper) return;
+        e.preventDefault();
+        playVideo(wrapper.dataset.url, wrapper);
+    });
+}
+
 function initApp() {
     allData.forEach(item => ensureThumbnail(item));
     buildCatalogoMainFilters();
     renderCatalogo();
     renderPortafolio();
     currentVideoIndex = -1;
+
+    // Delegación: 2 listeners totales reemplazan ~40 por cada render del grid
+    const gridCatalogo   = document.getElementById('grid-catalogo');
+    const gridPortafolio = document.getElementById('grid-portafolio');
+    if (gridCatalogo)   setupGridDelegation(gridCatalogo, false);
+    if (gridPortafolio) setupGridDelegation(gridPortafolio, true);
+
     setupDragScroll();
     updateLcdDisplay(`<span class="lcd-title">GOLOSINASSSS</span> • <span class="lcd-desc">SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA</span> • `);
 }

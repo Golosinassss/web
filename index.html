@@ -17,6 +17,11 @@
     <meta name="theme-color" content="#080808">
     <link rel="icon" type="image/png" href="ICON_GOLOSINASSSS.png">
     <link rel="apple-touch-icon" href="ICON_GOLOSINASSSS.png">
+    <!-- Preconnect: establece conexiones anticipadas a dominios externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://img.youtube.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <!-- W3C Semantic Metadata / JSON-LD Structured Data -->
@@ -172,7 +177,7 @@
                             </svg>
                         </span>
                     </button>
-                    <input type="range" id="player-volume" min="0" max="100" value="100" aria-label="Volumen" style="width: 50px;">
+                    <input type="range" id="player-volume" min="0" max="100" value="100" aria-label="Volumen">
                 </div>
 
                 <button id="player-fullscreen-btn" class="player-btn-capsule" title="Pantalla Completa" aria-label="Pantalla Completa">
@@ -194,5 +199,13 @@
     <!-- Scripts -->
     <script src="app.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Fallback para navegadores sin JavaScript -->
+    <noscript>
+        <style>body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#080808;color:#e0e0e0;font-family:monospace;text-align:center;margin:0;}</style>
+        <div style="padding:40px;">
+            <h1 style="color:#00e5ff;font-size:1.2rem;letter-spacing:.3em;">GOLOSINASSSS</h1>
+            <p style="opacity:.6;margin-top:16px;">Este archivo vivo transmedia requiere JavaScript para funcionar.</p>
+        </div>
+    </noscript>
 </body>
 </html>
