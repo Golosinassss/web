@@ -881,15 +881,10 @@ function setupCustomPlayerControls() {
             const container = document.getElementById('player-fullscreen-svg-container');
             const body = document.body;
             const isFullscreenCSS = body.classList.contains('fullscreen-mode') || !!document.fullscreenElement;
-            const isMobile = window.innerWidth <= 768;
-            const targetElement = isMobile 
-                ? (document.getElementById('yt-player-container') || document.documentElement)
-                : document.documentElement;
+            const targetElement = document.documentElement;
 
             if (!isFullscreenCSS) {
-                if (!isMobile) {
-                    body.classList.add('fullscreen-mode');
-                }
+                body.classList.add('fullscreen-mode');
                 if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
                 
                 if (targetElement.requestFullscreen) {
@@ -898,9 +893,7 @@ function setupCustomPlayerControls() {
                     targetElement.webkitRequestFullscreen();
                 }
             } else {
-                if (!isMobile) {
-                    body.classList.remove('fullscreen-mode');
-                }
+                body.classList.remove('fullscreen-mode');
                 if (container) container.innerHTML = FULLSCREEN_SVG;
                 
                 if (document.exitFullscreen) {
@@ -915,10 +908,7 @@ function setupCustomPlayerControls() {
     // Escuchar el evento de cambio de pantalla completa nativa (por ejemplo, al presionar Esc)
     document.addEventListener('fullscreenchange', () => {
         const isNative = !!document.fullscreenElement;
-        const isMobile = window.innerWidth <= 768;
-        if (!isMobile) {
-            document.body.classList.toggle('fullscreen-mode', isNative);
-        }
+        document.body.classList.toggle('fullscreen-mode', isNative);
         if (fullscreenBtn) {
             const container = document.getElementById('player-fullscreen-svg-container');
             if (container) {
