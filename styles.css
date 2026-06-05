@@ -769,7 +769,8 @@
         opacity: 0;
         pointer-events: none;
         box-sizing: content-box;
-        transition: width 0.3s ease, opacity 0.2s ease, margin 0.3s ease;
+        margin-right: 0;
+        transition: width 0.3s ease, opacity 0.2s ease, margin-right 0.3s ease;
     }
     #player-volume::-webkit-slider-thumb {
         -webkit-appearance: none;
@@ -811,7 +812,7 @@
         width: 50px;
         opacity: 1;
         pointer-events: auto;
-        margin-left: 4px;
+        margin-right: 4px;
     }
 
     /* Botón Fullscreen en esquina superior derecha */
@@ -866,10 +867,11 @@
         align-items: center;
         justify-content: center;
         background: #000;
+        cursor: pointer;
     }
     .corner-gif img {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
         object-fit: contain;
     }
     .corner-gif-left {
@@ -1301,7 +1303,7 @@
             width: 40px;
             opacity: 1;
             pointer-events: auto;
-            margin-left: 4px;
+            margin-right: 4px;
         }
 
         /* Mobile portrait overrides */

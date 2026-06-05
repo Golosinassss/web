@@ -1680,7 +1680,7 @@ window.playPlaylistItem = playPlaylistItem;
 // CARGA DE DATOS (CMS Google Sheets con Respaldo Local)
 // ══════════════════════════════════════════════════════════════
 const SHEET_ID = '1-NpQprddYp2vYyl4kRxLO-i_LJbF06MYEf9zaC1s880';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1`;
 
 function parseGoogleSheetJson(text) {
     try {
