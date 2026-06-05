@@ -1521,8 +1521,16 @@ function parseGoogleSheetJson(text) {
     try {
         const jsonStr = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
         const json = JSON.parse(jsonStr);
-        const cols = json.table.cols.map(c => (c.label || '').trim().toLowerCase());
-        return json.table.rows.map(row => {
+        const rows = json.table.rows;
+        if (!rows || rows.length === 0) return null;
+
+        // El primer elemento de rows contiene las cabeceras/columnas
+        const headerRow = rows[0];
+        const cols = headerRow.c.map(cell => (cell ? String(cell.v).trim().toLowerCase() : ''));
+
+        // Las filas de datos reales empiezan desde el índice 1
+        const dataRows = rows.slice(1);
+        return dataRows.map(row => {
             const item = {};
             row.c.forEach((cell, idx) => {
                 const colName = cols[idx];
