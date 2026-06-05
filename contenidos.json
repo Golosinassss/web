@@ -9,7 +9,10 @@
     "preview_url": "",
     "date": "2025",
     "destacado": true,
-    "tags": ["institucional", "social"]
+    "tags": [
+      "institucional",
+      "social"
+    ]
   },
   {
     "id": "12",
@@ -21,7 +24,10 @@
     "preview_url": "",
     "date": "2026",
     "destacado": true,
-    "tags": ["institucional", "social"]
+    "tags": [
+      "institucional",
+      "social"
+    ]
   },
   {
     "id": "9",
@@ -33,7 +39,10 @@
     "preview_url": "",
     "date": "2025",
     "destacado": false,
-    "tags": ["sonido infinito", "conciertos"]
+    "tags": [
+      "sonido infinito",
+      "conciertos"
+    ]
   },
   {
     "id": "8",
@@ -45,7 +54,10 @@
     "preview_url": "",
     "date": "2023",
     "destacado": false,
-    "tags": ["sonido infinito", "conciertos"]
+    "tags": [
+      "sonido infinito",
+      "conciertos"
+    ]
   },
   {
     "id": "11",
@@ -57,7 +69,10 @@
     "preview_url": "",
     "date": "2025",
     "destacado": true,
-    "tags": ["institucional", "social"]
+    "tags": [
+      "institucional",
+      "social"
+    ]
   },
   {
     "id": "10",
@@ -69,8 +84,11 @@
     "preview_url": "",
     "date": "2025",
     "destacado": true,
-    "tags": ["institucional", "social"]
-  },  
+    "tags": [
+      "institucional",
+      "social"
+    ]
+  },
   {
     "id": "14",
     "titulo": "BILARDO: El doctor del fútbol",
@@ -81,7 +99,11 @@
     "preview_url": "",
     "date": "2022",
     "destacado": true,
-    "tags": ["cine", "periodismo", "fútbol"]
+    "tags": [
+      "cine",
+      "periodismo",
+      "fútbol"
+    ]
   },
   {
     "id": "1",
@@ -93,7 +115,11 @@
     "preview_url": "Portada_Diomedes_Golosinassss.gif",
     "date": "2022",
     "destacado": true,
-    "tags": ["cine", "periodismo", "música"]
+    "tags": [
+      "cine",
+      "periodismo",
+      "música"
+    ]
   },
   {
     "id": "2",
@@ -105,7 +131,10 @@
     "preview_url": "Portada_HVLI.gif",
     "date": "2022",
     "destacado": false,
-    "tags": ["social", "institucional"]
+    "tags": [
+      "social",
+      "institucional"
+    ]
   },
   {
     "id": "5",
@@ -117,7 +146,11 @@
     "preview_url": "Portada_ESTALLIDO.gif",
     "date": "2021 - 2022",
     "destacado": true,
-    "tags": ["cine", "periodismo", "social"]
+    "tags": [
+      "cine",
+      "periodismo",
+      "social"
+    ]
   },
   {
     "id": "6",
@@ -129,7 +162,11 @@
     "preview_url": "Portada_JEP.gif",
     "date": "2020",
     "destacado": false,
-    "tags": ["animación", "institucional", "social"]
+    "tags": [
+      "animación",
+      "institucional",
+      "social"
+    ]
   },
   {
     "id": "13",
@@ -141,7 +178,10 @@
     "preview_url": "",
     "date": "2019",
     "destacado": false,
-    "tags": ["periodismo", "social"]
+    "tags": [
+      "periodismo",
+      "social"
+    ]
   },
   {
     "id": "12",
@@ -153,7 +193,10 @@
     "preview_url": "",
     "date": "2019",
     "destacado": false,
-    "tags": ["periodismo", "social"]
+    "tags": [
+      "periodismo",
+      "social"
+    ]
   },
   {
     "id": "7",
@@ -165,6 +208,24 @@
     "preview_url": "portada_AMPLIFICADO.gif",
     "date": "2014",
     "destacado": false,
-    "tags": ["sesiones musicales", "conciertos", "videoclips"]
+    "tags": [
+      "sesiones musicales",
+      "conciertos",
+      "videoclips"
+    ]
+  },
+  {
+    "id": "",
+    "titulo": "ROGER FEDERER - Luis7Lunes & Vic Deal Ft. Fa-zeta",
+    "categoria": "VIDEOCLIP",
+    "descripcion": "Videoclip - Producción + Dirección + Montaje ",
+    "url_video": "https://youtu.be/ZjQjB1Bg5_Q?si=-RuEsuK7dUbDxpFc",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2020",
+    "destacado": true,
+    "tags": [
+      "videoclip"
+    ]
   }
 ]
