@@ -149,14 +149,14 @@
                     var(--grad-tornasol) border-box;
     }
     .left {
-        top: 30px; left: 0; width: 30px; bottom: 40px;
+        top: 30px; left: 0; width: 30px; bottom: 30px;
         justify-content: center; align-items: flex-start;
         border-left: 1px solid transparent;
         background: linear-gradient(var(--bg),var(--bg)) padding-box,
                     var(--grad-tornasol-180) border-box;
     }
     .right {
-        top: 30px; right: 0; width: 30px; bottom: 40px;
+        top: 30px; right: 0; width: 30px; bottom: 30px;
         justify-content: center; align-items: flex-start;
         border-left: 1px solid transparent;
         background: linear-gradient(var(--bg),var(--bg)) padding-box,
@@ -1067,16 +1067,16 @@
     @media (max-width: 1024px) {
         #main-content { padding: 34px 34px 120px 34px; }
         .top { height: 24px; }
-        .left, .right { width: 24px; top: 24px; bottom: 40px; }
-        #custom-player { left: 24px; right: 24px; }
-        .playlist-drawer { bottom: 44px; right: 24px; }
+        .left, .right { width: 24px; top: 24px; bottom: 24px; }
+        #custom-player { left: 24px; right: 24px; height: 24px; }
+        .playlist-drawer { bottom: 28px; right: 24px; }
         body.fullscreen-mode #video-hero { height: calc(100vh - 140px); }
     }
 
     @media (max-width: 768px) {
         #main-content { padding: 34px 34px 120px 34px; }
         .top { height: 24px; }
-        .left, .right { width: 24px; top: 24px; bottom: 40px; }
+        .left, .right { width: 24px; top: 24px; bottom: 24px; }
         .ticker { font-size: 0.65rem; }
         .lcd-text-span { font-size: 0.65rem; }
         .ticker-logo-v { font-size: 0.15rem; }
@@ -1092,14 +1092,18 @@
         .portafolio-scroll-outer { height: 100px; }
         footer { margin-top: 0; border-top: none; }
 
-        #custom-player { left: 24px; right: 24px; }
-        .playlist-drawer { bottom: 44px; right: 24px; width: calc(100% - 48px); left: 24px; }
+        #custom-player { left: 24px; right: 24px; height: 24px; }
+        .playlist-drawer { bottom: 28px; right: 24px; width: calc(100% - 48px); left: 24px; }
+        .player-btn-capsule { height: 18px; padding: 0 4px; font-size: 0.55rem; }
+        .volume-container { height: 18px; padding: 0 3px; }
+        .player-lcd { height: 18px; padding: 0 4px; margin: 0 6px; }
+        .lcd-text-span { font-size: 0.55rem; }
     }
 
     @media (max-width: 480px) {
         #main-content { padding: 28px 28px 110px 28px; }
         .top { height: 18px; }
-        .left, .right { width: 18px; top: 18px; bottom: 40px; }
+        .left, .right { width: 18px; top: 18px; bottom: 18px; }
         .ticker { font-size: 0.55rem; }
         .ticker-logo-v { font-size: 0.11rem; }
         .section-label-large { font-size: 0.9rem; }
@@ -1115,21 +1119,21 @@
 
         #custom-player {
             left: 18px; right: 18px;
-            font-size: 0.55rem; padding: 4px 0 0 0; height: 40px;
+            font-size: 0.45rem; padding: 0; height: 18px;
         }
-        .player-row-main { height: 26px; }
-        .player-row-timeline { height: 6px; top: -1px; transform: translateY(-50%); }
-        .player-btn-capsule { height: 22px; padding: 0 5px; }
-        .volume-container { height: 22px; padding: 0 4px; }
+        .player-row-main { height: 100%; }
+        .player-row-timeline { height: 4px; top: -1px; transform: translateY(-50%); }
+        .player-btn-capsule { height: 14px; padding: 0 3px; font-size: 0.45rem; }
+        .volume-container { height: 14px; padding: 0 2px; }
         
         /* Cero !important gracias a la prioridad de la capa responsive */
-        #player-volume { width: 35px; } 
+        #player-volume { width: 25px; } 
 
-        .player-lcd { height: 22px; padding: 0 4px; margin: 0 6px; }
-        .lcd-text-span { font-size: 0.55rem; }
-        .lcd-screen { font-size: 0.52rem; }
+        .player-lcd { height: 14px; padding: 0 3px; margin: 0 4px; }
+        .lcd-text-span { font-size: 0.48rem; }
+        .lcd-screen { font-size: 0.45rem; }
         .lcd-time { display: none; }
-        .playlist-drawer { bottom: 44px; right: 18px; left: 18px; width: auto; max-height: 220px; }
+        .playlist-drawer { bottom: 22px; right: 18px; left: 18px; width: auto; max-height: 220px; }
     }
 }
 

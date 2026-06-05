@@ -817,7 +817,7 @@ function updateLcdDisplay(htmlContent) {
 
     // Calcular duración de la animación basada en el tamaño del texto de un solo span
     const textWidth = span1.scrollWidth;
-    const duration = Math.max(5, textWidth / 70); // Ajustar velocidad para el texto repetido
+    const duration = Math.max(25, textWidth / 20); // Ajustar velocidad para el texto repetido para hacerlo más lento
     
     // Iniciar animación
     marquee.classList.add('lcd-marquee-anim');
