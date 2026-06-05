@@ -78,6 +78,10 @@
         font-family: 'JetBrains Mono', monospace;
         overflow: hidden;
     }
+    *:focus, *:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1220,6 +1224,11 @@
         background: var(--cyan);
         border: 1px solid #fff;
         cursor: pointer;
+    }
+
+    #grid-portafolio:has(.keyboard-focused) {
+        animation: none !important;
+        transform: none !important;
     }
 
     /* Estados del Player y Playlist */
