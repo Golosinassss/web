@@ -523,14 +523,16 @@
 
     .player-row-timeline {
         position: absolute;
-        top: -1px;
+        top: 0;
         left: 0;
         width: 100%;
-        height: 3px;
+        height: 12px;
         transform: translateY(-50%);
         z-index: 10;
         margin: 0;
         padding: 0;
+        display: flex;
+        align-items: center;
     }
 
     .player-controls-left, .player-controls-right {
@@ -618,32 +620,33 @@
     }
 
     #player-play-btn {
-        background: var(--grad-tornasol);
-        border: 1px solid #000;
+        background: none;
+        border: none;
         transition: transform 0.1s ease, opacity 0.2s ease;
+        box-shadow: none;
+        outline: none;
+        cursor: pointer;
     }
     #player-play-btn:hover {
-        opacity: 0.9;
+        opacity: 1;
         transform: scale(1.05);
     }
     #player-play-btn .svg-icon {
         fill: url(#tornasol-grad);
-        stroke: #000;
-        stroke-width: 1.5px;
+        stroke: none;
     }
 
     .player-btn-capsule {
-        background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
-                    var(--grad-tornasol) border-box;
-        border: 1px solid transparent;
-        border-radius: 3px;
+        background: none;
+        border: none;
+        box-shadow: none;
         height: 24px;
-        padding: 0 8px;
+        padding: 0 4px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: transform 0.1s ease, background 0.2s ease;
+        transition: transform 0.1s ease, color 0.2s ease;
         box-sizing: border-box;
         text-decoration: none;
         outline: none;
@@ -653,14 +656,13 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
-                    var(--grad-tornasol) border-box;
-        border: 1px solid transparent;
-        border-radius: 3px;
+        background: none;
+        border: none;
+        box-shadow: none;
         height: 24px;
-        padding: 0 6px 0 8px;
+        padding: 0 4px;
         box-sizing: border-box;
-        transition: background 0.2s ease;
+        transition: color 0.2s ease;
     }
 
     .player-mute-btn-icon {
@@ -709,42 +711,104 @@
     #player-timeline {
         width: 100%;
         margin: 0;
-        padding: 0;
-        height: 3px;
+        padding: 6px 0;
+        height: 1px;
         background: #222;
+        background-clip: content-box !important;
+        -webkit-background-clip: content-box !important;
         border-radius: 0;
         cursor: pointer;
         position: absolute;
         top: 0;
         left: 0;
+        box-sizing: content-box;
     }
     #player-timeline::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         width: 0; height: 0;
         background: transparent; border: none;
+        transition: width 0.1s ease, height 0.1s ease;
     }
     #player-timeline::-moz-range-thumb {
         width: 0; height: 0;
         background: transparent; border: none;
+        transition: width 0.1s ease, height 0.1s ease;
+    }
+    #player-timeline:hover::-webkit-slider-thumb,
+    #player-timeline:active::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ff5c5c;
+        border: 1px solid #fff;
+        cursor: pointer;
+        margin-top: -3.5px;
+    }
+    #player-timeline:hover::-moz-range-thumb,
+    #player-timeline:active::-moz-range-thumb {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ff5c5c;
+        border: 1px solid #fff;
+        cursor: pointer;
     }
 
     #player-volume {
         background: #222;
-        height: 3px;
-        border-radius: 2px;
+        height: 1px;
+        padding: 6px 0;
+        background-clip: content-box !important;
+        -webkit-background-clip: content-box !important;
+        border-radius: 0;
         cursor: pointer;
-        width: 50px; /* Ancho por defecto (antes inline) */
+        width: 50px;
+        box-sizing: content-box;
     }
     #player-volume::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         width: 0; height: 0;
         background: transparent; border: none;
+        transition: width 0.1s ease, height 0.1s ease;
     }
     #player-volume::-moz-range-thumb {
         width: 0; height: 0;
         background: transparent; border: none;
+        transition: width 0.1s ease, height 0.1s ease;
+    }
+    #player-volume:hover::-webkit-slider-thumb,
+    #player-volume:active::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--cyan);
+        border: 1px solid #fff;
+        cursor: pointer;
+        margin-top: -3.5px;
+    }
+    #player-volume:hover::-moz-range-thumb,
+    #player-volume:active::-moz-range-thumb {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--cyan);
+        border: 1px solid #fff;
+        cursor: pointer;
+    }
+
+    /* Eliminar casillas/bordes de enfoque (focus outline) en los controles */
+    #custom-player button:focus,
+    #custom-player button:focus-visible,
+    #custom-player input:focus,
+    #custom-player input:focus-visible {
+        outline: none;
+        box-shadow: none;
     }
 
     /* Panel Cajón Playlist */
@@ -1001,17 +1065,18 @@
 
     /* Estados del Player y Playlist */
     .player-btn-capsule:hover {
-        background: linear-gradient(var(--bg-raised), var(--bg-raised)) padding-box,
-                    var(--grad-tornasol) border-box;
+        background: none;
+        border: none;
     }
     .player-btn-capsule:active { transform: scale(0.95); }
     .player-btn-capsule.active {
-        background: var(--cyan-subtle) padding-box,
-                    linear-gradient(90deg, var(--cyan), var(--t5)) border-box;
+        background: none;
+        border: none;
+        opacity: 0.8;
     }
     .volume-container:hover {
-        background: linear-gradient(var(--bg-raised), var(--bg-raised)) padding-box,
-                    var(--grad-tornasol) border-box;
+        background: none;
+        border: none;
     }
     .player-mute-btn-icon:hover svg { transform: scale(1.1); }
     .player-mute-btn-icon:active svg { transform: scale(0.9); }
@@ -1123,7 +1188,7 @@
             font-size: 0.55rem; padding: 0; height: 36px;
         }
         .player-row-main { height: 100%; }
-        .player-row-timeline { height: 4px; top: -1px; transform: translateY(-50%); }
+        .player-row-timeline { height: 12px; top: 0; transform: translateY(-50%); }
         .player-btn-capsule { height: 28px; padding: 0 6px; font-size: 0.6rem; }
         .volume-container { height: 28px; padding: 0 3px; }
         
