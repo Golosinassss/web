@@ -609,9 +609,9 @@
     .lcd-time {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.8rem;
-        color: #ef4444;
-        text-shadow: 0 0 3px rgba(239, 68, 68, 0.4);
-        opacity: 0.95;
+        color: #ff5c5c;
+        text-shadow: 0 0 2px rgba(255, 92, 92, 0.4);
+        opacity: 0.9;
         flex-shrink: 0;
         user-select: none;
         margin-left: 8px;
@@ -927,6 +927,7 @@
     }
 
     /* Hover en Tarjetas */
+    .card-wrapper:hover .card { border-color: var(--cyan); }
     .card-wrapper:hover .play-btn { background: var(--cyan); border-color: var(--cyan); }
     .card-wrapper:hover .play-btn svg { stroke: #000; fill: #000; }
 
@@ -1051,7 +1052,6 @@
         height: calc(100vh - 120px);
         padding-bottom: 0;
         z-index: 2;
-        border-color: var(--grad-tornasol);
     }
     body.fullscreen-mode #video-hero iframe {
         position: absolute;
@@ -1065,7 +1065,7 @@
    ══════════════════════════════════════════════════════════════ */
 @layer responsive {
     @media (max-width: 1024px) {
-        #main-content { padding: 34px 34px 74px 34px; }
+        #main-content { padding: 34px 34px 120px 34px; }
         .top { height: 24px; }
         .left, .right { width: 24px; top: 24px; bottom: 40px; }
         #custom-player { left: 24px; right: 24px; }
@@ -1074,7 +1074,7 @@
     }
 
     @media (max-width: 768px) {
-        #main-content { padding: 34px 34px 74px 34px; }
+        #main-content { padding: 34px 34px 120px 34px; }
         .top { height: 24px; }
         .left, .right { width: 24px; top: 24px; bottom: 40px; }
         .ticker { font-size: 0.65rem; }
@@ -1097,7 +1097,7 @@
     }
 
     @media (max-width: 480px) {
-        #main-content { padding: 28px 28px 64px 28px; }
+        #main-content { padding: 28px 28px 110px 28px; }
         .top { height: 18px; }
         .left, .right { width: 18px; top: 18px; bottom: 40px; }
         .ticker { font-size: 0.55rem; }

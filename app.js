@@ -739,7 +739,7 @@ function setupCustomPlayerControls() {
         }
     });
 
-    // 8. Pantalla Completa de la Página (Fullscreen) - Modo Teatro sin ocultar bordes ni navegación
+    // 8. Pantalla Completa de la Página (Fullscreen) - Entra en pantalla completa de navegador manteniendo bordes y reproductor
     if (fullscreenBtn) {
         fullscreenBtn.addEventListener('click', () => {
             const container = document.getElementById('player-fullscreen-svg-container');
@@ -749,12 +749,38 @@ function setupCustomPlayerControls() {
             if (!isFullscreenCSS) {
                 body.classList.add('fullscreen-mode');
                 if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
+                
+                // Activar pantalla completa nativa en el documento
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen().catch(() => {});
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen();
+                }
             } else {
                 body.classList.remove('fullscreen-mode');
                 if (container) container.innerHTML = FULLSCREEN_SVG;
+                
+                // Salir de pantalla completa nativa
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().catch(() => {});
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
             }
         });
     }
+
+    // Escuchar el evento de cambio de pantalla completa nativa (por ejemplo, al presionar Esc)
+    document.addEventListener('fullscreenchange', () => {
+        const isNative = !!document.fullscreenElement;
+        document.body.classList.toggle('fullscreen-mode', isNative);
+        if (fullscreenBtn) {
+            const container = document.getElementById('player-fullscreen-svg-container');
+            if (container) {
+                container.innerHTML = isNative ? FULLSCREEN_EXIT_SVG : FULLSCREEN_SVG;
+            }
+        }
+    });
 }
 
 function updateVolumeIcon(isMutedState) {
@@ -781,16 +807,17 @@ function updateLcdDisplay(htmlContent) {
     marquee.classList.remove('lcd-marquee-anim');
     marquee.style.animation = 'none';
 
-    // Asignar el HTML a ambos spans
-    span1.innerHTML = htmlContent;
-    span2.innerHTML = htmlContent;
+    // Repetir el contenido 3 veces para asegurar que sea más ancho que el contenedor y el scroll sea fluido e infinito
+    const repeatedContent = htmlContent + htmlContent + htmlContent;
+    span1.innerHTML = repeatedContent;
+    span2.innerHTML = repeatedContent;
 
     // Forzar reflujo/reflow
     void marquee.offsetWidth;
 
-    // Calcular duración de la animación basada en el tamaño del texto
+    // Calcular duración de la animación basada en el tamaño del texto de un solo span
     const textWidth = span1.scrollWidth;
-    const duration = Math.max(5, textWidth / 35);
+    const duration = Math.max(5, textWidth / 70); // Ajustar velocidad para el texto repetido
     
     // Iniciar animación
     marquee.classList.add('lcd-marquee-anim');
@@ -819,7 +846,7 @@ function startCustomTimelineUpdate() {
                 if (timeline) {
                     timeline.value = pct;
                     timeline.style.background =
-                        `linear-gradient(90deg, #7c3aed, #c084fc, #f43f5e, #e11d48, #c084fc, #7c3aed) 0% 0% / ${pct}% 100% no-repeat #222`;
+                        `linear-gradient(90deg, #7c3aed, #c084fc, #f43f5e, #e11d48, #c084fc, #7c3aed) 0% 0% / ${pct}% 100% no-repeat, var(--grad-tornasol)`;
                 }
                 if (lcdTime) lcdTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
             }
@@ -1563,7 +1590,7 @@ function initApp() {
     if (gridPortafolio) setupGridDelegation(gridPortafolio, true);
 
     setupDragScroll();
-    updateLcdDisplay(`<span class="lcd-title">GOLOSINASSSS</span> • <span class="lcd-desc">SELECCIONE PISTA EN EL ARCHIVO VIVO TRANSMEDIA</span> • `);
+    updateLcdDisplay(`<span class="lcd-title">GOLOSINASSSS</span> • <span class="lcd-desc">Escoge tu próxima golosina</span> • `);
 }
 
 function setupDragScroll() {
