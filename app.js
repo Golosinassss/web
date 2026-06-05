@@ -61,16 +61,46 @@ let ytApiReady      = false;
 let pendingVideoId  = null;
 let allData         = [];
 
-let shuffleQueuePlaylist = [];
-let shuffleQueueAll = [];
+let playbackQueue = [];
+let playedIndices = [];
 
-function generateShuffledQueue(length) {
-    const arr = Array.from({ length }, (_, i) => i);
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
+function rebuildPlaybackQueue(startIndex = -1) {
+    const all = getAllCards();
+    if (all.length === 0) {
+        playbackQueue = [];
+        playedIndices = [];
+        return;
     }
-    return arr;
+
+    if (isShuffle) {
+        let indices = Array.from({ length: all.length }, (_, i) => i);
+        if (startIndex !== -1 && startIndex < all.length) {
+            indices = indices.filter(idx => idx !== startIndex);
+            for (let i = indices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [indices[i], indices[j]] = [indices[j], indices[i]];
+            }
+            playbackQueue = [startIndex, ...indices];
+        } else {
+            for (let i = indices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [indices[i], indices[j]] = [indices[j], indices[i]];
+            }
+            playbackQueue = indices;
+        }
+        playedIndices = [];
+    } else {
+        let indices = [];
+        if (startIndex !== -1 && startIndex < all.length) {
+            for (let i = 0; i < all.length; i++) {
+                indices.push((startIndex + i) % all.length);
+            }
+        } else {
+            indices = Array.from({ length: all.length }, (_, i) => i);
+        }
+        playbackQueue = indices;
+        playedIndices = [];
+    }
 }
 
 // ── Store Observable (Lógica Reactiva Centralizada) ───────────
@@ -603,22 +633,21 @@ function playVideo(url, element) {
         }
     }
 
-    if (element === 'playlist') {
-        playlistPlaying = true;
-        const plIdx = playlist.findIndex(p => p.url_video === url);
-        if (plIdx !== -1) currentPlaylistIndex = plIdx;
+    playlistPlaying = false;
+    currentPlaylistIndex = -1;
+    if (element && element !== 'playlist') {
+        const all = getAllCards();
+        const idx = all.indexOf(element);
+        if (idx !== -1) {
+            currentVideoIndex = idx;
+            rebuildPlaybackQueue(idx);
+        }
     } else {
-        playlistPlaying = false;
-        currentPlaylistIndex = -1;
-        if (element) {
-            const all = getAllCards();
-            const idx = all.indexOf(element);
-            if (idx !== -1) currentVideoIndex = idx;
-        } else {
-            // Intentar buscar el índice en base a la url
-            const all = getAllCards();
-            const idx = all.findIndex(c => c.getAttribute('data-url') === url);
-            if (idx !== -1) currentVideoIndex = idx;
+        const all = getAllCards();
+        const idx = all.findIndex(c => c.getAttribute('data-url') === url);
+        if (idx !== -1) {
+            currentVideoIndex = idx;
+            rebuildPlaybackQueue(idx);
         }
     }
 
@@ -637,63 +666,57 @@ function playVideo(url, element) {
 }
 
 function playNext() {
-    if (playlistPlaying && playlist.length > 0) {
-        if (isShuffle) {
-            if (!shuffleQueuePlaylist || shuffleQueuePlaylist.length === 0 || shuffleQueuePlaylist.some(idx => idx >= playlist.length)) {
-                shuffleQueuePlaylist = generateShuffledQueue(playlist.length);
-            }
-            currentPlaylistIndex = shuffleQueuePlaylist.shift();
-        } else {
-            currentPlaylistIndex = (currentPlaylistIndex + 1) % playlist.length;
-        }
-        const item = playlist[currentPlaylistIndex];
-        if (item) playVideo(item.url_video, 'playlist');
-    } else {
-        const all = getAllCards();
-        if (all.length === 0) return;
-        if (isShuffle) {
-            if (!shuffleQueueAll || shuffleQueueAll.length === 0 || shuffleQueueAll.some(idx => idx >= all.length)) {
-                shuffleQueueAll = generateShuffledQueue(all.length);
-            }
-            currentVideoIndex = shuffleQueueAll.shift();
-        } else {
-            currentVideoIndex = (currentVideoIndex + 1) % all.length;
-        }
-        const nextCard = all[currentVideoIndex];
-        if (nextCard) {
-            const url = nextCard.getAttribute('data-url');
-            if (url) playVideo(url, nextCard);
+    const all = getAllCards();
+    if (all.length === 0) return;
+
+    if (currentVideoIndex !== -1) {
+        playedIndices.push(currentVideoIndex);
+    }
+
+    if (playbackQueue.length === 0 || (playbackQueue.length === 1 && playbackQueue[0] === currentVideoIndex)) {
+        rebuildPlaybackQueue();
+    }
+
+    let nextIdx = playbackQueue.shift();
+    if (nextIdx === currentVideoIndex && playbackQueue.length > 0) {
+        nextIdx = playbackQueue.shift();
+    }
+
+    if (nextIdx !== undefined) {
+        currentVideoIndex = nextIdx;
+        const card = all[currentVideoIndex];
+        if (card) {
+            const url = card.getAttribute('data-url');
+            if (url) playVideo(url, card);
         }
     }
 }
 
 function playPrev() {
-    if (playlistPlaying && playlist.length > 0) {
-        if (isShuffle) {
-            if (!shuffleQueuePlaylist || shuffleQueuePlaylist.length === 0 || shuffleQueuePlaylist.some(idx => idx >= playlist.length)) {
-                shuffleQueuePlaylist = generateShuffledQueue(playlist.length);
-            }
-            currentPlaylistIndex = shuffleQueuePlaylist.shift();
-        } else {
-            currentPlaylistIndex = (currentPlaylistIndex - 1 + playlist.length) % playlist.length;
+    const all = getAllCards();
+    if (all.length === 0) return;
+
+    if (!isShuffle) {
+        currentVideoIndex = (currentVideoIndex - 1 + all.length) % all.length;
+        rebuildPlaybackQueue(currentVideoIndex);
+        const card = all[currentVideoIndex];
+        if (card) {
+            const url = card.getAttribute('data-url');
+            if (url) playVideo(url, card);
         }
-        const item = playlist[currentPlaylistIndex];
-        if (item) playVideo(item.url_video, 'playlist');
     } else {
-        const all = getAllCards();
-        if (all.length === 0) return;
-        if (isShuffle) {
-            if (!shuffleQueueAll || shuffleQueueAll.length === 0 || shuffleQueueAll.some(idx => idx >= all.length)) {
-                shuffleQueueAll = generateShuffledQueue(all.length);
+        if (playedIndices.length > 0) {
+            if (currentVideoIndex !== -1) {
+                playbackQueue.unshift(currentVideoIndex);
             }
-            currentVideoIndex = shuffleQueueAll.shift();
+            currentVideoIndex = playedIndices.pop();
+            const card = all[currentVideoIndex];
+            if (card) {
+                const url = card.getAttribute('data-url');
+                if (url) playVideo(url, card);
+            }
         } else {
-            currentVideoIndex = (currentVideoIndex - 1 + all.length) % all.length;
-        }
-        const prevCard = all[currentVideoIndex];
-        if (prevCard) {
-            const url = prevCard.getAttribute('data-url');
-            if (url) playVideo(url, prevCard);
+            playNext();
         }
     }
 }
@@ -784,8 +807,7 @@ function setupCustomPlayerControls() {
         shuffleBtn.addEventListener('click', () => {
             isShuffle = !isShuffle;
             shuffleBtn.classList.toggle('active', isShuffle);
-            shuffleQueuePlaylist = [];
-            shuffleQueueAll = [];
+            rebuildPlaybackQueue(currentVideoIndex);
         });
     }
 
@@ -861,11 +883,11 @@ function setupCustomPlayerControls() {
         if (!ytPlayer || typeof ytPlayer.isMuted !== 'function') return;
         if (ytPlayer.isMuted()) {
             ytPlayer.unMute();
+            ytPlayer.setVolume(100);
             updateVolumeIcon(false);
             muteBtn.classList.remove('muted');
-            const vol = ytPlayer.getVolume() || 100;
-            volumeSlider.value = vol;
-            updateVolumeSliderBackground(vol);
+            volumeSlider.value = 100;
+            updateVolumeSliderBackground(100);
         } else {
             ytPlayer.mute();
             updateVolumeIcon(true);
@@ -1376,6 +1398,16 @@ function renderCatalogo() {
         grid.appendChild(el);
         catalogoCards.push(el);
     });
+
+    // Reconstruir la cola de reproducción con el nuevo estado del catálogo
+    const all = getAllCards();
+    const activeUrl = ytPlayer && typeof ytPlayer.getVideoUrl === 'function' ? ytPlayer.getVideoUrl() : null;
+    let newIdx = -1;
+    if (activeUrl) {
+        newIdx = all.findIndex(c => getYouTubeId(c.getAttribute('data-url')) === getYouTubeId(activeUrl));
+    }
+    currentVideoIndex = newIdx;
+    rebuildPlaybackQueue(newIdx);
 }
 
 // ════════════════════════════════════════════════════════════
