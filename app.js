@@ -744,23 +744,29 @@ function setupCustomPlayerControls() {
         fullscreenBtn.addEventListener('click', () => {
             const container = document.getElementById('player-fullscreen-svg-container');
             const body = document.body;
-            const isFullscreenCSS = body.classList.contains('fullscreen-mode');
+            const isFullscreenCSS = body.classList.contains('fullscreen-mode') || !!document.fullscreenElement;
+            const isMobile = window.innerWidth <= 768;
+            const targetElement = isMobile 
+                ? (document.getElementById('yt-player-container') || document.documentElement)
+                : document.documentElement;
 
             if (!isFullscreenCSS) {
-                body.classList.add('fullscreen-mode');
+                if (!isMobile) {
+                    body.classList.add('fullscreen-mode');
+                }
                 if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
                 
-                // Activar pantalla completa nativa en el documento
-                if (document.documentElement.requestFullscreen) {
-                    document.documentElement.requestFullscreen().catch(() => {});
-                } else if (document.documentElement.webkitRequestFullscreen) {
-                    document.documentElement.webkitRequestFullscreen();
+                if (targetElement.requestFullscreen) {
+                    targetElement.requestFullscreen().catch(() => {});
+                } else if (targetElement.webkitRequestFullscreen) {
+                    targetElement.webkitRequestFullscreen();
                 }
             } else {
-                body.classList.remove('fullscreen-mode');
+                if (!isMobile) {
+                    body.classList.remove('fullscreen-mode');
+                }
                 if (container) container.innerHTML = FULLSCREEN_SVG;
                 
-                // Salir de pantalla completa nativa
                 if (document.exitFullscreen) {
                     document.exitFullscreen().catch(() => {});
                 } else if (document.webkitExitFullscreen) {
@@ -773,7 +779,10 @@ function setupCustomPlayerControls() {
     // Escuchar el evento de cambio de pantalla completa nativa (por ejemplo, al presionar Esc)
     document.addEventListener('fullscreenchange', () => {
         const isNative = !!document.fullscreenElement;
-        document.body.classList.toggle('fullscreen-mode', isNative);
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) {
+            document.body.classList.toggle('fullscreen-mode', isNative);
+        }
         if (fullscreenBtn) {
             const container = document.getElementById('player-fullscreen-svg-container');
             if (container) {
@@ -956,8 +965,7 @@ function buildCard(item, animDelay) {
     wrapperEl.setAttribute('tabindex', '0');
     wrapperEl.style.animationDelay = `${animDelay * 0.05}s`;
 
-    const isAdded = playlist.some(p => p.url_video === item.url_video);
-    const addBtnHtml = `<button class="card-add-btn${isAdded ? ' added' : ''}" title="${isAdded ? 'Quitar de Playlist' : 'Agregar a Playlist'}">${isAdded ? '✓' : '+'}</button>`;
+    const addBtnHtml = ``;
 
     wrapperEl.innerHTML = `
         <div class="card">
@@ -1029,8 +1037,7 @@ function buildCompactCard(item, animDelay) {
     if (animDelay > 0) wrapperEl.style.animationDelay = `${animDelay * 0.05}s`;
     else { wrapperEl.style.opacity = '1'; }
 
-    const isAdded = playlist.some(p => p.url_video === item.url_video);
-    const overlayAddBtnHtml = `<button class="card-add-btn${isAdded ? ' added' : ''}" title="${isAdded ? 'Quitar de Playlist' : 'Agregar a Playlist'}">${isAdded ? '✓' : '+'}</button>`;
+    const overlayAddBtnHtml = ``;
 
     wrapperEl.innerHTML = `
         <!-- COMPACT CARD (normal view) -->
