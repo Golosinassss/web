@@ -523,10 +523,11 @@
 
     .player-row-timeline {
         position: absolute;
-        top: 0;
+        top: -1px;
         left: 0;
         width: 100%;
         height: 3px;
+        transform: translateY(-50%);
         z-index: 10;
         margin: 0;
         padding: 0;
@@ -607,12 +608,28 @@
 
     .lcd-time {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.65rem;
-        color: var(--fg-dim);
-        opacity: 0.85;
+        font-size: 0.8rem;
+        color: #ef4444;
+        text-shadow: 0 0 3px rgba(239, 68, 68, 0.4);
+        opacity: 0.95;
         flex-shrink: 0;
         user-select: none;
         margin-left: 8px;
+    }
+
+    #player-play-btn {
+        background: var(--grad-tornasol);
+        border: 1px solid #000;
+        transition: transform 0.1s ease, opacity 0.2s ease;
+    }
+    #player-play-btn:hover {
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+    #player-play-btn .svg-icon {
+        fill: url(#tornasol-grad);
+        stroke: #000;
+        stroke-width: 1.5px;
     }
 
     .player-btn-capsule {
@@ -910,9 +927,8 @@
     }
 
     /* Hover en Tarjetas */
-    .card-wrapper:hover .card { border-color: var(--cyan); }
     .card-wrapper:hover .play-btn { background: var(--cyan); border-color: var(--cyan); }
-    .card-wrapper:hover .play-btn svg { stroke: #000; }
+    .card-wrapper:hover .play-btn svg { stroke: #000; fill: #000; }
 
     /* Tarjetas Activas */
     .card-wrapper.is-active .card, .card.active-card {
@@ -1028,28 +1044,19 @@
         display: block;
     }
 
-    /* Fallback de Pantalla Completa mediante CSS */
+    /* Fallback de Pantalla Completa mediante CSS - Modo Teatro */
     body.fullscreen-mode #video-hero {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100vw; height: 100vh;
-        z-index: 99999;
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 120px);
         padding-bottom: 0;
-        border: none;
-        border-radius: 0;
+        z-index: 2;
+        border-color: var(--grad-tornasol);
     }
     body.fullscreen-mode #video-hero iframe {
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
-    }
-    body.fullscreen-mode #custom-player {
-        z-index: 100000;
-        left: 0; right: 0;
-        width: 100vw;
-    }
-    body.fullscreen-mode .border-container {
-        display: none;
     }
 }
 
@@ -1063,6 +1070,7 @@
         .left, .right { width: 24px; top: 24px; bottom: 40px; }
         #custom-player { left: 24px; right: 24px; }
         .playlist-drawer { bottom: 44px; right: 24px; }
+        body.fullscreen-mode #video-hero { height: calc(100vh - 140px); }
     }
 
     @media (max-width: 768px) {
@@ -1073,6 +1081,7 @@
         .lcd-text-span { font-size: 0.65rem; }
         .ticker-logo-v { font-size: 0.15rem; }
         #video-hero { padding-bottom: 56.25%; }
+        body.fullscreen-mode #video-hero { height: calc(100vh - 140px); }
 
         .section-header { flex-wrap: wrap; gap: 6px; align-items: flex-start; }
         .section-label-large { width: 100%; padding-bottom: 2px; font-size: 1rem; }
@@ -1096,6 +1105,7 @@
         .section-label-large { font-size: 0.9rem; }
         footer { font-size: 0.55rem; }
         .social-links { gap: 8px; }
+        body.fullscreen-mode #video-hero { height: calc(100vh - 125px); }
         #grid-portafolio { animation-duration: 270s; }
 
         .portafolio-scroll-outer { height: 100px; }
@@ -1108,7 +1118,7 @@
             font-size: 0.55rem; padding: 4px 0 0 0; height: 40px;
         }
         .player-row-main { height: 26px; }
-        .player-row-timeline { height: 6px; }
+        .player-row-timeline { height: 6px; top: -1px; transform: translateY(-50%); }
         .player-btn-capsule { height: 22px; padding: 0 5px; }
         .volume-container { height: 22px; padding: 0 4px; }
         
@@ -1175,4 +1185,9 @@
 @keyframes marquee-v-rev {
     from { transform: translateY(-50%); }
     to   { transform: translateY(0); }
+}
+
+@keyframes lcdScrollInfinite {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
 }

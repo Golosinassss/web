@@ -317,6 +317,17 @@ const SPEAKER_MUTED_SVG = `
     <line x1="17" y1="9" x2="23" y2="15"/>
 </svg>`;
 
+const PLAY_SVG = `
+<svg class="svg-icon" viewBox="0 0 24 24" fill="url(#tornasol-grad)" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="5 3 19 12 5 21 5 3"/>
+</svg>`;
+
+const PAUSE_SVG = `
+<svg class="svg-icon" viewBox="0 0 24 24" fill="url(#tornasol-grad)" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="4" width="4" height="16"/>
+    <rect x="14" y="4" width="4" height="16"/>
+</svg>`;
+
 const FULLSCREEN_SVG = `
 <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
@@ -728,7 +739,7 @@ function setupCustomPlayerControls() {
         }
     });
 
-    // 8. Pantalla Completa de la Página (Fullscreen)
+    // 8. Pantalla Completa de la Página (Fullscreen) - Modo Teatro sin ocultar bordes ni navegación
     if (fullscreenBtn) {
         fullscreenBtn.addEventListener('click', () => {
             const container = document.getElementById('player-fullscreen-svg-container');
@@ -738,38 +749,12 @@ function setupCustomPlayerControls() {
             if (!isFullscreenCSS) {
                 body.classList.add('fullscreen-mode');
                 if (container) container.innerHTML = FULLSCREEN_EXIT_SVG;
-                
-                // Intentar native fullscreen
-                if (document.documentElement.requestFullscreen) {
-                    document.documentElement.requestFullscreen().catch(() => {});
-                } else if (document.documentElement.webkitRequestFullscreen) {
-                    document.documentElement.webkitRequestFullscreen();
-                }
             } else {
                 body.classList.remove('fullscreen-mode');
                 if (container) container.innerHTML = FULLSCREEN_SVG;
-                
-                // Salir de native fullscreen
-                if (document.exitFullscreen) {
-                    document.exitFullscreen().catch(() => {});
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                }
             }
         });
     }
-
-    // Escuchar cambios de fullscreen (por si usan Esc)
-    document.addEventListener('fullscreenchange', () => {
-        const isNative = !!document.fullscreenElement;
-        document.body.classList.toggle('fullscreen-mode', isNative);
-        if (fullscreenBtn) {
-            const container = document.getElementById('player-fullscreen-svg-container');
-            if (container) {
-                container.innerHTML = isNative ? FULLSCREEN_EXIT_SVG : FULLSCREEN_SVG;
-            }
-        }
-    });
 }
 
 function updateVolumeIcon(isMutedState) {
@@ -834,7 +819,7 @@ function startCustomTimelineUpdate() {
                 if (timeline) {
                     timeline.value = pct;
                     timeline.style.background =
-                        `linear-gradient(90deg, var(--t1), var(--t2), var(--t3), var(--t4), var(--t5)) 0% 0% / ${pct}% 100% no-repeat #222`;
+                        `linear-gradient(90deg, #7c3aed, #c084fc, #f43f5e, #e11d48, #c084fc, #7c3aed) 0% 0% / ${pct}% 100% no-repeat #222`;
                 }
                 if (lcdTime) lcdTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
             }
@@ -863,15 +848,15 @@ function updateCustomPlayerUI(state) {
     const playBtn = document.getElementById('player-play-btn');
     if (!playBtn) return;
 
-    const icon = playBtn.querySelector('.btn-icon');
+    const container = document.getElementById('player-play-svg-container');
 
     if (state === YT.PlayerState.PLAYING) {
-        if (icon) icon.textContent = '||';
+        if (container) container.innerHTML = PAUSE_SVG;
         startCustomTimelineUpdate();
     } else {
-        if (icon) icon.textContent = '▶';
+        if (container) container.innerHTML = PLAY_SVG;
         if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
-            stopCustomTimelineUpdate(); // reemplaza clearInterval — limpia el rAF
+            stopCustomTimelineUpdate();
         }
     }
 }
@@ -889,9 +874,7 @@ function itemMatchesMainFilter(item, filter) {
                tags.includes('periodismo') ||
                tags.includes('documental') ||
                tags.includes('social') ||
-               tags.includes('institucional') ||
-               tags.includes('sonido infinito') ||
-               tags.includes('conciertos');
+               tags.includes('institucional');
     }
     if (filter === 'música' || filter === 'musica') {
         return category.includes('conciertos') ||
@@ -901,8 +884,7 @@ function itemMatchesMainFilter(item, filter) {
                tags.includes('conciertos') ||
                tags.includes('sonido infinito') ||
                tags.includes('videoclips') ||
-               tags.includes('sesiones musicales') ||
-               tags.includes('cine');
+               tags.includes('sesiones musicales');
     }
     if (filter === 'animación' || filter === 'animacion') {
         return category.includes('animación') ||
