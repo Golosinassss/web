@@ -1905,35 +1905,22 @@ function setupDragScroll() {
 
 // ── NAVEGACIÓN POR TECLADO (Estilo Videojuego WASD / Flechas) ──
 let keyboardFocusActive = false;
-let activeSection = 0; // 0: Reproductor, 1: Filtros, 2: Catálogo, 3: Portafolio
+let activeSection = 0; // 0: Filtros, 1: Catálogo, 2: Portafolio
 let activeIndex = 0;
 
 function getSectionElements(sectionId) {
-    if (sectionId === 0) {
-        const selectors = [
-            '#player-play-btn',
-            '#player-prev-btn',
-            '#player-next-btn',
-            '#playlist-shuffle-btn',
-            '#player-mute-btn',
-            '#player-fullscreen-btn'
-        ];
-        return selectors
-            .map(sel => document.querySelector(sel))
-            .filter(el => el && getComputedStyle(el).display !== 'none');
-    }
-    if (sectionId === 1) {
+    if (sectionId === 0) { // Filtros
         const btns = [
             ...document.querySelectorAll('#catalogo-main-filters .main-cat-btn'),
             ...document.querySelectorAll('#catalogo-sub-filters .tab-btn')
         ];
         return btns.filter(el => el && getComputedStyle(el).display !== 'none');
     }
-    if (sectionId === 2) {
+    if (sectionId === 1) { // Catálogo
         return Array.from(document.querySelectorAll('#grid-catalogo .card-wrapper'))
             .filter(el => el && getComputedStyle(el).display !== 'none');
     }
-    if (sectionId === 3) {
+    if (sectionId === 2) { // Portafolio
         return Array.from(document.querySelectorAll('#grid-portafolio .card-compact-wrapper'))
             .filter(el => el && getComputedStyle(el).display !== 'none');
     }
@@ -1985,46 +1972,20 @@ function initKeyboardNavigation() {
         const key = e.key.toLowerCase();
 
         // 1. Hotkeys Globales de Reproducción
-        if (key === ' ' || e.key === 'Spacebar') {
+        if (key === ' ' || e.key === 'Spacebar' || key === 'k') {
             e.preventDefault();
             const playBtn = document.getElementById('player-play-btn');
             if (playBtn) playBtn.click();
             return;
         }
-        if (key === 'n') {
+        if (key === 'l') { // Siguiente (derecha)
             e.preventDefault();
-            const nextBtn = document.getElementById('player-next-btn');
-            if (nextBtn) nextBtn.click();
+            playNext();
             return;
         }
-        if (key === 'b') {
+        if (key === 'j') { // Anterior (izquierda)
             e.preventDefault();
-            const prevBtn = document.getElementById('player-prev-btn');
-            if (prevBtn) prevBtn.click();
-            return;
-        }
-        if (key === 'm') {
-            e.preventDefault();
-            const muteBtn = document.getElementById('player-mute-btn');
-            if (muteBtn) muteBtn.click();
-            return;
-        }
-        if (key === 'f') {
-            e.preventDefault();
-            const fullscreenBtn = document.getElementById('player-fullscreen-btn');
-            if (fullscreenBtn) fullscreenBtn.click();
-            return;
-        }
-        if (key === 'r') {
-            e.preventDefault();
-            const shuffleBtn = document.getElementById('playlist-shuffle-btn');
-            if (shuffleBtn) shuffleBtn.click();
-            return;
-        }
-        if (key === 'p') {
-            e.preventDefault();
-            const playlistBtn = document.getElementById('player-playlist-btn');
-            if (playlistBtn) playlistBtn.click();
+            playPrev();
             return;
         }
         if (e.key === 'Escape') {
@@ -2042,7 +2003,7 @@ function initKeyboardNavigation() {
         if (key === 'w' || e.key === 'ArrowUp') {
             e.preventDefault();
             keyboardFocusActive = true;
-            activeSection = (activeSection - 1 + 4) % 4;
+            activeSection = (activeSection - 1 + 3) % 3;
             const elements = getSectionElements(activeSection);
             if (elements.length > 0) {
                 activeIndex = Math.min(activeIndex, elements.length - 1);
@@ -2053,7 +2014,7 @@ function initKeyboardNavigation() {
         } else if (key === 's' || e.key === 'ArrowDown') {
             e.preventDefault();
             keyboardFocusActive = true;
-            activeSection = (activeSection + 1) % 4;
+            activeSection = (activeSection + 1) % 3;
             const elements = getSectionElements(activeSection);
             if (elements.length > 0) {
                 activeIndex = Math.min(activeIndex, elements.length - 1);
