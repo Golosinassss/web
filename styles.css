@@ -868,6 +868,8 @@
         align-items: center;
         justify-content: center;
         background: #000;
+        padding: 2px;
+        box-sizing: border-box;
     }
     .corner-gif img {
         width: 100%;
@@ -878,17 +880,13 @@
         left: 0;
         width: 30px;
         height: 40px;
-        border-top: 1px solid transparent;
-        background: linear-gradient(#000, #000) padding-box,
-                    var(--grad-tornasol) border-box;
+        background: #000;
     }
     .corner-gif-right {
         right: 0;
         width: 30px;
         height: 40px;
-        border-top: 1px solid transparent;
-        background: linear-gradient(#000, #000) padding-box,
-                    var(--grad-tornasol) border-box;
+        background: #000;
     }
 
     /* Eliminar casillas/bordes de enfoque (focus outline) en los controles */
