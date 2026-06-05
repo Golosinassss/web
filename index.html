@@ -4,126 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOLOSINASSSS | Archivo Vivo</title>
-    <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow-y: auto; background: black; color: white; font-family: 'Courier New', monospace; }
-        
-        #video-hero {
-            position: relative; 
-            width: calc(100% - 60px); /* Espacio para los tickers laterales */
-            height: calc(100vh - 50px); /* Espacio para los tickers superior/inferior */
-            margin: 25px auto;
-            background: black; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            overflow: hidden;
-            border: 1px solid #333;
-        }
-        
-        iframe { width: 100%; height: 100%; }
-
-        .border-container {
-            position: fixed; background: black; color: white;
-            font-family: 'Courier New', monospace; font-size: 0.8rem;
-            padding: 2px 5px; z-index: 100; overflow: hidden; white-space: nowrap; display: flex;
-        }
-
-        .top { top: 0; left: 0; width: 100%; height: 25px; border-bottom: 1px solid #222; }
-        .bottom { bottom: 0; left: 0; width: 100%; height: 25px; border-top: 1px solid #222; }
-        .left { top: 0; left: 0; width: 30px; height: 100%; writing-mode: vertical-rl; border-right: 1px solid #222; }
-        .right { top: 0; right: 0; width: 30px; height: 100%; writing-mode: vertical-rl; border-left: 1px solid #222; }
-
-        .ticker { display: flex; animation-timing-function: linear; animation-iteration-count: infinite; }
-        @keyframes ticker-h { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes ticker-v { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-
-        .top .ticker, .bottom .ticker { animation: ticker-h 60s linear infinite; }
-        .left .ticker, .right .ticker { animation: ticker-v 45s linear infinite; }
-
-        .section-title {
-            padding: 60px 50px 10px;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            border-bottom: 1px solid white;
-            margin: 0 30px;
-        }
-
-        #grid-catalogo, #grid-portafolio {
-            padding: 30px 60px; 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 20px; 
-            background: black;
-            margin-bottom: 50px;
-        }
-
-        .card {
-            border: 1px solid #444; 
-            padding: 20px; 
-            transition: border 0.3s;
-            background: #050505;
-        }
-        .card:hover { border-color: white; }
-        .card h3 { margin-top: 0; font-size: 1.1rem; letter-spacing: 1px; }
-        .card p { font-size: 0.9rem; color: #ccc; line-height: 1.4; }
-        .card a { color: cyan; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; border: 1px solid cyan; padding: 5px 10px; display: inline-block; margin-top: 10px; }
-        .card a:hover { background: cyan; color: black; }
-    </style>
+    <meta name="description" content="GOLOSINASSSS — Ecosistema documental transmedia. Memoria musical contemporánea, sonido infinito, soberanía creativa. Leticia · Amazonas · Bogotá D.C.">
+    <meta property="og:title" content="GOLOSINASSSS | Archivo Vivo">
+    <meta property="og:description" content="Ecosistema documental transmedia. Memoria musical contemporánea desde el Amazonas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.golosinassss.com">
+    <meta property="og:image" content="https://www.golosinassss.com/og-image.png">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.golosinassss.com/og-image.png">
+    <meta name="theme-color" content="#080808">
+    <link rel="icon" type="image/png" href="ICON_GOLOSINASSSS.png">
+    <link rel="apple-touch-icon" href="ICON_GOLOSINASSSS.png">
+    <!-- Preconnect: establece conexiones anticipadas a dominios externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://img.youtube.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- W3C Semantic Metadata / JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWorkSeries",
+      "name": "GOLOSINASSSS - Archivo Vivo",
+      "description": "Ecosistema documental transmedia y memoria musical contemporánea desde el Amazonas.",
+      "creator": {
+        "@type": "Organization",
+        "name": "GOLOSINASSSS SAS"
+      },
+      "genre": ["Documentary", "Music", "Animation"]
+    }
+    </script>
 </head>
 <body>
-    <div class="border-container top"><div class="ticker">GOLOSINASSSS | SONIDO INFINITO | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;GOLOSINASSSS | SONIDO INFINITO | ARCHIVO VIVO | MEMORIA MUSICAL CONTEMPORÁNEA |&nbsp;</div></div>
-    <div class="border-container bottom"><div class="ticker">SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;SONIDO INFINITO | MEMORIA VIVA | CÓDIGO DECOLONIAL | TRANSMEDIA | ECOSISTEMA NARRATIVO |&nbsp;</div></div>
-    <div class="border-container left"><div class="ticker">ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL |&nbsp;ESTADO: ARCHIVO TÉCNICO | CLASIFICACIÓN: VANGUARDIA TROPICAL |&nbsp;</div></div>
-    <div class="border-container right"><div class="ticker">PROYECTO MAESTRO | GOLOSINASSSS 2026 |&nbsp;PROYECTO MAESTRO | GOLOSINASSSS 2026 |&nbsp;</div></div>
-
-    <div id="video-hero">
-        <iframe src="https://www.youtube.com/embed/WpIvp6I7obE?autoplay=0&mute=0&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <h2 class="section-title">Catálogo de Sonido Infinito</h2>
-    <div id="grid-catalogo"></div>
-
-    <h2 class="section-title">Portafolio Audiovisual Jaime Barbosa Gomes</h2>
-    <div id="grid-portafolio">
-        <div class="card">
-            <h3>DIOMEDES: EL ÍDOLO, EL MISTERIO Y LA TRAGEDIA</h3>
-            <p>Netflix / Dynamo (2022). Editor Senior del documental sobre el 'Cacique de la Junta'.</p>
-            <a href="https://www.netflix.com/title/81215451" target="_blank">Ver en Netflix</a>
-        </div>
-        <div class="card">
-            <h3>LA PULLA (Teatro)</h3>
-            <p>El Espectador (2019). Dirección de Contenido Visual y Diseño de Montaje para la obra de teatro.</p>
-            <a href="https://youtu.be/m6j1pGZ_mS0" target="_blank">Ver registro</a>
-        </div>
-        <div class="card">
-            <h3>ASÍ PARTICIPAN LAS VÍCTIMAS</h3>
-            <p>JEP / Comisión de la Verdad (2020). Serie Documental sobre la participación de las víctimas en el proceso de paz.</p>
-            <a href="https://youtu.be/p6pY39fC294" target="_blank">Ver video</a>
+    <!-- ── Bordes Marquesina ────────────────────────────────── -->
+    <div class="border-container top">
+        <div class="marquee">
+            <span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | </span>
+            <span class="txt ticker">GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | SONIDO INFINITO | MEMORIA MUSICAL CONTEMPORÁNEA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | </span>
         </div>
     </div>
 
-    <script>
-        function extractVideoID(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : url;
-        }
+    <div class="border-container left" style="transform: rotate(180deg);">
+        <div class="marquee-v">
+            <span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span>
+            <span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span>
+        </div>
+    </div>
+    <div class="border-container right">
+        <div class="marquee-v" id="right-marquee">
+            <!-- Patrón ASCII inyectado por app.js -->
+        </div>
+    </div>
 
-        fetch('catalogo.json')
-            .then(response => response.json())
-            .then(data => {
-                const grid = document.getElementById('grid-catalogo');
-                data.filter(item => item.estado === 'Visible').forEach(item => {
-                    const videoId = extractVideoID(item.url_video);
-                    grid.innerHTML += `
-                        <div class="card">
-                            <h3>${item.titulo}</h3>
-                            <p>${item.categoria} | ${item.descripcion}</p>
-                            <a href="https://youtu.be/${videoId}" target="_blank">Ver registro</a>
+    <!-- ── Contenido Principal ──────────────────────────────── -->
+    <div id="main-content">
+
+        <!-- VIDEO HERO -->
+        <div id="video-hero"><div id="yt-player-container"></div></div>
+
+        <!-- SECCIÓN 1: GOLOSINASSSS -->
+        <div class="section-header section-header-cat">
+            <div class="main-filters" id="catalogo-main-filters"></div>
+            <div class="subcategories-row" id="catalogo-sub-filters" style="opacity: 0; pointer-events: none;"></div>
+        </div>
+        <div class="grid-wrap"><div id="grid-catalogo"></div></div>
+
+        <!-- LETRERO: separador entre secciones -->
+        <div id="logo-img-wrap">
+            <div id="logo-img-gradient" aria-label="GOLOSINASSSS"></div>
+        </div>
+
+        <!-- SECCIÓN 2: ARCHIVO VIVO -->
+        <div class="portafolio-scroll-outer"><div id="grid-portafolio"></div></div>
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="footer-line">DESARROLLO DE FORMATOS • NARRATIVAS TRANSMEDIA • FOTOGRAFÍA DOCUMENTAL • MONTAJE Y POSTPRODUCCIÓN • ANIMACIÓN DIGITAL</p>
+            <p class="footer-line">CONTACTO: <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="https://wa.me/573218914002" target="_blank">(+57 321 891-4002)</a></p>
+            <p class="footer-line">GOLOSINASSSS SAS | LETICIA - AMAZONAS - BOGOTÁ D.C - COLOMBIA</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/golosinassss/" target="_blank" style="color:#ffb3ba;">INSTAGRAM</a>
+                <a href="https://www.youtube.com/@golosinassss" target="_blank" style="color:#bae1ff;">YOUTUBE</a>
+                <a href="https://www.linkedin.com/in/jaime-barbosa-gomes-da-silva-917428289/" target="_blank" style="color:#baffc9;">LINKEDIN</a>
+                <a href="https://www.reddit.com/user/golosinassss/" target="_blank" style="color:#ffdfba;">REDDIT</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- GRADIENTE TORNASOL GLOBAL PARA SVGs -->
+    <svg style="width:0; height:0; position:absolute;" aria-hidden="true">
+        <defs>
+            <linearGradient id="tornasol-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ffb3ba" />
+                <stop offset="25%" stop-color="#bae1ff" />
+                <stop offset="50%" stop-color="#baffc9" />
+                <stop offset="75%" stop-color="#ffffba" />
+                <stop offset="100%" stop-color="#ffdfba" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- LISTA DE AGREGADOS (PLAYLIST DESPLEGABLE) -->
+    <div id="playlist-drawer" class="playlist-drawer" style="display: none;">
+        <div class="playlist-drawer-header">
+            <span>LISTA DE AGREGADOS</span>
+            <div class="playlist-header-actions">
+                <button id="playlist-drawer-close" title="Cerrar">✕</button>
+            </div>
+        </div>
+        <div id="playlist-drawer-items" class="playlist-drawer-items">
+            <!-- Items agregados dinámicamente -->
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR PERSONALIZADO FIJO (Segunda línea en la parte inferior) -->
+    <div id="custom-player" aria-label="Reproductor de Audio y Video">
+        <!-- Fila Principal: Botones e Info LCD -->
+        <div class="player-row-main">
+            <!-- Controles de reproducción izquierdos -->
+            <div class="player-controls-left">
+                <button id="player-prev-btn" class="player-btn-capsule" title="Anterior (<<)" aria-label="Anterior">
+                    <span class="btn-icon">&lt;&lt;</span>
+                </button>
+                <button id="player-play-btn" class="player-btn-capsule" title="Play / Pausa" aria-label="Reproducir">
+                    <span class="btn-icon" id="player-play-svg-container">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="url(#tornasol-grad)" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </span>
+                </button>
+                <button id="player-next-btn" class="player-btn-capsule" title="Siguiente (>>)" aria-label="Siguiente">
+                    <span class="btn-icon">&gt;&gt;</span>
+                </button>
+                <button id="playlist-shuffle-btn" class="player-btn-capsule" title="Aleatorio (RAND)" aria-label="Aleatorio">
+                    <span class="btn-icon" style="display: flex; align-items: center; justify-content: center;">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px; height:12px; display:block;">
+                            <polyline points="16 3 21 3 21 8"/>
+                            <line x1="4" y1="20" x2="21" y2="3"/>
+                            <polyline points="21 16 21 21 16 21"/>
+                            <line x1="15" y1="15" x2="21" y2="21"/>
+                            <line x1="4" y1="4" x2="9" y2="9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div id="lcd-time" class="lcd-time">00:00 / 00:00</div>
+            </div>
+
+            <!-- Pantalla LCD estilo autoestéreo de carro -->
+            <div class="player-lcd">
+                <div class="lcd-screen">
+                    <div class="lcd-text-container">
+                        <div class="lcd-text-marquee">
+                            <span class="lcd-text-span" id="lcd-text-1"><span class="lcd-title">GOLOSINASSSS</span> <span class="lcd-sep">•</span> <span class="lcd-desc">Escoge tu próxima golosina</span> <span class="lcd-sep">•</span> </span>
+                            <span class="lcd-text-span" id="lcd-text-2"><span class="lcd-title">GOLOSINASSSS</span> <span class="lcd-sep">•</span> <span class="lcd-desc">Escoge tu próxima golosina</span> <span class="lcd-sep">•</span> </span>
                         </div>
-                    `;
-                });
-            });
-    </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles extras y volumen derechos -->
+            <div class="player-controls-right">
+                <button id="player-playlist-btn" class="player-btn-capsule" title="Lista de Agregados" aria-label="Lista de Agregados">
+                    <span class="btn-icon">☰</span>
+                </button>
+                
+                <div class="volume-container">
+                    <button id="player-mute-btn" class="player-mute-btn-icon" title="Silenciar" aria-label="Silenciar">
+                        <span class="btn-icon" id="player-mute-svg-container">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <input type="range" id="player-volume" min="0" max="100" value="0" aria-label="Volumen">
+                </div>
+
+                <button id="player-fullscreen-btn" class="player-btn-capsule" title="Pantalla Completa" aria-label="Pantalla Completa">
+                    <span class="btn-icon" id="player-fullscreen-svg-container">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Fila Inferior: Timeline expandido al 100% de la barra -->
+        <div class="player-row-timeline">
+            <input type="range" id="player-timeline" min="0" max="100" value="0" aria-label="Barra de tiempo">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Fallback para navegadores sin JavaScript -->
+    <noscript>
+        <style>body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#080808;color:#e0e0e0;font-family:monospace;text-align:center;margin:0;}</style>
+        <div style="padding:40px;">
+            <h1 style="color:#00e5ff;font-size:1.2rem;letter-spacing:.3em;">GOLOSINASSSS</h1>
+            <p style="opacity:.6;margin-top:16px;">Este archivo vivo transmedia requiere JavaScript para funcionar.</p>
+        </div>
+    </noscript>
 </body>
 </html>
