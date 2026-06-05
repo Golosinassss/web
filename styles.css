@@ -1204,11 +1204,15 @@
     }
 
     /* Fallback de Pantalla Completa mediante CSS - Modo Teatro */
+    body.fullscreen-mode #main-content {
+        padding: 30px 30px 120px 30px !important;
+    }
     body.fullscreen-mode #video-hero {
         position: relative;
-        width: 100%;
-        height: calc(100vh - 120px);
-        padding-bottom: 0;
+        width: 100% !important;
+        height: calc(100vh - 70px) !important;
+        padding-bottom: 0 !important;
+        margin: 0 !important;
         z-index: 2;
     }
     body.fullscreen-mode #video-hero iframe {
@@ -1228,7 +1232,8 @@
         .left, .right { width: 24px; top: 24px; bottom: 32px; }
         #custom-player { left: 24px; right: 24px; height: 32px; }
         .playlist-drawer { bottom: 36px; right: 24px; }
-        body.fullscreen-mode #video-hero { height: calc(100vh - 140px); }
+        body.fullscreen-mode #main-content { padding: 24px 24px 120px 24px !important; }
+        body.fullscreen-mode #video-hero { height: calc(100vh - 56px) !important; }
         #player-fullscreen-btn { width: 24px !important; height: 24px !important; }
         #player-fullscreen-btn svg { width: 12px; height: 12px; }
         .corner-gif-left { width: 24px; height: 32px; }
@@ -1243,7 +1248,8 @@
         .lcd-text-span { font-size: 0.62rem; }
         .ticker-logo-v { font-size: 0.15rem; }
         #video-hero { padding-bottom: 56.25%; }
-        body.fullscreen-mode #video-hero { height: calc(100vh - 140px); }
+        body.fullscreen-mode #main-content { padding: 24px 24px 120px 24px !important; }
+        body.fullscreen-mode #video-hero { height: calc(100vh - 56px) !important; }
 
         .section-header { flex-wrap: wrap; gap: 6px; align-items: flex-start; }
         .section-label-large { width: 100%; padding-bottom: 2px; font-size: 1rem; }
@@ -1274,7 +1280,8 @@
         .section-label-large { font-size: 0.9rem; }
         footer { font-size: 0.55rem; }
         .social-links { gap: 8px; }
-        body.fullscreen-mode #video-hero { height: calc(100vh - 125px); }
+        body.fullscreen-mode #main-content { padding: 24px 18px 110px 18px !important; }
+        body.fullscreen-mode #video-hero { height: calc(100vh - 60px) !important; }
         #grid-portafolio { animation-duration: 270s; }
 
         .portafolio-scroll-outer { height: 100px; }
