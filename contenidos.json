@@ -70,6 +70,18 @@
     "date": "2025",
     "destacado": true,
     "tags": ["institucional", "social"]
+  },  
+  {
+    "id": "14",
+    "titulo": "Bilardo: El doctor del fútbol",
+    "categoria": "PERIODISMO DOCUMENTAL",
+    "descripcion": "HBO Max Documental - SNAKED Dirección Unidad Colombia",
+    "url_video": "https://youtu.be/oZ3MARJKSAk?si=uZ5WV-mwWpNGnCK-",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2022",
+    "destacado": true,
+    "tags": ["cine", "periodismo", "fútbol"]
   },
   {
     "id": "1",
