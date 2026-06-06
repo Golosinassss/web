@@ -421,7 +421,7 @@ const TAG_ORDER = [
     'videoclips', 'institucional', 'sonido infinito',
 ];
 
-const MAIN_CATEGORIES = ['todas', 'documental', 'música', 'animación'];
+const MAIN_CATEGORIES = ['todas', 'documental', 'música', 'animación', 'deportes'];
 
 // Color de cada categoría principal
 const mainCatColors = {
@@ -429,6 +429,7 @@ const mainCatColors = {
     'documental': '#ffb3ba',
     'música':     '#bae1ff',
     'animación':  '#baffc9',
+    'deportes':   '#ffffba',
 };
 
 // Subcategorías por categoría principal (en orden)
@@ -436,6 +437,7 @@ const SUBCAT_MAP = {
     'documental': ['social', 'periodismo', 'cine', 'institucional'],
     'música':     ['conciertos', 'sesiones musicales', 'videoclips', 'sonido infinito'],
     'animación':  [],
+    'deportes':   ['fútbol', 'deportes'],
 };
 
 // ── Helpers YouTube ──────────────────────────────────────────
@@ -456,9 +458,9 @@ function loadVideoInPlayer(videoId, autoplay) {
 }
 
 function ensureThumbnail(item) {
-    if (!item.preview_url && item.tipo === 'youtube') {
+    if (!item.preview_url && (item.tipo || '').toLowerCase() === 'youtube') {
         const videoId = getYouTubeId(item.url_video);
-        if (videoId) item.preview_url = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+        if (videoId) item.preview_url = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
     }
 }
 
@@ -1096,6 +1098,12 @@ function itemMatchesMainFilter(item, filter) {
         return category.includes('animación') ||
                category.includes('animacion') ||
                tags.some(t => t.includes('animac') || t.includes('graphics') || t.includes('3d') || t.includes('dibujo'));
+    }
+    if (filter === 'deportes') {
+        return category.includes('deportes') ||
+               tags.includes('deportes') ||
+               tags.includes('fútbol') ||
+               tags.includes('futbol');
     }
     return false;
 }
@@ -1764,14 +1772,6 @@ fetch(SHEET_URL)
             item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
             return item;
         });
-        allData.sort((a, b) => {
-            const idA = parseInt(a.id) || 0;
-            const idB = parseInt(b.id) || 0;
-            if (idB !== idA) return idB - idA;
-            const dateA = parseInt(a.date) || 0;
-            const dateB = parseInt(b.date) || 0;
-            return dateB - dateA;
-        });
         initApp();
     })
     .catch(err => {
@@ -1782,14 +1782,6 @@ fetch(SHEET_URL)
                 allData = data.map(item => {
                     item.vistas = viewsMap[item.id] || Math.floor(Math.random() * 5000) + 1000;
                     return item;
-                });
-                allData.sort((a, b) => {
-                    const idA = parseInt(a.id) || 0;
-                    const idB = parseInt(b.id) || 0;
-                    if (idB !== idA) return idB - idA;
-                    const dateA = parseInt(a.date) || 0;
-                    const dateB = parseInt(b.date) || 0;
-                    return dateB - dateA;
                 });
                 initApp();
             })
@@ -1905,22 +1897,35 @@ function setupDragScroll() {
 
 // ── NAVEGACIÓN POR TECLADO (Estilo Videojuego WASD / Flechas) ──
 let keyboardFocusActive = false;
-let activeSection = 0; // 0: Filtros, 1: Catálogo, 2: Portafolio
+let activeSection = 0; // 0: Reproductor, 1: Filtros, 2: Catálogo, 3: Portafolio
 let activeIndex = 0;
 
 function getSectionElements(sectionId) {
-    if (sectionId === 0) { // Filtros
+    if (sectionId === 0) { // Reproductor
+        const selectors = [
+            '#player-play-btn',
+            '#player-prev-btn',
+            '#player-next-btn',
+            '#playlist-shuffle-btn',
+            '#player-mute-btn',
+            '#player-fullscreen-btn'
+        ];
+        return selectors
+            .map(sel => document.querySelector(sel))
+            .filter(el => el && getComputedStyle(el).display !== 'none');
+    }
+    if (sectionId === 1) { // Filtros
         const btns = [
             ...document.querySelectorAll('#catalogo-main-filters .main-cat-btn'),
             ...document.querySelectorAll('#catalogo-sub-filters .tab-btn')
         ];
         return btns.filter(el => el && getComputedStyle(el).display !== 'none');
     }
-    if (sectionId === 1) { // Catálogo
+    if (sectionId === 2) { // Catálogo
         return Array.from(document.querySelectorAll('#grid-catalogo .card-wrapper'))
             .filter(el => el && getComputedStyle(el).display !== 'none');
     }
-    if (sectionId === 2) { // Portafolio
+    if (sectionId === 3) { // Portafolio
         return Array.from(document.querySelectorAll('#grid-portafolio .card-compact-wrapper'))
             .filter(el => el && getComputedStyle(el).display !== 'none');
     }
@@ -2003,7 +2008,7 @@ function initKeyboardNavigation() {
         if (key === 'w' || e.key === 'ArrowUp') {
             e.preventDefault();
             keyboardFocusActive = true;
-            activeSection = (activeSection - 1 + 3) % 3;
+            activeSection = (activeSection - 1 + 4) % 4;
             const elements = getSectionElements(activeSection);
             if (elements.length > 0) {
                 activeIndex = Math.min(activeIndex, elements.length - 1);
@@ -2014,7 +2019,7 @@ function initKeyboardNavigation() {
         } else if (key === 's' || e.key === 'ArrowDown') {
             e.preventDefault();
             keyboardFocusActive = true;
-            activeSection = (activeSection + 1) % 3;
+            activeSection = (activeSection + 1) % 4;
             const elements = getSectionElements(activeSection);
             if (elements.length > 0) {
                 activeIndex = Math.min(activeIndex, elements.length - 1);
