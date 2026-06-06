@@ -1,6 +1,6 @@
 [
   {
-    "id": "13",
+    "id": 16,
     "titulo": "6402 + RAZONES PARA NO OLVIDAR",
     "categoria": "Documental",
     "descripcion": "MAFAPO + Epigrama + MinCultura",
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "id": "12",
+    "id": 15,
     "titulo": "47 SALÓN NACIONAL DE ARTISTAS: KAUKA asamblea de mundos posibles",
     "categoria": "Documental",
     "descripcion": "Epigrama + MinCultura - Registro Documental",
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "id": "9",
+    "id": 14,
     "titulo": "SONIDO INFINITO: Conjunto Media Luna - Kumbia Medallo",
     "categoria": "CONCIERTOS EN VIVO",
     "descripcion": "Aniversario Ritmo Moderno - Bollo Room #8 - Bogotá, Colombia",
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "id": "8",
+    "id": 13,
     "titulo": "SONIDO INFINITO: Velandia y La Tigra - Venganza",
     "categoria": "CONCIERTOS EN VIVO",
     "descripcion": "Teatro Colón - Bogotá, Colombia",
@@ -60,7 +60,21 @@
     ]
   },
   {
-    "id": "11",
+    "id": 12,
+    "titulo": "LIMONES - Semblanzas del Río Guapi",
+    "categoria": "VIDEOCLIP",
+    "descripcion": "Videoclip - Realización + Montaje ",
+    "url_video": "https://youtu.be/m1YnckBrAxc?si=sCSBjgFV7jUL6dvj",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2025",
+    "destacado": true,
+    "tags": [
+      "videoclips"
+    ]
+  },
+  {
+    "id": "",
     "titulo": "Candidatas Electorales Indígenas",
     "categoria": "WEB - POPAYÁN, CAUCA",
     "descripcion": "OEA/CIM Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
@@ -75,7 +89,7 @@
     ]
   },
   {
-    "id": "10",
+    "id": "",
     "titulo": "MAPP/OEA - Mínimos Humanitarios",
     "categoria": "WEB - ARAUCA",
     "descripcion": "Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
@@ -90,7 +104,7 @@
     ]
   },
   {
-    "id": "14",
+    "id": 9,
     "titulo": "BILARDO: El doctor del fútbol",
     "categoria": "PERIODISMO DOCUMENTAL",
     "descripcion": "HBO Max Documental - SNAKED Dirección Unidad Colombia",
@@ -106,7 +120,7 @@
     ]
   },
   {
-    "id": "1",
+    "id": 8,
     "titulo": "DIOMEDES: El ídolo, el misterio y la tragedia",
     "categoria": "PERIODISMO DOCUMENTAL",
     "descripcion": "Netflix Original Documental - Co-Dirección y Montaje.",
@@ -122,7 +136,7 @@
     ]
   },
   {
-    "id": "2",
+    "id": 7,
     "titulo": "HACER VISIBLE LO INVISIBLE",
     "categoria": "SERIE WEB DOCUMENTAL",
     "descripcion": "COMISIÓN DE LA VERDAD - Dirección, Producción y Postproducción.",
@@ -137,7 +151,7 @@
     ]
   },
   {
-    "id": "5",
+    "id": 6,
     "titulo": "EL ESTALLIDO",
     "categoria": "PERIODISMO DOCUMENTAL",
     "descripcion": "Cortometraje Independiente - Dirección, Co-Producción y Postproducción.",
@@ -153,7 +167,36 @@
     ]
   },
   {
-    "id": "6",
+    "id": 6,
+    "titulo": "PAJARITA CAUCANA - Los Colores de un Territorio",
+    "categoria": "Documental",
+    "descripcion": "",
+    "url_video": "https://youtu.be/5RcfLDBT61Y?si=JhOs7k4d_i1dRvm7",
+    "tipo": "",
+    "preview_url": "",
+    "date": "2021",
+    "destacado": false,
+    "tags": [
+      "institucional",
+      "social"
+    ]
+  },
+  {
+    "id": 5,
+    "titulo": "ROGER FEDERER - Luis7Lunes & Vic Deal Ft. Fa-zeta",
+    "categoria": "VIDEOCLIP",
+    "descripcion": "Videoclip - Producción + Dirección + Montaje ",
+    "url_video": "https://youtu.be/ZjQjB1Bg5_Q?si=-RuEsuK7dUbDxpFc",
+    "tipo": "youtube",
+    "preview_url": "",
+    "date": "2020",
+    "destacado": true,
+    "tags": [
+      "videoclips"
+    ]
+  },
+  {
+    "id": 4,
     "titulo": "ASÍ PARTICIPAN LAS VÍCTIMAS EN LA JEP",
     "categoria": "ANIMACIÓN",
     "descripcion": "JEP - Jurisdicción Especial para la Paz - Dirección y Postproducción.",
@@ -169,7 +212,7 @@
     ]
   },
   {
-    "id": "13",
+    "id": 3,
     "titulo": "LÍDERES SOCIALES ASESINADOS: ¿Qué hace la UNP?",
     "categoria": "SERIE PERIODISMO DOCUMENTAL",
     "descripcion": "National Geographic Latinoamerica #ExplorerInvestigation",
@@ -184,7 +227,7 @@
     ]
   },
   {
-    "id": "12",
+    "id": 2,
     "titulo": "LÍDERES SOCIALES ASESINADOS: Operativo Tumaco",
     "categoria": "SERIE PERIODISMO DOCUMENTAL",
     "descripcion": "National Geographic Latinoamerica #ExplorerInvestigation",
@@ -199,7 +242,7 @@
     ]
   },
   {
-    "id": "7",
+    "id": 1,
     "titulo": "AMPLIFICADO.TV",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Formato de sesiones de música en vivo - Co-Dirección y Postproducción",
@@ -216,16 +259,17 @@
   },
   {
     "id": "",
-    "titulo": "ROGER FEDERER - Luis7Lunes & Vic Deal Ft. Fa-zeta",
-    "categoria": "VIDEOCLIP",
-    "descripcion": "Videoclip - Producción + Dirección + Montaje ",
-    "url_video": "https://youtu.be/ZjQjB1Bg5_Q?si=-RuEsuK7dUbDxpFc",
-    "tipo": "youtube",
+    "titulo": "GUNS 'N ROSES: Bienvenido a la jungla bogotana ",
+    "categoria": "ANIMACIÓN - MÚSICA ",
+    "descripcion": "Animación Documental",
+    "url_video": "https://youtu.be/r75OWwq2SAA?si=1qoksrAwydYekMQO",
+    "tipo": "Youtube",
     "preview_url": "",
-    "date": "2020",
+    "date": "",
     "destacado": true,
     "tags": [
-      "videoclip"
+      "Animación",
+      "música"
     ]
   }
 ]
