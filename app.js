@@ -53,6 +53,110 @@
 
 
 
+// ── Telemetría y Analíticas Internas (GolosinasTelemetry) ──────
+const GolosinasTelemetry = {
+    currentVideo: {
+        id: null,
+        title: null,
+        category: null,
+        milestones: { p25: false, p50: false, p75: false }
+    },
+
+    logEvent(eventName, eventData = {}) {
+        const payload = {
+            event: eventName,
+            data: eventData,
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            referrer: document.referrer || 'direct'
+        };
+
+        try {
+            const history = JSON.parse(localStorage.getItem('golosinas_telemetry') || '[]');
+            history.unshift(payload);
+            if (history.length > 100) history.pop();
+            localStorage.setItem('golosinas_telemetry', JSON.stringify(history));
+        } catch (e) {
+            console.warn('Telemetry: local storage is full or disabled', e);
+        }
+
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.log(`%c[Telemetry] ${eventName}`, 'color: #00e5ff; font-weight: bold;', eventData);
+        }
+    },
+
+    trackVideoStart(videoId, title, category) {
+        this.currentVideo = {
+            id: videoId,
+            title: title,
+            category: category,
+            milestones: { p25: false, p50: false, p75: false }
+        };
+        this.logEvent('video_start', { videoId, title, category });
+    },
+
+    trackVideoPause(currentTime) {
+        if (!this.currentVideo.id) return;
+        this.logEvent('video_pause', {
+            videoId: this.currentVideo.id,
+            title: this.currentVideo.title,
+            currentTime: Math.round(currentTime)
+        });
+    },
+
+    trackVideoEnd() {
+        if (!this.currentVideo.id) return;
+        this.logEvent('video_end', {
+            videoId: this.currentVideo.id,
+            title: this.currentVideo.title
+        });
+        this.currentVideo.id = null;
+    },
+
+    trackVideoProgress(currentTime, duration) {
+        if (!this.currentVideo.id || duration <= 0) return;
+        const pct = (currentTime / duration) * 100;
+
+        let milestone = null;
+        if (pct >= 25 && !this.currentVideo.milestones.p25) {
+            milestone = '25%';
+            this.currentVideo.milestones.p25 = true;
+        } else if (pct >= 50 && !this.currentVideo.milestones.p50) {
+            milestone = '50%';
+            this.currentVideo.milestones.p50 = true;
+        } else if (pct >= 75 && !this.currentVideo.milestones.p75) {
+            milestone = '75%';
+            this.currentVideo.milestones.p75 = true;
+        }
+
+        if (milestone) {
+            this.logEvent('video_progress', {
+                videoId: this.currentVideo.id,
+                title: this.currentVideo.title,
+                progress: milestone
+            });
+        }
+    },
+
+    trackCategoryFilter(category) {
+        this.logEvent('filter_main_category', { category });
+    },
+
+    trackTagFilter(tag, category) {
+        this.logEvent('filter_tag', { tag, category });
+    },
+
+    showEvents() {
+        try {
+            const history = JSON.parse(localStorage.getItem('golosinas_telemetry') || '[]');
+            console.table(history);
+        } catch (e) {
+            console.error('Error al leer historial de telemetría', e);
+        }
+    }
+};
+window.GolosinasTelemetry = GolosinasTelemetry;
+
 // ── Estado Global No-Reactivo ─────────────────────────────────
 let ytPlayer        = null;
 let portafolioCards = [];
@@ -607,8 +711,16 @@ function playVideo(url, element) {
 
         // Seleccionar categoría y tag automáticamente para este video
         selectCategoryAndTagForVideo(trackItem);
+
+        // Telemetría: Registrar el inicio de la reproducción
+        if (typeof GolosinasTelemetry !== 'undefined') {
+            GolosinasTelemetry.trackVideoStart(videoId, trackItem.titulo, trackItem.categoria);
+        }
     } else {
         updateLcdDisplay(`<span class="lcd-title">REPRODUCIENDO...</span> <span class="lcd-sep">•</span> `);
+        if (typeof GolosinasTelemetry !== 'undefined') {
+            GolosinasTelemetry.trackVideoStart(videoId, "Video Desconocido", "Desconocida");
+        }
     }
 
     // Desbloqueo de audio respetando el slider del reproductor
@@ -762,6 +874,15 @@ function onYouTubeIframeAPIReady() {
             onStateChange: function (e) { 
                 if (e.data === 0) playNext(); 
                 updateCustomPlayerUI(e.data);
+
+                // Telemetría: Pausas y fin de video
+                if (typeof GolosinasTelemetry !== 'undefined' && ytPlayer && typeof ytPlayer.getCurrentTime === 'function') {
+                    if (e.data === YT.PlayerState.PAUSED) {
+                        GolosinasTelemetry.trackVideoPause(ytPlayer.getCurrentTime());
+                    } else if (e.data === YT.PlayerState.ENDED) {
+                        GolosinasTelemetry.trackVideoEnd();
+                    }
+                }
             }
         }
     });
@@ -1030,6 +1151,11 @@ function startCustomTimelineUpdate() {
                         `linear-gradient(90deg, #7c3aed, #c084fc, #f43f5e, #e11d48, #c084fc, #7c3aed) 0% 0% / ${pct}% 100% no-repeat, var(--grad-tornasol)`;
                 }
                 if (lcdTime) lcdTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+
+                // Telemetría: Hitos del progreso del video
+                if (typeof GolosinasTelemetry !== 'undefined') {
+                    GolosinasTelemetry.trackVideoProgress(current, duration);
+                }
             }
         }
         customPlayerRafId = requestAnimationFrame(tick);
@@ -1345,6 +1471,11 @@ function buildCatalogoMainFilters() {
 }
 
 function selectMainCategory(cat) {
+    // Telemetría: Registro de filtro de categoría principal
+    if (typeof GolosinasTelemetry !== 'undefined') {
+        GolosinasTelemetry.trackCategoryFilter(cat);
+    }
+
     currentMainFilter = cat;
     currentCatalogoTag = 'todos';
 
@@ -1379,6 +1510,11 @@ function selectMainCategory(cat) {
 }
 
 function setCatalogoTag(tag, category) {
+    // Telemetría: Registro de subcategorías/tags clickeados
+    if (typeof GolosinasTelemetry !== 'undefined') {
+        GolosinasTelemetry.trackTagFilter(tag, category);
+    }
+
     currentCatalogoTag = tag;
     const subContainer = document.getElementById('catalogo-sub-filters');
     if (subContainer) {
