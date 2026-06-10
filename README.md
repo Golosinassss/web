@@ -18,3 +18,6 @@ Cada vez que se realiza un `git push` a la rama `main`:
 1. GitHub Actions detecta el cambio.
 2. Ejecuta la compilación de activos (`npm run build`).
 3. Despliega la web actualizada directamente a los servidores de Cloudflare.
+
+---
+*Última actualización: 9 de junio de 2026.*
