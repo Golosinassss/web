@@ -6,19 +6,7 @@
     "enabled": true
   },
   "assets": {
-    "directory": ".",
-    "exclude": [
-      "node_modules",
-      ".git",
-      ".github",
-      "package.json",
-      "package-lock.json",
-      "build.js",
-      "README.md",
-      "src",
-      "*.csv",
-      "*.Identifier"
-    ]
+    "directory": "public"
   },
   "compatibility_flags": [
     "nodejs_compat"

@@ -8,8 +8,8 @@ console.log('🚀 Iniciando compilación de GOLOSINASSSS...');
 // Rutas de archivos
 const srcJsPath = path.join(__dirname, 'src', 'app.js');
 const srcCssPath = path.join(__dirname, 'src', 'styles.css');
-const distJsPath = path.join(__dirname, 'app.js');
-const distCssPath = path.join(__dirname, 'styles.css');
+const distJsPath = path.join(__dirname, 'public', 'app.js');
+const distCssPath = path.join(__dirname, 'public', 'styles.css');
 
 // 1. Procesar JavaScript
 try {
