@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Golosinassss/web#readme",
   "devDependencies": {
     "clean-css": "^5.3.3",
-    "javascript-obfuscator": "^5.4.3"
+    "javascript-obfuscator": "^5.4.3",
+    "wrangler": "^4.99.0"
   }
 }
