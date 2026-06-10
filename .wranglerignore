@@ -1,0 +1,10 @@
+node_modules/
+.git/
+.github/
+package.json
+package-lock.json
+build.js
+README.md
+src/
+*.csv
+*.csv:Zone.Identifier
