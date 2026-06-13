@@ -77,21 +77,21 @@
         <!-- VIDEO HERO -->
         <div id="video-hero"><div id="yt-player-container"></div></div>
 
-        <!-- SECCIÓN 1: GOLOSINASSSS -->
-        <div class="section-header section-header-cat">
-            <div class="main-filters" id="catalogo-main-filters"></div>
-            <div class="subcategories-row" id="catalogo-sub-filters" style="opacity: 0; pointer-events: none;"></div>
-            <div id="terminal-path" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--cyan); margin-top: 6px; display: none; text-align: left; padding: 0 16px;"></div>
-        </div>
-        <div class="grid-wrap"><div id="grid-catalogo"></div></div>
+        <!-- SECCIÓN 1: GOLOSINASSSS (Scroll automático infinito) -->
+        <div class="portafolio-scroll-outer" style="margin-top: 24px;"><div id="grid-portafolio"></div></div>
 
         <!-- LETRERO: separador entre secciones -->
         <div id="logo-img-wrap">
             <div id="logo-img-gradient" aria-label="GOLOSINASSSS"></div>
         </div>
 
-        <!-- SECCIÓN 2: ARCHIVO VIVO -->
-        <div class="portafolio-scroll-outer"><div id="grid-portafolio"></div></div>
+        <!-- SECCIÓN 2: CATÁLOGO VIVO (Sección limitada por categorías) -->
+        <div class="section-header section-header-cat">
+            <div class="main-filters" id="catalogo-main-filters"></div>
+            <div class="subcategories-row" id="catalogo-sub-filters" style="opacity: 0; pointer-events: none;"></div>
+            <div id="terminal-path" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #888; margin-top: 6px; display: none; text-align: left; padding: 0 16px;"></div>
+        </div>
+        <div class="grid-wrap"><div id="grid-catalogo"></div></div>
 
         <!-- FOOTER -->
         <footer>

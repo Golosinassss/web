@@ -649,7 +649,7 @@ function selectCategoryAndTagForVideo(trackItem) {
     if (terminalPath) {
         terminalPath.style.display = 'block';
         const vidId = getYouTubeId(trackItem.url_video);
-        terminalPath.innerHTML = `<span style="color:#a8ff60">golosinas@web</span>:<span style="color:#96cbfe">~/${targetMainFilter}/${targetTagFilter}</span>$ ./play <span style="color:#ff73fd">${vidId}</span>`;
+        terminalPath.innerHTML = `golosinas@web:~/${targetMainFilter}/${targetTagFilter}$ ./play ${vidId}`;
     }
 }
 
@@ -1604,16 +1604,6 @@ function renderCatalogo() {
         catalogoCards.push(el);
     });
 
-    // Añadir clones para loop infinito (sólo DOM, no se añaden a catalogoCards)
-    if (items.length > 0) {
-        items.forEach((item, i) => {
-            const clone = buildCard(item, i);
-            clone.classList.add('is-clone');
-            clone.setAttribute('aria-hidden', 'true');
-            grid.appendChild(clone);
-        });
-    }
-
     // Reconstruir la cola de reproducción con el nuevo estado del catálogo
     const all = getAllCards();
     const activeUrl = ytPlayer && typeof ytPlayer.getVideoUrl === 'function' ? ytPlayer.getVideoUrl() : null;
@@ -2036,25 +2026,7 @@ function setupGridDelegation(gridEl, isCompact) {
         playVideo(wrapper.dataset.url, wrapper);
     });
 
-    // Scroll infinito nativo para el grid
-    if (!isCompact) {
-        // Habilitar scroll con rueda del ratón en escritorio
-        gridEl.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                gridEl.scrollLeft += e.deltaY;
-            }
-        }, { passive: false });
-
-        gridEl.addEventListener('scroll', () => {
-            const maxScroll = gridEl.scrollWidth / 2;
-            if (gridEl.scrollLeft >= maxScroll) {
-                gridEl.scrollLeft -= maxScroll;
-            } else if (gridEl.scrollLeft <= 0 && gridEl.scrollWidth > 0) {
-                gridEl.scrollLeft += maxScroll;
-            }
-        }, { passive: true });
-    }
+    // (Scroll infinito nativo y scroll horizontal de rueda han sido removidos de esta sección porque esta es la sección limitada)
 }
 
 function initApp() {
