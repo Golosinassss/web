@@ -873,7 +873,7 @@ function onYouTubeIframeAPIReady() {
             rel: 0, 
             modestbranding: 1,
             playsinline: 1,
-            controls: 0,            // Ocultar controles nativos de YouTube
+            controls: 1,            // Habilitar controles nativos de YouTube para ver su boton fullscreen
             disablekb: 1,           // Desactivar atajos nativos de YT
             iv_load_policy: 3,      // Ocultar anotaciones externas
             fs: 1                   // Habilitar pantalla completa nativa de YT
