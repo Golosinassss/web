@@ -642,7 +642,14 @@ function selectCategoryAndTagForVideo(trackItem) {
                 subContainer.style.pointerEvents = 'none';
             }
         }
-        renderCatalogo();
+        // renderCatalogo(); // Comentado para no reconstruir el grid y evitar que salte/desaparezca
+    }
+
+    const terminalPath = document.getElementById('terminal-path');
+    if (terminalPath) {
+        terminalPath.style.display = 'block';
+        const vidId = getYouTubeId(trackItem.url_video);
+        terminalPath.innerHTML = `<span style="color:#a8ff60">golosinas@web</span>:<span style="color:#96cbfe">~/${targetMainFilter}/${targetTagFilter}</span>$ ./play <span style="color:#ff73fd">${vidId}</span>`;
     }
 }
 
@@ -657,7 +664,7 @@ function scrollActiveCardIntoView() {
             const targetScrollLeft = cardLeft - (gridWidth / 2) + (cardWidth / 2);
             grid.scrollTo({
                 left: targetScrollLeft,
-                behavior: 'smooth'
+                behavior: 'auto' // 'auto' previene la vibración al chocar con el listener de loop infinito
             });
         }
     }
@@ -716,7 +723,7 @@ function playVideo(url, element) {
         updateLcdDisplay(htmlContent);
 
         // Seleccionar categoría y tag automáticamente para este video
-        // selectCategoryAndTagForVideo(trackItem); // Comentado para evitar que desaparezca la vista actual
+        selectCategoryAndTagForVideo(trackItem);
 
         // Telemetría: Registrar el inicio de la reproducción
         if (typeof GolosinasTelemetry !== 'undefined') {
@@ -1590,11 +1597,6 @@ function renderCatalogo() {
             item.tags.some(t => t.trim().toLowerCase() === currentCatalogoTag)
         );
     }
-    // Aleatorizar orden (scroll no cronológico)
-    for (let i = items.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [items[i], items[j]] = [items[j], items[i]];
-    }
 
     items.forEach((item, i) => {
         const el = buildCard(item, i);
@@ -2057,6 +2059,13 @@ function setupGridDelegation(gridEl, isCompact) {
 
 function initApp() {
     allData.forEach(item => ensureThumbnail(item));
+    
+    // Aleatorizar allData globalmente al inicio para orden no cronológico estable
+    for (let i = allData.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [allData[i], allData[j]] = [allData[j], allData[i]];
+    }
+
     buildCatalogoMainFilters();
     renderCatalogo();
     renderPortafolio();
