@@ -14,26 +14,16 @@ const distCssPath = path.join(__dirname, 'public', 'styles.css');
 // 1. Procesar JavaScript
 try {
     console.log('📦 Leyendo src/app.js...');
-    const rawJs = fs.readFileSync(srcJsPath, 'utf8');
+    let rawJs = fs.readFileSync(srcJsPath, 'utf8');
 
-    console.log('🔒 Ofuscando y minificando JavaScript...');
-    const obfuscationResult = JavaScriptObfuscator.obfuscate(rawJs, {
-        compact: true,
-        controlFlowFlattening: false, // Mantener en false para rendimiento óptimo
-        deadCodeInjection: false,
-        debugProtection: false, 
-        identifierNamesGenerator: 'hexadecimal',
-        renameGlobals: false, // Importante false para no romper callbacks de la API de YouTube
-        selfDefending: false,
-        stringArray: true,
-        stringArrayEncoding: ['base64'],
-        stringArrayThreshold: 0.75,
-        transformObjectKeys: true,
-        unicodeEscapeSequence: false
-    });
+    console.log('🔒 Minificando JavaScript (Regex)...');
+    // Basic JS minification
+    rawJs = rawJs.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, ''); // Eliminar comentarios
+    rawJs = rawJs.replace(/\s+/g, ' '); // Eliminar espacios extra
+    rawJs = rawJs.replace(/\s*([=+\-{};(),:])\s*/g, '$1'); // Quitar espacios alrededor de operadores
 
-    fs.writeFileSync(distJsPath, obfuscationResult.getObfuscatedCode(), 'utf8');
-    console.log('   ✅ JavaScript ofuscado y guardado en ./app.js');
+    fs.writeFileSync(distJsPath, rawJs, 'utf8');
+    console.log('   ✅ JavaScript minificado y guardado en ./app.js');
 } catch (err) {
     console.error('   ❌ Error procesando JavaScript:', err);
     process.exit(1);

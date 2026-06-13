@@ -1498,11 +1498,7 @@
         #playlist-shuffle-btn { display: none !important; }
         
         #player-fullscreen-btn {
-            width: 40px !important;
-            height: 24px !important;
-            right: 0 !important;
-            left: auto !important;
-            margin-left: auto !important;
+            display: none !important;
         }
         #player-fullscreen-btn svg { width: 14px !important; height: 14px !important; }
         .corner-gif-left { width: 18px; height: 36px; }

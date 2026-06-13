@@ -876,7 +876,7 @@ function onYouTubeIframeAPIReady() {
             controls: 0,            // Ocultar controles nativos de YouTube
             disablekb: 1,           // Desactivar atajos nativos de YT
             iv_load_policy: 3,      // Ocultar anotaciones externas
-            fs: 0                   // Desactivar pantalla completa nativa de YT
+            fs: 1                   // Habilitar pantalla completa nativa de YT
         },
         events: {
             onReady: function () {
