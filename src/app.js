@@ -190,6 +190,10 @@ function rebuildPlaybackQueue(startIndex = -1) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [indices[i], indices[j]] = [indices[j], indices[i]];
             }
+            // Prevenir repetición inmediata del video actual
+            if (currentVideoIndex !== -1 && indices[0] === currentVideoIndex && indices.length > 1) {
+                [indices[0], indices[indices.length - 1]] = [indices[indices.length - 1], indices[0]];
+            }
             playbackQueue = indices;
         }
         playedIndices = [];
@@ -689,6 +693,8 @@ function scrollActiveFiltersIntoView() {
 }
 
 // ── Reproducción ─────────────────────────────────────────────
+let firstPlayInteraction = false;
+
 function playVideo(url, element) {
     const videoId = getYouTubeId(url);
     if (!videoId) return;
@@ -726,7 +732,14 @@ function playVideo(url, element) {
     // Desbloqueo de audio respetando el slider del reproductor
     if (ytPlayer) {
         const volumeSlider = document.getElementById('player-volume');
-        const vol = volumeSlider ? parseInt(volumeSlider.value) : 0;
+        let vol = volumeSlider ? parseInt(volumeSlider.value) : 0;
+        
+        // Unmute automático en la primera interacción explícita de play
+        if (!firstPlayInteraction) {
+            firstPlayInteraction = true;
+            vol = 100;
+            if (volumeSlider) volumeSlider.value = 100;
+        }
         
         if (vol > 0) {
             if (typeof ytPlayer.unMute === 'function') ytPlayer.unMute();
@@ -906,13 +919,24 @@ function setupCustomPlayerControls() {
 
     if (!playBtn) return;
 
-    // 1. Play / Pause
     playBtn.addEventListener('click', () => {
         if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') return;
         const state = ytPlayer.getPlayerState();
         if (state === YT.PlayerState.PLAYING) {
             ytPlayer.pauseVideo();
         } else {
+            if (!firstPlayInteraction) {
+                firstPlayInteraction = true;
+                if (typeof ytPlayer.unMute === 'function') ytPlayer.unMute();
+                if (typeof ytPlayer.setVolume === 'function') ytPlayer.setVolume(100);
+                const volumeSlider = document.getElementById('player-volume');
+                if (volumeSlider) volumeSlider.value = 100;
+                const muteBtn = document.getElementById('player-mute-btn');
+                if (muteBtn) {
+                    updateVolumeIcon(false);
+                    muteBtn.classList.remove('muted');
+                }
+            }
             ytPlayer.playVideo();
         }
     });
@@ -1543,6 +1567,16 @@ function renderCatalogo() {
         catalogoCards.push(el);
     });
 
+    // Crear clones para el scroll infinito móvil (no se añaden a catalogoCards)
+    if (items.length > 0) {
+        items.forEach((item, i) => {
+            const clone = buildCard(item, i);
+            clone.classList.add('is-clone');
+            clone.setAttribute('aria-hidden', 'true');
+            grid.appendChild(clone);
+        });
+    }
+
     // Reconstruir la cola de reproducción con el nuevo estado del catálogo
     const all = getAllCards();
     const activeUrl = ytPlayer && typeof ytPlayer.getVideoUrl === 'function' ? ytPlayer.getVideoUrl() : null;
@@ -1964,6 +1998,21 @@ function setupGridDelegation(gridEl, isCompact) {
         e.preventDefault();
         playVideo(wrapper.dataset.url, wrapper);
     });
+
+    // Scroll infinito nativo para el catálogo (sólo en móvil para no interferir en desktop)
+    if (!isPortafolio) {
+        gridEl.addEventListener('scroll', () => {
+            const isMobile = window.matchMedia('(max-width: 480px)').matches;
+            if (!isMobile) return;
+            
+            const maxScroll = gridEl.scrollWidth / 2;
+            if (gridEl.scrollLeft >= maxScroll) {
+                gridEl.scrollLeft -= maxScroll;
+            } else if (gridEl.scrollLeft <= 0 && gridEl.scrollWidth > 0) {
+                gridEl.scrollLeft += maxScroll;
+            }
+        }, { passive: true });
+    }
 }
 
 function initApp() {
