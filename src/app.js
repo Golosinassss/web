@@ -873,20 +873,46 @@ function onYouTubeIframeAPIReady() {
             rel: 0, 
             modestbranding: 1,
             playsinline: 1,
-            controls: 0,            // Ocultar controles nativos de YouTube
-            disablekb: 1,           // Desactivar atajos nativos de YT
-            iv_load_policy: 3,      // Ocultar anotaciones externas
-            fs: 0                   // Desactivar pantalla completa nativa de YT
+            controls: 0,
+            disablekb: 1,
+            iv_load_policy: 3,
+            fs: 0
         },
         events: {
             onReady: function () {
                 ytApiReady = true;
                 setupCustomPlayerControls();
                 if (pendingVideoId) { ytPlayer.loadVideoById(pendingVideoId); pendingVideoId = null; }
+
+                // Marcar la tarjeta del video inicial como activa
+                const initialUrl = `https://www.youtube.com/watch?v=${initialId}`;
+                const all = getAllCards();
+                const idx = all.findIndex(c => {
+                    const url = c.getAttribute('data-url') || '';
+                    return url.includes(initialId);
+                });
+                if (idx !== -1) {
+                    currentVideoIndex = idx;
+                    setActiveCardByUrl(all[idx].getAttribute('data-url'));
+                }
             },
             onStateChange: function (e) { 
                 if (e.data === 0) playNext(); 
                 updateCustomPlayerUI(e.data);
+
+                // Unmute en el primer click de reproducción explícita por el usuario
+                if (e.data === YT.PlayerState.PLAYING && !firstPlayInteraction) {
+                    firstPlayInteraction = true;
+                    if (typeof ytPlayer.unMute === 'function') ytPlayer.unMute();
+                    if (typeof ytPlayer.setVolume === 'function') ytPlayer.setVolume(100);
+                    const volumeSlider = document.getElementById('player-volume');
+                    if (volumeSlider) volumeSlider.value = 100;
+                    const muteBtn = document.getElementById('player-mute-btn');
+                    if (muteBtn) {
+                        updateVolumeIcon(false);
+                        muteBtn.classList.remove('muted');
+                    }
+                }
 
                 // Telemetría: Pausas y fin de video
                 if (typeof GolosinasTelemetry !== 'undefined' && ytPlayer && typeof ytPlayer.getCurrentTime === 'function') {
