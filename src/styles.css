@@ -104,10 +104,6 @@
         max-width: 560px;
         aspect-ratio: 2000 / 200;
         margin: 20px auto 20px;
-        position: relative;
-        z-index: 20;
-        pointer-events: none;
-        mix-blend-mode: difference;
     }
 
     #logo-img-gradient {
@@ -193,6 +189,7 @@
         overflow-x: auto; overflow-y: hidden; position: relative;
         padding: 4px 0; height: 210px;
         margin-bottom: -120px; scrollbar-width: none;
+        pointer-events: none;
     }
     .portafolio-scroll-outer::-webkit-scrollbar { display: none; }
 
@@ -202,6 +199,7 @@
         animation: scroll-left var(--anim-portafolio) linear infinite;
         will-change: transform;
         backface-visibility: hidden;
+        pointer-events: auto;
     }
 
     .grid-wrap { position: relative; }
