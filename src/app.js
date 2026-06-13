@@ -716,7 +716,7 @@ function playVideo(url, element) {
         updateLcdDisplay(htmlContent);
 
         // Seleccionar categoría y tag automáticamente para este video
-        selectCategoryAndTagForVideo(trackItem);
+        // selectCategoryAndTagForVideo(trackItem); // Comentado para evitar que desaparezca la vista actual
 
         // Telemetría: Registrar el inicio de la reproducción
         if (typeof GolosinasTelemetry !== 'undefined') {
@@ -764,7 +764,11 @@ function playVideo(url, element) {
     currentPlaylistIndex = -1;
     if (element && element !== 'playlist') {
         const all = getAllCards();
-        const idx = all.indexOf(element);
+        let idx = all.indexOf(element);
+        if (idx === -1) {
+            // Si es un clon, buscar el original por data-url
+            idx = all.findIndex(c => c.getAttribute('data-url') === element.getAttribute('data-url'));
+        }
         if (idx !== -1) {
             currentVideoIndex = idx;
             rebuildPlaybackQueue(idx);
@@ -873,10 +877,10 @@ function onYouTubeIframeAPIReady() {
             rel: 0, 
             modestbranding: 1,
             playsinline: 1,
-            controls: 0,
-            disablekb: 1,
-            iv_load_policy: 3,
-            fs: 0
+            controls: 1,            // Habilitar controles nativos de YouTube para ver su boton fullscreen
+            disablekb: 1,           // Desactivar atajos nativos de YT
+            iv_load_policy: 3,      // Ocultar anotaciones externas
+            fs: 1                   // Habilitar pantalla completa nativa de YT
         },
         events: {
             onReady: function () {
@@ -1593,6 +1597,16 @@ function renderCatalogo() {
         catalogoCards.push(el);
     });
 
+    // Añadir clones para loop infinito (sólo DOM, no se añaden a catalogoCards)
+    if (items.length > 0) {
+        items.forEach((item, i) => {
+            const clone = buildCard(item, i);
+            clone.classList.add('is-clone');
+            clone.setAttribute('aria-hidden', 'true');
+            grid.appendChild(clone);
+        });
+    }
+
     // Reconstruir la cola de reproducción con el nuevo estado del catálogo
     const all = getAllCards();
     const activeUrl = ytPlayer && typeof ytPlayer.getVideoUrl === 'function' ? ytPlayer.getVideoUrl() : null;
@@ -2015,6 +2029,17 @@ function setupGridDelegation(gridEl, isCompact) {
         playVideo(wrapper.dataset.url, wrapper);
     });
 
+    // Scroll infinito nativo para el grid
+    if (!isCompact) {
+        gridEl.addEventListener('scroll', () => {
+            const maxScroll = gridEl.scrollWidth / 2;
+            if (gridEl.scrollLeft >= maxScroll) {
+                gridEl.scrollLeft -= maxScroll;
+            } else if (gridEl.scrollLeft <= 0 && gridEl.scrollWidth > 0) {
+                gridEl.scrollLeft += maxScroll;
+            }
+        }, { passive: true });
+    }
 }
 
 function initApp() {

@@ -1493,6 +1493,7 @@
             #lcd-time {
                 display: block !important;
             }
+            #player-fullscreen-btn { display: none !important; }
         }
 
         #playlist-shuffle-btn { display: none !important; }
