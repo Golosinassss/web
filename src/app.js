@@ -1590,7 +1590,12 @@ function renderCatalogo() {
             item.tags.some(t => t.trim().toLowerCase() === currentCatalogoTag)
         );
     }
-    
+    // Aleatorizar orden (scroll no cronológico)
+    for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+    }
+
     items.forEach((item, i) => {
         const el = buildCard(item, i);
         grid.appendChild(el);
@@ -2031,6 +2036,14 @@ function setupGridDelegation(gridEl, isCompact) {
 
     // Scroll infinito nativo para el grid
     if (!isCompact) {
+        // Habilitar scroll con rueda del ratón en escritorio
+        gridEl.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                gridEl.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+
         gridEl.addEventListener('scroll', () => {
             const maxScroll = gridEl.scrollWidth / 2;
             if (gridEl.scrollLeft >= maxScroll) {
