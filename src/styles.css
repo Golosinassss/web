@@ -188,7 +188,7 @@
     .portafolio-scroll-outer {
         overflow-x: auto; overflow-y: hidden; position: relative;
         padding: 4px 0; height: 210px;
-        margin-bottom: 4px; scrollbar-width: none;
+        margin-bottom: -120px; scrollbar-width: none;
     }
     .portafolio-scroll-outer::-webkit-scrollbar { display: none; }
 
@@ -1353,7 +1353,7 @@
         .category-group { flex-direction: column; align-items: flex-start; }
 
         #grid-portafolio { animation-duration: 210s; }
-        .portafolio-scroll-outer { height: 100px; }
+        .portafolio-scroll-outer { height: 100px; margin-bottom: -10px; }
         footer { margin-top: 0; border-top: none; }
 
         #custom-player { left: 24px; right: 24px; height: 32px; }
@@ -1386,7 +1386,7 @@
         body.fullscreen-mode #video-hero { height: calc(100vh - 64px) !important; }
         #grid-portafolio { animation-duration: 270s; }
 
-        .portafolio-scroll-outer { height: 100px; }
+        .portafolio-scroll-outer { height: 100px; margin-bottom: -10px; }
         #grid-portafolio { height: 82px; }
         .card-compact-wrapper { height: 82px; flex: 0 0 220px; width: 220px; }
         .card-compact { height: 82px; }
