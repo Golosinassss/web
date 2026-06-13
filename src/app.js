@@ -873,10 +873,10 @@ function onYouTubeIframeAPIReady() {
             rel: 0, 
             modestbranding: 1,
             playsinline: 1,
-            controls: 1,            // Habilitar controles nativos de YouTube para ver su boton fullscreen
+            controls: 0,            // Ocultar controles nativos de YouTube
             disablekb: 1,           // Desactivar atajos nativos de YT
             iv_load_policy: 3,      // Ocultar anotaciones externas
-            fs: 1                   // Habilitar pantalla completa nativa de YT
+            fs: 0                   // Desactivar pantalla completa nativa de YT
         },
         events: {
             onReady: function () {
@@ -1567,16 +1567,6 @@ function renderCatalogo() {
         catalogoCards.push(el);
     });
 
-    // Crear clones para el scroll infinito móvil (no se añaden a catalogoCards)
-    if (items.length > 0) {
-        items.forEach((item, i) => {
-            const clone = buildCard(item, i);
-            clone.classList.add('is-clone');
-            clone.setAttribute('aria-hidden', 'true');
-            grid.appendChild(clone);
-        });
-    }
-
     // Reconstruir la cola de reproducción con el nuevo estado del catálogo
     const all = getAllCards();
     const activeUrl = ytPlayer && typeof ytPlayer.getVideoUrl === 'function' ? ytPlayer.getVideoUrl() : null;
@@ -1999,20 +1989,6 @@ function setupGridDelegation(gridEl, isCompact) {
         playVideo(wrapper.dataset.url, wrapper);
     });
 
-    // Scroll infinito nativo para el catálogo (sólo en móvil para no interferir en desktop)
-    if (!isPortafolio) {
-        gridEl.addEventListener('scroll', () => {
-            const isMobile = window.matchMedia('(max-width: 480px)').matches;
-            if (!isMobile) return;
-            
-            const maxScroll = gridEl.scrollWidth / 2;
-            if (gridEl.scrollLeft >= maxScroll) {
-                gridEl.scrollLeft -= maxScroll;
-            } else if (gridEl.scrollLeft <= 0 && gridEl.scrollWidth > 0) {
-                gridEl.scrollLeft += maxScroll;
-            }
-        }, { passive: true });
-    }
 }
 
 function initApp() {
