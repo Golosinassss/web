@@ -119,10 +119,12 @@ function selectCategoryAndTagForVideo(trackItem) {
     }
 }
 
-export function playVideo(url, element) {
+export function playVideo(url, element, episodeTitle = null) {
     const videoId = getYouTubeId(url);
     if (!videoId) return;
     const trackItem = allData.find(item => item.url_video === url);
+    const epsContainer = document.getElementById('episodes-container');
+    
     if (trackItem) {
         const { mainDesc } = getParsedDesc(trackItem.descripcion);
         const cleanDesc = mainDesc ? mainDesc.toUpperCase() : '';
@@ -134,10 +136,46 @@ export function playVideo(url, element) {
         updateLcdDisplay(html);
         selectCategoryAndTagForVideo(trackItem);
         GolosinasTelemetry.trackVideoStart(videoId, trackItem.titulo, trackItem.categoria);
+        
+        // Render playlist si tiene episodios
+        if (trackItem.episodes && trackItem.episodes.length > 0 && epsContainer) {
+            epsContainer.style.display = 'block';
+            let epsHtml = `<div style="font-family:'JetBrains Mono', monospace; font-size:11px; margin-bottom:8px; color:#ffb3ba;">> LISTA DE REPRODUCCIÓN: ${trackItem.episodes.length} CAPÍTULOS</div>`;
+            epsHtml += `<div style="display:flex; gap:12px;">`;
+            trackItem.episodes.forEach((ep, idx) => {
+                const epId = getYouTubeId(ep.url);
+                const thumb = `https://img.youtube.com/vi/${epId}/mqdefault.jpg`;
+                epsHtml += `
+                <div class="ep-card" data-url="${ep.url}" data-title="${ep.title.replace(/"/g, '&quot;')}" style="min-width:160px; width:160px; cursor:pointer; opacity:0.8; transition:opacity 0.2s;">
+                    <img src="${thumb}" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:1px solid #444; border-radius:4px; pointer-events:none;">
+                    <div style="font-family:'JetBrains Mono', monospace; font-size:9px; color:#fff; margin-top:4px; white-space:normal; pointer-events:none;">${idx + 1}. ${ep.title}</div>
+                </div>`;
+            });
+            epsHtml += `</div>`;
+            epsContainer.innerHTML = epsHtml;
+            
+            // Event delegation for episodes
+            epsContainer.querySelectorAll('.ep-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const epUrl = e.currentTarget.getAttribute('data-url');
+                    const epTitle = e.currentTarget.getAttribute('data-title');
+                    playVideo(epUrl, null, epTitle);
+                    
+                    // Highlight selected
+                    epsContainer.querySelectorAll('.ep-card').forEach(c => c.style.opacity = '0.5');
+                    e.currentTarget.style.opacity = '1';
+                });
+            });
+        } else if (epsContainer) {
+            epsContainer.style.display = 'none';
+        }
     } else {
-        updateLcdDisplay(`<span class="lcd-title">REPRODUCIENDO...</span> <span class="lcd-sep">•</span> `);
-        GolosinasTelemetry.trackVideoStart(videoId, 'Video Desconocido', 'Desconocida');
+        // Es un episodio o video desconocido
+        const titleToShow = episodeTitle ? episodeTitle.toUpperCase() : 'REPRODUCIENDO...';
+        updateLcdDisplay(`<span class="lcd-title">${titleToShow}</span> <span class="lcd-sep">•</span> <span class="lcd-desc">CAPÍTULO INTERNO</span> <span class="lcd-sep">•</span> `);
+        GolosinasTelemetry.trackVideoStart(videoId, titleToShow, 'Episodio');
     }
+
 
     if (ytPlayer) {
         const volumeSlider = document.getElementById('player-volume');

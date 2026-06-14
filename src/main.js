@@ -3,7 +3,7 @@
 // ══════════════════════════════════════════════════════════════
 import { store } from './store.js';
 import { GolosinasTelemetry } from './telemetry.js';
-import { SHEET_URL, viewsMap, SUBCAT_MAP, mainCatColors, ARROW_UP_SVG, ARROW_DOWN_SVG } from './constants.js';
+import { SHEET_URL, SHEET_URL_EPISODES, viewsMap, SUBCAT_MAP, mainCatColors, ARROW_UP_SVG, ARROW_DOWN_SVG } from './constants.js';
 import { ensureThumbnail, getYouTubeId } from './utils.js';
 import {
     renderCatalogo, renderPortafolio, buildCatalogoMainFilters,
@@ -336,17 +336,42 @@ function initApp(data) {
 }
 
 // ── Bootstrap ────────────────────────────────────────────────
-fetch(SHEET_URL)
-    .then(r => { if (!r.ok) throw new Error('Sheets error'); return r.text(); })
-    .then(text => {
-        const parsed = parseGoogleSheetJson(text);
-        if (!parsed || parsed.length === 0) throw new Error('Empty data');
-        initApp(parsed.map(item => { item.vistas = viewsMap[String(item.id)] || Math.floor(Math.random() * 5000) + 1000; return item; }));
-    })
-    .catch(err => {
-        console.warn('Usando contenidos.json de respaldo local:', err.message);
-        fetch('contenidos.json')
-            .then(r => { if (!r.ok) throw new Error('contenidos.json'); return r.json(); })
-            .then(data => initApp(data.map(item => { item.vistas = viewsMap[String(item.id)] || Math.floor(Math.random() * 5000) + 1000; return item; })))
-            .catch(err2 => { console.error('Falla total en carga de datos:', err2.message); initApp([]); });
+Promise.all([
+    fetch(SHEET_URL).then(r => { if (!r.ok) throw new Error('Sheets error'); return r.text(); }),
+    fetch(SHEET_URL_EPISODES).then(r => { if (!r.ok) throw new Error('Episodes error'); return r.text(); }).catch(e => { console.warn('No episodes tab found'); return null; })
+]).then(([mainText, epText]) => {
+    const parsedMain = parseGoogleSheetJson(mainText);
+    if (!parsedMain || parsedMain.length === 0) throw new Error('Empty data');
+    
+    const episodesMap = {};
+    if (epText) {
+        const parsedEps = parseGoogleSheetJson(epText);
+        if (parsedEps && parsedEps.length > 0) {
+            parsedEps.forEach(ep => {
+                const parentId = String(ep.id_capsula_padre || ep['id capsula padre']).trim();
+                if (!parentId) return;
+                if (!episodesMap[parentId]) episodesMap[parentId] = [];
+                episodesMap[parentId].push({
+                    title: ep.titulo_episodio || ep['titulo episodio'],
+                    url: ep.link_youtube || ep['link youtube']
+                });
+            });
+        }
+    }
+    
+    const finalData = parsedMain.map(item => { 
+        item.vistas = viewsMap[String(item.id)] || Math.floor(Math.random() * 5000) + 1000;
+        if (episodesMap[String(item.id)]) {
+            item.episodes = episodesMap[String(item.id)];
+        }
+        return item; 
     });
+    
+    initApp(finalData);
+}).catch(err => {
+    console.warn('Usando contenidos.json de respaldo local:', err.message);
+    fetch('contenidos.json')
+        .then(r => { if (!r.ok) throw new Error('contenidos.json'); return r.json(); })
+        .then(data => initApp(data.map(item => { item.vistas = viewsMap[String(item.id)] || Math.floor(Math.random() * 5000) + 1000; return item; })))
+        .catch(err2 => { console.error('Falla total en carga de datos:', err2.message); initApp([]); });
+});

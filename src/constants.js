@@ -75,3 +75,4 @@ export const viewsMap = {
 // ── Google Sheets CMS ────────────────────────────────────────
 export const SHEET_ID = '1-NpQprddYp2vYyl4kRxLO-i_LJbF06MYEf9zaC1s880';
 export const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1`;
+export const SHEET_URL_EPISODES = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1&sheet=amplificado.tv`;
