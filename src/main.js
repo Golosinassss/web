@@ -343,37 +343,30 @@ Promise.all([
     const parsedMain = parseGoogleSheetJson(mainText);
     if (!parsedMain || parsedMain.length === 0) throw new Error('Empty data');
     
-    const episodesMap = {};
+    const episodesFlat = [];
     if (epText) {
         const parsedEps = parseGoogleSheetJson(epText);
         if (parsedEps && parsedEps.length > 0) {
-            parsedEps.forEach(ep => {
-                const parentId = String(ep.id_capsula_padre || ep['id capsula padre']).trim();
-                if (!parentId) return;
-                if (!episodesMap[parentId]) episodesMap[parentId] = [];
-                episodesMap[parentId].push({
-                    title: ep.titulo_episodio || ep['titulo episodio'],
-                    url: ep.link_youtube || ep['link youtube']
+            parsedEps.forEach((ep, i) => {
+                const parentId = String(ep.id_capsula_padre || ep['id capsula padre']).trim().toLowerCase();
+                let subcat = 'amplificado.tv';
+                if (parentId.includes('dub-de-gaita')) subcat = 'dub de gaita';
+                
+                episodesFlat.push({
+                    id: 'ep_' + i,
+                    titulo: ep.titulo_episodio || ep['titulo episodio'],
+                    url_video: ep.link_youtube || ep['link youtube'],
+                    categoria: 'música',
+                    tags: [subcat],
+                    descripcion: 'Sesión interna de ' + subcat.toUpperCase()
                 });
             });
         }
     }
     
-    const finalData = parsedMain.map(item => { 
+    // Convertir a finalData sumando las principales y los episodios planos
+    const finalData = [...parsedMain, ...episodesFlat].map(item => { 
         item.vistas = viewsMap[String(item.id)] || Math.floor(Math.random() * 5000) + 1000;
-        
-        const itemId = String(item.id).trim();
-        const itemTitleSlug = String(item.titulo).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-        
-        let matchingEps = episodesMap[itemId] || episodesMap[itemTitleSlug];
-        
-        // Fallbacks de seguridad si el usuario no puso el ID correcto en la tabla principal
-        if (!matchingEps && itemTitleSlug.includes('amplificado')) matchingEps = episodesMap['amplificado'];
-        if (!matchingEps && itemTitleSlug.includes('dub-de-gaita')) matchingEps = episodesMap['dub-de-gaitas'];
-
-        if (matchingEps) {
-            item.episodes = matchingEps;
-        }
         return item; 
     });
     

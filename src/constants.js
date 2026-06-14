@@ -43,7 +43,7 @@ export const mainCatColors = {
 
 export const SUBCAT_MAP = {
     'documental': ['social', 'periodismo', 'cine', 'institucional'],
-    'música':     ['conciertos', 'sesiones musicales', 'videoclips', 'sonido infinito'],
+    'música':     ['conciertos', 'sesiones musicales', 'videoclips', 'sonido infinito', 'amplificado.tv', 'dub de gaita'],
     'animación':  [],
     'deportes':   ['fútbol', 'deportes'],
 };
