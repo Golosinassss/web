@@ -263,6 +263,12 @@ function applyKeyboardFocus() {
 }
 
 document.addEventListener('click', () => { document.querySelectorAll('.keyboard-focused').forEach(el => el.classList.remove('keyboard-focused')); keyboardFocusActive = false; });
+document.addEventListener('mousemove', () => {
+    if (keyboardFocusActive) {
+        document.querySelectorAll('.keyboard-focused').forEach(el => el.classList.remove('keyboard-focused'));
+        keyboardFocusActive = false;
+    }
+}, { passive: true });
 
 function initKeyboardNavigation() {
     document.addEventListener('keydown', (e) => {

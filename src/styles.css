@@ -1197,7 +1197,7 @@
         fill: #000 !important;
     }
 
-    #grid-portafolio.keyboard-focused .card-compact {
+    #grid-portafolio:has(.keyboard-focused) .card-compact {
         border-color: var(--border);
         border-image: none;
     }
