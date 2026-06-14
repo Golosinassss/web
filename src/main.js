@@ -336,37 +336,14 @@ function initApp(data) {
 }
 
 // ── Bootstrap ────────────────────────────────────────────────
-Promise.all([
-    fetch(SHEET_URL).then(r => { if (!r.ok) throw new Error('Sheets error'); return r.text(); }),
-    fetch(SHEET_URL_EPISODES).then(r => { if (!r.ok) throw new Error('Episodes error'); return r.text(); }).catch(e => { console.warn('No episodes tab found'); return null; })
-]).then(([mainText, epText]) => {
+fetch(SHEET_URL).then(r => {
+    if (!r.ok) throw new Error('Sheets error');
+    return r.text();
+}).then(mainText => {
     const parsedMain = parseGoogleSheetJson(mainText);
     if (!parsedMain || parsedMain.length === 0) throw new Error('Empty data');
     
-    const episodesFlat = [];
-    if (epText) {
-        const parsedEps = parseGoogleSheetJson(epText);
-        if (parsedEps && parsedEps.length > 0) {
-            parsedEps.forEach((ep, i) => {
-                const parentId = String(ep.id_capsula_padre || ep['id capsula padre']).trim().toLowerCase();
-                let subcat = 'amplificado.tv';
-                if (parentId.includes('dub-de-gaita')) subcat = 'dub de gaita';
-                
-                episodesFlat.push({
-                    id: 'ep_' + i,
-                    titulo: ep.titulo_episodio || ep['titulo episodio'],
-                    url_video: ep.link_youtube || ep['link youtube'],
-                    categoria: 'música',
-                    tipo: 'youtube',
-                    tags: [subcat],
-                    descripcion: 'Sesión interna de ' + subcat.toUpperCase()
-                });
-            });
-        }
-    }
-    
-    // Convertir a finalData sumando las principales y los episodios planos
-    const finalData = [...parsedMain, ...episodesFlat].map(item => { 
+    const finalData = parsedMain.map(item => { 
         item.vistas = viewsMap[String(item.id)] || Math.floor(Math.random() * 5000) + 1000;
         return item; 
     });
