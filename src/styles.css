@@ -230,27 +230,27 @@
    ══════════════════════════════════════════════════════════════ */
 @layer components {
     /* Marquesinas y Tickers */
-    @keyframes matrixPhosphor {
-        0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 2px #00FF41); }
-        50% { opacity: 1; filter: drop-shadow(0 0 6px #00FF41); }
+    @keyframes analogPulse {
+        0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 2px var(--cyan)); }
+        50% { opacity: 1; filter: drop-shadow(0 0 6px var(--cyan)); }
     }
     .ticker {
         font-size: 0.8rem;
-        color: #00FF41;
-        background: none;
-        -webkit-text-fill-color: initial;
+        background: var(--grad-tornasol);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text;
         white-space: nowrap; flex-shrink: 0;
         font-weight: 700;
-        animation: matrixPhosphor 4s infinite ease-in-out;
+        animation: analogPulse 4s infinite ease-in-out;
     }
     .ticker-v { writing-mode: vertical-rl; }
     .ticker-v-left { writing-mode: vertical-lr; text-orientation: mixed; }
     .ticker-logo-v {
         font-size: 0.19rem; font-family: 'JetBrains Mono', monospace;
         white-space: pre; line-height: 1.25; flex-shrink: 0;
-        padding: 0 2px; text-align: center;
-        color: #00FF41;
-        animation: matrixPhosphor 5s infinite ease-in-out reverse;
+        padding: 0 3px 0 2px; text-align: left;
+        color: #ffffff;
+        animation: analogPulse 5s infinite ease-in-out reverse;
     }
 
     .marquee, .marquee-rev { display: flex; width: max-content; will-change: transform; backface-visibility: hidden; }
@@ -636,7 +636,7 @@
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.8rem;
         position: relative;
-        animation: electricFlicker 6s infinite;
+        animation: analogPulse 4s infinite ease-in-out;
     }
     /* Grid scanlines removed per request */
 
