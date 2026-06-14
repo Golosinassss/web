@@ -206,7 +206,7 @@
     #grid-portafolio {
         display: flex; gap: 8px;
         width: max-content; height: 82px;
-        animation: scroll-left var(--anim-portafolio) linear infinite;
+        animation: scroll-left var(--portafolio-dur, 400s) linear infinite;
         will-change: transform;
         backface-visibility: hidden;
         pointer-events: auto;
@@ -236,12 +236,9 @@
     }
     .ticker {
         font-size: 0.8rem;
-        background: var(--grad-tornasol);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #ffffff;
         white-space: nowrap; flex-shrink: 0;
         font-weight: 700;
-        animation: analogPulse 4s infinite ease-in-out;
     }
     .ticker-v { writing-mode: vertical-rl; }
     .ticker-v-left { writing-mode: vertical-lr; text-orientation: mixed; }
@@ -1382,7 +1379,6 @@
         .main-filters { width: auto; overflow-x: visible; flex-wrap: nowrap; }
         .category-group { flex-direction: column; align-items: flex-start; }
 
-        #grid-portafolio { animation-duration: 210s; }
         .portafolio-scroll-outer { height: 100px; margin-bottom: -10px; }
         footer { margin-top: 0; border-top: none; }
 
@@ -1414,8 +1410,6 @@
         .social-links { gap: 8px; }
         body.fullscreen-mode #main-content { padding: 26px 20px 110px 20px !important; }
         body.fullscreen-mode #video-hero { height: calc(100vh - 64px) !important; }
-        #grid-portafolio { animation-duration: 270s; }
-
         .portafolio-scroll-outer { height: 100px; margin-bottom: -10px; }
         #grid-portafolio { height: 82px; }
         .card-compact-wrapper { height: 82px; flex: 0 0 220px; width: 220px; }

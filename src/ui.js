@@ -199,6 +199,12 @@ export function renderCatalogo() {
     if (store.get('currentCatalogoTag') !== 'todos') {
         items = items.filter(item => Array.isArray(item.tags) && item.tags.some(t => t.trim().toLowerCase() === store.get('currentCatalogoTag')));
     }
+    // Ordenar cronológicamente DESC (más nuevo primero)
+    items.sort((a, b) => {
+        const da = parseInt(a.date) || 0;
+        const db = parseInt(b.date) || 0;
+        return db - da;
+    });
     items.forEach((item, i) => { const el = buildCard(item, i); grid.appendChild(el); catalogoCards.push(el); });
 }
 
@@ -206,20 +212,21 @@ export function renderPortafolio() {
     const grid = document.getElementById('grid-portafolio');
     portafolioCards = []; grid.innerHTML = ''; grid.style.animation = 'none';
     let items = [...allData];
-    if (store.get('currentPortafolioFilter') === 'random') {
+    // Por defecto (o si es 'random'), siempre aleatorio. El carrusel de portafolio no es cronológico.
+    if (store.get('currentPortafolioFilter') !== 'destacados') {
         items.sort(() => Math.random() - 0.5);
-    } else if (store.get('currentPortafolioFilter') === 'destacados') {
+    } else {
         const dest = items.filter(i => i.destacado);
         if (dest.length > 0) items = dest;
         items.sort((a, b) => (b.vistas || 0) - (a.vistas || 0));
     }
     // Renderizar cada item una sola vez — sin duplicación
     items.forEach((item, i) => { const el = buildCompactCard(item, i); grid.appendChild(el); portafolioCards.push(el); });
-    // Ajustar duración proporcional al ancho real (~8px por item = velocidad constante)
+    // Ajustar duración proporcional al ancho real (muy lento: ~18px por segundo)
     // Mínimo 80s para no ir demasiado rápido con pocos items
     const CARD_WIDTH_PX = 140; // ancho estimado card compact + gap
     const totalPx = items.length * CARD_WIDTH_PX;
-    const SPEED_PX_PER_S = 80; // px/s — misma cadencia visual que antes
+    const SPEED_PX_PER_S = 18; // px/s — paso muy lento y cómodo de leer
     const duration = Math.max(80, Math.round(totalPx / SPEED_PX_PER_S));
     grid.style.setProperty('--portafolio-dur', `${duration}s`);
     requestAnimationFrame(() => { grid.style.animation = `scroll-left ${duration}s linear infinite`; });

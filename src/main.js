@@ -69,6 +69,12 @@ store.subscribe((key, newValue) => {
             renderCatalogo();
             break;
         case 'currentCatalogoTag':
+            const subContainerTag = document.getElementById('catalogo-sub-filters');
+            const mainCat = store.get('currentMainFilter');
+            if (subContainerTag && mainCat !== 'todas') {
+                const subcats = SUBCAT_MAP[mainCat] || [];
+                buildInlineSubcategories(subContainerTag, subcats, mainCat);
+            }
             renderCatalogo();
             break;
         case 'playlist':
@@ -336,7 +342,7 @@ function initApp(data) {
 }
 
 // ── Bootstrap ────────────────────────────────────────────────
-fetch(SHEET_URL).then(r => {
+fetch(SHEET_URL + '&t=' + new Date().getTime()).then(r => {
     if (!r.ok) throw new Error('Sheets error');
     return r.text();
 }).then(mainText => {
