@@ -3,7 +3,7 @@
 // ══════════════════════════════════════════════════════════════
 import { store } from './store.js';
 import { GolosinasTelemetry } from './telemetry.js';
-import { SHEET_URL, SHEET_URL_EPISODES, viewsMap, SUBCAT_MAP, mainCatColors, ARROW_UP_SVG, ARROW_DOWN_SVG } from './constants.js';
+import { SHEET_URL, viewsMap, SUBCAT_MAP, mainCatColors, ARROW_UP_SVG, ARROW_DOWN_SVG } from './constants.js';
 import { ensureThumbnail, getYouTubeId } from './utils.js';
 import {
     renderCatalogo, renderPortafolio, buildCatalogoMainFilters,
