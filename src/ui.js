@@ -213,11 +213,16 @@ export function renderPortafolio() {
         if (dest.length > 0) items = dest;
         items.sort((a, b) => (b.vistas || 0) - (a.vistas || 0));
     }
-    let displayItems = [...items];
-    while (displayItems.length < 12) displayItems = displayItems.concat(items);
-    displayItems.forEach((item, i) => { const el = buildCompactCard(item, i); grid.appendChild(el); portafolioCards.push(el); });
-    displayItems.forEach(item => { const el = buildCompactCard(item, 0); el.setAttribute('aria-hidden', 'true'); grid.appendChild(el); });
-    requestAnimationFrame(() => { grid.style.animation = ''; });
+    // Renderizar cada item una sola vez — sin duplicación
+    items.forEach((item, i) => { const el = buildCompactCard(item, i); grid.appendChild(el); portafolioCards.push(el); });
+    // Ajustar duración proporcional al ancho real (~8px por item = velocidad constante)
+    // Mínimo 80s para no ir demasiado rápido con pocos items
+    const CARD_WIDTH_PX = 140; // ancho estimado card compact + gap
+    const totalPx = items.length * CARD_WIDTH_PX;
+    const SPEED_PX_PER_S = 80; // px/s — misma cadencia visual que antes
+    const duration = Math.max(80, Math.round(totalPx / SPEED_PX_PER_S));
+    grid.style.setProperty('--portafolio-dur', `${duration}s`);
+    requestAnimationFrame(() => { grid.style.animation = `scroll-left ${duration}s linear infinite`; });
 }
 
 window.setPortafolioFilter = function(filter) {

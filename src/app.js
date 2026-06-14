@@ -2032,11 +2032,12 @@ function setupGridDelegation(gridEl, isCompact) {
 function initApp() {
     allData.forEach(item => ensureThumbnail(item));
     
-    // Aleatorizar allData globalmente al inicio para orden no cronológico estable
-    for (let i = allData.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [allData[i], allData[j]] = [allData[j], allData[i]];
-    }
+    // Ordenar por fecha descendente (más reciente primero); sin fecha van al final
+    allData.sort((a, b) => {
+        const da = parseInt(a.date) || 0;
+        const db = parseInt(b.date) || 0;
+        return db - da;
+    });
 
     buildCatalogoMainFilters();
     renderCatalogo();

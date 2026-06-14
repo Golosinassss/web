@@ -599,7 +599,7 @@
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.58rem;
         color: var(--cyan);
-        text-shadow: 0 0 3px var(--cyan-glow);
+        text-shadow: none;
         overflow: hidden;
     }
 
@@ -642,19 +642,15 @@
 
     .lcd-title {
         color: #ffffff;
-        text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
     }
     .lcd-desc {
         color: var(--cyan);
-        text-shadow: 0 0 3px var(--cyan-glow);
     }
     .lcd-cat {
         color: var(--t2);
-        text-shadow: 0 0 3px color-mix(in srgb, var(--t2) 40%, transparent);
     }
     .lcd-sep {
         color: var(--t3);
-        text-shadow: 0 0 3px color-mix(in srgb, var(--t3) 40%, transparent);
         opacity: 0.8;
     }
 
@@ -662,7 +658,7 @@
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.8rem;
         color: #ff5c5c;
-        text-shadow: 0 0 2px rgba(255, 92, 92, 0.4);
+        text-shadow: none;
         opacity: 0.9;
         flex-shrink: 0;
         user-select: none;
@@ -1566,7 +1562,7 @@
 
 @keyframes scroll-left {
     from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    to   { transform: translateX(-100%); }
 }
 
 @keyframes tornasolShift {
