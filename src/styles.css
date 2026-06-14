@@ -230,20 +230,18 @@
    ══════════════════════════════════════════════════════════════ */
 @layer components {
     /* Marquesinas y Tickers */
-    @keyframes borderLCDGlitch {
-        0%, 100% { filter: drop-shadow(-1px 0px 0px cyan) drop-shadow(1px 0px 0px magenta); opacity: 0.9; }
-        25% { filter: drop-shadow(2px 0px 0px cyan) drop-shadow(-1px 0px 0px magenta); opacity: 1; }
-        50% { filter: drop-shadow(-2px 0px 0px cyan) drop-shadow(2px 0px 0px magenta); opacity: 0.8; }
-        75% { filter: drop-shadow(1px 0px 0px cyan) drop-shadow(-2px 0px 0px magenta); opacity: 0.95; }
+    @keyframes matrixPhosphor {
+        0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 2px #00FF41); }
+        50% { opacity: 1; filter: drop-shadow(0 0 6px #00FF41); }
     }
     .ticker {
         font-size: 0.8rem;
-        background: var(--grad-tornasol);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #00FF41;
+        background: none;
+        -webkit-text-fill-color: initial;
         white-space: nowrap; flex-shrink: 0;
         font-weight: 700;
-        animation: borderLCDGlitch 0.3s infinite;
+        animation: matrixPhosphor 4s infinite ease-in-out;
     }
     .ticker-v { writing-mode: vertical-rl; }
     .ticker-v-left { writing-mode: vertical-lr; text-orientation: mixed; }
@@ -251,8 +249,8 @@
         font-size: 0.19rem; font-family: 'JetBrains Mono', monospace;
         white-space: pre; line-height: 1.25; flex-shrink: 0;
         padding: 0 2px; text-align: center;
-        color: #ffffff;
-        animation: borderLCDGlitch 0.4s infinite reverse;
+        color: #00FF41;
+        animation: matrixPhosphor 5s infinite ease-in-out reverse;
     }
 
     .marquee, .marquee-rev { display: flex; width: max-content; will-change: transform; backface-visibility: hidden; }
