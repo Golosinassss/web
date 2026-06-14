@@ -142,6 +142,8 @@ export function buildInlineSubcategories(container, tags, category) {
         btn.style.setProperty('--active-color', catColor);
         btn.style.color = store.get('currentCatalogoTag') === sub ? catColor : '';
         btn.innerHTML = `<span class="branch-connector">${branchChar}</span><span class="tag-name">${sub}</span>`;
+        btn.style.animation = `typewriter 0.4s steps(15, end) forwards`;
+        btn.style.animationDelay = `${idx * 0.05}s`;
         btn.addEventListener('click', (e) => { e.stopPropagation(); setCatalogoTag(sub, category); });
         container.appendChild(btn);
     });

@@ -372,7 +372,8 @@
     }
     .subcategories-inline .tab-btn {
         font-size: 0.56rem; color: #555;
-        padding: 1px 4px; border: 1px solid transparent;
+        padding: 1px 4px;
+        opacity: 0; /* will be revealed by typewriter animation */
     }
 
     /* Tarjetas Sección 1 */
@@ -609,12 +610,36 @@
         width: max-content;
     }
 
+    @keyframes electricFlicker {
+        0%, 100% { opacity: 0.95; text-shadow: 0 0 2px currentColor, 0 0 5px currentColor; }
+        2% { opacity: 0.4; text-shadow: none; }
+        4% { opacity: 1; text-shadow: 0 0 5px currentColor, 0 0 15px currentColor, 0 0 25px currentColor; }
+        6% { opacity: 0.8; text-shadow: 0 0 2px currentColor, 0 0 5px currentColor; }
+        8% { opacity: 0.95; text-shadow: 0 0 3px currentColor, 0 0 8px currentColor; }
+    }
+    @keyframes typewriter {
+        from { opacity: 0; clip-path: inset(0 100% 0 0); }
+        1%   { opacity: 1; clip-path: inset(0 100% 0 0); }
+        to   { opacity: 1; clip-path: inset(0 0 0 0); }
+    }
+
     .lcd-text-span {
         display: inline-block;
         padding-right: 30px;
         white-space: nowrap;
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.8rem;
+        position: relative;
+        animation: electricFlicker 6s infinite;
+    }
+    .lcd-text-span::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.5) 1px, rgba(0,0,0,0.5) 2px),
+                    repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(0,0,0,0.5) 1px, rgba(0,0,0,0.5) 2px);
+        pointer-events: none;
+        z-index: 2;
     }
 
     .lcd-title {
@@ -1101,8 +1126,7 @@
     .main-cat-btn:hover { color: var(--cat-color, #999); }
     .main-cat-btn.active { color: var(--cat-color, var(--t1)); }
     .subcategories-inline .tab-btn.active {
-        color: var(--t5); border-color: var(--t5-20);
-        background: var(--t5-05);
+        color: var(--t5);
     }
 
     /* Hover en Tarjetas (Solo en dispositivos con puntero/hover) */
