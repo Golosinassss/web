@@ -361,8 +361,18 @@ Promise.all([
     
     const finalData = parsedMain.map(item => { 
         item.vistas = viewsMap[String(item.id)] || Math.floor(Math.random() * 5000) + 1000;
-        if (episodesMap[String(item.id)]) {
-            item.episodes = episodesMap[String(item.id)];
+        
+        const itemId = String(item.id).trim();
+        const itemTitleSlug = String(item.titulo).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        
+        let matchingEps = episodesMap[itemId] || episodesMap[itemTitleSlug];
+        
+        // Fallbacks de seguridad si el usuario no puso el ID correcto en la tabla principal
+        if (!matchingEps && itemTitleSlug.includes('amplificado')) matchingEps = episodesMap['amplificado'];
+        if (!matchingEps && itemTitleSlug.includes('dub-de-gaita')) matchingEps = episodesMap['dub-de-gaitas'];
+
+        if (matchingEps) {
+            item.episodes = matchingEps;
         }
         return item; 
     });
