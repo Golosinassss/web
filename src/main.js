@@ -357,6 +357,7 @@ Promise.all([
                     titulo: ep.titulo_episodio || ep['titulo episodio'],
                     url_video: ep.link_youtube || ep['link youtube'],
                     categoria: 'música',
+                    tipo: 'youtube',
                     tags: [subcat],
                     descripcion: 'Sesión interna de ' + subcat.toUpperCase()
                 });

@@ -48,10 +48,12 @@ export function itemMatchesMainFilter(item, filter) {
                tags.includes('documental') || tags.includes('social') || tags.includes('institucional');
     }
     if (filter === 'música' || filter === 'musica') {
-        return category.includes('conciertos') || category.includes('sesiones') ||
+        return category.includes('música') || category.includes('musica') ||
+               category.includes('conciertos') || category.includes('sesiones') ||
                tags.includes('música') || tags.includes('musica') ||
                tags.includes('conciertos') || tags.includes('sonido infinito') ||
-               tags.includes('videoclips') || tags.includes('sesiones musicales');
+               tags.includes('videoclips') || tags.includes('sesiones musicales') ||
+               tags.includes('amplificado.tv') || tags.includes('dub de gaita');
     }
     if (filter === 'animación' || filter === 'animacion') {
         return category.includes('animación') || category.includes('animacion') ||
