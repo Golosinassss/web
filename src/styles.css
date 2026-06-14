@@ -131,8 +131,8 @@
         background-position: 0 0, 0% 50%;
         animation: logoGradientShift var(--anim-logo) linear infinite;
         will-change: background-position;
-        -webkit-mask: url('Letrero.Web-GOLOSINASSSS.png') no-repeat center;
-        mask: url('Letrero.Web-GOLOSINASSSS.png') no-repeat center;
+        -webkit-mask: url('/Letrero.Web-GOLOSINASSSS.png') no-repeat center;
+        mask: url('/Letrero.Web-GOLOSINASSSS.png') no-repeat center;
         -webkit-mask-size: contain;
         mask-size: contain;
     }
