@@ -1515,10 +1515,11 @@
         .corner-gif-right { width: 18px; height: 36px; }
         .corner-gif img { width: 14px !important; height: 14px !important; }
         .playlist-drawer { bottom: 40px; right: 18px; left: 18px; width: auto; max-height: 220px; }
-    .keyboard-focused {
-        outline: none !important;
+        .keyboard-focused {
+            outline: none !important;
+        }
     }
-}
+} /* end @layer responsive */
 
 /* ══════════════════════════════════════════════════════════════
    ANIMATIONS KEYFRAMES (Globales)

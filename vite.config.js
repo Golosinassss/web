@@ -1,5 +1,8 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
     root: '.',
@@ -10,7 +13,6 @@ export default defineConfig({
         rollupOptions: {
             input: resolve(__dirname, 'index.html'),
         },
-        // Minificación real sin obfuscation — reduce JS de 87KB a ~30KB
         minify: 'esbuild',
         sourcemap: false,
     },
