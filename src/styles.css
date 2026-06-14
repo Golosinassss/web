@@ -140,7 +140,7 @@
     }
 
     #main-content {
-        padding: 32px 32px 80px 32px;
+        padding: 35px 35px 80px 35px;
         min-height: 100vh;
         overflow-y: auto; overflow-x: hidden;
         height: 100vh;
@@ -165,6 +165,15 @@
         background: var(--bg);
         z-index: 100; overflow: hidden; display: flex;
     }
+    .border-container::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.5) 1px, rgba(0,0,0,0.5) 2px),
+                    repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(0,0,0,0.5) 1px, rgba(0,0,0,0.5) 2px);
+        pointer-events: none;
+        z-index: 200;
+    }
     .top {
         top: 0; left: 0; width: 100%; height: 30px;
         align-items: center; justify-content: flex-start;
@@ -174,14 +183,14 @@
     }
     .left {
         top: 30px; left: 0; width: 30px; bottom: 40px;
-        justify-content: center; align-items: flex-start;
+        justify-content: center; align-items: center;
         border-left: 1px solid transparent;
         background: linear-gradient(var(--bg),var(--bg)) padding-box,
                     var(--grad-tornasol-180) border-box;
     }
     .right {
         top: 30px; right: 0; width: 30px; bottom: 40px;
-        justify-content: center; align-items: flex-start;
+        justify-content: center; align-items: center;
         border-left: 1px solid transparent;
         background: linear-gradient(var(--bg),var(--bg)) padding-box,
                     var(--grad-tornasol-180r) border-box;
@@ -230,16 +239,24 @@
    ══════════════════════════════════════════════════════════════ */
 @layer components {
     /* Marquesinas y Tickers */
+    @keyframes borderLCDFlicker {
+        0%, 100% { opacity: 0.95; filter: drop-shadow(0 0 2px var(--cyan)) brightness(1); }
+        2% { opacity: 0.5; filter: drop-shadow(0 0 0px var(--cyan)) brightness(0.7); }
+        4% { opacity: 1; filter: drop-shadow(0 0 8px var(--cyan)) brightness(1.5); }
+        6% { opacity: 0.8; filter: drop-shadow(0 0 2px var(--cyan)) brightness(1); }
+        8% { opacity: 0.95; filter: drop-shadow(0 0 4px var(--cyan)) brightness(1.2); }
+    }
     .ticker {
         font-size: 0.8rem;
         background: var(--grad-tornasol);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         background-clip: text;
-        white-space: nowrap; flex-shrink: 0; padding-right: 30px;
+        white-space: nowrap; flex-shrink: 0;
         font-weight: 700;
+        animation: borderLCDFlicker 6s infinite alternate;
     }
-    .ticker-v { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-rl; }
-    .ticker-v-left { padding-right: 0; padding-bottom: 30px; writing-mode: vertical-lr; text-orientation: mixed; }
+    .ticker-v { writing-mode: vertical-rl; }
+    .ticker-v-left { writing-mode: vertical-lr; text-orientation: mixed; }
     .ticker-logo-v {
         font-size: 0.19rem; font-family: 'JetBrains Mono', monospace;
         white-space: pre; line-height: 1.25; flex-shrink: 0;
