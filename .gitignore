@@ -6,3 +6,5 @@
 !.env.example
 # node dependencies
 node_modules/
+# Vite build output (Cloudflare Pages hace el build en su CI)
+dist/

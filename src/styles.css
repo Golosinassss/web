@@ -78,9 +78,16 @@
         font-family: 'JetBrains Mono', monospace;
         overflow: hidden;
     }
-    *:focus, *:focus-visible {
-        outline: none !important;
-        box-shadow: none !important;
+    /* ── Accesibilidad: outline solo visible con teclado (no con mouse) ──
+       :focus-visible respeta la Preferencia del usuario y es ignorado por clicks.
+       Se usa un ring sutil acorde a la paleta tornasol del sitio. */
+    *:focus {
+        outline: none;
+    }
+    *:focus-visible {
+        outline: 2px solid #bae1ff;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(186, 225, 255, 0.15);
     }
     .sr-only {
         position: absolute;

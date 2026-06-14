@@ -4,8 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "node build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:legacy": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "clean-css": "^5.3.3",
     "javascript-obfuscator": "^5.4.3",
+    "vite": "^8.0.16",
     "wrangler": "^4.99.0"
   }
 }

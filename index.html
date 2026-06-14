@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLOSINASSSS | Archivo Vivo</title>
+    <meta name="description" content="GOLOSINASSSS — Ecosistema documental transmedia. Memoria musical contemporánea, sonido infinito, soberanía creativa. Leticia · Amazonas · Bogotá D.C.">
+    <meta property="og:title" content="GOLOSINASSSS | Archivo Vivo">
+    <meta property="og:description" content="Ecosistema documental transmedia. Memoria musical contemporánea desde el Amazonas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.golosinassss.com">
+    <meta property="og:image" content="https://www.golosinassss.com/og-image.png">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.golosinassss.com/og-image.png">
+    <meta name="theme-color" content="#080808">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="ICON_GOLOSINASSSS.png">
+    <link rel="apple-touch-icon" href="ICON_GOLOSINASSSS.png">
+    <!-- Preconnect: establece conexiones anticipadas a dominios externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://img.youtube.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- W3C Semantic Metadata / JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWorkSeries",
+      "name": "GOLOSINASSSS - Archivo Vivo",
+      "description": "Ecosistema documental transmedia y memoria musical contemporánea desde el Amazonas.",
+      "creator": {
+        "@type": "Organization",
+        "name": "GOLOSINASSSS SAS"
+      },
+      "genre": ["Documentary", "Music", "Animation"]
+    }
+    </script>
+</head>
+<body>
+    <!-- ── Bordes Marquesina ────────────────────────────────── -->
+    <div class="border-container top">
+        <div class="marquee">
+            <span class="txt ticker">GOLOSINASSSS | MEMORIA MUSICAL CONTEMPORÁNEA | SONIDO INFINITO | ARQUITECTURA DE METADATOS | SOBERANÍA CREATIVA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | MEMORIA MUSICAL CONTEMPORÁNEA | SONIDO INFINITO | ARQUITECTURA DE METADATOS | SOBERANÍA CREATIVA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | MEMORIA MUSICAL CONTEMPORÁNEA | SONIDO INFINITO | ARQUITECTURA DE METADATOS | SOBERANÍA CREATIVA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | </span>
+            <span class="txt ticker">GOLOSINASSSS | MEMORIA MUSICAL CONTEMPORÁNEA | SONIDO INFINITO | ARQUITECTURA DE METADATOS | SOBERANÍA CREATIVA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | MEMORIA MUSICAL CONTEMPORÁNEA | SONIDO INFINITO | ARQUITECTURA DE METADATOS | SOBERANÍA CREATIVA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | GOLOSINASSSS | MEMORIA MUSICAL CONTEMPORÁNEA | SONIDO INFINITO | ARQUITECTURA DE METADATOS | SOBERANÍA CREATIVA | ECOSISTEMA DOCUMENTAL TRANSMEDIA | </span>
+        </div>
+    </div>
+    <button id="player-fullscreen-btn" class="player-btn-capsule" title="Pantalla Completa" aria-label="Pantalla Completa">
+        <span class="btn-icon" id="player-fullscreen-svg-container">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+        </span>
+    </button>
+
+    <div class="border-container left" style="transform: rotate(180deg);">
+        <div class="marquee-v">
+            <span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span>
+            <span class="txt ticker ticker-v-left">GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | GOLOSINASSSS | </span>
+        </div>
+    </div>
+    <div class="border-container right">
+        <div class="marquee-v" id="right-marquee">
+            <!-- Patrón ASCII inyectado por app.js -->
+        </div>
+    </div>
+
+    <!-- ── Contenido Principal ──────────────────────────────── -->
+    <main id="main-content">
+        <h1 class="sr-only">GOLOSINASSSS - Archivo Vivo</h1>
+
+        <!-- VIDEO HERO -->
+        <div id="video-hero"><div id="yt-player-container"></div></div>
+
+        <!-- SECCIÓN 1: GOLOSINASSSS (Scroll automático infinito) -->
+        <div class="portafolio-scroll-outer" style="margin-top: 24px;"><div id="grid-portafolio"></div></div>
+
+        <!-- LETRERO: separador entre secciones -->
+        <div id="logo-img-wrap">
+            <div id="logo-img-gradient" aria-label="GOLOSINASSSS"></div>
+        </div>
+
+        <!-- SECCIÓN 2: CATÁLOGO VIVO (Sección limitada por categorías) -->
+        <div class="section-header section-header-cat">
+            <div class="main-filters" id="catalogo-main-filters"></div>
+            <div class="subcategories-row" id="catalogo-sub-filters" style="opacity: 0; pointer-events: none;"></div>
+            <div id="terminal-path" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #888; margin-top: 6px; display: none; text-align: left; padding: 0 16px;"></div>
+        </div>
+        <div class="grid-wrap"><div id="grid-catalogo"></div></div>
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="footer-line">DESARROLLO DE FORMATOS • NARRATIVAS TRANSMEDIA • FOTOGRAFÍA DOCUMENTAL • MONTAJE Y POSTPRODUCCIÓN • ANIMACIÓN DIGITAL</p>
+            <p class="footer-line">CONTACTO: <a href="mailto:contacto@golosinassss.com">contacto@golosinassss.com</a> | <a href="https://wa.me/573218914002" target="_blank">(+57 321 891-4002)</a></p>
+            <p class="footer-line">GOLOSINASSSS SAS | LETICIA - AMAZONAS - BOGOTÁ D.C - COLOMBIA</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/golosinassss/" target="_blank" style="color:#ffb3ba;">INSTAGRAM</a>
+                <a href="https://www.youtube.com/@golosinassss" target="_blank" style="color:#bae1ff;">YOUTUBE</a>
+                <a href="https://www.linkedin.com/in/jaime-barbosa-gomes-da-silva-917428289/" target="_blank" style="color:#baffc9;">LINKEDIN</a>
+                <a href="https://www.reddit.com/user/golosinassss/" target="_blank" style="color:#ffdfba;">REDDIT</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- GRADIENTE TORNASOL GLOBAL PARA SVGs -->
+    <svg style="width:0; height:0; position:absolute;" aria-hidden="true">
+        <defs>
+            <linearGradient id="tornasol-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ffb3ba" />
+                <stop offset="25%" stop-color="#bae1ff" />
+                <stop offset="50%" stop-color="#baffc9" />
+                <stop offset="75%" stop-color="#ffffba" />
+                <stop offset="100%" stop-color="#ffdfba" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- LISTA DE AGREGADOS (PLAYLIST DESPLEGABLE) -->
+    <div id="playlist-drawer" class="playlist-drawer" style="display: none;">
+        <div class="playlist-drawer-header">
+            <span>LISTA DE AGREGADOS</span>
+            <div class="playlist-header-actions">
+                <button id="playlist-drawer-close" title="Cerrar">✕</button>
+            </div>
+        </div>
+        <div id="playlist-drawer-items" class="playlist-drawer-items">
+            <!-- Items agregados dinámicamente -->
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR PERSONALIZADO FIJO (Segunda línea en la parte inferior) -->
+    <div id="custom-player" aria-label="Reproductor de Audio y Video">
+        <!-- Fila Principal: Botones e Info LCD -->
+        <div class="player-row-main">
+            <!-- Controles de reproducción izquierdos -->
+            <div class="player-controls-left">
+                <button id="player-prev-btn" class="player-btn-capsule" title="Anterior (<<)" aria-label="Anterior">
+                    <span class="btn-icon">&lt;&lt;</span>
+                </button>
+                <button id="player-play-btn" class="player-btn-capsule" title="Play / Pausa" aria-label="Reproducir">
+                    <span class="btn-icon" id="player-play-svg-container">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="url(#tornasol-grad)" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </span>
+                </button>
+                <button id="player-next-btn" class="player-btn-capsule" title="Siguiente (>>)" aria-label="Siguiente">
+                    <span class="btn-icon">&gt;&gt;</span>
+                </button>
+                <button id="playlist-shuffle-btn" class="player-btn-capsule" title="Aleatorio (RAND)" aria-label="Aleatorio">
+                    <span class="btn-icon" style="display: flex; align-items: center; justify-content: center;">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px; height:12px; display:block;">
+                            <polyline points="16 3 21 3 21 8"/>
+                            <line x1="4" y1="20" x2="21" y2="3"/>
+                            <polyline points="21 16 21 21 16 21"/>
+                            <line x1="15" y1="15" x2="21" y2="21"/>
+                            <line x1="4" y1="4" x2="9" y2="9"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Pantalla LCD estilo autoestéreo de carro -->
+            <div class="player-lcd">
+                <div class="lcd-screen">
+                    <div class="lcd-text-container">
+                        <div class="lcd-text-marquee">
+                            <span class="lcd-text-span" id="lcd-text-1"><span class="lcd-title">GOLOSINASSSS</span> <span class="lcd-sep">•</span> <span class="lcd-desc">Escoge tu próxima golosina</span> <span class="lcd-sep">•</span> </span>
+                            <span class="lcd-text-span" id="lcd-text-2"><span class="lcd-title">GOLOSINASSSS</span> <span class="lcd-sep">•</span> <span class="lcd-desc">Escoge tu próxima golosina</span> <span class="lcd-sep">•</span> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles extras y volumen derechos -->
+            <div class="player-controls-right">
+                <div class="volume-container">
+                    <input type="range" id="player-volume" min="0" max="100" value="0" aria-label="Volumen">
+                    <button id="player-mute-btn" class="player-mute-btn-icon" title="Silenciar" aria-label="Silenciar">
+                        <span class="btn-icon" id="player-mute-svg-container">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="url(#tornasol-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div id="lcd-time" class="lcd-time">00:00 / 00:00</div>
+            </div>
+        </div>
+
+        <!-- Fila Inferior: Timeline expandido al 100% de la barra -->
+        <div class="player-row-timeline">
+            <input type="range" id="player-timeline" min="0" max="100" value="0" aria-label="Barra de tiempo">
+        </div>
+    </div>
+
+    <!-- GIFs en esquinas inferiores -->
+    <div class="corner-gif corner-gif-left">
+        <img src="8bitssss.webp" alt="Animación Esquina Izquierda" loading="lazy">
+    </div>
+    <div class="corner-gif corner-gif-right">
+        <img src="8bitssss_rev.webp" alt="Animación Esquina Derecha" loading="lazy">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script type="module" src="/src/main.js"></script>
+    <!-- Fallback para navegadores sin JavaScript -->
+    <noscript>
+        <style>body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#080808;color:#e0e0e0;font-family:monospace;text-align:center;margin:0;}</style>
+        <div style="padding:40px;">
+            <h1 style="color:#00e5ff;font-size:1.2rem;letter-spacing:.3em;">GOLOSINASSSS</h1>
+            <p style="opacity:.6;margin-top:16px;">Este archivo vivo transmedia requiere JavaScript para funcionar.</p>
+        </div>
+    </noscript>
+</body>
+</html>

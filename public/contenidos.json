@@ -63,7 +63,7 @@
     "id": 12,
     "titulo": "LIMONES - Semblanzas del Río Guapi",
     "categoria": "VIDEOCLIP",
-    "descripcion": "Videoclip - Realización + Montaje ",
+    "descripcion": "Videoclip - Realización + Montaje",
     "url_video": "https://youtu.be/m1YnckBrAxc?si=sCSBjgFV7jUL6dvj",
     "tipo": "youtube",
     "preview_url": "",
@@ -74,7 +74,7 @@
     ]
   },
   {
-    "id": "",
+    "id": 11,
     "titulo": "Candidatas Electorales Indígenas",
     "categoria": "WEB - POPAYÁN, CAUCA",
     "descripcion": "OEA/CIM Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
@@ -89,7 +89,7 @@
     ]
   },
   {
-    "id": "",
+    "id": 10,
     "titulo": "MAPP/OEA - Mínimos Humanitarios",
     "categoria": "WEB - ARAUCA",
     "descripcion": "Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
@@ -167,12 +167,12 @@
     ]
   },
   {
-    "id": 6,
+    "id": 5,
     "titulo": "PAJARITA CAUCANA - Los Colores de un Territorio",
     "categoria": "Documental",
-    "descripcion": "",
+    "descripcion": "Documental - Dirección y Postproducción.",
     "url_video": "https://youtu.be/5RcfLDBT61Y?si=JhOs7k4d_i1dRvm7",
-    "tipo": "",
+    "tipo": "youtube",
     "preview_url": "",
     "date": "2021",
     "destacado": false,
@@ -182,10 +182,10 @@
     ]
   },
   {
-    "id": 5,
+    "id": 4,
     "titulo": "ROGER FEDERER - Luis7Lunes & Vic Deal Ft. Fa-zeta",
     "categoria": "VIDEOCLIP",
-    "descripcion": "Videoclip - Producción + Dirección + Montaje ",
+    "descripcion": "Videoclip - Producción + Dirección + Montaje",
     "url_video": "https://youtu.be/ZjQjB1Bg5_Q?si=-RuEsuK7dUbDxpFc",
     "tipo": "youtube",
     "preview_url": "",
@@ -196,7 +196,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "titulo": "ASÍ PARTICIPAN LAS VÍCTIMAS EN LA JEP",
     "categoria": "ANIMACIÓN",
     "descripcion": "JEP - Jurisdicción Especial para la Paz - Dirección y Postproducción.",
@@ -212,7 +212,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 2,
     "titulo": "LÍDERES SOCIALES ASESINADOS: ¿Qué hace la UNP?",
     "categoria": "SERIE PERIODISMO DOCUMENTAL",
     "descripcion": "National Geographic Latinoamerica #ExplorerInvestigation",
@@ -227,7 +227,7 @@
     ]
   },
   {
-    "id": 2,
+    "id": 1,
     "titulo": "LÍDERES SOCIALES ASESINADOS: Operativo Tumaco",
     "categoria": "SERIE PERIODISMO DOCUMENTAL",
     "descripcion": "National Geographic Latinoamerica #ExplorerInvestigation",
@@ -242,7 +242,7 @@
     ]
   },
   {
-    "id": 1,
+    "id": 17,
     "titulo": "AMPLIFICADO.TV",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Formato de sesiones de música en vivo - Co-Dirección y Postproducción",
@@ -258,32 +258,32 @@
     ]
   },
   {
-    "id": 4,
-    "titulo": "GUNS 'N ROSES: Bienvenido a la jungla bogotana ",
-    "categoria": "ANIMACIÓN - MÚSICA ",
+    "id": 18,
+    "titulo": "GUNS 'N ROSES: Bienvenido a la jungla bogotana",
+    "categoria": "ANIMACIÓN - MÚSICA",
     "descripcion": "Animación Documental",
     "url_video": "https://youtu.be/r75OWwq2SAA?si=1qoksrAwydYekMQO",
-    "tipo": "Youtube",
+    "tipo": "youtube",
     "preview_url": "",
-    "date": "",
+    "date": "2018",
     "destacado": true,
     "tags": [
-      "Animación",
+      "animación",
       "música"
     ]
   },
   {
-    "id": "",
+    "id": 19,
     "titulo": "ALAS SOBRE MONSERRATE",
     "categoria": "Deportes - Documental",
     "descripcion": "Vuelo de Jhonatan Florez en Wingsuit sobre Monserrate",
     "url_video": "https://youtu.be/zcfQQ2QzZWs?si=gojzTJqvnuB9eetz",
-    "tipo": "Youtube",
+    "tipo": "youtube",
     "preview_url": "",
     "date": "2014",
     "destacado": false,
     "tags": [
-      "Deportes"
+      "deportes"
     ]
   }
 ]
