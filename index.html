@@ -89,7 +89,10 @@
         <div class="section-header section-header-cat">
             <div class="main-filters" id="catalogo-main-filters"></div>
             <div class="subcategories-row" id="catalogo-sub-filters" style="opacity: 0; pointer-events: none;"></div>
-            <div id="terminal-path" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #888; margin-top: 6px; display: none; text-align: left; padding: 0 16px;"></div>
+            <div id="terminal-path-container" style="display: none; align-items: center; margin-top: 6px; padding: 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #888; text-align: left;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; flex-shrink: 0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="terminal-path" style="background: transparent; border: none; color: #888; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; width: 100%; outline: none;" spellcheck="false">
+            </div>
         </div>
         <div class="grid-wrap"><div id="grid-catalogo"></div></div>
 
@@ -190,7 +193,10 @@
                         </span>
                     </button>
                 </div>
-                <div id="lcd-time" class="lcd-time">00:00 / 00:00</div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; margin-left: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #00e5ff; white-space: nowrap;">
+                    <div id="lcd-views" style="margin-bottom: 2px; font-weight: normal; font-size: 0.55rem; color: #00ff41; opacity: 0.7;"></div>
+                    <div id="lcd-time" class="lcd-time" style="margin: 0;">00:00 / 00:00</div>
+                </div>
             </div>
         </div>
 
@@ -208,8 +214,7 @@
         <img src="8bitssss_rev.webp" alt="Animación Esquina Derecha" loading="lazy">
     </div>
 
-    <!-- Scripts -->
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- YouTube API is loaded dynamically in player.js to avoid race conditions -->
     <script type="module" src="/src/main.js"></script>
     <!-- Fallback para navegadores sin JavaScript -->
     <noscript>

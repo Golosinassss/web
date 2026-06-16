@@ -99,6 +99,9 @@ store.subscribe((key, newValue) => {
             }
             if (activeUrl) setActiveCardByUrl(activeUrl);
             break;
+        case 'searchQuery':
+            renderCatalogo();
+            break;
     }
 });
 
@@ -339,6 +342,22 @@ function initApp(data) {
     setupDragScroll();
     updateLcdDisplay(`<span class="lcd-title">GOLOSINASSSS</span> • <span class="lcd-desc">Escoge tu próxima golosina</span> • `);
     initKeyboardNavigation();
+
+    // Eventos del buscador (terminal-path)
+    const terminalPath = document.getElementById('terminal-path');
+    if (terminalPath) {
+        terminalPath.addEventListener('focus', () => {
+            terminalPath.value = '';
+        });
+        terminalPath.addEventListener('blur', () => {
+            if (!terminalPath.value.trim() && terminalPath.dataset.original) {
+                terminalPath.value = terminalPath.dataset.original;
+            }
+        });
+        terminalPath.addEventListener('input', (e) => {
+            store.set('searchQuery', e.target.value.toLowerCase());
+        });
+    }
 }
 
 // ── Bootstrap ────────────────────────────────────────────────

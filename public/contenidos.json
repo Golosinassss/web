@@ -1,3973 +1,3796 @@
 [
   {
-    "id": 281,
+    "id": "271",
     "titulo": "6402 + RAZONES PARA NO OLVIDAR",
     "categoria": "Documental",
     "descripcion": "MAFAPO + Epigrama + MinCultura",
+    "CARGO": "Realizador + Postproducción",
     "url_video": "https://youtu.be/SwwBimaRBpE?si=puLwaqVMZuYk6aUV",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/SwwBimaRBpE/hqdefault.jpg",
-    "date": "2025",
-    "destacado": true,
-    "tags": [
-      "institucional",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2025-05-05",
+    "destacado": "SI",
+    "tags": "institucional, social",
+    "vistas originales": "272"
   },
   {
-    "id": 280,
+    "id": "270",
     "titulo": "47 SALÓN NACIONAL DE ARTISTAS: KAUKA asamblea de mundos posibles",
     "categoria": "Documental",
     "descripcion": "Epigrama + MinCultura - Registro Documental",
+    "CARGO": "Camarógrafo + Realizador",
     "url_video": "https://youtu.be/hHJ1aVs6Q98?si=WOlsyzdSD60pSQeL",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/hHJ1aVs6Q98/hqdefault.jpg",
-    "date": "2026",
-    "destacado": true,
-    "tags": [
-      "institucional",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2026-03-04",
+    "destacado": "SI",
+    "tags": "institucional, social",
+    "vistas originales": "248"
   },
   {
-    "id": 279,
+    "id": "269",
     "titulo": "SONIDO INFINITO: Conjunto Media Luna - Kumbia Medallo",
     "categoria": "CONCIERTOS EN VIVO",
     "descripcion": "Aniversario Ritmo Moderno - Bollo Room #8 - Bogotá, Colombia",
+    "CARGO": "Contenido Original",
     "url_video": "https://youtu.be/AxLDXmOTtRQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/AxLDXmOTtRQ/hqdefault.jpg",
-    "date": "2025",
-    "destacado": false,
-    "tags": [
-      "sonido infinito",
-      "conciertos"
-    ]
+    "preview_url": "",
+    "date": "2025-11-06",
+    "destacado": "NO",
+    "tags": "sonido infinito, conciertos",
+    "vistas originales": "11399"
   },
   {
-    "id": 278,
+    "id": "268",
     "titulo": "SONIDO INFINITO: Velandia y La Tigra - Venganza",
     "categoria": "CONCIERTOS EN VIVO",
     "descripcion": "Teatro Colón - Bogotá, Colombia",
+    "CARGO": "Contenido Original",
     "url_video": "https://youtu.be/1C9wjSrnShY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/1C9wjSrnShY/hqdefault.jpg",
-    "date": "2023",
-    "destacado": false,
-    "tags": [
-      "sonido infinito",
-      "conciertos"
-    ]
+    "preview_url": "",
+    "date": "2025-09-04",
+    "destacado": "NO",
+    "tags": "sonido infinito, conciertos",
+    "vistas originales": "15455"
   },
   {
-    "id": 277,
+    "id": "267",
     "titulo": "LIMONES - Semblanzas del Río Guapi",
     "categoria": "VIDEOCLIP",
     "descripcion": "Videoclip",
+    "CARGO": "Dirección, Producción y Postproducción.",
     "url_video": "https://youtu.be/m1YnckBrAxc?si=sCSBjgFV7jUL6dvj",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/m1YnckBrAxc/hqdefault.jpg",
-    "date": "2025",
-    "destacado": true,
-    "tags": [
-      "videoclips"
-    ]
+    "preview_url": "",
+    "date": "2025-06-15",
+    "destacado": "si",
+    "tags": "videoclips",
+    "vistas originales": "10134"
   },
   {
-    "id": 276,
+    "id": "266",
     "titulo": "Candidatas Electorales Indígenas",
     "categoria": "WEB - POPAYÁN, CAUCA",
     "descripcion": "OEA/CIM Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
+    "CARGO": "Dirección + Postproducción",
     "url_video": "https://youtu.be/dS2pXXdhr_Y?si=S79CFOqlc0F3g2nX",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/dS2pXXdhr_Y/hqdefault.jpg",
-    "date": "2025",
-    "destacado": true,
-    "tags": [
-      "institucional",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2025-01-20",
+    "destacado": "SI",
+    "tags": "institucional, social",
+    "vistas originales": "20"
   },
   {
-    "id": 275,
+    "id": "265",
     "titulo": "MAPP/OEA - Mínimos Humanitarios",
     "categoria": "WEB - ARAUCA",
     "descripcion": "Organización de Estados Americanos - Misión de Apoyo al Proceso de Paz",
+    "CARGO": "Dirección + Postproducción",
     "url_video": "https://youtu.be/jnzH0OW_tVw?si=SXQYAinurMvu5J2i",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/jnzH0OW_tVw/hqdefault.jpg",
-    "date": "2025",
-    "destacado": true,
-    "tags": [
-      "institucional",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2025-09-09",
+    "destacado": "SI",
+    "tags": "institucional, social",
+    "vistas originales": "176"
   },
   {
-    "id": 274,
+    "id": "264",
     "titulo": "BILARDO: El doctor del fútbol",
     "categoria": "PERIODISMO DOCUMENTAL",
     "descripcion": "HBO Max Documental + SNAKED",
+    "CARGO": "Dirección unidad Colombia.",
     "url_video": "https://youtu.be/oZ3MARJKSAk?si=uZ5WV-mwWpNGnCK-",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/oZ3MARJKSAk/hqdefault.jpg",
-    "date": "2022",
-    "destacado": true,
-    "tags": [
-      "cine",
-      "periodismo",
-      "fútbol"
-    ]
+    "preview_url": "",
+    "date": "2022-02-02",
+    "destacado": "SI",
+    "tags": "cine, periodismo, fútbol",
+    "vistas originales": "15398"
   },
   {
-    "id": 273,
+    "id": "263",
     "titulo": "DIOMEDES: El ídolo, el misterio y la tragedia",
     "categoria": "PERIODISMO DOCUMENTAL",
-    "descripcion": "Netflix Original Documental",
+    "descripcion": "Netflix Original Documental ",
+    "CARGO": "Co-Dirección + Montaje + Cámara 2da",
     "url_video": "https://youtu.be/75RJRpmXLUE?si=qo78BzYH7qMz0VmW",
     "tipo": "youtube",
     "preview_url": "Portada_Diomedes_Golosinassss.gif",
-    "date": "2022",
-    "destacado": true,
-    "tags": [
-      "cine",
-      "periodismo",
-      "música"
-    ]
+    "date": "2022-03-07",
+    "destacado": "SI",
+    "tags": "cine, periodismo, música",
+    "vistas originales": "120162"
   },
   {
-    "id": 272,
+    "id": "262",
     "titulo": "HACER VISIBLE LO INVISIBLE",
     "categoria": "SERIE WEB DOCUMENTAL",
     "descripcion": "COMISIÓN DE LA VERDAD",
+    "CARGO": "Dirección, Producción y Postproducción.",
     "url_video": "https://www.youtube.com/watch?v=RWM_b5XudM0",
     "tipo": "youtube",
     "preview_url": "Portada_HVLI.gif",
-    "date": "2022",
-    "destacado": false,
-    "tags": [
-      "social",
-      "institucional"
-    ]
+    "date": "2022-03-06",
+    "destacado": "NO",
+    "tags": "social, institucional",
+    "vistas originales": "955"
   },
   {
-    "id": 271,
+    "id": "261",
     "titulo": "EL ESTALLIDO",
     "categoria": "PERIODISMO DOCUMENTAL",
     "descripcion": "Cortometraje Independiente",
+    "CARGO": "Dirección, Co- Producción y Postproducción.",
     "url_video": "https://youtu.be/25wiPu9_V3o?si=B0QNjI8Zhmo1bq5a",
     "tipo": "youtube",
     "preview_url": "Portada_ESTALLIDO.gif",
-    "date": "2021 - 2022",
-    "destacado": true,
-    "tags": [
-      "cine",
-      "periodismo",
-      "social"
-    ]
+    "date": "2022-04-28",
+    "destacado": "SI",
+    "tags": "cine, periodismo, social",
+    "vistas originales": "77240"
   },
   {
-    "id": 270,
+    "id": "260",
     "titulo": "PAJARITA CAUCANA - Los Colores de un Territorio",
     "categoria": "Documental",
     "descripcion": "",
+    "CARGO": "Dirección, Producción y Postproducción.",
     "url_video": "https://youtu.be/5RcfLDBT61Y?si=JhOs7k4d_i1dRvm7",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/5RcfLDBT61Y/hqdefault.jpg",
-    "date": "2021",
-    "destacado": false,
-    "tags": [
-      "institucional",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2022-07-20",
+    "destacado": "No",
+    "tags": "institucional, social",
+    "vistas originales": "187"
   },
   {
-    "id": 269,
+    "id": "259",
     "titulo": "ROGER FEDERER - Luis7Lunes & Vic Deal Ft. Fa-zeta",
     "categoria": "VIDEOCLIP",
     "descripcion": "Videoclip",
+    "CARGO": "Dirección, Producción y Postproducción.",
     "url_video": "https://youtu.be/ZjQjB1Bg5_Q?si=-RuEsuK7dUbDxpFc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ZjQjB1Bg5_Q/hqdefault.jpg",
-    "date": "2020",
-    "destacado": true,
-    "tags": [
-      "videoclips"
-    ]
+    "preview_url": "",
+    "date": "2019-08-09",
+    "destacado": "SI",
+    "tags": "videoclips",
+    "vistas originales": "1628045"
   },
   {
-    "id": 268,
+    "id": "258",
     "titulo": "ASÍ PARTICIPAN LAS VÍCTIMAS EN LA JEP",
     "categoria": "ANIMACIÓN",
     "descripcion": "JEP - Jurisdicción Especial para la Paz",
+    "CARGO": "Dirección, Producción y Postproducción.",
     "url_video": "https://youtu.be/R7hORlDFjos?si=2IV7_ToKjKfvZLJN",
     "tipo": "youtube",
     "preview_url": "Portada_JEP.gif",
-    "date": "2020",
-    "destacado": false,
-    "tags": [
-      "animación",
-      "institucional",
-      "social"
-    ]
+    "date": "2020-01-07",
+    "destacado": "NO",
+    "tags": "animación, institucional, social",
+    "vistas originales": "9549"
   },
   {
-    "id": 267,
-    "titulo": "GUNS 'N ROSES: Bienvenido a la jungla bogotana",
-    "categoria": "ANIMACIÓN - MÚSICA",
+    "id": "257",
+    "titulo": "GUNS 'N ROSES: Bienvenido a la jungla bogotana ",
+    "categoria": "ANIMACIÓN - MÚSICA ",
     "descripcion": "Animación Documental",
+    "CARGO": "Realizador  + Montaje",
     "url_video": "https://youtu.be/r75OWwq2SAA?si=1qoksrAwydYekMQO",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/r75OWwq2SAA/hqdefault.jpg",
-    "date": "19 Mar 2019",
-    "destacado": true,
-    "tags": [
-      "animación",
-      "música"
-    ]
+    "tipo": "Youtube",
+    "preview_url": "",
+    "date": "2019-03-19",
+    "destacado": "Si",
+    "tags": "Animación, música",
+    "vistas originales": "2568090"
   },
   {
-    "id": 266,
+    "id": "256",
     "titulo": "LÍDERES SOCIALES ASESINADOS: ¿Qué hace la UNP?",
     "categoria": "SERIE PERIODISMO DOCUMENTAL",
     "descripcion": "National Geographic Latinoamerica #ExplorerInvestigation",
+    "CARGO": "Camarógrafo 1ra Unidad",
     "url_video": "https://www.youtube.com/watch?v=ocMdH0aFkuA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ocMdH0aFkuA/hqdefault.jpg",
-    "date": "2019",
-    "destacado": false,
-    "tags": [
-      "periodismo",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2019-04-09",
+    "destacado": "NO",
+    "tags": "periodismo, social",
+    "vistas originales": "33965"
   },
   {
-    "id": 265,
+    "id": "255",
     "titulo": "LÍDERES SOCIALES ASESINADOS: Operativo Tumaco",
     "categoria": "SERIE PERIODISMO DOCUMENTAL",
     "descripcion": "National Geographic Latinoamerica #ExplorerInvestigation",
+    "CARGO": "Camarógrafo 1ra Unidad",
     "url_video": "https://youtu.be/7cGDYqF215I?si=sd5FrC8qQlSBz1BV",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/7cGDYqF215I/hqdefault.jpg",
-    "date": "2019",
-    "destacado": false,
-    "tags": [
-      "periodismo",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2019-04-10",
+    "destacado": "NO",
+    "tags": "periodismo, social",
+    "vistas originales": "4384"
   },
   {
-    "id": 264,
-    "titulo": "Rocca | Noisey Raps",
+    "id": "254",
+    "titulo": "Rocca | Noisey Raps ",
     "categoria": "NOISEY  - Periodismo Cultural",
     "descripcion": "Cortomatraje documental sobre la vida músical del rapero latino Rocca.",
+    "CARGO": "Montaje + Edición",
     "url_video": "https://www.youtube.com/watch?v=4gJ5meDkrUc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/4gJ5meDkrUc/hqdefault.jpg",
-    "date": "11 Oct 2019",
-    "destacado": false,
-    "tags": [
-      "periodismo",
-      "música",
-      "documental"
-    ]
+    "preview_url": "",
+    "date": "2019-10-11",
+    "destacado": "NO",
+    "tags": "periodismo, música, documental",
+    "vistas originales": "33906"
   },
   {
-    "id": 263,
+    "id": "253",
     "titulo": "Empanadas (Bogotá) Enciclopedia de la comida latinoamericana",
     "categoria": "VICE - Periodismo Cultural",
-    "descripcion": "Mini-Serie de comida.",
+    "descripcion": "Mini-Serie de comida. ",
+    "CARGO": "Dirección, Producción y Postproducción.",
     "url_video": "https://youtu.be/UGYnKq-9KJM?si=0awIiD9ghuY_Z8uq",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/UGYnKq-9KJM/hqdefault.jpg",
-    "date": "21 May 2019",
-    "destacado": false,
-    "tags": [
-      "periodismo",
-      "comida",
-      "documental"
-    ]
+    "preview_url": "",
+    "date": "2019-05-21",
+    "destacado": "NO",
+    "tags": "periodismo, comida, documental",
+    "vistas originales": "152930"
   },
   {
-    "id": 262,
+    "id": "252",
     "titulo": "Encebollado (Guayaquil, Ecuador) Enciclopedia de la comida latinoamericana",
     "categoria": "VICE - Periodismo Cultural",
-    "descripcion": "Mini-Serie de comida.",
+    "descripcion": "Mini-Serie de comida. ",
+    "CARGO": "Dirección, Producción y Postproducción.",
     "url_video": "https://youtu.be/Lpmxg77W-RA?si=tYrBp0At-FWgGi9m",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Lpmxg77W-RA/hqdefault.jpg",
-    "date": "19 Mar 2019",
-    "destacado": false,
-    "tags": [
-      "periodismo",
-      "comida",
-      "documental"
-    ]
+    "preview_url": "",
+    "date": "2019-03-19",
+    "destacado": "NO",
+    "tags": "periodismo, comida, documental",
+    "vistas originales": "83804"
   },
   {
-    "id": 261,
+    "id": "251",
     "titulo": "Perras (Medellín) Enciclopedia de la comida latinoamericana",
     "categoria": "VICE - Periodismo Cultural",
-    "descripcion": "Mini-Serie de comida.",
+    "descripcion": "Mini-Serie de comida. ",
+    "CARGO": "Dirección, Producción y Postproducción.",
     "url_video": "https://youtu.be/l_FPbSMMCMk?si=DVyCf1SCjoe6KBMW",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/l_FPbSMMCMk/hqdefault.jpg",
-    "date": "12 Mar 2019",
-    "destacado": true,
-    "tags": [
-      "periodismo",
-      "comida",
-      "documental"
-    ]
+    "preview_url": "",
+    "date": "2019-03-12",
+    "destacado": "SI",
+    "tags": "periodismo, comida, documental",
+    "vistas originales": "345524"
   },
   {
-    "id": 260,
+    "id": "250",
     "titulo": "VICE Meets: Florence Thomas",
     "categoria": "VICE - Periodismo Cultural",
     "descripcion": "Entrevista a fundadora del feminismo en Colombia, de Tania Tapia a Florence Thomas.",
+    "CARGO": "Dirección de Fotografía +  Edición",
     "url_video": "https://youtu.be/wTNS0bcPcaw?si=I3OIhyFxOBQOh5MR",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/wTNS0bcPcaw/hqdefault.jpg",
-    "date": "8 Mar 2019",
-    "destacado": false,
-    "tags": [
-      "periodismo",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2019-03-08",
+    "destacado": "NO",
+    "tags": "periodismo, social",
+    "vistas originales": "22981"
   },
   {
-    "id": 259,
+    "id": "249",
     "titulo": "NO COPIO  - CRUDO MEANS RAW / DIRECTOS NOISEY",
     "categoria": "NOISEY  - Periodismo Cultural",
     "descripcion": "Directo de la canción \"No copio\" en el centro de Bogotá.",
+    "CARGO": "Dirección de Fotografía +  Edición",
     "url_video": "https://youtu.be/7TDf2PxiKC4?si=qmCLeQ-Au02btGKM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/7TDf2PxiKC4/hqdefault.jpg",
-    "date": "18 ene 2019",
-    "destacado": true,
-    "tags": [
-      "videoclips",
-      "sesiones musicales",
-      "conciertos"
-    ]
+    "preview_url": "",
+    "date": "2019-01-18",
+    "destacado": "SI",
+    "tags": "videoclips, sesiones musicales,  conciertos",
+    "vistas originales": "69390"
   },
   {
-    "id": 258,
+    "id": "248",
     "titulo": "Mestizo British Council: Sidestepper",
     "categoria": "NOISEY  - Periodismo Cultural",
     "descripcion": "Sesiones Musicales  + British Council",
+    "CARGO": "Dirección de Fotografía",
     "url_video": "https://www.youtube.com/watch?v=gmX55lcjuxQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/gmX55lcjuxQ/hqdefault.jpg",
-    "date": "24 May 2018",
-    "destacado": false,
-    "tags": [
-      "sesiones musicales",
-      "conciertos"
-    ]
+    "preview_url": "",
+    "date": "2018-05-24",
+    "destacado": "NO",
+    "tags": "sesiones musicales, conciertos",
+    "vistas originales": "7362"
   },
   {
-    "id": 257,
+    "id": "247",
     "titulo": "Mestizo British Council: Cero39",
     "categoria": "NOISEY  - Periodismo Cultural",
     "descripcion": "Sesiones Musicales  + British Council",
+    "CARGO": "Dirección de Fotografía",
     "url_video": "https://www.youtube.com/watch?v=HDvoh1Il7Jc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/HDvoh1Il7Jc/hqdefault.jpg",
-    "date": "4 May 2018",
-    "destacado": false,
-    "tags": [
-      "sesiones musicales",
-      "conciertos"
-    ]
+    "preview_url": "",
+    "date": "2018-05-04",
+    "destacado": "NO",
+    "tags": "sesiones musicales, conciertos",
+    "vistas originales": "8515"
   },
   {
-    "id": 256,
+    "id": "246",
     "titulo": "Mestizo British Council: Boom Full Meke",
     "categoria": "NOISEY  - Periodismo Cultural",
     "descripcion": "Sesiones Musicales  + British Council",
+    "CARGO": "Dirección de Fotografía",
     "url_video": "https://www.youtube.com/watch?v=Ps3lrfTM2aM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Ps3lrfTM2aM/hqdefault.jpg",
-    "date": "4 May 2018",
-    "destacado": false,
-    "tags": [
-      "sesiones musicales",
-      "conciertos"
-    ]
+    "preview_url": "",
+    "date": "2018-05-04",
+    "destacado": "NO",
+    "tags": "sesiones musicales, conciertos",
+    "vistas originales": "2803"
   },
   {
-    "id": 255,
+    "id": "245",
     "titulo": "Mestizo British Council: Quantic & Nidia Góngora",
     "categoria": "NOISEY  - Periodismo Cultural",
     "descripcion": "Sesiones Musicales  + British Council",
+    "CARGO": "Dirección de Fotografía",
     "url_video": "https://youtu.be/R_zRw-kFM6o?si=m2nglgYFPQAKGLVH",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/R_zRw-kFM6o/hqdefault.jpg",
-    "date": "3 May 2018",
-    "destacado": false,
-    "tags": [
-      "sesiones musicales",
-      "conciertos"
-    ]
+    "preview_url": "",
+    "date": "2018-05-03",
+    "destacado": "NO",
+    "tags": "sesiones musicales, conciertos",
+    "vistas originales": "18682"
   },
   {
-    "id": 254,
+    "id": "244",
     "titulo": "SORTE: La montaña de los espíritus | Miscelánea",
     "categoria": "VICE - Periodismo Cultural",
     "descripcion": "Corto Documental sobre espiritismo en la montaña de Sorte, Yaracuy Venezuela",
+    "CARGO": "Dirección de Fotografía +  Edición",
     "url_video": "https://www.youtube.com/watch?v=qHSVxgh3AgY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/qHSVxgh3AgY/hqdefault.jpg",
-    "date": "20 Mar 2018",
-    "destacado": true,
-    "tags": [
-      "periodismo",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2018-03-20",
+    "destacado": "SI",
+    "tags": "periodismo, social",
+    "vistas originales": "2597017"
   },
   {
-    "id": 253,
-    "titulo": "Colombia's Hidden Cocaine Route: El Naya",
-    "categoria": "VICE INTERNATIONAL",
+    "id": "243",
+    "titulo": "El  Naya: La Ruta Oculta de la Cocaína",
+    "categoria": "VICE + PACIFISTA",
     "descripcion": "Corto Documental sobre el proceso de producción y transporte de drogas ilicitas en el pacífico colombiano.",
-    "url_video": "https://www.youtube.com/watch?v=Bw6KZR7WVMM",
+    "CARGO": "Producción + Dirección de Fotografía +  Montaje",
+    "url_video": "https://youtu.be/GNbjrVou82g?si=q8oyK8XiFUOvOV7O",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Bw6KZR7WVMM/hqdefault.jpg",
-    "date": "25 ene 2018",
-    "destacado": true,
-    "tags": [
-      "periodismo",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2018-01-30",
+    "destacado": "SI",
+    "tags": "periodismo, social",
+    "vistas originales": "2701176"
   },
   {
-    "id": 252,
-    "titulo": "Making of: Extraña correspondencia de Rossina Bossio",
+    "id": "242",
+    "titulo": "Making of: Extraña correspondencia de Rossina Bossio ",
     "categoria": "VICE - Periodismo Cultural",
     "descripcion": "Detrás de cámaras de la  video danza de la artista colombiana Rossina Bossio",
+    "CARGO": "Dirección + Dirección de Fotografía",
     "url_video": "https://www.youtube.com/watch?v=CcknJN9Cvgc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/CcknJN9Cvgc/hqdefault.jpg",
-    "date": "27 Oct 2017",
-    "destacado": false,
-    "tags": [
-      "periodismo"
-    ]
+    "preview_url": "",
+    "date": "2017-10-27",
+    "destacado": "NO",
+    "tags": "periodismo",
+    "vistas originales": "7054"
   },
   {
-    "id": 251,
-    "titulo": "Popología bogotana | Miscelánea",
+    "id": "241",
+    "titulo": "Popología bogotana | Miscelánea ",
     "categoria": "VICE - Periodismo Cultural",
     "descripcion": "Corto Documental sobre el sistema de acueducto y alcantarillado de Bogotá.",
+    "CARGO": "Dirección de Fotografía +  Edición",
     "url_video": "https://www.youtube.com/watch?v=k0R6ZKEDZ7Y",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/k0R6ZKEDZ7Y/hqdefault.jpg",
-    "date": "5 abr 2017",
-    "destacado": false,
-    "tags": [
-      "periodismo",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2017-04-05",
+    "destacado": "NO",
+    "tags": "periodismo, social",
+    "vistas originales": "49995"
   },
   {
-    "id": 250,
-    "titulo": "El Otro Carnaval | Miscelánea",
+    "id": "240",
+    "titulo": "El Otro Carnaval | Miscelánea ",
     "categoria": "VICE - Periodismo Cultural",
-    "descripcion": "Corto Documental sobre el Carnaval de Barranquilla.",
+    "descripcion": "Corto Documental sobre el Carnaval de Barranquilla. ",
+    "CARGO": "Dirección de Fotografía +  Edición",
     "url_video": "https://youtu.be/koIlc7NfhEc?si=07gObEZxuL86jxOQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/koIlc7NfhEc/hqdefault.jpg",
-    "date": "1 Mar 2017",
-    "destacado": false,
-    "tags": [
-      "periodismo",
-      "música",
-      "documental"
-    ]
+    "preview_url": "",
+    "date": "2017-03-01",
+    "destacado": "NO",
+    "tags": "periodismo, música, documental",
+    "vistas originales": "22425"
   },
   {
-    "id": 249,
-    "titulo": "Inside Colombia's Beauty Pageant for Indigenous Trans Women",
+    "id": "239",
+    "titulo": "Inside Colombia's Beauty Pageant for Indigenous Trans Women ",
     "categoria": "VICE INTERNATIONAL",
     "descripcion": "Corto Documental sobre el reinado transgénero en Leticia, capital del Amazonas colombiano.",
+    "CARGO": "Dirección + Dirección de Fotografía",
     "url_video": "https://www.youtube.com/watch?v=fAr8GvxxBKM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/fAr8GvxxBKM/hqdefault.jpg",
-    "date": "8 Jun 2017",
-    "destacado": true,
-    "tags": [
-      "periodismo",
-      "social"
-    ]
+    "preview_url": "",
+    "date": "2017-06-08",
+    "destacado": "SI",
+    "tags": "periodismo, social",
+    "vistas originales": "458837"
   },
   {
-    "id": 248,
+    "id": "238",
     "titulo": "Ataque Tropical Bogotano | TrasEscena",
     "categoria": "NOISEY  - Periodismo Cultural",
     "descripcion": "Corto Documental sobre los músicos capitalinos Marioa Geleano, Eblis Álvarez y Pedro Ojeda.",
+    "CARGO": "Camarógrafo +  Edición",
     "url_video": "https://www.youtube.com/watch?v=JJnS9cfPd40",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/JJnS9cfPd40/hqdefault.jpg",
-    "date": "20 dic 2016",
-    "destacado": true,
-    "tags": [
-      "periodismo",
-      "música",
-      "documental"
-    ]
+    "preview_url": "",
+    "date": "2016-12-20",
+    "destacado": "SI",
+    "tags": "periodismo, música, documental",
+    "vistas originales": "19383"
   },
   {
-    "id": 247,
-    "titulo": "Edson Velandia: Hijo de Piedecuesta | TrasEscena",
+    "id": "237",
+    "titulo": "Edson Velandia: Hijo de Piedecuesta | TrasEscena ",
     "categoria": "NOISEY  - Periodismo Cultural",
     "descripcion": "Corto Documental sobre el músico santandereano Edson Velandia.",
+    "CARGO": "Edición",
     "url_video": "https://www.youtube.com/watch?v=FGYKacIvsrA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/FGYKacIvsrA/hqdefault.jpg",
-    "date": "7 Nov 2016",
-    "destacado": true,
-    "tags": [
-      "periodismo",
-      "música",
-      "documental"
-    ]
+    "preview_url": "",
+    "date": "2016-11-07",
+    "destacado": "SI",
+    "tags": "periodismo, música, documental",
+    "vistas originales": "28249"
   },
   {
-    "id": 245,
+    "id": "236",
+    "titulo": "",
+    "categoria": "",
+    "descripcion": "",
+    "CARGO": "",
+    "url_video": "",
+    "tipo": "",
+    "preview_url": "",
+    "date": "",
+    "destacado": "",
+    "tags": "",
+    "vistas originales": ""
+  },
+  {
+    "id": "235",
     "titulo": "DUB DE GAITA / EL FIN DEL MUNDO : CAPITULO #04",
     "categoria": "MÚSICA",
     "descripcion": "Serie Documental DUB DE GAITA",
+    "CARGO": "Co-Dirección + Montaje + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=eKo-RCeI41w",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/eKo-RCeI41w/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "dub de gaita",
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-11-22",
+    "destacado": "NO",
+    "tags": "dub de gaita, amplificado.tv",
+    "vistas originales": "11038"
   },
   {
-    "id": 244,
+    "id": "234",
     "titulo": "DUB DE GAITA / EL FIN DEL MUNDO : CAPITULO #03",
     "categoria": "MÚSICA",
     "descripcion": "Serie Documental DUB DE GAITA",
+    "CARGO": "Co-Dirección + Montaje + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=EXHju5ZffuQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/EXHju5ZffuQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "dub de gaita",
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-05-11",
+    "destacado": "NO",
+    "tags": "dub de gaita, amplificado.tv",
+    "vistas originales": "12024"
   },
   {
-    "id": 243,
+    "id": "233",
     "titulo": "DUB DE GAITA / EL FIN DEL MUNDO : CAPITULO #02",
     "categoria": "MÚSICA",
     "descripcion": "Serie Documental DUB DE GAITA",
+    "CARGO": "Co-Dirección + Montaje + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=JlmHlNEByn8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/JlmHlNEByn8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "dub de gaita",
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-04-26",
+    "destacado": "NO",
+    "tags": "dub de gaita, amplificado.tv",
+    "vistas originales": "11503"
   },
   {
-    "id": 242,
+    "id": "232",
     "titulo": "DUB DE GAITA / EL FIN DEL MUNDO : CAPITULO #01",
     "categoria": "MÚSICA",
     "descripcion": "Serie Documental DUB DE GAITA",
+    "CARGO": "Co-Dirección + Montaje + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=gfMbE4MTMDI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/gfMbE4MTMDI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "dub de gaita",
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-04-12",
+    "destacado": "NO",
+    "tags": "dub de gaita, amplificado.tv",
+    "vistas originales": "30037"
   },
   {
-    "id": 241,
+    "id": "231",
     "titulo": "AMPLIFICADO.TV",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Formato de sesiones de música en vivo.",
+    "CARGO": "Co-Dirección y Postproducción",
     "url_video": "https://www.youtube.com/watch?v=w3lFVNMkTQQ",
     "tipo": "youtube",
     "preview_url": "portada_AMPLIFICADO.gif",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "sesiones musicales",
-      "conciertos",
-      "videoclips"
-    ]
+    "date": "2012-03-09",
+    "destacado": "NO",
+    "tags": "sesiones musicales, conciertos, videoclips",
+    "vistas originales": "4070"
   },
   {
-    "id": 240,
+    "id": "230",
     "titulo": "ALAS SOBRE MONSERRATE",
     "categoria": "Deportes - Documental",
     "descripcion": "Vuelo de Jhonatan Florez en Wingsuit sobre Monserrate",
+    "CARGO": "Realizador Camarógrafo",
     "url_video": "https://youtu.be/zcfQQ2QzZWs?si=gojzTJqvnuB9eetz",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/zcfQQ2QzZWs/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "deportes"
-    ]
+    "tipo": "Youtube",
+    "preview_url": "",
+    "date": "2015-02-06",
+    "destacado": "no",
+    "tags": "Deportes",
+    "vistas originales": "158"
   },
   {
-    "id": 239,
+    "id": "229",
     "titulo": "FRIKSTAILERS / VENUS : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=UMzbtByXj9k",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/UMzbtByXj9k/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-07-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "21087"
   },
   {
-    "id": 238,
+    "id": "228",
     "titulo": "AGRUPACIÓN CARIÑO / TANTAS GANAS : AMPLIFICADO (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=RusGvVVO0TA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/RusGvVVO0TA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-06-24",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "72162"
   },
   {
-    "id": 237,
+    "id": "227",
     "titulo": "I.R.A. / ANTISOCIAL : AMPLIFICADO (MEDELLIN, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=zsdDMd0rdd8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/zsdDMd0rdd8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-06-12",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "122361"
   },
   {
-    "id": 236,
+    "id": "226",
     "titulo": "ALFREDO GUTIERREZ / ANHELOS : AMPLIFICADO (SABANAS DE BELTRÁN, SUCRE, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=MnGCKeiLEJQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/MnGCKeiLEJQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-06-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "108646"
   },
   {
-    "id": 235,
-    "titulo": "PERNETT / HOY ES MAÑANA : AMPLIFICADO (BARRANQUILLA, COLOMBIA)",
+    "id": "225",
+    "titulo": "PERNETT / HOY ES MAÑANA : AMPLIFICADO (BARRANQUILLA, COLOMBIA) ",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=EpToZGo4p88",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/EpToZGo4p88/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-05-25",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "36207"
   },
   {
-    "id": 234,
+    "id": "224",
     "titulo": "CHARLES KING / EL MARTILLO : AMPLIFICADO (CARTAGENA, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Xv0Xng4M0XQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Xv0Xng4M0XQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-04-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "124804"
   },
   {
-    "id": 233,
+    "id": "223",
     "titulo": "PETRONA MARTÍNEZ / UN NIÑO LLORA EN LOS MONTES DE MARÍA : AMPLIFICADO (BOLÍVAR, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Ab5XqeTD8IM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Ab5XqeTD8IM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-04-19",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "803137"
   },
   {
-    "id": 232,
+    "id": "222",
     "titulo": "LOS TRES / DÉJATE CAER: AMPLIFICADO (CHILE)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=V_cX2Eek7ug",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/V_cX2Eek7ug/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-04-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "49718"
   },
   {
-    "id": 231,
+    "id": "221",
     "titulo": "LA MINITK DEL MIEDO / EL VACILÓN DE ULTRATUMBA : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=PbBE_hPaBs0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/PbBE_hPaBs0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-03-29",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "24609"
   },
   {
-    "id": 230,
+    "id": "220",
     "titulo": "MARY HELLEN / IDIOMA UNIVERSAL (MEDELLIN, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=nGt-0i9hgeU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/nGt-0i9hgeU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-03-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "11855"
   },
   {
-    "id": 229,
+    "id": "219",
     "titulo": "KOYI K UTHO / DEMENTIAL STATE : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=lw4bUhn-puw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/lw4bUhn-puw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-03-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "104833"
   },
   {
-    "id": 228,
+    "id": "218",
     "titulo": "SUPERANFOR / BARRIO CHICO : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=7huf1oQvKzw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/7huf1oQvKzw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-03-06",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "179169"
   },
   {
-    "id": 227,
+    "id": "217",
     "titulo": "FATSO / SNAKE EYES : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=nACJzuWAb3c",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/nACJzuWAb3c/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-03-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "87596"
   },
   {
-    "id": 226,
+    "id": "216",
     "titulo": "BUENDÍA / TRAS DE MI : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=uI_Kl8mlApo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/uI_Kl8mlApo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-02-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "21909"
   },
   {
-    "id": 225,
+    "id": "215",
     "titulo": "MILMARIAS / LA PALMERA VOLADORA : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=p2pwFZnBsXQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/p2pwFZnBsXQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-02-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "38175"
   },
   {
-    "id": 224,
+    "id": "214",
     "titulo": "TELEBIT / SOMBRAS : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Ag7VE-jawN4",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Ag7VE-jawN4/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-02-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "38948"
   },
   {
-    "id": 223,
+    "id": "213",
     "titulo": "PEDRINA Y RIO / ENAMORADA : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=xCcrH-oIh5U",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/xCcrH-oIh5U/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-02-18",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "123144"
   },
   {
-    "id": 222,
+    "id": "212",
     "titulo": "ESTER RADA / LIFE HAPPENS : AMPLIFICADO WOMEX 2014",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ScYGJL4FTlI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ScYGJL4FTlI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-02-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "6771"
   },
   {
-    "id": 221,
+    "id": "211",
     "titulo": "SON YUBARTA / SOY CHOCÓ : AMPLIFICADO (CHOCÓ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=RwxjaRUkn08",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/RwxjaRUkn08/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-02-07",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "52271"
   },
   {
-    "id": 220,
+    "id": "210",
     "titulo": "AGRUPACIÓN CHANGÓ / FOLCLOR DE MI TIERRA : AMPLIFICADO (TUMACO, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=KvoxUKlQxoA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/KvoxUKlQxoA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2015-02-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "223860"
   },
   {
-    "id": 219,
+    "id": "209",
     "titulo": "Elkin Robinson / Keep it calm : Llorona Records (PROVIDENCIA, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=qVFRaIU7qGw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/qVFRaIU7qGw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-12-16",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "50218"
   },
   {
-    "id": 218,
+    "id": "208",
     "titulo": "TRIBU BAHARU / EL BESITO / AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=kzxikab2xrg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/kzxikab2xrg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-12-12",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "181907"
   },
   {
-    "id": 217,
+    "id": "207",
     "titulo": "WOMEX: WORLD MUSIC EXPO 2014 (Compostela, España)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=DOokCsNdhKY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/DOokCsNdhKY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-12-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "4098"
   },
   {
-    "id": 216,
+    "id": "206",
     "titulo": "CHARLES KING / EL CHOCHO : AMPLIFICADO (CARTAGENA, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=RrlDB_ceNY8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/RrlDB_ceNY8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-12-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "1146927"
   },
   {
-    "id": 215,
+    "id": "205",
     "titulo": "SONDORGO / DRAGO KOLO : AMPLIFICADO (HUNGRIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=oVKt2mSrnUU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/oVKt2mSrnUU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-12-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "10214"
   },
   {
-    "id": 214,
+    "id": "204",
     "titulo": "LA YEGROS / TROCITOS DE MADERA : AMPLIFICADO (BUENOS AIRES, ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=r4nqK3fUG6k",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/r4nqK3fUG6k/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-11-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "152041"
   },
   {
-    "id": 213,
+    "id": "203",
     "titulo": "BURNING CARAVAN / MAIAKOVSKI : AMPLIFICADO (BOGOTA, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=4a6SSTvHcXU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/4a6SSTvHcXU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-11-18",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "216369"
   },
   {
-    "id": 212,
+    "id": "202",
     "titulo": "ALFREDO GUTIERREZ / FESTIVAL EN GUARARÉ : AMPLIFICADO (SABANAS DE BELTRÁN, SUCRE, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=EBXxuguoQpk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/EBXxuguoQpk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-11-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "70527"
   },
   {
-    "id": 211,
+    "id": "201",
     "titulo": "SEMBRANDO JOROPO /  LA CHIPOLA : AMPLIFICADO (CASANARE, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=5q26Pc7__fg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/5q26Pc7__fg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-11-03",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "20293"
   },
   {
-    "id": 210,
+    "id": "200",
     "titulo": "LOS PIRAÑAS / SIR DE GUSANO : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=yNrgrjlUF-E",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/yNrgrjlUF-E/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-10-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "51500"
   },
   {
-    "id": 209,
+    "id": "199",
     "titulo": "TRIPLE X / TRIPLE X EN ESTÉREO : AMPLIFICADO  (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=2NfGojugWsE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/2NfGojugWsE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-10-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "69597"
   },
   {
-    "id": 208,
+    "id": "198",
     "titulo": "MULATU ASTATKE Y CURUPIRA / PERRO A CUADROS : AMPLIFICADO  (ETIOPÍA &  COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Qy4pDGVK53g",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Qy4pDGVK53g/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-10-12",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "34044"
   },
   {
-    "id": 207,
+    "id": "197",
     "titulo": "LA SANTA CECILIA / LA MONEDITA : AMPLIFICADO (LOS ÁNGELES, USA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ZkzsTMaOBXU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ZkzsTMaOBXU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-10-06",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "156545"
   },
   {
-    "id": 206,
+    "id": "196",
     "titulo": "JUANA MOLINA / BICHO AUTO : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=q-8-lPa0ufQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/q-8-lPa0ufQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-09-29",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "35979"
   },
   {
-    "id": 205,
+    "id": "195",
     "titulo": "LA 33 / SOLEDAD : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=XfqQqjpeY90",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/XfqQqjpeY90/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-09-19",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "3852332"
   },
   {
-    "id": 204,
+    "id": "194",
     "titulo": "SEÑAL AMPLIFICADO, LATINOAMÉRICA EN VIVO! (SABADOS Y DOMINGOS 10PM)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=497KUUkHWBI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/497KUUkHWBI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-09-18",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "4833"
   },
   {
-    "id": 203,
+    "id": "193",
     "titulo": "AGRUPACION CARIÑO / TE QUIERO : AMPLIFICADO (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=7z9hPEaBoqc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/7z9hPEaBoqc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-09-14",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "152942"
   },
   {
-    "id": 202,
+    "id": "192",
     "titulo": "PUERTO CANDELARIA / CUMBIA REBELDE : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=0JRCXheZfWo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/0JRCXheZfWo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-08-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "75122"
   },
   {
-    "id": 201,
+    "id": "191",
     "titulo": "FRIKSTAILERS / KEPLER : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=aWNh3PfYEJk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/aWNh3PfYEJk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-08-16",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "19892"
   },
   {
-    "id": 200,
+    "id": "190",
     "titulo": "MR BLEAT / CHICOS, CHICAS : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=BY3LOOt4rKY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/BY3LOOt4rKY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-08-11",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "12812"
   },
   {
-    "id": 199,
+    "id": "189",
     "titulo": "CARLOS RICO / UN LLANERO DE CASTA : AMPLIFICADO (CIMARRON DE CIMARRONES)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=3URhbrlPfMc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/3URhbrlPfMc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-07-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "56197"
   },
   {
-    "id": 198,
+    "id": "188",
     "titulo": "REBEL CATS / PRISIONERO : AMPLIFICADO (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=vZdvhARU75E",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/vZdvhARU75E/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-07-06",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "210115"
   },
   {
-    "id": 197,
+    "id": "187",
     "titulo": "BUENDÍA / FIREFLIES : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=fD0Y2ruBV-U",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/fD0Y2ruBV-U/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-06-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "11158"
   },
   {
-    "id": 196,
+    "id": "186",
     "titulo": "PERNETT / ESTA NOCHE : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=xPUG-EIZ4sE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/xPUG-EIZ4sE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-06-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "44473"
   },
   {
-    "id": 195,
+    "id": "185",
     "titulo": "JUANA MOLINA / LO DECIDÍ YO : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=oPjdWHYGHSY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/oPjdWHYGHSY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-06-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "40302"
   },
   {
-    "id": 194,
+    "id": "184",
     "titulo": "LOS TRES / TIRATE: AMPLIFICADO (CHILE)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=x-yej4UlGAE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/x-yej4UlGAE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-06-08",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "69229"
   },
   {
-    "id": 193,
+    "id": "183",
     "titulo": "LUZMILA CARPIO / YANAPARIWAIKU : AMPLIFICADO (BOLIVIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=zhrcuUkxPms",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/zhrcuUkxPms/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-06-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "107673"
   },
   {
-    "id": 192,
+    "id": "182",
     "titulo": "COLOMBIA EN WOMEX 2013 (CARDIFF, WALES, UK)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=GY9MOAMjgxw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/GY9MOAMjgxw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-04-14",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "2692"
   },
   {
-    "id": 191,
+    "id": "181",
     "titulo": "GORGEUS GEORGE / JULIUS CAESAR : AMPLIFICADO (LONDRES, UK)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=cd7LkAM9thY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/cd7LkAM9thY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-03-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "3552"
   },
   {
-    "id": 190,
+    "id": "180",
     "titulo": "WARA / LEAVE TO REMAIN : AMPLIFICADO (LONDRES, UK)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=bXCXX0Q0Xig",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/bXCXX0Q0Xig/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-03-25",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "11152"
   },
   {
-    "id": 189,
+    "id": "179",
     "titulo": "SUPERANFOR / VOX POPULI : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=sKy6XYtZ8hg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/sKy6XYtZ8hg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-03-16",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "37526"
   },
   {
-    "id": 188,
+    "id": "178",
     "titulo": "GRUPO BONGAR / A REA : AMPLIFICADO (WOMEX 2013)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=lU4D_K838r0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/lU4D_K838r0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-02-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "5128"
   },
   {
-    "id": 187,
+    "id": "177",
     "titulo": "LE-MAT / 5-7-5 : AMPLIFICADO (MONTERREY, MEXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=H7O_gAmOiuo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/H7O_gAmOiuo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-02-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "13332"
   },
   {
-    "id": 186,
+    "id": "176",
     "titulo": "LA MERCOSUR FT DONAUSA / YO VENGO DE MI TIERRA : AMPLIFICADO Y EL TRUEQUE (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=drTh_qMoMH4",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/drTh_qMoMH4/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-01-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "29763"
   },
   {
-    "id": 185,
+    "id": "175",
     "titulo": "NANOOK EL ULTIMO ESQUIMAL / ZAN RYU NIPPON HEI : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=yws7hkFt60g",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/yws7hkFt60g/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-01-19",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "9284"
   },
   {
-    "id": 184,
+    "id": "174",
     "titulo": "JEDD HOLDEN / LONELY BOY : AMPLIFICADO (LONDRES, UK)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=XPKWqtI6wcc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/XPKWqtI6wcc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-01-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "7898"
   },
   {
-    "id": 183,
+    "id": "173",
     "titulo": "JOAQUÍN RICO / NACÍ LLANERO : AMPLIFICADO (FESTIVAL CIMARRÓN DE ORO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=f2LeLhEqwyk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/f2LeLhEqwyk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-12-19",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "85907"
   },
   {
-    "id": 182,
+    "id": "172",
     "titulo": "WINSTON MCANUFF & FIXI FEAT. MARKUS : AMPLIFICADO (WOMEX 2013)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=0w2_81NUTzE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/0w2_81NUTzE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-12-11",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "89852"
   },
   {
-    "id": 181,
+    "id": "171",
     "titulo": "LITTLE JESUS / AZUL : AMPLIFICADO  / (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=AsNBHqRV664",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/AsNBHqRV664/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-12-04",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "98838"
   },
   {
-    "id": 180,
+    "id": "170",
     "titulo": "LOS PIRAÑAS / SIN REACCION : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=p5uYNYLm4zU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/p5uYNYLm4zU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-11-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "42068"
   },
   {
-    "id": 179,
+    "id": "169",
     "titulo": "PULENTA FT. MASAI BAN GO / GOLPE AL MUNDO : AMPLIFICADO Y EL TRUEQUE (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=sW82SPqBBlI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/sW82SPqBBlI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-11-25",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "67758"
   },
   {
-    "id": 178,
+    "id": "168",
     "titulo": "HERENCIA DE TIMBIQUI / AMANECE : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=QbDao-JTEcE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/QbDao-JTEcE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-11-17",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "84723"
   },
   {
-    "id": 177,
+    "id": "167",
     "titulo": "TETA & KIRA / KABARY LAVA : AMPLIFICADO EN EL WOMEX (MADAGASCAR)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=TgLdVccQAq8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/TgLdVccQAq8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-11-11",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "58724"
   },
   {
-    "id": 176,
+    "id": "166",
     "titulo": "AURORA / TRANSPARENTE : AMPLIFICADO (ESPAÑA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=7Lprw-EWnYA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/7Lprw-EWnYA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-11-03",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "11975"
   },
   {
-    "id": 175,
+    "id": "165",
     "titulo": "BURNING CARAVAN / JARDIN SECRETO : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=euGiAFfi7kY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/euGiAFfi7kY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-10-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "1228424"
   },
   {
-    "id": 174,
+    "id": "164",
     "titulo": "MARLEY MUERTO / TREN : AMPLIFICADO (ECUADOR)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=E7zV0eESHz0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/E7zV0eESHz0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-10-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "10493"
   },
   {
-    "id": 173,
+    "id": "163",
     "titulo": "1280 ALMAS / SOLEDAD CRIMINAL : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=f6zQC7OEpzs",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/f6zQC7OEpzs/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-09-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "315656"
   },
   {
-    "id": 172,
+    "id": "162",
     "titulo": "CORAL GROUP / MAZORCA : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=LT09EKmhFV0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/LT09EKmhFV0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-09-16",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "26496"
   },
   {
-    "id": 171,
+    "id": "161",
     "titulo": "AUSTIN TV / EL HOMBRE PÁNICO : AMPLIFICADO (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=IC4xTNC2nZY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/IC4xTNC2nZY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-09-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "109622"
   },
   {
-    "id": 170,
+    "id": "160",
     "titulo": "JUAN CIREROL / MI CORAZON LLORO : AMPLIFICADO (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=zYuwcnuIN90",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/zYuwcnuIN90/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-08-25",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "462777"
   },
   {
-    "id": 169,
+    "id": "159",
     "titulo": "ELKIN ROBINSON / FISHINING : AMPLIFICADO.TV (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ua25KKOUPW8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ua25KKOUPW8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-08-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "25221"
   },
   {
-    "id": 168,
+    "id": "158",
     "titulo": "1280 ALMAS / ANTIPATRIOTA : AMPLIFICADO.TV (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=UOyHlaK2gPw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/UOyHlaK2gPw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-08-11",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "285143"
   },
   {
-    "id": 167,
+    "id": "157",
     "titulo": "LA LA / MANGO : AMPLIFIED (PERU)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ksY0hPOiIZE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ksY0hPOiIZE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-08-06",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "396674"
   },
   {
-    "id": 166,
+    "id": "156",
     "titulo": "AUTOBUS / MAQUINA DESTRUCCION : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=KQkhrTNosPw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/KQkhrTNosPw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-08-04",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "16072"
   },
   {
-    "id": 165,
+    "id": "155",
     "titulo": "ALGUACIL☆ FEAT. PIH POH / REFUGIADOS : AMPLIFICADO.TV (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=w3HcRhoSvDk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/w3HcRhoSvDk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-07-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "7882"
   },
   {
-    "id": 164,
+    "id": "154",
     "titulo": "MORGANS HEAD NEW TROPICAL BAND / LA CUCARACHA. : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=a0yfsD6292o",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/a0yfsD6292o/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-07-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "3015"
   },
   {
-    "id": 163,
+    "id": "153",
     "titulo": "AUSTIN TV / (AUNQUE MIS LABIOS NO SE MUEVEN) MI CEREBRO SONRÍE : AMPLIFICADO (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=MRu8zFBujAI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/MRu8zFBujAI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-07-14",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "259600"
   },
   {
-    "id": 162,
+    "id": "152",
     "titulo": "ELKIN ROBINSON / SWEET MENTO : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=IO6lMBW0A3A",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/IO6lMBW0A3A/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-07-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "78917"
   },
   {
-    "id": 161,
+    "id": "151",
     "titulo": "ALEJANDRO Y MARIA LAURA / LOS FANTASMAS : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=o-LV8VhZU0Q",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/o-LV8VhZU0Q/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-07-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "22117"
   },
   {
-    "id": 160,
+    "id": "150",
     "titulo": "BLK JKS / TSELANE : AMPLIFICADO Y LLORONA RECORDS (SUDAFRICA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=rop4ZQWP6i0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/rop4ZQWP6i0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-07-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "4617"
   },
   {
-    "id": 159,
+    "id": "149",
     "titulo": "KANAKU & EL TIGRE / EL NINO ANTORCHA : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=pu1PAFyr718",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/pu1PAFyr718/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-06-29",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "74715"
   },
   {
-    "id": 158,
+    "id": "148",
     "titulo": "PROHIBIDO EL PASO FEAT. TAVO / BAILALO MONO : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA MINEC 2013)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=2X6lZkJ44bA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/2X6lZkJ44bA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-06-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "18825"
   },
   {
-    "id": 157,
+    "id": "147",
     "titulo": "ROYAL RUDES / ELVIA : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=JAvupsgjPA8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/JAvupsgjPA8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-06-21",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "10240"
   },
   {
-    "id": 156,
+    "id": "146",
     "titulo": "CUMBIA ALL STARS / PÁJARO BONITO : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=e6YTVZxSbOs",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/e6YTVZxSbOs/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-06-19",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "190609"
   },
   {
-    "id": 155,
+    "id": "145",
     "titulo": "AUTOBUS / ANIMAL : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Lw9fyGfR0jc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Lw9fyGfR0jc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-06-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "73487"
   },
   {
-    "id": 154,
+    "id": "144",
     "titulo": "ORANGE HILL / SOCA MUSIC : AMPLIFICADO (SAN ANDRÉS Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=c04jMqPaElQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/c04jMqPaElQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-06-10",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "271548"
   },
   {
-    "id": 153,
+    "id": "143",
     "titulo": "MUSIC FROM MY LAND / NO TE QUIERO ODIAR : AMPLIFICADO (SAN ANDRÉS Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Ra05UBpzKB8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Ra05UBpzKB8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-06-03",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "18570"
   },
   {
-    "id": 152,
+    "id": "142",
     "titulo": "JUAN CIREROL / EL ASESINO : AMPLIFICADO (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=dHQZ8rMNbPE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/dHQZ8rMNbPE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-05-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "347967"
   },
   {
-    "id": 151,
-    "titulo": "AUSTIN TV / ELLA NO ME CONOCE - AROUND THE WORLD - DAFT PUNK COVER : AMPLIFICADO (MÉXICO)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=nM_uwGqaCgQ",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/nM_uwGqaCgQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 150,
+    "id": "141",
     "titulo": "CREOLE GROUP / LUCELIA : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=82pi7oz6Fd0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/82pi7oz6Fd0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-05-10",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "426471"
   },
   {
-    "id": 149,
+    "id": "140",
     "titulo": "GRUPO CANALÓN DE TIMBIQUÍ / CUANDO VIRE A MI DIOS (ALABADO) : AMPLIFICADO",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=bkqIE5ZTZAw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/bkqIE5ZTZAw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-05-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "119617"
   },
   {
-    "id": 148,
+    "id": "139",
     "titulo": "KANAKU & EL TIGRE / EL FUNERAL : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=4LwuD2xESOQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/4LwuD2xESOQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-04-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "60799"
   },
   {
-    "id": 147,
+    "id": "138",
     "titulo": "ELIJAH / ALL I GOT TO DO : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=aWTaLUfc7bc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/aWTaLUfc7bc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-04-22",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "13590"
   },
   {
-    "id": 146,
+    "id": "137",
     "titulo": "ALEJANDRO Y MARIA LAURA / SENSUAL INTERGALACTICA : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=17JaOIFtTQ0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/17JaOIFtTQ0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-04-16",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "27898"
   },
   {
-    "id": 145,
+    "id": "136",
     "titulo": "BALANCER / IN THE HIGHLANDS: AMPLIFICADO EN EL FESTIVAL YAVERIA",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=JEgJ_pfnsRc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/JEgJ_pfnsRc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-04-14",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "24193"
   },
   {
-    "id": 144,
+    "id": "135",
     "titulo": "CORAL GROUP / BLACK PARROT : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=6JdnZZ8WnPs",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/6JdnZZ8WnPs/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-04-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "142999"
   },
   {
-    "id": 143,
-    "titulo": "RADIO MATUNA / GRIS VIDEOCLIP OFICIAL: AMPLIFICADO (COLOMBIA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=UcmmqKRJjUA",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/UcmmqKRJjUA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 142,
-    "titulo": "VALERIA CINI / GUARAÑA DE LAS LUCES : AMPLIFICADO (ARGENTINA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=zyfXT5WRqgs",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/zyfXT5WRqgs/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 141,
+    "id": "134",
     "titulo": "CHIRIMIA DEL RIO NAPI / ARRIBA QUE NO ES ABAJO : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=AYlXK1xNozA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/AYlXK1xNozA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-04-01",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "18444"
   },
   {
-    "id": 140,
+    "id": "133",
     "titulo": "LAS ROBERTAS / MARLENE : AMPLIFICADO (COSTA RICA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=BMu24wB7kJs",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/BMu24wB7kJs/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-03-28",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "13572"
   },
   {
-    "id": 139,
+    "id": "132",
     "titulo": "MUSIC FROM MY LAND / I JUST WANT TO LOVE YOU : AMPLIFICADO(SAN ANDRÉS Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ebIIhFYYdNw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ebIIhFYYdNw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-03-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "54239"
   },
   {
-    "id": 138,
+    "id": "131",
     "titulo": "EL HIPNOTIZADOR ROMANTICO / COMO VERDURITA FRESCA : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=2qVqVSljqMQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/2qVqVSljqMQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-03-21",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "14980"
   },
   {
-    "id": 137,
+    "id": "130",
     "titulo": "CUMBIA ALL STARS / LA DANZA DE LA TORTUGA : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=mOPfVIQImiA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/mOPfVIQImiA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-03-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "78555"
   },
   {
-    "id": 136,
+    "id": "129",
     "titulo": "ALGUACIL☆ FEAT. PIH POH / REBEL SOUNDS : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=zzJgSDQFmDY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/zzJgSDQFmDY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-03-08",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "20851"
   },
   {
-    "id": 135,
+    "id": "128",
     "titulo": "MARTIN BUSCAGLIA / ANTE LA DUDA TODO : AMPLIFICADO (URUGUAY)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=HTwqSVkw4fw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/HTwqSVkw4fw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-03-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "67115"
   },
   {
-    "id": 134,
+    "id": "127",
     "titulo": "CORAL GROUP / COCONUT WOMAN : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=S18HEazgxeo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/S18HEazgxeo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-03-01",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "170841"
   },
   {
-    "id": 133,
+    "id": "126",
     "titulo": "ULTIMO EXPRESSO / HEROES MUDOS : AMPLIFICADO.TV (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=1mlCDasVMRI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/1mlCDasVMRI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "6345"
   },
   {
-    "id": 132,
+    "id": "125",
     "titulo": "LA DESGRACIA EN COMPAÑIA / JUDIO CONVERSO : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=lO-A45I_Pg4",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/lO-A45I_Pg4/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-22",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "9381"
   },
   {
-    "id": 131,
+    "id": "124",
     "titulo": "KANAKU & EL TIGRE / CARACOLES : AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=oxZrPF4Z-gM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/oxZrPF4Z-gM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "29340"
   },
   {
-    "id": 130,
+    "id": "123",
     "titulo": "PAUCHI SASAKI / IMPROVISACION 1: AMPLIFICADO (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=aPS7-KvY1SU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/aPS7-KvY1SU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-18",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "44563"
   },
   {
-    "id": 129,
+    "id": "122",
     "titulo": "GAITEROS DE SAN JACINTO / ZAFRAS : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=DirzVKbmSEk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/DirzVKbmSEk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "42525"
   },
   {
-    "id": 128,
+    "id": "121",
     "titulo": "JUAN CIREROL / ERES TAN CRUEL : AMPLIFICADO(MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=C2DLMVlpnTc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/C2DLMVlpnTc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-12",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "647079"
   },
   {
-    "id": 127,
+    "id": "120",
     "titulo": "PROPHET NEGUS / 500 YEARS : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=eGfVh-vKoMc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/eGfVh-vKoMc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-08",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "37096"
   },
   {
-    "id": 126,
+    "id": "119",
     "titulo": "EL REMOLÓN / CONSTITUCIÓN : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=eY7SVqfS7q0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/eY7SVqfS7q0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-06",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "42837"
   },
   {
-    "id": 125,
+    "id": "118",
     "titulo": "PAITO / LA QUE SE PEGUA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=OC1UgJqOd7A",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/OC1UgJqOd7A/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-02-01",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "170532"
   },
   {
-    "id": 124,
+    "id": "117",
     "titulo": "ROYAL RUDES / WHAT YOU GONNA DO : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=05SNiSFVXyc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/05SNiSFVXyc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-01-25",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "77154"
   },
   {
-    "id": 123,
+    "id": "116",
     "titulo": "Campo Alegre - Los Gaiteros de San Jacinto / Así tocan los indios VIDEOCLIP OFICIAL (COLOMBIA)",
     "categoria": "Videoclp",
-    "descripcion": "LLORONA RECORDS",
+    "descripcion": "LLORONA RECORDS ",
+    "CARGO": "Postproducción",
     "url_video": "https://www.youtube.com/watch?v=seP2NFCxHhY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/seP2NFCxHhY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv",
-      "videoclips"
-    ]
+    "preview_url": "",
+    "date": "2013-01-24",
+    "destacado": "NO",
+    "tags": "amplificado.tv, videoclips",
+    "vistas originales": "2101424"
   },
   {
-    "id": 122,
+    "id": "115",
     "titulo": "GRUPO CANALÓN DE TIMBIQUÍ / SAGRADA SANTA MARIA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=t5-09Ib7_nc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/t5-09Ib7_nc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-01-22",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "272419"
   },
   {
-    "id": 121,
+    "id": "114",
     "titulo": "HETY AND ZAMBO / TEK A RIDE : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=cGRHfc4HKJo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/cGRHfc4HKJo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-01-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "8651"
   },
   {
-    "id": 120,
+    "id": "113",
     "titulo": "MONTE / NEÓN FURIOSO : AMPLIFICADO (COSTA RICA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=pwWK_3NZ4QU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/pwWK_3NZ4QU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-01-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "15894"
   },
   {
-    "id": 119,
+    "id": "112",
     "titulo": "CHIRIMIA DEL RIO NAPI :  LOS ALIMENTOS DEL MAIZ : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=VqqJirYhiok",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/VqqJirYhiok/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-01-04",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "13460"
   },
   {
-    "id": 118,
+    "id": "111",
     "titulo": "LA DESGRACIA EN COMPAÑIA FEAT. SISMO / DANIELA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=yethwErErYM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/yethwErErYM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-12-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "14523"
   },
   {
-    "id": 117,
-    "titulo": "VALERIA CINI / CANCION EPICA EN SOBREDOSIS DE POESIA : AMPLIFICADO (ARGENTINA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=X1Zn88rIjJQ",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/X1Zn88rIjJQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 116,
+    "id": "110",
     "titulo": "GAITEROS DE SAN JACINTO / ROSITA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=B9O81r9d-1s",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/B9O81r9d-1s/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-12-21",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "99624"
   },
   {
-    "id": 115,
+    "id": "109",
     "titulo": "LAS ROBERTAS / DESPAIR : AMPLIFICADO (COSTA RICA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=qIDegYoKLvw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/qIDegYoKLvw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-12-19",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "40814"
   },
   {
-    "id": 114,
+    "id": "108",
     "titulo": "PAITO / LA CAMA BERROCHONA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=lPB6DxxInGs",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/lPB6DxxInGs/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-12-14",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "752020"
   },
   {
-    "id": 113,
+    "id": "107",
     "titulo": "CREOLE GROUP / INSIDE  : AMPLIFICADO.TV (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=wqGTfaK4vB0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/wqGTfaK4vB0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-12-07",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "279112"
   },
   {
-    "id": 112,
+    "id": "106",
     "titulo": "SOL OKARINA / DOS VECES CIEN : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=8hoKr5lsmgA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/8hoKr5lsmgA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-11-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "9101"
   },
   {
-    "id": 111,
+    "id": "105",
     "titulo": "EL HIPNOTIZADOR ROMANTICO / SI UN COMETA ES NADA QUE PERDER : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=XYalH5pgsxU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/XYalH5pgsxU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-11-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "9763"
   },
   {
-    "id": 110,
+    "id": "104",
     "titulo": "MONTE / CUEVAS : AMPLIFICADO (COSTA RICA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=FX2SugkuHhQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/FX2SugkuHhQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-11-21",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "16239"
   },
   {
-    "id": 109,
+    "id": "103",
     "titulo": "JUAN CIREROL / LA FLORESILLA : AMPLIFICADO  (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=fufDNHMAVrE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/fufDNHMAVrE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-11-14",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "887200"
   },
   {
-    "id": 108,
+    "id": "102",
     "titulo": "MARTIN BUSCAGLIA / SAGRADO SALADO : AMPLIFICADO (URUGUAY)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=6ls5bfwvnXk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/6ls5bfwvnXk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-11-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "42918"
   },
   {
-    "id": 107,
+    "id": "101",
     "titulo": "ORANGE HILL / A BIG CONFUSION  : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=V9wMFh-zxJ0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/V9wMFh-zxJ0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-10-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "257736"
   },
   {
-    "id": 106,
+    "id": "100",
     "titulo": "GAITEROS DE SAN JACINTO / MI SUSPIRO : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=0CTZRTl6Aio",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/0CTZRTl6Aio/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-10-24",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "1138639"
   },
   {
-    "id": 105,
+    "id": "99",
     "titulo": "GRUPO CANALÓN DE TIMBIQUÍ / QUE PENA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=kGaRks25C0I",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/kGaRks25C0I/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-10-17",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "338826"
   },
   {
-    "id": 104,
+    "id": "98",
     "titulo": "ALGUACIL☆ FEAT. OBIE-P Y DUB SKECHT / FIRE BURN  : AMPLIFICADO  (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Qoh48lwZ8tM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Qoh48lwZ8tM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-10-12",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "37206"
   },
   {
-    "id": 103,
+    "id": "97",
     "titulo": "RENACER CULTURAL  / DÍA DE SAN ANTONIO : AMPLIFICADO EN FESTIVAL NACIONAL DE LA TAMBORA",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=nyU6dLSDj7o",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/nyU6dLSDj7o/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-10-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "11664"
   },
   {
-    "id": 102,
+    "id": "96",
     "titulo": "MR. WILLY B. / SPRING TIME IN TEXAS : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=haIXRaYdgVk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/haIXRaYdgVk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-10-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "8278"
   },
   {
-    "id": 101,
+    "id": "95",
     "titulo": "1280 ALMAS / TU SONRISA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=QYhNhZtucCk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/QYhNhZtucCk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-09-29",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "3007285"
   },
   {
-    "id": 100,
+    "id": "94",
     "titulo": "SON PALENQUE / YO ME VOY : AMPLIFICADO (COLOMBIA) EN VIVO",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=PJBkRO8oP9Y",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/PJBkRO8oP9Y/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-09-18",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "903340"
   },
   {
-    "id": 99,
+    "id": "93",
     "titulo": "CAMILA MORENO / INCENDIÉ : AMPLIFICADO (CHILE)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=j0A-bl3BcP8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/j0A-bl3BcP8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-09-12",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "213844"
   },
   {
-    "id": 98,
+    "id": "92",
     "titulo": "MR. WILLY B. / ARROYO : AMPLIFICADO.TV (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=RGkCirjlHxQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/RGkCirjlHxQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-09-04",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "8950"
   },
   {
-    "id": 97,
+    "id": "91",
     "titulo": "LE CHAT LUNATIQUE / SONGE D'AUTOMNE : AMPLIFICADO (NEW MÉXICO,USA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=FsCFbY9-ybM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/FsCFbY9-ybM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-08-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "34410"
   },
   {
-    "id": 96,
+    "id": "90",
     "titulo": "SON PALENQUE / MONA MI : AMPLIFICADO (COLOMBIA) EN VIVO",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=MJg27qg1t30",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/MJg27qg1t30/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-08-28",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "109605"
   },
   {
-    "id": 95,
+    "id": "89",
     "titulo": "AFRICALI / DÓNDE ESTÁN? : AMPLIFICADO (FESTIVAL YAVERÍA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=0kXQz7gTv7Q",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/0kXQz7gTv7Q/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-08-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "8568"
   },
   {
-    "id": 94,
+    "id": "88",
     "titulo": "CAMILA MORENO / LO CIERTO : AMPLIFICADO (CHILE)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=B6nqHOAMZvg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/B6nqHOAMZvg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-08-24",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "582137"
   },
   {
-    "id": 93,
+    "id": "87",
     "titulo": "LOS MALDITOS / PIÑA COLADA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=6Pu3uvz7DJo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/6Pu3uvz7DJo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-08-21",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "29323"
   },
   {
-    "id": 92,
+    "id": "86",
     "titulo": "JUVENTUD SANMARTINENSE  / QUE VIVA COLOMBIA : AMPLIFICADO (FESTIVAL NACIONAL DE LA TAMBORA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=KUfVwdb31A8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/KUfVwdb31A8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-08-19",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "46713"
   },
   {
-    "id": 91,
+    "id": "85",
     "titulo": "NATALIA LAFOURCADE / UN DERECHO DE NACIMIENTO : AMPLIFICADO (MÉXICO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=1B2IyN4f_SE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/1B2IyN4f_SE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-08-07",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "5868947"
   },
   {
-    "id": 90,
+    "id": "84",
     "titulo": "GAITEROS DE SAN JACINTO / VIENE AMANECIENDO : AMPLIFICADO  (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=9iSgYI5d9P8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/9iSgYI5d9P8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-08-03",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "1738751"
   },
   {
-    "id": 89,
+    "id": "83",
     "titulo": "MERCADO INSULAR DE EXPRESIONES CULTURALES 2012 : AMPLIFICADO (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=3eRYJBE_-IQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/3eRYJBE_-IQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-07-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "3655"
   },
   {
-    "id": 88,
+    "id": "82",
     "titulo": "PLANES (Estudios Universales) / BAHIA T : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=3Bm6hsR3oiI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/3Bm6hsR3oiI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-07-26",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "7333"
   },
   {
-    "id": 87,
+    "id": "81",
     "titulo": "MR. WILLY B. / MY BONNIE LIES OVER THE OCEAN : AMPLIFICADO.TV (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=hr3dbNcUJ40",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/hr3dbNcUJ40/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-07-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "13612"
   },
   {
-    "id": 86,
+    "id": "80",
     "titulo": "FUNDACIÓN CULTURAL EL CHANDE / A LA LUCHA : AMPLIFICADO (FESTIVAL NACIONAL DE LA TAMBORA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=B5v7Tr99ELY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/B5v7Tr99ELY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-07-16",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "72709"
   },
   {
-    "id": 85,
+    "id": "79",
     "titulo": "ESTEMAN / QUANDO, QUANDO, QUANDO: AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=D0orS8bzwnI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/D0orS8bzwnI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-07-13",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "204810"
   },
   {
-    "id": 84,
+    "id": "78",
     "titulo": "TAMBORA LA CANDELARIA / EL NIÑO INMACULADO : AMPLIFICADO ( FESTIVAL NACIONAL DE LA TAMBORA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=DsuU-074EjU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/DsuU-074EjU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-07-10",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "374054"
   },
   {
-    "id": 83,
+    "id": "77",
     "titulo": "RADIO MATUNA / REAL : AMPLIFICADO  (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=G66ZQJ1F0V8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/G66ZQJ1F0V8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-07-06",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "492656"
   },
   {
-    "id": 82,
+    "id": "76",
     "titulo": "LE CHAT LUNATIQUE / BOOK AFTERNOON BURNING : AMPLIFICADO  (NEW MÉXICO, USA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=2KCnamO1d3Q",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/2KCnamO1d3Q/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-07-04",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "80800"
   },
   {
-    "id": 81,
+    "id": "75",
     "titulo": "PALOMA DEL CERRO / OBSERVANDO: AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=EcIQ3o_vOaw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/EcIQ3o_vOaw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-06-28",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "220496"
   },
   {
-    "id": 80,
+    "id": "74",
     "titulo": "JUAN PABLO VEGA / YA NO PUEDO ESTAR LEJOS DE TI : AMPLIFICADO  (FESTIVAL YAVERíA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=6ToU0Yc8ktY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/6ToU0Yc8ktY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-06-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "275536"
   },
   {
-    "id": 79,
+    "id": "73",
     "titulo": "ESTEMAN / FRUIT DE LA PASSION : AMPLIFICADO ( FESTIVAL YAVERíA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=nu6VF5Dacrc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/nu6VF5Dacrc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-06-22",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "458392"
   },
   {
-    "id": 78,
+    "id": "72",
     "titulo": "JULES / COME WITH ME : AMPLIFICADO  (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=PwwYxEv3E0s",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/PwwYxEv3E0s/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-06-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "36927"
   },
   {
-    "id": 77,
+    "id": "71",
     "titulo": "PLANES (Estudios Universales) / LONELII : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=vNtZLQvylb8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/vNtZLQvylb8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-06-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "4380"
   },
   {
-    "id": 76,
+    "id": "70",
     "titulo": "LOS MALDITOS / CASH FOR JOHNNY : AMPLIFICADO  (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=TXvW8NqIMUM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/TXvW8NqIMUM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-06-08",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "50839"
   },
   {
-    "id": 75,
+    "id": "69",
     "titulo": "ESTEMAN / ROBOT ; AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=HlTjCWXVwuE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/HlTjCWXVwuE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-06-05",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "120226"
   },
   {
-    "id": 74,
+    "id": "68",
     "titulo": "GOLPE MALIBU / RIBERA LOBANA: AMPLIFICADO (FESTIVAL NACIONAL DE LA TAMBORA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ZTV9KBUN65A",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ZTV9KBUN65A/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-06-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "410628"
   },
   {
-    "id": 73,
+    "id": "67",
     "titulo": "RADIO MATUNA / SUERTE : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=uBO1an911QQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/uBO1an911QQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-05-29",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "79019"
   },
   {
-    "id": 72,
+    "id": "66",
     "titulo": "LE CHAT LUNATIQUE / ENDLESS LULLABY : AMPLIFICADO  / NEW MÉXICO,USA",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Y82DqsZ8GO8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Y82DqsZ8GO8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-05-25",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "121332"
   },
   {
-    "id": 71,
+    "id": "65",
     "titulo": "LA REVUELTA / AURORA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=4JlwayPCUEo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/4JlwayPCUEo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-05-22",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "47705"
   },
   {
-    "id": 70,
+    "id": "64",
     "titulo": "GREGORIO URIBE / DE REPENTE: AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=XwIYTzK2Fco",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/XwIYTzK2Fco/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-05-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "29956"
   },
   {
-    "id": 69,
+    "id": "63",
     "titulo": "ALLIGATOR / BRING : AMPLIFICADO  (FESTIVAL YAVERíA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=u63hQik1Rcg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/u63hQik1Rcg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-05-11",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "11661"
   },
   {
-    "id": 68,
+    "id": "62",
     "titulo": "JULES / SWEET GIRL : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=49_TXYhh71k",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/49_TXYhh71k/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-05-08",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "8588"
   },
   {
-    "id": 67,
+    "id": "61",
     "titulo": "ESTEMAN /  SE NOS PERDIÓ : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Sbrzh65lRQo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Sbrzh65lRQo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-04-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "581840"
   },
   {
-    "id": 66,
+    "id": "60",
     "titulo": "LOS MALDITOS / TENGO EL 666 : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=h1ujis_PE9M",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/h1ujis_PE9M/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-04-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "55145"
   },
   {
-    "id": 65,
+    "id": "59",
     "titulo": "LA CUBA / CENIZAS: AMPLIFICADO (FESTIVAL NACIONAL DE LA TAMBORA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=wTwHQDza_eM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/wTwHQDza_eM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-04-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "104948"
   },
   {
-    "id": 64,
+    "id": "58",
     "titulo": "RADIO MATUNA / MUNTU : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=jrAsT8x1mdk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/jrAsT8x1mdk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-04-16",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "155975"
   },
   {
-    "id": 63,
+    "id": "57",
     "titulo": "LE CHAT LUNATIQUE / HELL TO PAY : AMPLIFICADO (USA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=4MsjJ_4gLU4",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/4MsjJ_4gLU4/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-04-13",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "74027"
   },
   {
-    "id": 62,
+    "id": "56",
     "titulo": "PALOMA DEL CERRO / BOLITAS DE VIDA: AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=yclg9JMNMj8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/yclg9JMNMj8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-04-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "62767"
   },
   {
-    "id": 61,
+    "id": "55",
     "titulo": "NICOLÁS PEÑA / WISH YOU WERE HERE : AMPLIFICADO (FESTIVAL YAVERíA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=50DkMe6butU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/50DkMe6butU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-04-06",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "6979"
   },
   {
-    "id": 60,
+    "id": "54",
     "titulo": "JULES / STUCK IN A PUDDLE : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=sncBj-y1Nlg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/sncBj-y1Nlg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-04-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "8941"
   },
   {
-    "id": 59,
+    "id": "53",
     "titulo": "PLANES (Estudios Universales) / TROLOLO : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ui1awggv_ko",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ui1awggv_ko/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-03-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "9993"
   },
   {
-    "id": 58,
+    "id": "52",
     "titulo": "LOS MALDITOS / ARMAGEDÓN : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=PQxJSRTpvWo",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/PQxJSRTpvWo/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-03-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "31501"
   },
   {
-    "id": 57,
+    "id": "51",
     "titulo": "ESTEMAN / POBRE CORAZON : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=34bM4ZP9Z28",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/34bM4ZP9Z28/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-03-21",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "430627"
   },
   {
-    "id": 56,
+    "id": "50",
     "titulo": "MARTINA CAMARGO / EL MOHÁN : AMPLIFICADO (FESTIVAL NACIONAL DE LA TAMBORA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=iMkNYvhq1HU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/iMkNYvhq1HU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-03-19",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "85855"
   },
   {
-    "id": 55,
+    "id": "49",
     "titulo": "RADIO MATUNA / CHIYANGUA Y CHIRARA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=hCASBNhF5s8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/hCASBNhF5s8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-03-17",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "59555"
   },
   {
-    "id": 54,
-    "titulo": "LE CHAT LUNATIQUE / STACHOLOGY: AMPLIFICADO (USA)",
+    "id": "48",
+    "titulo": " LE CHAT LUNATIQUE / STACHOLOGY: AMPLIFICADO (USA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=oe7ywiwGy7A",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/oe7ywiwGy7A/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-03-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "153812"
   },
   {
-    "id": 53,
+    "id": "47",
     "titulo": "EL CARMELO / CAMARON : AMPLIFICADO (FESTIVAL PETRONIO ALVAREZ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=FWJxvQIlEj0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/FWJxvQIlEj0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-03-01",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "4711"
   },
   {
-    "id": 52,
+    "id": "46",
     "titulo": "SISMO / DESPUES DE VER : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=d-OypK7p_nA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/d-OypK7p_nA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-02-28",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "15459"
   },
   {
-    "id": 51,
+    "id": "45",
     "titulo": "ANA SALIVE / SIGLOS : AMPLIFICADO  (FESTIVAL YAVERíA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=vLibfwLbjK8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/vLibfwLbjK8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-02-21",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "89997"
   },
   {
-    "id": 50,
-    "titulo": "VEKA / DIME : AMPLIFICADO (COLOMBIA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=NiIBYuAk5WI",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/NiIBYuAk5WI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 49,
+    "id": "44",
     "titulo": "SISMO / TORNADO (JÓNSI COVER) : AMPLIFICADO (FESTIVAL YAVERíA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=4z_SnLMKye4",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/4z_SnLMKye4/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-02-14",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "17248"
   },
   {
-    "id": 48,
+    "id": "43",
     "titulo": "MONSIEUR PERINÉ / CUCU : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ZnfXL1N0Lr4",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ZnfXL1N0Lr4/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-02-10",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "529008"
   },
   {
-    "id": 47,
+    "id": "42",
     "titulo": "BENJAMÍN / HYPNO DEL ABISMO : AMPLIFICADO (FESTIVAL YAVERíA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=Q-Hp5ReDvug",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/Q-Hp5ReDvug/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-02-08",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "4685"
   },
   {
-    "id": 46,
+    "id": "41",
     "titulo": "SOUNDACITY /  SPINNING AROUND : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=H1w_Pms9QJg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/H1w_Pms9QJg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-02-03",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "32582"
   },
   {
-    "id": 45,
+    "id": "40",
     "titulo": "RANCHO APARTE / LA SABIONDA : AMPLIFICADO (FESTIVAL PETRONIO ALVAREZ CALI COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=LmOMP-pBSCk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/LmOMP-pBSCk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-01-31",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "120657"
   },
   {
-    "id": 44,
+    "id": "39",
     "titulo": "SISMO / CRECE : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=FHDp3VaQtq4",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/FHDp3VaQtq4/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-01-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "21327"
   },
   {
-    "id": 43,
+    "id": "38",
     "titulo": "EL CARMELO / PERIQUITO BLANCO : AMPLIFICADO (FESTIVAL PETRONIO ALVAREZ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=XruyGJsPM9U",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/XruyGJsPM9U/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-01-25",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "4299"
   },
   {
-    "id": 42,
+    "id": "37",
     "titulo": "SON DEL TUNO / FACUNDA : AMPLIFICADO (FESTIVAL PETRONIO ALVAREZ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=OUsCAYyVf6A",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/OUsCAYyVf6A/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-01-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "57135"
   },
   {
-    "id": 41,
+    "id": "36",
     "titulo": "RESINA LALA / MI SALTO MORTAL: AMPLIFICADO (FESTIVAL YAVERIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=XChK7v1Nw2E",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/XChK7v1Nw2E/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-01-17",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "35458"
   },
   {
-    "id": 40,
+    "id": "35",
     "titulo": "CLASSICSTONE TRIBUTE BAND / ANOTHER BRICK IN THE WALL - PINK FLOYD : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=ZGR4KujOKWw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/ZGR4KujOKWw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-01-13",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "62268"
   },
   {
-    "id": 39,
-    "titulo": "VEKA / TU : AMPLIFICADO (COLOMBIA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=IWQhwhxHFnM",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/IWQhwhxHFnM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 38,
+    "id": "34",
     "titulo": "SOUNDACITY / YOU WON´T TAKE ME DOWN : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=1zTohF31eYU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/1zTohF31eYU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-12-22",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "19256"
   },
   {
-    "id": 37,
+    "id": "33",
     "titulo": "MISS BOLIVIA / NOCHE POLAR : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=bZk9rAKmKoY",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/bZk9rAKmKoY/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-12-18",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "200110"
   },
   {
-    "id": 36,
+    "id": "32",
     "titulo": "MONSIEUR PERINÉ / LA MUERTE : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=KKveUcAU_Yk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/KKveUcAU_Yk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-12-15",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "2613726"
   },
   {
-    "id": 35,
+    "id": "31",
     "titulo": "SUMMER C / STOP: AMPLIFICADO (FESTIVAL YAVERIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=V1L6alcIfic",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/V1L6alcIfic/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-12-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "6502"
   },
   {
-    "id": 34,
+    "id": "30",
     "titulo": "RANCHO APARTE / EL PUHO : AMPLIFICADO (FESTIVAL PETRONIO ALVAREZ CALI COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=R5Kg37H51Mg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/R5Kg37H51Mg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-12-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "51649"
   },
   {
-    "id": 33,
+    "id": "29",
     "titulo": "CLASSICSTONE TRIBUTE BAND / IN THE FLESH - PINK FLOYD: AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=qI0YHSbNf_A",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/qI0YHSbNf_A/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-12-02",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "12864"
   },
   {
-    "id": 32,
+    "id": "28",
     "titulo": "SISMO / LA BUENA ONDA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=dGLcPgcyLwM",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/dGLcPgcyLwM/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-12-01",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "44953"
   },
   {
-    "id": 31,
+    "id": "27",
     "titulo": "LOS ALEGRES DE TELEMBÍ / ESE TOCAITO : AMPLIFICADO (FESTIVAL PETRONIO)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=IH3XKLAishA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/IH3XKLAishA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-11-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "57802"
   },
   {
-    "id": 30,
-    "titulo": "VEKA / ¿DÓNDE ESTÁS? : AMPLIFICADO (COLOMBIA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=368g44F0-EE",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/368g44F0-EE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 29,
+    "id": "26",
     "titulo": "MONSIEUR PERINÉ / LA CIUDAD : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=UTviQumfCUg",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/UTviQumfCUg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-11-18",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "1550929"
   },
   {
-    "id": 28,
+    "id": "25",
     "titulo": "THE HOLLOW BODIES / OLD LOVE : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=7W-RylNObrE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/7W-RylNObrE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-11-16",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "27769"
   },
   {
-    "id": 27,
+    "id": "24",
     "titulo": "MISS BOLIVIA / BIEN WARRIOR : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=WckCWapse6A",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/WckCWapse6A/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-11-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "368238"
   },
   {
-    "id": 26,
+    "id": "23",
     "titulo": "SON DEL TUNO / MIGUELITO: AMPLIFICADO (FESTIVAL PETRONIO ALVAREZ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=5Zs1RvDIyoU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/5Zs1RvDIyoU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-11-08",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "60230"
   },
   {
-    "id": 25,
+    "id": "22",
     "titulo": "DËNVER / OLAS GIGANTES : AMPLIFICADO (CHILE)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=VGnUlAxwpLw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/VGnUlAxwpLw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-10-31",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "13196"
   },
   {
-    "id": 24,
+    "id": "21",
     "titulo": "DËNVER / LO QUE QUIERAS : AMPLIFICADO (CHILE)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=zsOIfqOa9DQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/zsOIfqOa9DQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-10-24",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "37317"
   },
   {
-    "id": 23,
-    "titulo": "VEKA / AGUA : AMPLIFICADO (COLOMBIA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=UFPT28lyG44",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/UFPT28lyG44/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 22,
+    "id": "20",
     "titulo": "MONSIEUR PERINÉ / SUIN ROMANTICON : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=98WvYltKgSU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/98WvYltKgSU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-10-13",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "1141222"
   },
   {
-    "id": 21,
+    "id": "19",
     "titulo": "THE HOLLOW BODIES / CHOCOLATE JESUS : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=di3RpC81-y0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/di3RpC81-y0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-10-06",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "47468"
   },
   {
-    "id": 20,
+    "id": "18",
     "titulo": "LOS ALEGRES DE TELEMBÍ /¿QUE PASA CON MI COLOMBIA? : AMPLIFICADO (FESTIVAL PETRONIO ALVAREZ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=fGwbKzFTCvE",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/fGwbKzFTCvE/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-09-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "118169"
   },
   {
-    "id": 19,
+    "id": "17",
     "titulo": "SISMO / PASAJERA DEL TIEMPO : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=XxmFJr5WOdk",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/XxmFJr5WOdk/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-09-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "100177"
   },
   {
-    "id": 18,
-    "titulo": "VEKA / TAITA : AMPLIFICADO (COLOMBIA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=SfGjEV8GRlg",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/SfGjEV8GRlg/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 17,
+    "id": "16",
     "titulo": "SON RUMBERO'S / GAVILAN SABANERO : AMPLIFICADO (MEDELLÍN, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=C66z9AsdUIU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/C66z9AsdUIU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-09-11",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "7270"
   },
   {
-    "id": 16,
+    "id": "15",
     "titulo": "TRIPLE X / URIBE NO HA MUERTO : AMPLIFICADO (BOGOTÁ, COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=W0hZBR9NOX0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/W0hZBR9NOX0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-05-25",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "514234"
   },
   {
-    "id": 15,
+    "id": "14",
     "titulo": "LA MINITK DEL MIEDO / YO REINARÉ: AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=I3Zh-c9D5xA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/I3Zh-c9D5xA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-03-09",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "12613"
   },
   {
-    "id": 14,
+    "id": "13",
     "titulo": "ALFREDO GUTIERREZ / LOS NOVIOS : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=F_a1ED7fZ3A",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/F_a1ED7fZ3A/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2014-02-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "52336"
   },
   {
-    "id": 13,
+    "id": "12",
     "titulo": "MCKLOPEDIA / ADORO : AMPLIFICADO (VENEZUELA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=_8MUX6CRb-8",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/_8MUX6CRb-8/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-10-20",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "1868390"
   },
   {
-    "id": 12,
+    "id": "11",
     "titulo": "CUMBIA ALL STARS / LA DANZA DE LOS MIRLOS : AMPLIFICADO.TV (PERÚ)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=qE-F_-8k1_M",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/qE-F_-8k1_M/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-08-18",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "1488175"
   },
   {
-    "id": 11,
+    "id": "10",
     "titulo": "SOL OKARINA / FLORES Y VESTIDOS  : AMPLIFICADO (COLOMBIANA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=fP8EM_48ZVc",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/fP8EM_48ZVc/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-07-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "7340"
   },
   {
-    "id": 10,
+    "id": "9",
     "titulo": "PABLO MALAURIE / EL MIEDO NO : AMPLIFICADO (ARGENTINA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=zUPVN_rcudU",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/zUPVN_rcudU/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-05-22",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "32194"
   },
   {
-    "id": 9,
+    "id": "8",
     "titulo": "BALANCER / STAY OUTSIDE : AMPLIFICADO (FESTIVAL YAVERIA 2013 )",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=jD806-J0uiw",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/jD806-J0uiw/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2013-01-29",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "20956"
   },
   {
-    "id": 8,
+    "id": "7",
     "titulo": "ELIJAH / NEIGHBOR : AMPLIFICADO  (SAN ANDRES Y PROVIDENCIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=fL8K3FtUA2Y",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/fL8K3FtUA2Y/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-11-23",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "80423"
   },
   {
-    "id": 7,
+    "id": "6",
     "titulo": "PLANES (Estudios Universales) / PLANES : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=7NSpim21JMQ",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/7NSpim21JMQ/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-10-30",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "10004"
   },
   {
-    "id": 6,
+    "id": "5",
     "titulo": "ENSAMBLE RIBEREÑO  / NO ME LLEVES FLORES : AMPLIFICADO (FESTIVAL NACIONAL DE LA TAMBORA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=KrfUKo75BHA",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/KrfUKo75BHA/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-09-07",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "108002"
   },
   {
-    "id": 5,
+    "id": "4",
     "titulo": "PLANES (Estudios universales) / LOLA : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=BMDhfCHuit4",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/BMDhfCHuit4/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2012-05-04",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "13243"
   },
   {
-    "id": 4,
+    "id": "3",
     "titulo": "SISMO / CUENTA HASTA 10 : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=bTJRmgmelZ0",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/bTJRmgmelZ0/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-10-28",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "43853"
   },
   {
-    "id": 3,
+    "id": "2",
     "titulo": "MONSIEUR PERINÉ / LA TIENDA DE SOMBREROS : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=SzVgIJogj5o",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/SzVgIJogj5o/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-09-28",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "3462216"
   },
   {
-    "id": 2,
+    "id": "1",
     "titulo": "THE HOLLOW BODIES / SAINT JAMES INFIRMARY : AMPLIFICADO (COLOMBIA)",
     "categoria": "SESIONES - CONCIERTOS EN VIVO",
     "descripcion": "Sesión de AMPLIFICADO.TV",
+    "CARGO": "Co-Dirección + Dirección de Fotografía + Postproducción",
     "url_video": "https://www.youtube.com/watch?v=iltaEt7phFI",
     "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/iltaEt7phFI/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
-  },
-  {
-    "id": 1,
-    "titulo": "SOUNDACITY / AWAKE MY SOUL : AMPLIFICADO (COLOMBIA)",
-    "categoria": "SESIONES - CONCIERTOS EN VIVO",
-    "descripcion": "Sesión de AMPLIFICADO.TV",
-    "url_video": "https://www.youtube.com/watch?v=tQsvvo3k70s",
-    "tipo": "youtube",
-    "preview_url": "https://img.youtube.com/vi/tQsvvo3k70s/hqdefault.jpg",
-    "date": "2014",
-    "destacado": false,
-    "tags": [
-      "amplificado.tv"
-    ]
+    "preview_url": "",
+    "date": "2011-09-27",
+    "destacado": "NO",
+    "tags": "amplificado.tv",
+    "vistas originales": "16502"
   }
 ]

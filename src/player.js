@@ -28,14 +28,40 @@ export function rebuildPlaybackQueue(startIndex = -1) {
     const all = getAllCards();
     if (all.length === 0) { playbackQueue = []; playedIndices = []; return; }
     const isShuffle = store.get('isShuffle');
+
+    function balancedShuffle(indicesArray) {
+        const groups = {};
+        for (const idx of indicesArray) {
+            const card = all[idx];
+            const subcat = card ? (card.getAttribute('data-subcat') || card.getAttribute('data-cat') || 'other') : 'other';
+            if (!groups[subcat]) groups[subcat] = [];
+            groups[subcat].push(idx);
+        }
+        for (const subcat in groups) {
+            const g = groups[subcat];
+            for (let i = g.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [g[i], g[j]] = [g[j], g[i]]; }
+        }
+        const result = [];
+        const keys = Object.keys(groups);
+        for (let i = keys.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [keys[i], keys[j]] = [keys[j], keys[i]]; }
+        let itemsRemaining = indicesArray.length;
+        let roundRobinIdx = 0;
+        while (itemsRemaining > 0) {
+            const key = keys[roundRobinIdx % keys.length];
+            if (groups[key].length > 0) { result.push(groups[key].shift()); itemsRemaining--; }
+            roundRobinIdx++;
+        }
+        return result;
+    }
+
     if (isShuffle) {
         let indices = Array.from({ length: all.length }, (_, i) => i);
         if (startIndex !== -1 && startIndex < all.length) {
             indices = indices.filter(idx => idx !== startIndex);
-            for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; }
+            indices = balancedShuffle(indices);
             playbackQueue = [startIndex, ...indices];
         } else {
-            for (let i = indices.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [indices[i], indices[j]] = [indices[j], indices[i]]; }
+            indices = balancedShuffle(indices);
             const currentVideoIndex = store.get('currentVideoIndex');
             if (currentVideoIndex !== -1 && indices[0] === currentVideoIndex && indices.length > 1) {
                 [indices[0], indices[indices.length - 1]] = [indices[indices.length - 1], indices[0]];
@@ -111,11 +137,14 @@ function selectCategoryAndTagForVideo(trackItem) {
         store.set('currentMainFilter', targetMainFilter);
         store.set('currentCatalogoTag', targetTagFilter);
     }
+    const terminalContainer = document.getElementById('terminal-path-container');
     const terminalPath = document.getElementById('terminal-path');
-    if (terminalPath) {
-        terminalPath.style.display = 'block';
+    if (terminalContainer && terminalPath) {
+        terminalContainer.style.display = 'flex';
         const vidId = getYouTubeId(trackItem.url_video);
-        terminalPath.innerHTML = `golosinas@web:~/${targetMainFilter}/${targetTagFilter}$ ./play ${vidId}`;
+        const newPath = `golosinas@web:~/${targetMainFilter}/${targetTagFilter}$ ./play ${vidId}`;
+        terminalPath.value = newPath;
+        terminalPath.dataset.original = newPath;
     }
 }
 
@@ -130,8 +159,18 @@ export function playVideo(url, element) {
         let html = `<span class="lcd-title">${trackItem.titulo.toUpperCase()}</span>`;
         if (cleanDesc) html += ` <span class="lcd-sep">•</span> <span class="lcd-desc">${cleanDesc}</span>`;
         if (cat) html += ` <span class="lcd-sep">•</span> <span class="lcd-cat">${cat}</span>`;
+        if (trackItem.youtube_date) {
+            const yd = String(trackItem.youtube_date).trim();
+            const formattedDate = yd.length === 8 ? `${yd.substring(0,4)}-${yd.substring(4,6)}-${yd.substring(6,8)}` : yd;
+            html += ` <span class="lcd-sep">•</span> <span class="lcd-cat">${formattedDate}</span>`;
+        }
         html += ` <span class="lcd-sep">•</span> `;
         updateLcdDisplay(html);
+        
+        const viewsEl = document.getElementById('lcd-views');
+        if (viewsEl) {
+            viewsEl.textContent = trackItem.youtube_views ? new Intl.NumberFormat('es-CO').format(trackItem.youtube_views) + ' VISTAS' : '';
+        }
         selectCategoryAndTagForVideo(trackItem);
         GolosinasTelemetry.trackVideoStart(videoId, trackItem.titulo, trackItem.categoria);
     } else {
@@ -230,10 +269,21 @@ window.onYouTubeIframeAPIReady = function() {
                     if (e.data === YT.PlayerState.PAUSED)  GolosinasTelemetry.trackVideoPause(ytPlayer.getCurrentTime());
                     else if (e.data === YT.PlayerState.ENDED) GolosinasTelemetry.trackVideoEnd();
                 }
+            },
+            onError: function(e) {
+                console.warn('YouTube Player Error:', e.data);
+                // Si el video tiene error (ej. bloqueado), saltamos al siguiente
+                playNext();
             }
         }
     });
 };
+
+// Inyectar el script de YouTube dinámicamente para evitar race conditions
+const ytScript = document.createElement('script');
+ytScript.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(ytScript, firstScriptTag);
 
 // ── Controles del Reproductor ────────────────────────────────
 function updateVolumeIcon(isMuted) {
