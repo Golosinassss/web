@@ -199,11 +199,18 @@ export function renderCatalogo() {
     if (store.get('currentCatalogoTag') !== 'todos') {
         items = items.filter(item => Array.isArray(item.tags) && item.tags.some(t => t.trim().toLowerCase() === store.get('currentCatalogoTag')));
     }
-    // Ordenar cronológicamente DESC (más nuevo primero)
+    const sq = store.get('searchQuery');
+    if (sq) {
+        items = items.filter(item => 
+            (item.titulo && item.titulo.toLowerCase().includes(sq)) || 
+            (item.descripcion && item.descripcion.toLowerCase().includes(sq))
+        );
+    }
+    // Ordenar por ID DESC (del último al primero)
     items.sort((a, b) => {
-        const da = parseInt(a.date) || 0;
-        const db = parseInt(b.date) || 0;
-        return db - da;
+        const idA = parseInt(a.id) || 0;
+        const idB = parseInt(b.id) || 0;
+        return idB - idA;
     });
     items.forEach((item, i) => { const el = buildCard(item, i); grid.appendChild(el); catalogoCards.push(el); });
 }
