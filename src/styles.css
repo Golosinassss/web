@@ -177,7 +177,7 @@
         top: 30px; left: 0; width: 30px; bottom: 40px;
         justify-content: center; align-items: flex-start;
         background: var(--bg);
-        border-right: 1px solid transparent;
+        border-left: 1px solid transparent;
         border-image: var(--grad-tornasol-180) 1;
         border-image-slice: 1;
     }
