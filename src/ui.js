@@ -206,11 +206,11 @@ export function renderCatalogo() {
             (item.descripcion && item.descripcion.toLowerCase().includes(sq))
         );
     }
-    // Ordenar por ID DESC (del último al primero)
+    // Ordenar cronológicamente (del último al primero)
     items.sort((a, b) => {
-        const idA = parseInt(a.id) || 0;
-        const idB = parseInt(b.id) || 0;
-        return idB - idA;
+        const dateA = new Date(a.date || 0).getTime();
+        const dateB = new Date(b.date || 0).getTime();
+        return dateB - dateA;
     });
     items.forEach((item, i) => { const el = buildCard(item, i); grid.appendChild(el); catalogoCards.push(el); });
 }
